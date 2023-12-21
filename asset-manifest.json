@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Water_Tracker_Front/static/css/main.7acaea2f.css",
-    "main.js": "/Water_Tracker_Front/static/js/main.07d3183d.js",
+    "main.js": "/Water_Tracker_Front/static/js/main.6f389c9a.js",
     "index.html": "/Water_Tracker_Front/index.html",
     "main.7acaea2f.css.map": "/Water_Tracker_Front/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/Water_Tracker_Front/static/js/main.07d3183d.js.map"
+    "main.6f389c9a.js.map": "/Water_Tracker_Front/static/js/main.6f389c9a.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/js/main.6f389c9a.js"
   ]
 }
