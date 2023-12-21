@@ -1,20 +1,30 @@
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import {
+  BenefitsItem,
+  BenefitsList,
+  BenefitsTittle,
+  FirstBlock,
+  MainTittle,
+  RecordTittle,
+  TryBtn,
+} from './Main.styled';
+
 export const Main = () => {
   return (
     <div>
-      <div>
-        <h1 style={{ fontFamily: 'Roboto' }}>Water consumption tracker</h1>
-        <h2>Record daily water intake and track</h2>
-        <h3>Tracker Benefits</h3>
-        <ul>
-          <li>Habit drive</li>
-          <li>View statistics</li>
-          <li>Personal rate setting</li>
-        </ul>
+      <FirstBlock>
+        <MainTittle>Water consumption tracker</MainTittle>
+        <RecordTittle>Record daily water intake and track</RecordTittle>
+        <BenefitsTittle>Tracker Benefits</BenefitsTittle>
+        <BenefitsList>
+          <BenefitsItem>Habit drive</BenefitsItem>
+          <BenefitsItem>View statistics</BenefitsItem>
+          <BenefitsItem>Personal rate setting</BenefitsItem>
+        </BenefitsList>
         <nav>
-          <button>Try tracker</button>
+          <TryBtn to="/register">Try tracker</TryBtn>
         </nav>
-      </div>
+      </FirstBlock>
       <div>
         <h3>Why drink water</h3>
         <ul>
