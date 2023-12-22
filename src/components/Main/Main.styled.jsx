@@ -1,7 +1,22 @@
 import styled from 'styled-components';
 import color from '../../common/Variables';
+import backgroundImg from '../../images/main-mob.jpg';
+import backgroundImg2x from '../../images/main-mob@2x.jpg';
 
 import { NavLink } from 'react-router-dom';
+
+export const Container = styled.div`
+  padding-bottom: 40px;
+  width: 100%;
+  height: 100%;
+  background-image: url(${backgroundImg});
+  background-size: cover;
+  background-position: center;
+
+  @media screen and (min-resolution: 192dpi) {
+    background-image: url(${backgroundImg2x});
+  }
+`;
 
 export const FirstBlock = styled.div`
   max-width: 320px;
@@ -47,6 +62,9 @@ export const BenefitsList = styled.ul`
 `;
 
 export const BenefitsItem = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 8px;
   &:not(:last-child) {
     padding-bottom: 16px;
   }
@@ -95,4 +113,15 @@ export const WhyTittle = styled.h3`
   font-weight: 500;
   line-height: 1.1;
   margin-bottom: 12px;
+`;
+
+export const ReasonList = styled.ul`
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 400;
+`;
+
+export const ReasonItem = styled.li`
+  max-width: 232px;
 `;

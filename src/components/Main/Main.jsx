@@ -1,4 +1,6 @@
-import { WhyTittle } from './Main.styled';
+import { Container, ReasonItem, ReasonList, WhyTittle } from './Main.styled';
+import icons from '../../common/symbol-defs.svg';
+
 import {
   BenefitsItem,
   BenefitsList,
@@ -12,32 +14,51 @@ import {
 
 export const Main = () => {
   return (
-    <div>
+    <Container>
       <FirstBlock>
         <MainTittle>Water consumption tracker</MainTittle>
         <RecordTittle>Record daily water intake and track</RecordTittle>
         <BenefitsTittle>Tracker Benefits</BenefitsTittle>
         <BenefitsList>
-          <BenefitsItem>Habit drive</BenefitsItem>
-          <BenefitsItem>View statistics</BenefitsItem>
-          <BenefitsItem>Personal rate setting</BenefitsItem>
+          <BenefitsItem>
+            <svg width={40} height={40}>
+              <use href={`${icons}#icon-outline11`} />
+            </svg>
+            Habit drive
+          </BenefitsItem>
+          <BenefitsItem>
+            <svg width={40} height={40}>
+              <use href={`${icons}#icon-outline12`} />
+            </svg>
+            View statistics
+          </BenefitsItem>
+          <BenefitsItem>
+            <svg width={40} height={40}>
+              <use href={`${icons}#icon-outline13`} />
+            </svg>
+            Personal rate setting
+          </BenefitsItem>
         </BenefitsList>
         <nav>
-          <TryBtn to="/register">Try tracker</TryBtn>
+          <TryBtn to="/signup">Try tracker</TryBtn>
         </nav>
       </FirstBlock>
       <SecondBlock>
         <WhyTittle>Why drink water</WhyTittle>
-        <ul>
-          <li>Supply of nutrients to all organs</li>
-          <li>Providing oxygen to the lungs</li>
-          <li>Maintaining the work of the heart</li>
-          <li>Release of processed substances</li>
-          <li>Ensuring the stability of the internal environment</li>
-          <li>Maintaining within the normal temperature</li>
-          <li>Maintaining an immune system capable of resisting disease</li>
-        </ul>
+        <ReasonList>
+          <ReasonItem>Supply of nutrients to all organs</ReasonItem>
+          <ReasonItem>Providing oxygen to the lungs</ReasonItem>
+          <ReasonItem>Maintaining the work of the heart</ReasonItem>
+          <ReasonItem>Release of processed substances</ReasonItem>
+          <ReasonItem>
+            Ensuring the stability of the internal environment
+          </ReasonItem>
+          <ReasonItem>Maintaining within the normal temperature</ReasonItem>
+          <ReasonItem>
+            Maintaining an immune system capable of resisting disease
+          </ReasonItem>
+        </ReasonList>
       </SecondBlock>
-    </div>
+    </Container>
   );
 };
