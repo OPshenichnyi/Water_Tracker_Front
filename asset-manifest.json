@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Water_Tracker_Front/static/css/main.7acaea2f.css",
-    "main.js": "/Water_Tracker_Front/static/js/main.d6c061e3.js",
+    "main.js": "/Water_Tracker_Front/static/js/main.710a24ac.js",
     "static/media/main-mob@2x.jpg": "/Water_Tracker_Front/static/media/main-mob@2x.c29798b92e44ad871aef.jpg",
     "static/media/Roboto-Regular.woff2": "/Water_Tracker_Front/static/media/Roboto-Regular.9429985be4f46ec8fcfc.woff2",
     "static/media/main-mob.jpg": "/Water_Tracker_Front/static/media/main-mob.6b87cf343e38fa735c80.jpg",
     "static/media/symbol-defs.svg": "/Water_Tracker_Front/static/media/symbol-defs.9d5abf63910d5651975bbd791e39c373.svg",
     "index.html": "/Water_Tracker_Front/index.html",
     "main.7acaea2f.css.map": "/Water_Tracker_Front/static/css/main.7acaea2f.css.map",
-    "main.d6c061e3.js.map": "/Water_Tracker_Front/static/js/main.d6c061e3.js.map"
+    "main.710a24ac.js.map": "/Water_Tracker_Front/static/js/main.710a24ac.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.d6c061e3.js"
+    "static/js/main.710a24ac.js"
   ]
 }
