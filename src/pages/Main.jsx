@@ -1,8 +1,10 @@
+import { Main } from "components/Main/Main"
+
 const MainPage = () => {
 
 return (
 
-    <div>MainPage</div>
+    <Main/>
 
 )
 

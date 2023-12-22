@@ -1,26 +1,23 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
 
+// import HomePage from '../pages/HomePage';
 import SignUpPage from '../pages/SignUpPage';
 import SigninPage from '../pages/SigninPage';
-import Main from '../pages/Main';
 import Layout from './SharedLayout/Layout';
 import NotFoundPage from 'pages/NotFoundPage';
-const HomePage = lazy(() => import('../pages/HomePage.jsx'));
+import PrivateRoute from './PrivateRoute';
 
 const App = () => {
+  
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Main />} />
-          <Route path="/register" element={<SignUpPage />} />
-          <Route path="/login" element={<SigninPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<PrivateRoute/>} />
+        <Route path="signup" element={<SignUpPage />} />
+        <Route path="signin" element={<SigninPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 };
 
