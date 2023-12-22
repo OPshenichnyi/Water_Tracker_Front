@@ -23,7 +23,6 @@ export const FirstBlock = styled.div`
   margin-left: auto;
   margin-right: auto;
   color: ${color.blackPrimary};
-  font-family: Roboto;
 `;
 
 export const MainTittle = styled.h1`
@@ -101,7 +100,6 @@ export const SecondBlock = styled.div`
   margin-left: auto;
   margin-right: auto;
   color: ${color.blackPrimary};
-  font-family: Roboto;
   padding: 24px 16px;
   border-radius: 10px;
   background: ${color.secondaryLightGray};
