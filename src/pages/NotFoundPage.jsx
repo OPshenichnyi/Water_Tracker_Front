@@ -2,7 +2,7 @@ const NotFoundPage = () => {
 
 return (
 
-<div> Try again</div>
+<div> &#x1F60A;</div>
 
 
 )
