@@ -4,9 +4,10 @@ import { DailyNorma } from 'components/DailyNorma/DailyNorma';
 const HomePage = () => {
   return (
     <>
-      <div>HomePage</div>
-
-      <DailyNorma />
+      <div className="container">
+        HomePage
+        <DailyNorma />
+      </div>
     </>
   );
 };
