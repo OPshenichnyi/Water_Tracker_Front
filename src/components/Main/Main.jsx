@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { WhyTittle } from './Main.styled';
 import {
   BenefitsItem,
   BenefitsList,
@@ -27,7 +27,7 @@ export const Main = () => {
         </nav>
       </FirstBlock>
       <SecondBlock>
-        <h3>Why drink water</h3>
+        <WhyTittle>Why drink water</WhyTittle>
         <ul>
           <li>Supply of nutrients to all organs</li>
           <li>Providing oxygen to the lungs</li>

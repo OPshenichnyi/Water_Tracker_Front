@@ -13,7 +13,7 @@ export const FirstBlock = styled.div`
 
 export const MainTittle = styled.h1`
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 700px;
   line-height: 1.4;
   margin-top: 12px;
   margin-bottom: 16px;
@@ -91,7 +91,7 @@ export const SecondBlock = styled.div`
 `;
 
 export const WhyTittle = styled.h3`
-  font-size: 340px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.1;
   margin-bottom: 12px;
