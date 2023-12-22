@@ -6,6 +6,7 @@ import {
   FirstBlock,
   MainTittle,
   RecordTittle,
+  SecondBlock,
   TryBtn,
 } from './Main.styled';
 
@@ -25,7 +26,7 @@ export const Main = () => {
           <TryBtn to="/register">Try tracker</TryBtn>
         </nav>
       </FirstBlock>
-      <div>
+      <SecondBlock>
         <h3>Why drink water</h3>
         <ul>
           <li>Supply of nutrients to all organs</li>
@@ -36,7 +37,7 @@ export const Main = () => {
           <li>Maintaining within the normal temperature</li>
           <li>Maintaining an immune system capable of resisting disease</li>
         </ul>
-      </div>
+      </SecondBlock>
     </div>
   );
 };

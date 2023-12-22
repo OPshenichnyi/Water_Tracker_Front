@@ -53,12 +53,13 @@ export const BenefitsItem = styled.li`
 `;
 
 export const TryBtn = styled(NavLink)`
+  margin-bottom: 40px;
   text-decoration: none;
   color: ${color.whitePrimary};
   font-weight: bold;
   padding: 8px 30px;
   border-radius: 10px;
-  max-width: 220px;
+  max-width: 320px;
   display: block;
   text-align: center;
   justify-content: center;
@@ -76,4 +77,22 @@ export const TryBtn = styled(NavLink)`
     cursor: pointer;
     box-shadow: none;
   }
+`;
+export const SecondBlock = styled.div`
+  max-width: 290px;
+  margin-left: auto;
+  margin-right: auto;
+  color: ${color.blackPrimary};
+  font-family: Roboto;
+  padding: 24px 16px;
+  border-radius: 10px;
+  background: ${color.secondaryLightGray};
+  box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+`;
+
+export const WhyTittle = styled.h3`
+  font-size: 340px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 12px;
 `;
