@@ -1,8 +1,13 @@
-const HomePage = ()=>{
+import React from 'react';
+import { DailyNorma } from 'components/DailyNorma/DailyNorma';
 
-return(
-    <div>HomePage</div>
-)
+const HomePage = () => {
+  return (
+    <>
+      <div>HomePage</div>
 
-}
-export default HomePage
+      <DailyNorma />
+    </>
+  );
+};
+export default HomePage;
