@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/Water_Tracker_Front/static/css/main.7acaea2f.css",
-    "main.js": "/Water_Tracker_Front/static/js/main.c19b79dc.js",
+    "main.js": "/Water_Tracker_Front/static/js/main.93362fd8.js",
+    "static/media/Roboto-Regular.woff2": "/Water_Tracker_Front/static/media/Roboto-Regular.9429985be4f46ec8fcfc.woff2",
     "index.html": "/Water_Tracker_Front/index.html",
     "main.7acaea2f.css.map": "/Water_Tracker_Front/static/css/main.7acaea2f.css.map",
-    "main.c19b79dc.js.map": "/Water_Tracker_Front/static/js/main.c19b79dc.js.map"
+    "main.93362fd8.js.map": "/Water_Tracker_Front/static/js/main.93362fd8.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.c19b79dc.js"
+    "static/js/main.93362fd8.js"
   ]
 }
