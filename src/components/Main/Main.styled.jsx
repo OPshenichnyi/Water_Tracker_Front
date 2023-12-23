@@ -5,6 +5,8 @@ import backgroundImg2x from '../../images/main-mob@2x.jpg';
 import tabletImg from '../../images/main_tablet_bg.jpg';
 import tabletImg2x from '../../images/main_tablet_bg@2x.jpg';
 import listImg from '../../images/listMarker.svg';
+import backDesc from '../../images/main_desctop.jpg';
+import backDesc2x from '../../images/main_desctop@2x.jpg';
 
 import { NavLink } from 'react-router-dom';
 
@@ -28,11 +30,20 @@ export const Container = styled.div`
       background-image: url(${tabletImg2x});
       padding-bottom: 50px;
     }
+
+     @media screen and (min-width: 1440px) {
+    background-image: url(${backDesc});
+
+    @media screen and (min-resolution: 192dpi) {
+      background-image: url(${backDesc2x});
+      padding-bottom: 50px;
+    }
   }
 
   @media screen and (min-width: 1440px) {
     display: flex;
     flex-basis: calc((100% - 81px) / 2);
+    padding-bottom: 185px;
   }
 `;
 
