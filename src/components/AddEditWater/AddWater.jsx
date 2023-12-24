@@ -16,6 +16,7 @@ import {
   SelectTime,
   CounterBottom,
   ButtonSave,
+  CountSaveBtnBottom,
 } from './AddWater.styled';
 
 export default function BasicModal() {
@@ -88,56 +89,55 @@ export default function BasicModal() {
 
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-        <div>
-          <BlockTop>
-            <BlockTitle> Add water</BlockTitle>
-            <ButtonClose onClick={handleClose}>
-              {' '}
-              <svg width={12} height={12} stroke="#407BFF">
-                <use href={`${icons}#icon-cross`} />
-              </svg>
-            </ButtonClose>
-          </BlockTop>
-
-          <ValueP>Choose a value:</ValueP>
-          <AmountP>Amount of water:</AmountP>
-
-          <BlockCount>
-            <ButtonCount onClick={decrease}>
-              <svg width={24} height={24} fill="#407BFF">
-                <use href={`${icons}#icon-minus`} />
-              </svg>
-            </ButtonCount>
-            <BtnCounter>{count}ml</BtnCounter>
-            <ButtonCount onClick={() => setCount(count + 50)}>
-              <svg width={24} height={24} fill="#407BFF">
-                <use href={`${icons}#icon-plus`} />
-              </svg>
-            </ButtonCount>
-          </BlockCount>
-
-          <AmountP>Recording time:</AmountP>
-
-          <SelectTime value={selectedTime} onChange={handleTimeChange}>
-            {generateTimeOptions()}
-          </SelectTime>
-
-          <ValueP>Enter the value of the water used:</ValueP>
-          <InputStyle
-            type="text"
-            value={inputValue}
-            onChange={handleInputChange}
-            onBlur={handleInputBlur}
-            placeholder="50"
-          />
           <div>
-            <CounterBottom>{count}ml</CounterBottom>
-            <ButtonSave type="button">Save</ButtonSave>
-          </div>
+            <BlockTop>
+              <BlockTitle> Add water</BlockTitle>
+              <ButtonClose onClick={handleClose}>
+                {' '}
+                <svg width={12} height={12} stroke="#407BFF">
+                  <use href={`${icons}#icon-cross`} />
+                </svg>
+              </ButtonClose>
+            </BlockTop>
+
+            <ValueP>Choose a value:</ValueP>
+            <AmountP>Amount of water:</AmountP>
+
+            <BlockCount>
+              <ButtonCount onClick={decrease}>
+                <svg width={24} height={24} fill="#407BFF">
+                  <use href={`${icons}#icon-minus`} />
+                </svg>
+              </ButtonCount>
+              <BtnCounter>{count}ml</BtnCounter>
+              <ButtonCount onClick={() => setCount(count + 50)}>
+                <svg width={24} height={24} fill="#407BFF">
+                  <use href={`${icons}#icon-plus`} />
+                </svg>
+              </ButtonCount>
+            </BlockCount>
+
+            <AmountP>Recording time:</AmountP>
+
+            <SelectTime value={selectedTime} onChange={handleTimeChange}>
+              {generateTimeOptions()}
+            </SelectTime>
+
+            <ValueP>Enter the value of the water used:</ValueP>
+            <InputStyle
+              type="text"
+              value={inputValue}
+              onChange={handleInputChange}
+              onBlur={handleInputBlur}
+              placeholder="50"
+            />
+            <CountSaveBtnBottom>
+              <CounterBottom>{count}ml</CounterBottom>
+              <ButtonSave type="button">Save</ButtonSave>
+            </CountSaveBtnBottom>
           </div>
         </Box>
       </Modal>
     </div>
   );
 }
-
