@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { GlobalStyle } from '../common/GlobalStyles';
+
 // import HomePage from '../pages/HomePage';
 import SignUpPage from '../pages/SignUpPage';
 import SigninPage from '../pages/SigninPage';
@@ -9,7 +9,6 @@ import PrivateRoute from './PrivateRoute';
 
 const App = () => {
   return (
-    <>
     <Routes>
       <Route path="/" element={<Layout />}>
         {/* <Route path="/test" element={<HomePage />} />  FOR TESTING */}
@@ -19,8 +18,6 @@ const App = () => {
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
-      <GlobalStyle />
-    </>
   );
 };
 
