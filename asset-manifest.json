@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/Water_Tracker_Front/static/css/main.7acaea2f.css",
-    "main.js": "/Water_Tracker_Front/static/js/main.9076b8d3.js",
+    "main.js": "/Water_Tracker_Front/static/js/main.81fa3642.js",
     "static/media/main_tablet_bg@2x.jpg": "/Water_Tracker_Front/static/media/main_tablet_bg@2x.d1b5af79663abb6313ad.jpg",
     "static/media/main_desctop@2x.jpg": "/Water_Tracker_Front/static/media/main_desctop@2x.0e453c071a756bfd74d0.jpg",
     "static/media/main_tablet_bg.jpg": "/Water_Tracker_Front/static/media/main_tablet_bg.1dc102cb9db3cd6bfe8e.jpg",
     "static/media/main-mob@2x.jpg": "/Water_Tracker_Front/static/media/main-mob@2x.c29798b92e44ad871aef.jpg",
     "static/media/main_desctop.jpg": "/Water_Tracker_Front/static/media/main_desctop.598320cb3c7287155480.jpg",
     "static/media/Roboto-Regular.woff2": "/Water_Tracker_Front/static/media/Roboto-Regular.9429985be4f46ec8fcfc.woff2",
+    "static/media/symbol-defs.svg": "/Water_Tracker_Front/static/media/symbol-defs.f75e09ff8ad927b3ed8a321dbad933c9.svg",
     "static/media/main-mob.jpg": "/Water_Tracker_Front/static/media/main-mob.6b87cf343e38fa735c80.jpg",
     "static/media/bottle_home_mob@1x.jpg": "/Water_Tracker_Front/static/media/bottle_home_mob@1x.b8ebaccfbc5555df23d3.jpg",
-    "static/media/symbol-defs.svg": "/Water_Tracker_Front/static/media/symbol-defs.7b702b1abb38c0a44268be7639121479.svg",
     "index.html": "/Water_Tracker_Front/index.html",
     "static/media/listMarker.svg": "/Water_Tracker_Front/static/media/listMarker.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.7acaea2f.css.map": "/Water_Tracker_Front/static/css/main.7acaea2f.css.map",
-    "main.9076b8d3.js.map": "/Water_Tracker_Front/static/js/main.9076b8d3.js.map"
+    "main.81fa3642.js.map": "/Water_Tracker_Front/static/js/main.81fa3642.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.9076b8d3.js"
+    "static/js/main.81fa3642.js"
   ]
 }
