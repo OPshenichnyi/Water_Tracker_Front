@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import UserLogoModal from '../UserLogoModal/UserLogoModal'; // Подключите компонент модального окна
+import UserLogoModal from '../UserLogoModal/UserLogoModal';
 import sprite from '../../common/symbol-defs.svg';
-import { Wrapper, Button, Modal,Svg } from './UserLogo.styled';
+import { Wrapper, Button, Svg } from './UserLogo.styled';
 
 
 const UserLogo = ({ userName, userAvatar }) => {
