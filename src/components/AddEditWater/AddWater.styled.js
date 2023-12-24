@@ -25,10 +25,10 @@ export const ButtonSave = styled.button`
   text-align: center;
   font-size: 16px;
   font-weight: 500;
-  line-height: 1.25; 
+  line-height: 1.25;
 `;
 export const ButtonCount = styled.button`
-display: flex;
+  display: flex;
   padding: 10px;
   justify-content: center;
   align-items: center;
@@ -38,7 +38,6 @@ display: flex;
   border: 1px solid #9ebbff;
   background: #fff;
   box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
-  
 `;
 export const ButtonClose = styled.button`
   display: flex;
@@ -85,18 +84,21 @@ export const ValueP = styled.p`
   color: #2f2f2f;
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.11; 
+  line-height: 1.11;
   margin-bottom: 16px;
 `;
 export const AmountP = styled.p`
   color: #2f2f2f;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.25; 
+  line-height: 1.25;
   margin-bottom: 12px;
 `;
 
 export const SelectTime = styled.select`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 120px;
   height: 44px;
   display: flex;
@@ -106,6 +108,10 @@ export const SelectTime = styled.select`
   border-radius: 6px;
   border: 1px solid #d7e3ff;
   margin-bottom: 24px;
+  color: #407bff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
 `;
 
 export const InputStyle = styled.input`
@@ -119,12 +125,10 @@ export const InputStyle = styled.input`
   border-radius: 6px;
   border: 1px solid #d7e3ff;
 
-
-  color: #407BFF;
-font-size: 16px;
-font-weight: 400;
-line-height: 1.25; 
-
+  color: #407bff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
 `;
 
 export const CounterBottom = styled.p`
@@ -134,7 +138,7 @@ export const CounterBottom = styled.p`
   text-align: center;
   font-size: 18px;
   font-weight: 700;
-  line-height: 1.33; 
+  line-height: 1.33;
   margin-bottom: 16px;
   margin-left: auto;
   margin-right: auto;
