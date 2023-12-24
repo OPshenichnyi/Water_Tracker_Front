@@ -48,15 +48,6 @@
 <symbol id="icon-outline2" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.3333" d="M4 22v3c0 1.657 1.343 3 3 3v0h18c1.657 0 3-1.343 3-3v0-3M10 10l6-6M16 4l6 6M16 4v18"></path>
 </symbol>
-<symbol id="icon-cross" viewBox="0 0 32 32">
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.4286" d="M2.286 29.714l27.429-27.429M2.286 2.286l27.429 27.429"></path>
-</symbol>
-<symbol id="icon-plus" viewBox="0 0 32 32">
-<path d="M16 7c0.265 0 0.52 0.105 0.707 0.293s0.293 0.442 0.293 0.707v7h7c0.265 0 0.52 0.105 0.707 0.293s0.293 0.442 0.293 0.707-0.105 0.52-0.293 0.707c-0.187 0.188-0.442 0.293-0.707 0.293h-7v7c0 0.265-0.105 0.52-0.293 0.707s-0.442 0.293-0.707 0.293-0.52-0.105-0.707-0.293c-0.188-0.187-0.293-0.442-0.293-0.707v-7h-7c-0.265 0-0.52-0.105-0.707-0.293s-0.293-0.442-0.293-0.707 0.105-0.52 0.293-0.707c0.188-0.188 0.442-0.293 0.707-0.293h7v-7c0-0.265 0.105-0.52 0.293-0.707s0.442-0.293 0.707-0.293z"></path>
-</symbol>
-<symbol id="icon-minus" viewBox="0 0 32 32">
-<path d="M7 16c0-0.265 0.105-0.52 0.293-0.707s0.442-0.293 0.707-0.293h16c0.265 0 0.52 0.105 0.707 0.293s0.293 0.442 0.293 0.707-0.105 0.52-0.293 0.707c-0.187 0.188-0.442 0.293-0.707 0.293h-16c-0.265 0-0.52-0.105-0.707-0.293s-0.293-0.442-0.293-0.707z"></path>
-</symbol>
 <symbol id="icon-outline1" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.3333" d="M16 12v8M20 16h-8M28 16c0 6.627-5.373 12-12 12s-12-5.373-12-12v0c0-6.627 5.373-12 12-12s12 5.373 12 12v0z"></path>
 </symbol>
