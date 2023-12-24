@@ -1,49 +1,23 @@
-// import * as React from 'react';
-import { Box} from '@mui/material';
+import { Box } from '@mui/material';
 import Modal from '@mui/material/Modal';
 import React, { useState } from 'react';
-import styled from 'styled-components';
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 280,
-  height: 540,
-  bgcolor: '#FFFFFF',
-  border: '2px solid #000',
-  borderRadius: 2.5,
-  boxShadow: 24,
-  p: 4,
-};
 
-const ButtonStyle = styled.button`
-width: 256px;
-height: 36px;
-    border-radius: 10px;
-background: #407BFF;
-box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-
-
-`
-const ButtonCount = styled.button`
-width: 24px;
-height: 24px;
-    border-radius: 30px;
-border: 1px solid #9EBBFF;
-background: #FFF;
-box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.20);
-
-
-`
-const InputStyle = styled.input`
-border-radius: 6px;
-border: 1px solid #D7E3FF;
-width: 120px;
-height: 44px;
-
-`
-
+import icons from '../../common/symbol-defs.svg';
+import {
+  style,
+  ButtonClose,
+  ButtonCount,
+  InputStyle,
+  BlockTop,
+  BlockTitle,
+  BlockCount,
+  BtnCounter,
+  ValueP,
+  AmountP,
+  SelectTime,
+  CounterBottom,
+  ButtonSave,
+} from './AddWater.styled';
 
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
@@ -57,9 +31,12 @@ export default function BasicModal() {
   //   setCount(count + 10);
   // };
 
-  // const decrease = () => {
-  //   setCount(count - 10);
-  // };
+  const decrease = () => {
+    if(count <= 0){
+     return setCount (0)
+    }
+    setCount(count - 50);
+  };
 
   const handleInputChange = event => {
     setInputValue(event.target.value);
@@ -85,15 +62,36 @@ export default function BasicModal() {
 
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <button onClick={handleClose}>Close modal</button>
-          <h3> Add water</h3>
-          <p>Choose a value:</p>
-          <p>Amount of water:</p>
-          <ButtonCount onClick={()=>setCount(count + 10)}>+</ButtonCount>
-          <p>{count}</p>
-          <ButtonCount onClick={()=>setCount(count - 10)}>-</ButtonCount>
-          <p>Recording time:</p>
-          <p>Enter the value of the water used:</p>
+          <BlockTop>
+            <BlockTitle> Add water</BlockTitle>
+            <ButtonClose onClick={handleClose}>
+              {' '}
+              <svg width={12} height={12} stroke="#407BFF">
+                <use href={`${icons}#icon-cross`} />
+              </svg>
+            </ButtonClose>
+          </BlockTop>
+
+          <ValueP>Choose a value:</ValueP>
+          <AmountP>Amount of water:</AmountP>
+
+          <BlockCount>
+            <ButtonCount onClick={decrease}>
+              <svg width={24} height={24} fill="#407BFF">
+                <use href={`${icons}#icon-minus`} />
+              </svg>
+            </ButtonCount>
+            <BtnCounter>{count}ml</BtnCounter>
+            <ButtonCount onClick={() => setCount(count + 50)}>
+              <svg width={24} height={24} fill="#407BFF">
+                <use href={`${icons}#icon-plus`} />
+              </svg>
+            </ButtonCount>
+          </BlockCount>
+
+          <AmountP>Recording time:</AmountP>
+          <SelectTime>time</SelectTime>
+          <ValueP>Enter the value of the water used:</ValueP>
           <InputStyle
             type="text"
             value={inputValue}
@@ -101,10 +99,61 @@ export default function BasicModal() {
             onBlur={handleInputBlur}
             placeholder="Введіть число"
           />
-          <p>{count}</p>
-          <ButtonStyle>Save</ButtonStyle>
+          <div>
+          <CounterBottom>{count}ml</CounterBottom>
+          <ButtonSave type='button'>Save</ButtonSave>
+          </div>
+          
         </Box>
       </Modal>
     </div>
   );
 }
+
+// import React, { useState, useEffect } from 'react';
+
+// const TimeSelector = () => {
+//   const [selectedTime, setSelectedTime] = useState(0);
+
+//   // Генеруємо варіанти часу з інтервалом 5 хвилин
+//   const generateTimeOptions = () => {
+//     const options = [];
+//     for (let i = 0; i < 24 * 60; i += 5) {
+//       const hours = Math.floor(i / 60);
+//       const minutes = i % 60;
+//       const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+//       options.push(
+//         <option key={i} value={i}>
+//           {timeString}
+//         </option>
+//       );
+//     }
+//     return options;
+//   };
+
+//   // Отримання поточного часу та встановлення його як початкового значення
+//   useEffect(() => {
+//     const now = new Date();
+//     const hours = now.getHours();
+//     const minutes = now.getMinutes();
+//     const currentTime = hours * 60 + minutes;
+//     setSelectedTime(currentTime - (currentTime % 5)); // Округлення до найближчого значення з інтервалом 5 хвилин
+//   }, []);
+
+//   // Обробник зміни вибраного часу
+//   const handleTimeChange = (e) => {
+//     setSelectedTime(parseInt(e.target.value, 10));
+//   };
+
+//   return (
+//     <div>
+//       <select value={selectedTime} onChange={handleTimeChange}>
+//         {generateTimeOptions()}
+//       </select>
+//       <p>Вибраний час: {Math.floor(selectedTime / 60).toString().padStart(2, '0')}:
+//       {(selectedTime % 60).toString().padStart(2, '0')}</p>
+//     </div>
+//   );
+// };
+
+// export default TimeSelector;
