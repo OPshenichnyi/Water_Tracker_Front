@@ -6,13 +6,12 @@ import { useSelector } from "react-redux";
 import { selectIsLogined } from "../../redux/auth/selectorsAuth";
 
 export const Header = () => {
-  const { isLoggedIn } = useSelector(selectIsLogined);
-
+  const isLogined = useSelector(selectIsLogined);
   return (
     <div className="container main-container">
       <Wrapper>
         <Logo />
-        {isLoggedIn ? <UserLogo /> : <UserAuth />}
+        {isLogined ? <UserLogo /> : <UserAuth />}
       </Wrapper>
     </div>
   );

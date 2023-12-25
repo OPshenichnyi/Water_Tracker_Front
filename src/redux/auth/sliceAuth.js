@@ -1,13 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // const { createSlice } = require("@reduxjs/toolkit");
-const { registration } = require("./authOperationApi");
+const { registration, logIn } = require("./authOperationApi");
 
 const initialState = {
-  user: { email: null, password: null },
+  user: {
+    email: null,
+    userName: null,
+    avatarURL: null,
+    gender: null,
+    waterRate: null,
+  },
   token: null,
   isLogined: false,
   isRefresh: false,
+  isRegister: false,
 };
 
 const authSlice = createSlice({
@@ -17,8 +24,13 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(registration.fulfilled, (state, action) => {
       state.user = action.payload.user;
+      state.isRegister = true;
+    });
+    builder.addCase(logIn.fulfilled, (state, action) => {
+      state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLogined = true;
+      state.isRegister = true;
     });
   },
 });
