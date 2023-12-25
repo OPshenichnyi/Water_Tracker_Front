@@ -41,7 +41,7 @@ export const DailyNorma = () => {
         </WaterProgress>
         <AddWaterButton>
           <svg width={24} height={24}>
-            <use href={`${sprite}#icon-outline7`} />
+            <use href={`${sprite}#plus-circle`} />
           </svg>
           Add Water
         </AddWaterButton>

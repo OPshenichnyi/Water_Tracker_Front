@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from '../common/GlobalStyles';
-// import HomePage from '../pages/HomePage';
+import HomePage from '../pages/HomePage';
 import SignUpPage from '../pages/SignUpPage';
 import SigninPage from '../pages/SigninPage';
 import Layout from './SharedLayout/Layout';
@@ -12,7 +12,7 @@ const App = () => {
     <>
     <Routes>
       <Route path="/" element={<Layout />}>
-        {/* <Route path="/test" element={<HomePage />} />  FOR TESTING */}
+        <Route path="/test" element={<HomePage />} />  FOR TESTING
         <Route index element={<PrivateRoute />} />
         <Route path="signup" element={<SignUpPage />} />
         <Route path="signin" element={<SigninPage />} />
