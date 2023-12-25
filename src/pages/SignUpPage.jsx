@@ -17,7 +17,7 @@ const SignUp = () => {
   return (
     <Container>
       <SignUpContainer>
-        <H2>Sing In</H2>
+        <H2>Sing Up</H2>
         <SignUpFormContainer>
           <SignUpLabel>
             Enter your email
@@ -54,8 +54,8 @@ const SignUp = () => {
           </SignUpLabel>
         </SignUpFormContainer>
         <SignUpButtonContainer>
-          <SignUpButton type="button">Sing In</SignUpButton>
-          <SignUpButton2 type="button">Sing Up</SignUpButton2>
+          <SignUpButton type="button">Sing Up</SignUpButton>
+          <SignUpButton2 type="button">Sing In</SignUpButton2>
         </SignUpButtonContainer>
       </SignUpContainer>
     </Container>
