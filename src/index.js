@@ -6,12 +6,14 @@ import { GlobalStyle } from "common/GlobalStyles";
 import App from "components/App";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { store } from "store";
+import { persistor } from "store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider>
-      <PersistGate loading={null}>
-        <BrowserRouter basename="/Water_Tracker_Front">
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
           <GlobalStyle />
           <App />
         </BrowserRouter>
@@ -19,3 +21,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </Provider>
   </React.StrictMode>
 );
+// basename="/Water_Tracker_Front"
