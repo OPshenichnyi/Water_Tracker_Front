@@ -12,7 +12,7 @@ import DesktopBottle from '../images/DesktopBottle.png';
 import DesktopBottle2x from '../images/DesktopBottle2x.png';
 
 export const Container = styled.div`
-display: block;
+  display: block;
 
   width: 100%;
   height: 100vh;
@@ -23,13 +23,19 @@ display: block;
   @media screen and (max-width: 767px) {
     padding: 20px;
     padding-top: 24px;
-    background-image:  image-set(url(${PhoneBubbles}) 1x, url(${PhoneBubbles2x}) 2x);
+    background-image: image-set(
+      url(${PhoneBubbles}) 1x,
+      url(${PhoneBubbles2x}) 2x
+    );
     background-repeat: no-repeat;
     background-position: top;
 
     &::after {
       content: '';
-      background-image: image-set(url(${PhoneBottle}) 1x, url(${PhoneBottle2x}) 2x);
+      background-image: image-set(
+        url(${PhoneBottle}) 1x,
+        url(${PhoneBottle2x}) 2x
+      );
       background-repeat: no-repeat;
       background-position: bottom;
       position: absolute;
@@ -43,8 +49,11 @@ display: block;
   @media screen and (min-width: 768px) {
     padding: 16px 32px;
     padding-top: 40px;
-    background-image: image-set(url(${TabletBotBut}) 1x, url(${TabletBotBut2x}) 2x);
-    
+    background-image: image-set(
+      url(${TabletBotBut}) 1x,
+      url(${TabletBotBut2x}) 2x
+    );
+
     background-repeat: no-repeat;
     background-position: center;
     align-items: start;
@@ -54,14 +63,20 @@ display: block;
     padding: 20px;
     align-items: end;
     padding-top: 24px;
-    background-image: image-set(url(${DesktopBubbles}) 1x, url(${DesktopBubbles2x}) 2x);
+    background-image: image-set(
+      url(${DesktopBubbles}) 1x,
+      url(${DesktopBubbles2x}) 2x
+    );
     justify-content: center;
     background-repeat: no-repeat;
     background-position: center;
 
     &::after {
       content: '';
-      background-image: image-set(url(${DesktopBottle}) 1x, url(${DesktopBottle2x}) 2x);
+      background-image: image-set(
+        url(${DesktopBottle}) 1x,
+        url(${DesktopBottle2x}) 2x
+      );
       background-repeat: no-repeat;
       background-position: left;
       position: absolute;
@@ -70,7 +85,7 @@ display: block;
       width: 100%;
       height: 100%;
     }
-
+  }
 `;
 
 export const SignUpContainer = styled.div`
