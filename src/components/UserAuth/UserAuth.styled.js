@@ -13,3 +13,8 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
 `;
+export const SingInSvg = styled.svg`
+
+  stroke: ${color.blackPrimary};;
+  fill: none;
+`;

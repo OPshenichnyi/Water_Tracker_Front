@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import UserLogoModal from '../UserLogoModal/UserLogoModal';
 import sprite from '../../common/symbol-defs.svg';
-import { Wrapper, Button, Svg } from './UserLogo.styled';
+import { Wrapper, Button, Svg,Avatar,Img } from './UserLogo.styled';
 
 
 const UserLogo = ({ userName, userAvatar }) => {
@@ -13,21 +13,23 @@ const UserLogo = ({ userName, userAvatar }) => {
 
   const renderAvatar = () => {
     if (userAvatar) {
-      return <img src={userAvatar} alt={userName} />;   
+
+      return<Avatar><Img src={userAvatar} alt={userName} />;  </Avatar>
+       
     } else if (userName) {
       const initials = userName.slice(0, 1).toUpperCase();
-      return <div className="avatar-initial">{initials}</div>;
+      return <Avatar>{initials}</Avatar>;
     } else {
-      return <div className="avatar-initial">V</div>;
+      return <Avatar>V</Avatar>;
     }
   };
 
   return (
     <Wrapper >
-      <button>
+      <Button>
         {userName && <span className="user-name">{userName}</span>}
               {renderAvatar()}
-          </button>
+          </Button>
 
           <Button onClick={handleButtonClick}>
           <Svg width={16} height={16}>
