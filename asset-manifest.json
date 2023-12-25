@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Water_Tracker_Front/static/css/main.7acaea2f.css",
-    "main.js": "/Water_Tracker_Front/static/js/main.b36f560a.js",
+    "main.js": "/Water_Tracker_Front/static/js/main.3775010d.js",
     "static/media/TabletBotBub2x.jpg": "/Water_Tracker_Front/static/media/TabletBotBub2x.6d0a89b68b5685324171.jpg",
     "static/media/main_tablet_bg@2x.jpg": "/Water_Tracker_Front/static/media/main_tablet_bg@2x.d1b5af79663abb6313ad.jpg",
     "static/media/main_desctop@2x.jpg": "/Water_Tracker_Front/static/media/main_desctop@2x.0e453c071a756bfd74d0.jpg",
@@ -14,7 +14,7 @@
     "static/media/Roboto-Regular.woff2": "/Water_Tracker_Front/static/media/Roboto-Regular.9429985be4f46ec8fcfc.woff2",
     "static/media/PhoneBubbles2x.jpg": "/Water_Tracker_Front/static/media/PhoneBubbles2x.1033fa2cfcdb70c18e09.jpg",
     "static/media/DesktopBottle.png": "/Water_Tracker_Front/static/media/DesktopBottle.c1002675451a1ccf8298.png",
-    "static/media/symbol-defs.svg": "/Water_Tracker_Front/static/media/symbol-defs.b939c45a8fd7031bdcd37edbc4b6acf1.svg",
+    "static/media/symbol-defs.svg": "/Water_Tracker_Front/static/media/symbol-defs.b7e3867bcb9b202382895c5d629ad0b7.svg",
     "static/media/DesktopBubbles.jpg": "/Water_Tracker_Front/static/media/DesktopBubbles.501d8d7ac559e88e71b0.jpg",
     "static/media/PhoneBottle2x.png": "/Water_Tracker_Front/static/media/PhoneBottle2x.b1efa48a35224873a60e.png",
     "static/media/main-mob.jpg": "/Water_Tracker_Front/static/media/main-mob.6b87cf343e38fa735c80.jpg",
@@ -24,10 +24,10 @@
     "index.html": "/Water_Tracker_Front/index.html",
     "static/media/listMarker.svg": "/Water_Tracker_Front/static/media/listMarker.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.7acaea2f.css.map": "/Water_Tracker_Front/static/css/main.7acaea2f.css.map",
-    "main.b36f560a.js.map": "/Water_Tracker_Front/static/js/main.b36f560a.js.map"
+    "main.3775010d.js.map": "/Water_Tracker_Front/static/js/main.3775010d.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.b36f560a.js"
+    "static/js/main.3775010d.js"
   ]
 }
