@@ -108,7 +108,7 @@ export default function BasicModalEdit() {
     <DataWater>water</DataWater>
     <DataTime>time</DataTime>
 </BlockWaterTime>
-            <ValueP>Choose a value:</ValueP>
+            <ValueP>Correct entered data:</ValueP>
             <AmountP>Amount of water:</AmountP>
 
             <BlockCount>
