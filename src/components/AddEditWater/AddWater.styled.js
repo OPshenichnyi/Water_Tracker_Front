@@ -12,6 +12,21 @@ export const style = {
   pr: 1.5,
   pb: 3,
   pl: 1.5,
+
+  '@media screen and (min-width: 768px)': {
+    width: 704,
+    height: 504,
+    borderRadius: 2.5,
+    pt: 4,
+    pr: 3,
+    pb: 4,
+    pl: 3,
+  },
+
+  '@media screen and (min-width: 1440px)': {
+    width: 592,
+    height: 504,
+  },
 };
 
 export const ButtonSave = styled.button`
@@ -20,7 +35,6 @@ export const ButtonSave = styled.button`
   padding: 8px 30px;
   border-radius: 10px;
   background: #407bff;
-  
   color: #fff;
   text-align: center;
   font-size: 16px;
@@ -29,6 +43,12 @@ export const ButtonSave = styled.button`
   &:hover {
     box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
     cursor: pointer;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 160px;
+    height: 44px;
+    padding: 10px 30px;
   }
 `;
 export const ButtonCount = styled.button`
@@ -116,6 +136,14 @@ export const SelectTime = styled.select`
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
+
+  @media screen and (min-width: 768px) {
+    width: 656px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 544px;
+  }
 `;
 
 export const InputStyle = styled.input`
@@ -128,11 +156,18 @@ export const InputStyle = styled.input`
   align-items: flex-start;
   border-radius: 6px;
   border: 1px solid #d7e3ff;
-
   color: #407bff;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
+
+  @media screen and (min-width: 768px) {
+    width: 656px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 544px;
+  }
 `;
 
 export const CounterBottom = styled.p`
@@ -146,4 +181,18 @@ export const CounterBottom = styled.p`
   margin-bottom: 16px;
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    margin-left: unset;
+    margin-right: unset;
+    margin-bottom: 0;
+  }
+`;
+export const CountSaveBtnBottom = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 24px;
+    justify-content: flex-end;
+    align-items: center;
+  }
 `;
