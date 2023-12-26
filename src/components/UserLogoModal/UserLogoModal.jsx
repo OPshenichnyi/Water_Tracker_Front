@@ -1,8 +1,10 @@
+
 import React, { useState, } from 'react';
 import UserSettingsModal from '../SettingModal/SettingModal'; 
 import UserLogoutModal from '../UserLogoutModal/UserLogoutModal'; 
 import { Wrapper,Button,Modal,Svg,Item} from './UserLogoModal.styled';
 import sprite from "../../common/symbol-defs.svg";
+
 
 const UserLogoModal = () => {
   const [isUserInfoModalOpen, setUserInfoModalOpen] = useState(false);
@@ -18,7 +20,6 @@ const UserLogoModal = () => {
 
   return (
     <Modal className="user-logo-modal">
-    
       <Wrapper>
         <Item>
         <Button onClick={handleSettingClick}>

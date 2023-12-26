@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import variables from 'common/Variables';
 
+import MobileBubbles from '../../images/MobileBubblesBg.jpg';
+import MobileBubbles2 from '../../images/MobileBubblesBg@2x.jpg';
+import TabletBubbles from '../../images/TabletBubblesBg.jpg';
+import TabletBubbles2 from '../../images/TabletBubblesBg@2x.jpg';
+import DesktopBubbles from '../../images/DesktopBubblesBg.jpg';
+import DesktopBubbles2 from '../../images/DesktopBubblesBg@2x.jpg';
+
 export const Container = styled.div`
   position: relative;
   width: 100%;
@@ -175,4 +182,36 @@ export const AddWaterButton = styled.button`
   background-color: ${variables.bluePrimary};
   color: ${variables.whitePrimary};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+`;
+
+export const HomeContainer = styled.div`
+  background-image: image-set(
+    url(${MobileBubbles}) 1x,
+    url(${MobileBubbles2}) 2x
+  );
+  background-repeat: no-repeat;
+  background-position: top;
+
+  @media screen and (min-width: 768px) {
+    background-image: image-set(
+      url(${TabletBubbles}) 1x,
+      url(${TabletBubbles2}) 2x
+    );
+
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: start;
+  }
+
+  @media screen and (min-width: 1440px) {
+    background-image: image-set(
+      url(${DesktopBubbles}) 1x,
+      url(${DesktopBubbles2}) 2x
+    );
+
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: end;
+  }
 `;

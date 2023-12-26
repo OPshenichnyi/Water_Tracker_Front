@@ -8,9 +8,7 @@ export const UserAuth = () => {
 
   return (
     <Wrapper>
-      <Signin>
-        <NavLink to="/signin">Sign in</NavLink>
-      </Signin>
+      <Signin to="/signin">Sign in</Signin>
       <NavLink to="/signin">
         <SingInSvg width={28} height={28}>
           <use href={`${sprite}#SigninNoAuth`} />

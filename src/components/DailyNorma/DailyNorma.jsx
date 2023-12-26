@@ -14,7 +14,12 @@ import {
 } from './DailyNorma.styled';
 import sprite from '../../common/symbol-defs.svg';
 
-import imgBottle from '../../images/bottle_home_mob@1x.jpg';
+import MobileBottle from '../../images/MobileBottle.png';
+import MobileBottle2 from '../../images/MobileBottle@2x.png';
+import TabletBottle from '../../images/TabletHomeBottle.png';
+import TabletBottle2 from '../../images/TabletHomeBottle@2x.png';
+import DesktopBottle from '../../images/DesktopHomeBottle.png';
+import DesktopBottle2 from '../../images/DesktopHomeBottle@2x.png';
 
 export const DailyNorma = () => {
   return (
@@ -26,7 +31,24 @@ export const DailyNorma = () => {
           <NormaButton>Edit</NormaButton>
         </DailyNormaWrapper>
       </NormaContainer>
-      <Image src={imgBottle} alt="bottle" />
+      <picture>
+        <source
+          media="(min-width: 1440px)"
+          srcSet={`${DesktopBottle} 1x, ${DesktopBottle2} 2x`}
+          type="image/png"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcSet={`${TabletBottle} 1x, ${TabletBottle2} 2x`}
+          type="image/png"
+        />
+        <source
+          media="(max-width: 767px)"
+          srcSet={`${MobileBottle} 1x, ${MobileBottle2} 2x`}
+          type="image/webp"
+        />
+        <Image src={DesktopBottle} alt="bottle" />
+      </picture>
       <ProgressContainer>
         <WaterProgress>
           <p>Today</p>
