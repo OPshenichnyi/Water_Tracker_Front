@@ -1,7 +1,7 @@
 import { Formik, Form, ErrorMessage } from "formik";
 import { FiledStyle, RegistrFormStyle } from "./TestForm.styled";
 import { useDispatch } from "react-redux";
-import { logIn, registration } from "../../redux/auth/authOperationApi";
+import { logIn } from "../../redux/auth/authOperationApi";
 import * as Yup from "yup";
 
 const SignupSchema = Yup.object().shape({

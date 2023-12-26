@@ -1,9 +1,17 @@
 import styled from 'styled-components';
 import variables from 'common/Variables';
 
+import MobileBubbles from '../../images/MobileBubblesBg.jpg';
+import MobileBubbles2 from '../../images/MobileBubblesBg@2x.jpg';
+import TabletBubbles from '../../images/TabletBubblesBg.jpg';
+import TabletBubbles2 from '../../images/TabletBubblesBg@2x.jpg';
+import DesktopBubbles from '../../images/DesktopBubblesBg.jpg';
+import DesktopBubbles2 from '../../images/DesktopBubblesBg@2x.jpg';
+
 export const Container = styled.div`
   position: relative;
   width: 100%;
+  margin-top: 24px;
 `;
 
 export const NormaContainer = styled.div`
@@ -11,7 +19,7 @@ export const NormaContainer = styled.div`
   padding: 8px 20px;
   margin-bottom: 8px;
   border-radius: 10px;
-  background: ${variables.whitePrimary};
+  background-color: ${variables.whitePrimary};
   box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
   border: 1px solid ${variables.secondaryLightGray};
 
@@ -28,9 +36,10 @@ export const NormaContainer = styled.div`
 `;
 
 export const NormaTitle = styled.h2`
+  font-size: 18px;
   margin-bottom: 12px;
   color: ${variables.blackPrimary};
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.33;
 `;
 
@@ -161,6 +170,9 @@ export const AddWaterButton = styled.button`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  border-radius: 10px;
+  fill: none;
+  stroke: ${variables.whitePrimary};
 
   font-size: 16px;
   font-style: normal;
@@ -169,4 +181,37 @@ export const AddWaterButton = styled.button`
   line-height: 1.25;
   background-color: ${variables.bluePrimary};
   color: ${variables.whitePrimary};
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+`;
+
+export const HomeContainer = styled.div`
+  background-image: image-set(
+    url(${MobileBubbles}) 1x,
+    url(${MobileBubbles2}) 2x
+  );
+  background-repeat: no-repeat;
+  background-position: top;
+
+  @media screen and (min-width: 768px) {
+    background-image: image-set(
+      url(${TabletBubbles}) 1x,
+      url(${TabletBubbles2}) 2x
+    );
+
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: start;
+  }
+
+  @media screen and (min-width: 1440px) {
+    background-image: image-set(
+      url(${DesktopBubbles}) 1x,
+      url(${DesktopBubbles2}) 2x
+    );
+
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: end;
+  }
 `;

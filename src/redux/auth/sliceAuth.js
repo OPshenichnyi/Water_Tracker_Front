@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// const { createSlice } = require("@reduxjs/toolkit");
-const { registration, logIn } = require("./authOperationApi");
+const {
+  registration,
+  logIn,
+  logOut,
+  refreshUser,
+} = require("./authOperationApi");
 
 const initialState = {
   user: {
@@ -18,8 +22,8 @@ const initialState = {
 };
 
 const authSlice = createSlice({
-  name: "auth", // Оголошуємо рядок ідентифікації
-  initialState, // Оголошуємо стейт за замовчуванням
+  name: "auth",
+  initialState,
   //0 Створюємо редусер
   extraReducers: (builder) => {
     builder.addCase(registration.fulfilled, (state, action) => {
@@ -28,9 +32,32 @@ const authSlice = createSlice({
     });
     builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.token = action.payload.user.token;
       state.isLogined = true;
       state.isRegister = true;
+    });
+    builder.addCase(logOut.fulfilled, (state, action) => {
+      state.user = {
+        email: null,
+        userName: null,
+        avatarURL: null,
+        gender: null,
+        waterRate: null,
+      };
+      state.isLogined = false;
+      state.isRegister = false;
+      state.token = null;
+    });
+    builder.addCase(refreshUser.pending, (state, action) => {
+      state.isRefresh = true;
+    });
+    builder.addCase(refreshUser.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.isLogined = true;
+      state.isRefresh = false;
+    });
+    builder.addCase(refreshUser.rejected, (state, action) => {
+      state.isRefresh = false;
     });
   },
 });

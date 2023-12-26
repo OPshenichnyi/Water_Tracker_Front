@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import UserLogoModal from '../UserLogoModal/UserLogoModal';
-import sprite from '../../common/symbol-defs.svg';
-import { Wrapper, Button, Svg } from './UserLogo.styled';
-
+import React, { useState } from "react";
+import UserLogoModal from "../UserLogoModal/UserLogoModal";
+import sprite from "../../common/symbol-defs.svg";
+import { Wrapper, Button, Svg } from "./UserLogo.styled";
 
 const UserLogo = ({ userName, userAvatar }) => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -13,7 +12,7 @@ const UserLogo = ({ userName, userAvatar }) => {
 
   const renderAvatar = () => {
     if (userAvatar) {
-      return <img src={userAvatar} alt={userName} />;   
+      return <img src={userAvatar} alt={userName} />;
     } else if (userName) {
       const initials = userName.slice(0, 1).toUpperCase();
       return <div className="avatar-initial">{initials}</div>;
@@ -23,17 +22,17 @@ const UserLogo = ({ userName, userAvatar }) => {
   };
 
   return (
-    <Wrapper >
+    <Wrapper>
       <button>
         {userName && <span className="user-name">{userName}</span>}
-              {renderAvatar()}
-          </button>
+        {renderAvatar()}
+      </button>
 
-          <Button onClick={handleButtonClick}>
-          <Svg width={16} height={16}>
-            <use href={`${sprite}#icon-chevron-double-up`} />
-          </Svg>
-        </Button>
+      <Button onClick={handleButtonClick}>
+        <Svg width={16} height={16}>
+          <use href={`${sprite}#icon-chevron-double-up`} />
+        </Svg>
+      </Button>
       {isModalOpen && <UserLogoModal onClose={() => setModalOpen(false)} />}
     </Wrapper>
   );

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import UserSettingsModal from '../SettingModal/SettingModal'; 
-import UserLogoutModal from '../UserLogoutModal/UserLogoutModal'; 
-import { Wrapper,Button,Modal} from './UserLogoModal.styled';
+import React, { useState } from "react";
+import UserSettingsModal from "../SettingModal/SettingModal";
+import UserLogoutModal from "../UserLogoutModal/UserLogoutModal";
+import { Wrapper, Button, Modal } from "./UserLogoModal.styled";
 
 const UserLogoModal = () => {
   const [isUserInfoModalOpen, setUserInfoModalOpen] = useState(false);
@@ -17,7 +17,6 @@ const UserLogoModal = () => {
 
   return (
     <Modal className="user-logo-modal">
-    
       <Wrapper>
         <Button onClick={handleSettingClick}>Setting</Button>
         <Button onClick={handleLogoutClick}>Log out</Button>
