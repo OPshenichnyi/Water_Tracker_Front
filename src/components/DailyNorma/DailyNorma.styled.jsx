@@ -189,7 +189,7 @@ export const WaterInfo = styled.div`
 export const AddWaterButton = styled.button`
   display: flex;
   flex-direction: row;
-  padding: 6px 76px;
+  /* padding: 6px 76px; */
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -208,7 +208,6 @@ export const AddWaterButton = styled.button`
 
   @media screen and (min-width: 1440px) {
     width: 178px;
-    padding: 10px 30px;
   }
 `;
 
