@@ -18,7 +18,6 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  flex-direction: column;
 
   @media screen and (max-width: 767px) {
     padding: 20px;
@@ -30,20 +29,8 @@ export const Container = styled.div`
     background-repeat: no-repeat;
     background-position: top;
 
-    &::after {
-      content: '';
-      background-image: image-set(
-        url(${PhoneBottle}) 1x,
-        url(${PhoneBottle2x}) 2x
-      );
-      background-repeat: no-repeat;
-      background-position: bottom;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+    flex-direction: column-reverse;
+    justify-content: start;
   }
 
   @media screen and (min-width: 768px) {
@@ -67,24 +54,14 @@ export const Container = styled.div`
       url(${DesktopBubbles}) 1x,
       url(${DesktopBubbles2x}) 2x
     );
-    justify-content: center;
+    display: flex;
+    justify-content: start;
+    align-items: center;
     background-repeat: no-repeat;
     background-position: center;
-
-    &::after {
-      content: '';
-      background-image: image-set(
-        url(${DesktopBottle}) 1x,
-        url(${DesktopBottle2x}) 2x
-      );
-      background-repeat: no-repeat;
-      background-position: left;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -113,6 +90,23 @@ export const SingInLabel = styled.label`
   display: flex;
   flex-direction: column;
   position: relative;
+`;
+
+export const Image = styled.img`
+width: 280px;
+height 210px;
+margin-top: 50px;
+
+
+@media screen and (min-width: 768px) {
+  display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  width: 880px;
+  margin: 0px;
+ display: block;
+}
 `;
 
 export const SingInSvg = styled.svg`
