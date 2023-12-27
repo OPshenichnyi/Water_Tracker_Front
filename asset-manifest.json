@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/Water_Tracker_Front/static/css/main.7acaea2f.css",
-    "main.js": "/Water_Tracker_Front/static/js/main.3cb90002.js",
+    "main.css": "/Water_Tracker_Front/static/css/main.b87514ff.css",
+    "main.js": "/Water_Tracker_Front/static/js/main.e491fba2.js",
     "static/media/TabletBotBub2x.jpg": "/Water_Tracker_Front/static/media/TabletBotBub2x.6d0a89b68b5685324171.jpg",
     "static/media/main_tablet_bg@2x.jpg": "/Water_Tracker_Front/static/media/main_tablet_bg@2x.d1b5af79663abb6313ad.jpg",
     "static/media/main_desctop@2x.jpg": "/Water_Tracker_Front/static/media/main_desctop@2x.0e453c071a756bfd74d0.jpg",
     "static/media/TabletBubblesBg@2x.jpg": "/Water_Tracker_Front/static/media/TabletBubblesBg@2x.b4387b74a62a508813de.jpg",
     "static/media/DesktopBubbles2x.jpg": "/Water_Tracker_Front/static/media/DesktopBubbles2x.15c51a65075f53ffb686.jpg",
     "static/media/DesktopBubblesBg@2x.jpg": "/Water_Tracker_Front/static/media/DesktopBubblesBg@2x.110cc49f86899e80b596.jpg",
-    "static/media/DesktopBottle2x.png": "/Water_Tracker_Front/static/media/DesktopBottle2x.96456ac69a92e6038381.png",
     "static/media/TabletBotBub.jpg": "/Water_Tracker_Front/static/media/TabletBotBub.04003e45372cfc736c12.jpg",
     "static/media/DesktopHomeBottle@2x.png": "/Water_Tracker_Front/static/media/DesktopHomeBottle@2x.1775bd96fc412d403b4f.png",
     "static/media/main_tablet_bg.jpg": "/Water_Tracker_Front/static/media/main_tablet_bg.1dc102cb9db3cd6bfe8e.jpg",
@@ -24,21 +23,19 @@
     "static/media/DesktopHomeBottle.png": "/Water_Tracker_Front/static/media/DesktopHomeBottle.f101329f2fabf31caa2d.png",
     "static/media/DesktopBubbles.jpg": "/Water_Tracker_Front/static/media/DesktopBubbles.501d8d7ac559e88e71b0.jpg",
     "static/media/DesktopBubblesBg.jpg": "/Water_Tracker_Front/static/media/DesktopBubblesBg.5b4b47c3c8971e34d971.jpg",
-    "static/media/PhoneBottle2x.png": "/Water_Tracker_Front/static/media/PhoneBottle2x.b1efa48a35224873a60e.png",
     "static/media/main-mob.jpg": "/Water_Tracker_Front/static/media/main-mob.6b87cf343e38fa735c80.jpg",
     "static/media/MobileBottle@2x.png": "/Water_Tracker_Front/static/media/MobileBottle@2x.c696ce1d8650a849a063.png",
     "static/media/TabletHomeBottle.png": "/Water_Tracker_Front/static/media/TabletHomeBottle.ecf25e00b68bab106bc4.png",
     "static/media/MobileBubblesBg.jpg": "/Water_Tracker_Front/static/media/MobileBubblesBg.42695414882ec555d6a3.jpg",
     "static/media/PhoneBubbles.jpg": "/Water_Tracker_Front/static/media/PhoneBubbles.7487b46db9624141ce3a.jpg",
-    "static/media/PhoneBottle.png": "/Water_Tracker_Front/static/media/PhoneBottle.50c435ef3c4ed2e4a749.png",
     "static/media/MobileBottle.png": "/Water_Tracker_Front/static/media/MobileBottle.67bfbdf7fb46f03c7cdc.png",
     "index.html": "/Water_Tracker_Front/index.html",
     "static/media/listMarker.svg": "/Water_Tracker_Front/static/media/listMarker.fddb539b56ea3011c50a91ee6d888f28.svg",
-    "main.7acaea2f.css.map": "/Water_Tracker_Front/static/css/main.7acaea2f.css.map",
-    "main.3cb90002.js.map": "/Water_Tracker_Front/static/js/main.3cb90002.js.map"
+    "main.b87514ff.css.map": "/Water_Tracker_Front/static/css/main.b87514ff.css.map",
+    "main.e491fba2.js.map": "/Water_Tracker_Front/static/js/main.e491fba2.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.3cb90002.js"
+    "static/css/main.b87514ff.css",
+    "static/js/main.e491fba2.js"
   ]
 }
