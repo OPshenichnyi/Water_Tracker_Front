@@ -19,8 +19,10 @@ font-size: 16px;
 
 export const Modal = styled.div`
   position: absolute;
-  top:5.5%;
-  right:18%;
+  margin-top:13px;
+  top: ${props => props.position.top}px;
+  left: ${props => props.position.left}px;
+  transform: translate(-50%);
   width: 118px;
   height: 88px;
  padding: 16px;

@@ -10,8 +10,9 @@ export const Header = () => {
   return (
     <div className="container main-container">
       <Wrapper>
-        <Logo />
-        {isLogined ? <UserLogo /> : <UserAuth />}
+              <Logo />
+              <UserLogo/>
+        {/* {isLogined ? <UserLogo /> : <UserAuth />} */}
       </Wrapper>
     </div>
   );

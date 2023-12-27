@@ -6,7 +6,7 @@ import { Wrapper,Button,Modal,Svg,Item} from './UserLogoModal.styled';
 import sprite from "../../common/symbol-defs.svg";
 
 
-const UserLogoModal = () => {
+const UserLogoModal = ({ position }) => {
   const [isUserInfoModalOpen, setUserInfoModalOpen] = useState(false);
   const [isUserLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
 
@@ -19,7 +19,7 @@ const UserLogoModal = () => {
   };
 
   return (
-    <Modal className="user-logo-modal">
+    <Modal position={position} >
       <Wrapper>
         <Item>
         <Button onClick={handleSettingClick}>
