@@ -18,6 +18,12 @@ import {
   ButtonSave,
   CountSaveBtnBottom,
 } from './AddWater.styled';
+import {
+  decrease,
+  generateTimeOptions,
+  handleUpdateCount,
+  setInitialTime,
+} from '../Utils/utils';
 
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
@@ -25,64 +31,36 @@ export default function BasicModal() {
   const [inputValue, setInputValue] = useState('');
   const [selectedTime, setSelectedTime] = useState(0);
 
-  const handleOpen = () => setOpen(true);
+ const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  
 
-  const decrease = () => {
-    if (count < 50) {
-      return setCount(0);
-    }
-    setCount(count - 50);
+  const handleDecrease = () => {
+    decrease(count, setCount);
   };
 
   const handleInputChange = event => {
     setInputValue(event.target.value);
   };
 
-  const handleUpdateCount = () => {
-    const newValue = parseInt(inputValue, 10);
-    if (!isNaN(newValue)) {
-      setCount(newValue);
-      setInputValue('');
-    } else {
-      alert('Будь ласка, введіть число.');
-    }
+  const handleUpdateCountWrapper = () => {
+    handleUpdateCount(inputValue, setCount, setInputValue);
   };
 
   const handleInputBlur = () => {
-    handleUpdateCount();
+    handleUpdateCountWrapper();
   };
 
-  // *********generator time*****************
-
-  const generateTimeOptions = () => {
-    const options = [];
-    for (let i = 0; i < 24 * 60; i += 5) {
-      const hours = Math.floor(i / 60);
-      const minutes = i % 60;
-      const timeString = `${hours.toString()}:${minutes
-        .toString()
-        .padStart(2, '0')}`;
-      options.push(
-        <option key={i} value={i}>
-          {timeString}
-        </option>
-      );
-    }
-    return options;
-  };
   useEffect(() => {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const currentTime = hours * 60 + minutes;
-    setSelectedTime(currentTime - (currentTime % 5));
+    setInitialTime(setSelectedTime);
   }, []);
+
   const handleTimeChange = e => {
     setSelectedTime(parseInt(e.target.value, 10));
   };
 
-  // ******************************************
+  
+
   return (
     <div>
       <button onClick={handleOpen}>Open modal</button>
@@ -104,7 +82,7 @@ export default function BasicModal() {
             <AmountP>Amount of water:</AmountP>
 
             <BlockCount>
-              <ButtonCount onClick={decrease}>
+              <ButtonCount onClick={handleDecrease}>
                 <svg width={24} height={24} fill="#407BFF">
                   <use href={`${icons}#icon-minus`} />
                 </svg>
