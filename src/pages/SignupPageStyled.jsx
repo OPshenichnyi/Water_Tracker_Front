@@ -1,15 +1,15 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import PhoneBottle from '../images/PhoneBottle.png';
-import PhoneBottle2x from '../images/PhoneBottle2x.png';
-import PhoneBubbles from '../images/PhoneBubbles.jpg';
-import PhoneBubbles2x from '../images/PhoneBubbles2x.jpg';
-import TabletBotBut from '../images/TabletBotBub.jpg';
-import TabletBotBut2x from '../images/TabletBotBub2x.jpg';
-import DesktopBubbles from '../images/DesktopBubbles.jpg';
-import DesktopBubbles2x from '../images/DesktopBubbles2x.jpg';
-import DesktopBottle from '../images/DesktopBottle.png';
-import DesktopBottle2x from '../images/DesktopBottle2x.png';
+// import PhoneBottle from '../images/PhoneBottle.png';
+// import PhoneBottle2x from '../images/PhoneBottle2x.png';
+import PhoneBubbles from "../images/PhoneBubbles.jpg";
+import PhoneBubbles2x from "../images/PhoneBubbles2x.jpg";
+import TabletBotBut from "../images/TabletBotBub.jpg";
+import TabletBotBut2x from "../images/TabletBotBub2x.jpg";
+import DesktopBubbles from "../images/DesktopBubbles.jpg";
+import DesktopBubbles2x from "../images/DesktopBubbles2x.jpg";
+// import DesktopBottle from '../images/DesktopBottle.png';
+// import DesktopBottle2x from '../images/DesktopBottle2x.png';
 
 export const Container = styled.div`
   display: block;
@@ -66,19 +66,18 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.img`
-width: 280px;
-height 210px;
+  width: 280px;
+  height: 210px;
 
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 
-@media screen and (min-width: 768px) {
-  display: none;
-}
-
-@media screen and (min-width: 1440px) {
-  width: 880px;
-  margin: 0px;
- display: block;
-}
+  @media screen and (min-width: 1440px) {
+    width: 880px;
+    margin: 0px;
+    display: block;
+  }
 `;
 
 export const SignUpContainer = styled.div`
@@ -153,7 +152,7 @@ export const SignUpButton = styled.button`
   background-color: #407bff;
   border-radius: 10px;
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   box-shadow: 0 4px 8px rgba(64, 123, 255, 0.34);
   width: 280px;
   height: 36px;
@@ -171,7 +170,7 @@ export const SignUpButton = styled.button`
 
 export const SignUpButton2 = styled.a`
   font-size: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   border: none;
   background-color: none;
   color: #407bff;
