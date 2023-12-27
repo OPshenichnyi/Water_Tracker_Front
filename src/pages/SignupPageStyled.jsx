@@ -67,7 +67,7 @@ export const Container = styled.div`
 
 export const Image = styled.img`
   width: 280px;
-  height: 210px;
+  /* height: 210px; */
 
   @media screen and (min-width: 768px) {
     display: none;

@@ -6,7 +6,7 @@ import SigninPage from "../pages/SigninPage";
 import Layout from "./SharedLayout/Layout";
 import NotFoundPage from "pages/NotFoundPage";
 
-import { Main } from "./Main/Main";
+import Main from "../pages/Main";
 import {
   RestrictedRouteHomePage,
   RestrictedRouteLogin,
