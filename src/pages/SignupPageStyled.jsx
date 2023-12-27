@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Field } from "formik";
 // import PhoneBottle from '../images/PhoneBottle.png';
 // import PhoneBottle2x from '../images/PhoneBottle2x.png';
 import PhoneBubbles from "../images/PhoneBubbles.jpg";
@@ -117,10 +117,9 @@ export const SignUpSvg = styled.svg`
   fill: none;
 `;
 
-export const SignUpInput = styled.input`
+export const SignUpInput = styled(Field)`
   width: 280px;
   height: 44px;
-
   border: 1px solid #d7e3ff;
   color: #9ebbff;
   border-radius: 6px;
