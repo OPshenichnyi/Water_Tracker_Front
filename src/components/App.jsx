@@ -15,6 +15,7 @@ import { PrivateRouter } from "./PrivateRoute";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { refreshUser } from "../redux/auth/authOperationApi";
+import SettingModal from "./SettingModal/SettingModal";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -64,6 +65,8 @@ const App = () => {
             }
           />
           <Route path="*" element={<NotFoundPage />} />
+          {/* Test */}
+          <Route path="/seting" element={<SettingModal />} />
         </Route>
       </Routes>
       <GlobalStyle />
