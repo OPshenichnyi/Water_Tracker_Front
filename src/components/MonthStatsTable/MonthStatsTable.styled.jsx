@@ -60,3 +60,28 @@ export const WaterPercentage = styled.span`
     line-height: 1.5;
   }
 `;
+
+export const TodayDiv = styled.div`
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const CurrentMonth = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${variables.bluePrimary};
+`;
+
+export const MonthSwipe = styled.button`
+  margin: 0px 10px;
+  background-color: rgba(0, 0, 255, 0);
+  cursor: pointer;
+`;
+
+export const MonthName = styled.span`
+  font-size: 16px;
+  line-height: 20px;
+`;

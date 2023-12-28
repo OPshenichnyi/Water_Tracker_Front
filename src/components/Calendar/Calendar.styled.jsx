@@ -8,7 +8,7 @@ export const CalendarWrap = styled.div`
   display: flex;
   padding: 24px 8px;
   flex-direction: column;
-  gap: 24px;
+  /* gap: 24px; */
   width: 280px;
   margin: 40px auto;
 
