@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { logOut } from "../../redux/auth/authOperationApi";
 import { CancelButton, Container, CloseButton, Close , LogOutButton, LogOutContainer, LogOutText, LogOutTextSecond, ButtonsContainer, Modal, Overlay,  } from "./UserLogoutModal.styles";
 
- const LogOut = ({ backdropClick, close }) => {
+ const UserLogoutModal = ({ backdropClick, close }) => {
 
     const dispatch = useDispatch();
     
@@ -39,4 +39,4 @@ import { CancelButton, Container, CloseButton, Close , LogOutButton, LogOutConta
         </Overlay>
     )
 }
-export default LogOut;
+export default UserLogoutModal;
