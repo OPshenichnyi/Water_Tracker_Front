@@ -1,4 +1,4 @@
-import sprite from '../../../common/symbol-defs.svg';
+import sprite from "../../../common/symbol-defs.svg";
 import {
   TodayContainer,
   TodayHeader,
@@ -12,7 +12,7 @@ import {
   TextTableData,
   TimeTableData,
   AddWaterButton,
-} from './Today.styled';
+} from "./Today.styled";
 
 const Today = () => {
   return (

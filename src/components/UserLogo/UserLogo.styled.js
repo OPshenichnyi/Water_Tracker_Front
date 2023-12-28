@@ -1,37 +1,40 @@
-import styled from 'styled-components';
-import color from '../../common/Variables';
+import styled from "styled-components";
+import color from "../../common/Variables";
 
 export const Wrapper = styled.div`
-  display:flex;
+  display: flex;
 
   align-items: center;
-
+  z-index: 1000;
 `;
 
 export const Button = styled.button`
- color: ${color.bluePrimary};
-margin-left:8px;
-text-align:center;
-background: #FFFF;
-
-
+  color: ${color.bluePrimary};
+  margin-left: 8px;
+  text-align: center;
+  background: #ffff;
 `;
 export const Svg = styled.svg`
- fill: ${color.bluePrimary};
-
-
-
+  fill: ${color.bluePrimary};
+  position: relative;
 `;
 
-export const Modal = styled.div`
-  position: absolute;
-  top:50%;
-  right:35%;
-  width: 118px;
-  height: 88px;
- padding: 12px;
- border-radius:3px;
- background: #FFFF;
- box-shadow: 0px 4px 8px 0px #407BFF33;
+export const Avatar = styled.div`
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  background: #fff;
+  padding: 5px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border: ${color.bluePrimary} 1px solid;
+`;
 
+export const Img = styled.img`
+  display: block;
+  width: 100%;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
 `;

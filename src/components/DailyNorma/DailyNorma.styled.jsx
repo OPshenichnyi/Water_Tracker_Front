@@ -127,6 +127,29 @@ export const WaterMeter = styled.div`
   padding: 0 20px 0 11px;
   border-radius: 10px;
   margin: 0 auto;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    background-color: ${variables.whitePrimary};
+    border: 1px solid ${variables.bluePrimary};
+    border-radius: 100%;
+  }
+  div {
+    position: absolute;
+    border-radius: 10px;
+
+    top: 0;
+    left: 0;
+
+    width: 30%;
+    height: 100%;
+    background-color: ${variables.secondaryLightBlue};
+  }
 `;
 
 export const WaterInfo = styled.div`
@@ -136,7 +159,7 @@ export const WaterInfo = styled.div`
   span {
     color: ${variables.bluePrimary};
     font-size: 12px;
-    line-height: calc(16 / 12);
+    line-height: 1.33;
     position: relative;
     &::before {
       content: '';
@@ -166,7 +189,7 @@ export const WaterInfo = styled.div`
 export const AddWaterButton = styled.button`
   display: flex;
   flex-direction: row;
-  padding: 6px 76px;
+  /* padding: 6px 76px; */
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -174,17 +197,24 @@ export const AddWaterButton = styled.button`
   fill: none;
   stroke: ${variables.whitePrimary};
 
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   text-align: center;
-  line-height: 1.25;
+  line-height: 1.33;
   background-color: ${variables.bluePrimary};
   color: ${variables.whitePrimary};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+
+  @media screen and (min-width: 1440px) {
+    width: 178px;
+  }
 `;
 
 export const HomeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   background-image: image-set(
     url(${MobileBubbles}) 1x,
     url(${MobileBubbles2}) 2x
@@ -193,6 +223,7 @@ export const HomeContainer = styled.div`
   background-position: top;
 
   @media screen and (min-width: 768px) {
+    gap: 40px;
     background-image: image-set(
       url(${TabletBubbles}) 1x,
       url(${TabletBubbles2}) 2x
@@ -204,6 +235,9 @@ export const HomeContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    gap: 32px;
+
     background-image: image-set(
       url(${DesktopBubbles}) 1x,
       url(${DesktopBubbles2}) 2x

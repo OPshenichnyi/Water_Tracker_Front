@@ -5,12 +5,12 @@ import { HomeContainer } from 'components/DailyNorma/DailyNorma.styled';
 
 const HomePage = () => {
   return (
-    <HomeContainer>
-      <div className="container">
+    <div className="container">
+      <HomeContainer>
         <DailyNorma />
         <Calendar />
-      </div>
-    </HomeContainer>
+      </HomeContainer>
+    </div>
   );
 };
 export default HomePage;

@@ -5,17 +5,64 @@ import SignUpPage from "../pages/SignUpPage";
 import SigninPage from "../pages/SigninPage";
 import Layout from "./SharedLayout/Layout";
 import NotFoundPage from "pages/NotFoundPage";
-import PrivateRoute from "./PrivateRoute";
+
+import Main from "../pages/Main";
+import {
+  RestrictedRouteHomePage,
+  RestrictedRouteLogin,
+} from "./RestrictedRoute";
+import { PrivateRouter } from "./PrivateRoute";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { refreshUser } from "../redux/auth/authOperationApi";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/test" element={<HomePage />} /> FOR TESTING
-          <Route index element={<PrivateRoute />} />
-          <Route path="signup" element={<SignUpPage />} />
+          <Route
+            index
+            element={
+              <RestrictedRouteHomePage
+                redirectTo="/HomePage"
+                component={<Main />}
+              />
+            }
+          />
+          {/* <Route index element={<Main />} /> */}
+          {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
+          <Route
+            path="signup"
+            element={
+              <RestrictedRouteLogin
+                redirectTo="/signin"
+                component={<SignUpPage />}
+              />
+            }
+          />
+          {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
+          <Route
+            path="signin"
+            element={
+              <RestrictedRouteHomePage
+                redirectTo="/HomePage"
+                component={<SigninPage />}
+              />
+            }
+          />
           <Route path="signin" element={<SigninPage />} />
+          {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
+          <Route
+            path="/HomePage"
+            element={
+              <PrivateRouter redirectTo="/signin" component={<HomePage />} />
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
