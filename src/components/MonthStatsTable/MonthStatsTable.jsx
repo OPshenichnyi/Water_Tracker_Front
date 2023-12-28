@@ -1,20 +1,29 @@
-// import { useState } from "react";
+// import { useState } from 'react';
+import {
+  DayUl,
+  DayLi,
+  DayNumber,
+  WaterPercentage,
+} from './MonthStatsTable.styled';
 
 const Month = () => {
-  //   const [month, setMonth] = useState(2);
-  //   const [year, setYear] = useState(2023);
+  // const [month, setMonth] = useState(5);
+  // const [year, setYear] = useState(2023);
 
   function getDaysInMonth(month, year) {
     const days = new Date(year, month, 0).getDate();
     return Array.from({ length: days }, (_, i) => i + 1);
   }
-  const daysInMonth = getDaysInMonth();
+  const daysInMonth = getDaysInMonth(); //month, year
   return (
-    <ul>
-      {daysInMonth.map((item) => (
-        <li>{item}</li>
+    <DayUl>
+      {daysInMonth.map(item => (
+        <DayLi>
+          <DayNumber>{item}</DayNumber>
+          <WaterPercentage>0%</WaterPercentage>
+        </DayLi>
       ))}
-    </ul>
+    </DayUl>
   );
 };
 
