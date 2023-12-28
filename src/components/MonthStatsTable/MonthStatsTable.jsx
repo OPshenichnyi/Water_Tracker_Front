@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 const Month = () => {
   //   const [month, setMonth] = useState(2);
@@ -8,7 +8,7 @@ const Month = () => {
     const days = new Date(year, month, 0).getDate();
     return Array.from({ length: days }, (_, i) => i + 1);
   }
-  const daysInMonth = getDaysInMonth(month, year);
+  const daysInMonth = getDaysInMonth();
   return (
     <ul>
       {daysInMonth.map((item) => (
