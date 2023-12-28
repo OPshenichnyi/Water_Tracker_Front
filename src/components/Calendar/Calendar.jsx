@@ -6,7 +6,7 @@ const Calendar = () => {
   return (
     <CalendarWrap>
       <Today />
-      <Month></Month>
+      <Month/>
     </CalendarWrap>
   );
 };
