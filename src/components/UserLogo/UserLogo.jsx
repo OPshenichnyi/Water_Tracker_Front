@@ -11,7 +11,7 @@ const UserLogo = ({ userName, userAvatar }) => {
   const [userLogoPosition, setUserLogoPosition] = useState({ top: 0, left: 0 }); 
 
   const headerRef = useRef(null);
-  console.log(headerRef);
+ 
 
  useEffect(() => {
   const updatePosition = () => {

@@ -1,7 +1,7 @@
 
 import React, { useState, } from 'react';
 import UserSettingsModal from '../SettingModal/SettingModal'; 
-import UserLogoutModal from '../UserLogoutModal/UserLogoutModal'; 
+import UserLogoutModal from '../UserLogoutModal/UserLogoutModal1'; 
 import { Wrapper,Button,Modal,Svg,Item} from './UserLogoModal.styled';
 import sprite from "../../common/symbol-defs.svg";
 
@@ -39,7 +39,7 @@ const UserLogoModal = ({ position }) => {
         <UserSettingsModal onClose={() => setUserInfoModalOpen(false)} />
       )}
       {isUserLogoutModalOpen && (
-        <UserLogoutModal onClose={() => setUserLogoutModalOpen(false)} />
+        <UserLogoutModal open={isUserLogoutModalOpen} onClose={() => setUserLogoutModalOpen(false)} />
           )}
         
       </Wrapper>

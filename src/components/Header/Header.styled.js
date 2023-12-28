@@ -7,7 +7,7 @@ export const Wrapper = styled.header`
 
   justify-content: space-between;
   align-items: center;
-  margin-top:8px;
+  padding-top:8px;
 
 
 
