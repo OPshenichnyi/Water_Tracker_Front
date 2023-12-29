@@ -32,7 +32,7 @@ const authSlice = createSlice({
     });
     builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
-      state.token = action.payload.user.token;
+      state.token = action.payload.token;
       state.isLogined = true;
       state.isRegister = true;
     });

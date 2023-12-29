@@ -8,7 +8,7 @@ export const CalendarWrap = styled.div`
   display: flex;
   padding: 24px 8px;
   flex-direction: column;
-  gap: 24px;
+  /* gap: 24px; */
   width: 280px;
   margin: 40px auto;
 
@@ -17,7 +17,7 @@ export const CalendarWrap = styled.div`
     padding: 32px 24px;
   }
   @media screen and (min-width: 1440px) {
-    width: 50%;
+    width: 100%;
     padding: 32px 24px;
   }
 `;

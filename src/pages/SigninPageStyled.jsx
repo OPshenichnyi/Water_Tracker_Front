@@ -94,7 +94,7 @@ export const SingInLabel = styled.label`
 
 export const Image = styled.img`
   width: 280px;
-  height: 210px;
+  /* height: 210px; */
   margin-top: 50px;
 
   @media screen and (min-width: 768px) {
