@@ -26,7 +26,7 @@ export const Svg = styled.svg`
 
 
 export const Avatar = styled.div`
-  width: 28px; 
+    width: 28px; 
     height: 28px;
     overflow: hidden;
     background: #fff;
@@ -35,6 +35,7 @@ export const Avatar = styled.div`
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border:  ${color.bluePrimary} 1px solid;
+    text-align:center;
     
 
 `;

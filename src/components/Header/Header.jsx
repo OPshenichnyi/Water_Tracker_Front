@@ -12,7 +12,7 @@ export const Header = () => {
       <Wrapper>
               <Logo />
               <UserLogo/>
-        {/* {isLogined ? <UserLogo /> : <UserAuth />} */}
+        {isLogined ? <UserLogo /> : <UserAuth />}
       </Wrapper>
     </div>
   );

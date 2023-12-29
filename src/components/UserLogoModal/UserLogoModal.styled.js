@@ -39,6 +39,8 @@ export const Svg = styled.svg`
 `;
 
 export const Item = styled.li`
+  display:flex;
+  align-items: center;
   &:not(:last-child) {
    margin-bottom: 16px;
   }

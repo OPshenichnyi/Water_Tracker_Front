@@ -1,39 +1,56 @@
-import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/authOperationApi';
+import Modal from "@mui/material/Modal";
 import icons from '../../common/symbol-defs.svg';
 
+import {
+  ButtonCancel,
+  ButtonLogout,
+  TitleStyle,
+  DescriptionStyle,
+  ButtonClose,
+  ModalBox,
+  TitleContainer,
+  ButtonWrapper
+} from './UserLogoutModal.styled';
 
 
-import {ButtonCancel,Backdrop, ButtonLogout,TitleStyle,DescriptionStyle,ModalBox,ButtonClose} from './UserLogoutModal.styled';
 
-function UserLogoutModal({ onClose }) {
-  const dispatch = useDispatch();
+const UserLogoutModal = ({ open, onClose }) => {
+ const dispatch = useDispatch();
 
-
+  const handleClose = () => {
+    onClose();
+  };
 
   return (
-<Backdrop >
-    <ModalBox>
-       <ButtonClose onClick={onClose}>{' '}
+    <div>
+        <Modal open={open} onClose={handleClose}>
+              <ModalBox >
+                  
+<TitleContainer>
+              
+          <TitleStyle>
+            Log out
+                      </TitleStyle>
+
+                          <ButtonClose onClick={onClose}>{' '}
                 <svg width={12} height={12} stroke="#407BFF">
                   <use href={`${icons}#icon-cross`} />
         </svg>
       
       </ButtonClose>
-      
-          <TitleStyle >
-            Log out
-          </TitleStyle>
+                  </TitleContainer>
           <DescriptionStyle>
             Do you really want to leave?
-          </DescriptionStyle>
-          <ButtonCancel onClick={onClose}>Cancel</ButtonCancel>
+                  </DescriptionStyle>
+                  <ButtonWrapper>
           <ButtonLogout onClick={() => dispatch(logOut())} >Logout</ButtonLogout>
-  
-     
-      </ModalBox>
-</Backdrop>
+          <ButtonCancel onClick={onClose}>Cancel</ButtonCancel>
+          </ButtonWrapper>
+        </ModalBox>
+      </Modal>
+    </div>
   );
 };
 

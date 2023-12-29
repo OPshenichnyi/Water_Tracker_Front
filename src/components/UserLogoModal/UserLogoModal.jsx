@@ -1,7 +1,7 @@
 
 import React, { useState, } from 'react';
 import UserSettingsModal from '../SettingModal/SettingModal'; 
-import UserLogoutModal from '../UserLogoutModal/UserLogoutModal1'; 
+import UserLogoutModal from '../UserLogoutModal/UserLogoutModal'; 
 import { Wrapper,Button,Modal,Svg,Item} from './UserLogoModal.styled';
 import sprite from "../../common/symbol-defs.svg";
 
@@ -22,17 +22,20 @@ const UserLogoModal = ({ position }) => {
     <Modal position={position} >
       <Wrapper>
         <Item>
-        <Button onClick={handleSettingClick}>
           <Svg width={16} height={16}>
           <use href={`${sprite}#cog-tooth`} />
           </Svg>
+        <Button onClick={handleSettingClick}>
+          
             Setting</Button>
         </Item>
         <Item>
-        <Button onClick={handleLogoutClick}>
-           <Svg width={16} height={16}>
+
+          <Svg width={16} height={16}>
           <use href={`${sprite}#arrow`} />
           </Svg>
+        <Button onClick={handleLogoutClick}>
+           
           Log out</Button>
         </Item>
       {isUserInfoModalOpen && (
