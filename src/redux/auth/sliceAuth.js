@@ -10,7 +10,7 @@ const {
 
 const initialState = {
   user: {
-    email: null,
+    email: "",
     userName: null,
     avatarURL: null,
     gender: null,
@@ -61,7 +61,6 @@ const authSlice = createSlice({
       state.isRefresh = false;
     });
     builder.addCase(AddAvatar.fulfilled, (state, action) => {
-      console.log(action);
       state.user.avatarURL = action.payload.avatarURL;
     });
   },

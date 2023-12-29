@@ -17,21 +17,18 @@ const SettingModal = () => {
   const { avatarURL, email } = useSelector(selectIsUser);
   const fileInputRef = React.useRef();
   const dispatch = useDispatch();
-  const [selectedFile, setSelectedFile] = useState(null);
 
   // Function select file and write to State
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-    handleUpload();
+    const file = event.target.files[0];
+    if (file) {
+      handleUpload(file);
+    }
   };
   // Function chek if you select file and add to Api
-  const handleUpload = async () => {
-    if (!selectedFile) {
-      alert("Будь ласка, виберіть файл для завантаження.");
-      return;
-    }
+  const handleUpload = (file) => {
     const formData = new FormData();
-    formData.append("avatarURL", selectedFile);
+    formData.append("avatarURL", file);
     dispatch(AddAvatar(formData));
   };
   // Function open to function select file
@@ -41,9 +38,9 @@ const SettingModal = () => {
   // Initual Value Formik
   const formik = useFormik({
     initialValues: {
-      YourName: "",
+      yourName: "",
       lastName: "",
-      email: "",
+      email: email,
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -70,13 +67,13 @@ const SettingModal = () => {
 
       <form onSubmit={formik.handleSubmit}>
         <div>
-          <label htmlFor="firstName">Your name</label>
+          <label htmlFor="yourName">Your name</label>
           <input
-            id="YourName"
-            name="YourName"
+            id="yourName"
+            name="yourName"
             type="text"
             onChange={formik.handleChange}
-            value={formik.values.firstName}
+            value={formik.values.yourName}
           />
         </div>
         <label htmlFor="email">E-mail</label>
@@ -85,7 +82,7 @@ const SettingModal = () => {
           name="email"
           type="email"
           onChange={formik.handleChange}
-          value={email || formik.values.email}
+          value={email}
         />
         <button type="submit">Submit</button>
       </form>
