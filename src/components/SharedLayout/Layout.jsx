@@ -1,6 +1,7 @@
 import { Header } from "components/Header/Header";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { Suspense } from "react";
+
 const Layout = () => {
   return (
     <div>
@@ -8,6 +9,7 @@ const Layout = () => {
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
+      <NavLink to="/seting">SettingModal</NavLink>
     </div>
   );
 };

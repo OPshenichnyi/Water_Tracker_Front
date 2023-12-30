@@ -5,14 +5,15 @@ const {
   logIn,
   logOut,
   refreshUser,
+  AddAvatar,
 } = require("./authOperationApi");
 
 const initialState = {
   user: {
-    email: null,
+    email: "",
     userName: null,
     avatarURL: null,
-    gender: null,
+    gender: "male",
     waterRate: null,
   },
   token: null,
@@ -58,6 +59,9 @@ const authSlice = createSlice({
     });
     builder.addCase(refreshUser.rejected, (state, action) => {
       state.isRefresh = false;
+    });
+    builder.addCase(AddAvatar.fulfilled, (state, action) => {
+      state.user.avatarURL = action.payload.avatarURL;
     });
   },
 });
