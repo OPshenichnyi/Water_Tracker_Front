@@ -40,8 +40,8 @@ const SettingModal = () => {
     <Container>
       <TitleContainer>
         <h3>Setting</h3>
-        <svg width={24} height={24}>
-          <use href={`${sprite}#icon-glass`} />
+        <svg width={24} height={24} stroke="#407BFF">
+          <use href={`${sprite}#icon-cross`} />
         </svg>
       </TitleContainer>
       <TitleH5>Your photo</TitleH5>
