@@ -1,11 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { Signin, Wrapper,SingInSvg } from "./UserAuth.styled";
+import { Signin, Wrapper, SingInSvg } from "./UserAuth.styled";
 
 import sprite from "../../common/symbol-defs.svg";
 
 export const UserAuth = () => {
-  // const { isLoggedIn } = useAuth();
-
   return (
     <Wrapper>
       <Signin to="/signin">Sign in</Signin>
