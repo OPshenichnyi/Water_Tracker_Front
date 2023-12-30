@@ -1,7 +1,7 @@
 import { Header } from "components/Header/Header";
 import { NavLink, Outlet } from "react-router-dom";
 import { Suspense } from "react";
-import SettingModal from "components/SettingModal/SettingModal";
+
 const Layout = () => {
   return (
     <div>

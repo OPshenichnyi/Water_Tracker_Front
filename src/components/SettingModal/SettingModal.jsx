@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AddAvatar } from "../../redux/auth/authOperationApi";
-import { useFormik } from "formik";
 import {
   Container,
   TitleContainer,
@@ -12,9 +11,11 @@ import {
   TitleH5,
 } from "./SettingModal.styled";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
+import FormInput from "./FormInput";
+import sprite from "../../common/symbol-defs.svg";
 
 const SettingModal = () => {
-  const { avatarURL, email } = useSelector(selectIsUser);
+  const { avatarURL } = useSelector(selectIsUser);
   const fileInputRef = React.useRef();
   const dispatch = useDispatch();
 
@@ -35,22 +36,13 @@ const SettingModal = () => {
   const handleLinkClick = () => {
     fileInputRef.current.click();
   };
-  // Initual Value Formik
-  const formik = useFormik({
-    initialValues: {
-      yourName: "",
-      lastName: "",
-      email: email,
-    },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
   return (
     <Container>
       <TitleContainer>
         <h3>Setting</h3>
-        <span>X</span>
+        <svg width={24} height={24}>
+          <use href={`${sprite}#icon-glass`} />
+        </svg>
       </TitleContainer>
       <TitleH5>Your photo</TitleH5>
       <ContainerAvatar>
@@ -63,29 +55,7 @@ const SettingModal = () => {
         <InputImg type="file" ref={fileInputRef} onChange={handleFileChange} />
         <LinkImgUpload onClick={handleLinkClick}>Upload a photo</LinkImgUpload>
       </ContainerAvatar>
-      <TitleH5>Your gender identity</TitleH5>
-
-      <form onSubmit={formik.handleSubmit}>
-        <div>
-          <label htmlFor="yourName">Your name</label>
-          <input
-            id="yourName"
-            name="yourName"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.yourName}
-          />
-        </div>
-        <label htmlFor="email">E-mail</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          onChange={formik.handleChange}
-          value={email}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <FormInput></FormInput>
     </Container>
   );
 };
