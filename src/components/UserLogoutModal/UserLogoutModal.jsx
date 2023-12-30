@@ -1,42 +1,59 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { logOut } from "../../redux/auth/authOperationApi";
-import { CancelButton, Container, CloseButton, Close , LogOutButton, LogOutContainer, LogOutText, LogOutTextSecond, ButtonsContainer, Modal, Overlay,  } from "./UserLogoutModal.styles";
 
- const UserLogoutModal = ({ backdropClick, close }) => {
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../redux/auth/authOperationApi';
+import Modal from "@mui/material/Modal";
+import icons from '../../common/symbol-defs.svg';
 
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-      const handleKeydown = e => {
-    if (e.code === 'Escape') {
-        close()
-      }
-    }
+import {
+  ButtonCancel,
+  ButtonLogout,
+  TitleStyle,
+  DescriptionStyle,
+  ButtonClose,
+  ModalBox,
+  TitleContainer,
+  ButtonWrapper
+} from './UserLogoutModal.styled';
 
-    window.addEventListener('keydown', handleKeydown)
-    
-    return () => {
-    window.removeEventListener('keydown', handleKeydown)
-    }
-}, [close])
 
-    return (
-        <Overlay id="logout" onClick={backdropClick}>
-            <Modal>
-                <Container>
-                <LogOutContainer>
-                    <LogOutText>Log out</LogOutText>
-                    <CloseButton type="button" onClick={close}><Close /></CloseButton>
-                </LogOutContainer>
-                    <LogOutTextSecond>Do you really want to leave?</LogOutTextSecond>
-                    <ButtonsContainer>
-                        <LogOutButton type="submit" onClick={() => {dispatch(logOut()); close()}}>Log out</LogOutButton>
-                    <CancelButton onClick={close}>Cancel</CancelButton>
-                    </ButtonsContainer>
-                </Container>
-            </Modal>
-        </Overlay>
-    )
-}
+
+const UserLogoutModal = ({ open, onClose }) => {
+ const dispatch = useDispatch();
+
+  const handleClose = () => {
+    onClose();
+  };
+
+  return (
+    <div>
+        <Modal open={open} onClose={handleClose}>
+              <ModalBox >
+                  
+<TitleContainer>
+              
+          <TitleStyle>
+            Log out
+                      </TitleStyle>
+
+                          <ButtonClose onClick={onClose}>{' '}
+                <svg width={12} height={12} stroke="#407BFF">
+                  <use href={`${icons}#icon-cross`} />
+        </svg>
+      
+      </ButtonClose>
+                  </TitleContainer>
+          <DescriptionStyle>
+            Do you really want to leave?
+                  </DescriptionStyle>
+                  <ButtonWrapper>
+          <ButtonLogout onClick={() => dispatch(logOut())} >Logout</ButtonLogout>
+          <ButtonCancel onClick={onClose}>Cancel</ButtonCancel>
+          </ButtonWrapper>
+        </ModalBox>
+      </Modal>
+    </div>
+  );
+};
+
 export default UserLogoutModal;
+

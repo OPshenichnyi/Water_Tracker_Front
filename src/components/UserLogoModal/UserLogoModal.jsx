@@ -6,7 +6,7 @@ import sprite from "../../common/symbol-defs.svg";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../redux/auth/authOperationApi";
 
-const UserLogoModal = () => {
+const UserLogoModal = ({ position }) => {
   const [isUserInfoModalOpen, setUserInfoModalOpen] = useState(false);
   const [isUserLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
 
@@ -21,30 +21,34 @@ const UserLogoModal = () => {
   };
 
   return (
-    <Modal className="user-logo-modal">
+    <Modal position={position} >
       <Wrapper>
         <Item>
-          <Button onClick={handleSettingClick}>
-            <Svg width={16} height={16}>
-              <use href={`${sprite}#cog-tooth`} />
-            </Svg>
-            Setting
-          </Button>
+
+          <Svg width={16} height={16}>
+          <use href={`${sprite}#cog-tooth`} />
+          </Svg>
+        <Button onClick={handleSettingClick}>
+          
+            Setting</Button>
         </Item>
         <Item>
-          <Button onClick={handleLogoutClick}>
-            <Svg width={16} height={16}>
-              <use href={`${sprite}#arrow`} />
-            </Svg>
-            Log out
-          </Button>
+
+          <Svg width={16} height={16}>
+          <use href={`${sprite}#arrow`} />
+          </Svg>
+        <Button onClick={handleLogoutClick}>
+           
+          Log out</Button>
         </Item>
-        {isUserInfoModalOpen && (
-          <UserSettingsModal onClose={() => setUserInfoModalOpen(false)} />
-        )}
-        {isUserLogoutModalOpen && (
-          <UserLogoutModal onClose={() => setUserLogoutModalOpen(false)} />
-        )}
+      {isUserInfoModalOpen && (
+        <UserSettingsModal onClose={() => setUserInfoModalOpen(false)} />
+      )}
+      {isUserLogoutModalOpen && (
+        <UserLogoutModal open={isUserLogoutModalOpen} onClose={() => setUserLogoutModalOpen(false)} />
+          )}
+        
+
       </Wrapper>
     </Modal>
   );
