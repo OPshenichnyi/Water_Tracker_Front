@@ -134,4 +134,10 @@ export const AddWaterButton = styled.button`
   padding: 12px 8px;
   color: ${variables.bluePrimary};
   background-color: transparent;
+  
+  &:hover {
+    color:#FF9D43 ;
+    cursor: pointer;
+  }
+  
 `;

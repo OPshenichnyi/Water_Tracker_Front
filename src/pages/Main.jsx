@@ -1,4 +1,5 @@
-import BasicModal from "components/AddEditWater/AddWater"
+
+import ModalAddWater from "components/AddEditWater/NewModal"
 import BasicModalEdit from "components/EditWaterModal/EditWaterModal"
 import { Main } from "components/Main/Main"
 
@@ -8,7 +9,7 @@ const MainPage = () => {
 return (
 <div>
     <Main/>
-    <BasicModal/>
+    <ModalAddWater/>
         <BasicModalEdit />
         
     </div>
