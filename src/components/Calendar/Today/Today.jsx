@@ -45,6 +45,7 @@ useEffect(() => {
 }, [dispatch]);
 
   return (
+    <div>
     <TodayContainer>
       <TodayHeader>Today</TodayHeader>
       <TableWrapper>
@@ -80,7 +81,7 @@ useEffect(() => {
                   </TrashButton>
                 </TodayTableData>
               </TableRow>
-
+          ))}
             </tbody>
           </TodayTable>
           <AddWaterButton onClick={() => setOpen(s => !s)}>
