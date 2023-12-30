@@ -10,7 +10,7 @@ export const CalendarWrap = styled.div`
   flex-direction: column;
   /* gap: 24px; */
   width: 280px;
-  margin: 40px auto;
+  margin: 0px auto;
 
   @media screen and (min-width: 768px) {
     width: 704px;

@@ -215,6 +215,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
+  padding-top: 40px;
   background-image: image-set(
     url(${MobileBubbles}) 1x,
     url(${MobileBubbles2}) 2x
