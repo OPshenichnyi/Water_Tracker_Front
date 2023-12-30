@@ -20,15 +20,18 @@ export const Svg = styled.svg`
 `;
 
 export const Avatar = styled.div`
-  width: 28px;
-  height: 28px;
-  overflow: hidden;
-  background: #fff;
-  padding: 5px;
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border: ${color.bluePrimary} 1px solid;
+
+    width: 28px; 
+    height: 28px;
+    overflow: hidden;
+    background: #fff;
+    padding: 5px; 
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border:  ${color.bluePrimary} 1px solid;
+    text-align:center;
+ 
 `;
 
 export const Img = styled.img`
