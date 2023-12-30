@@ -20,8 +20,14 @@ import TabletBottle from '../../images/TabletHomeBottle.png';
 import TabletBottle2 from '../../images/TabletHomeBottle@2x.png';
 import DesktopBottle from '../../images/DesktopHomeBottle.png';
 import DesktopBottle2 from '../../images/DesktopHomeBottle@2x.png';
+import NewModal from 'components/AddEditWater/NewModal';
+import { useState } from 'react';
+import { modalScrollOff } from 'components/Utils/utils';
 
 export const DailyNorma = () => {
+  const [open, setOpen] = useState(false);
+  modalScrollOff(open);
+
   return (
     <Container>
       <NormaContainer>
@@ -61,13 +67,14 @@ export const DailyNorma = () => {
             <span>100%</span>
           </WaterInfo>
         </WaterProgress>
-        <AddWaterButton>
+        <AddWaterButton onClick={() => setOpen(s => !s)}>
           <svg width={24} height={24}>
             <use href={`${sprite}#plus-circle`} />
           </svg>
           Add Water
         </AddWaterButton>
       </ProgressContainer>
+      <NewModal open={open} closeModal={() => setOpen(false)} />
     </Container>
   );
 };

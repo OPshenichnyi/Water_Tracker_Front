@@ -1,36 +1,58 @@
 import styled from 'styled-components';
 
+export const Modal = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%; 
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
+export const Overlay = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 1;
+   transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  /* backdrop-filter: blur(2px); */
+`;
+export const Content = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 540px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding-top: 24px;
+  padding-right: 12px;
+  padding-bottom: 24px;
+  padding-left: 12px;
 
-export const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 280,
-  height: 540,
-  bgcolor: '#FFFFFF',
-  borderRadius: 2.5,
-  pt: 3,
-  pr: 1.5,
-  pb: 3,
-  pl: 1.5,
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 504px;
+    borderradius: 10px;
+    padding: 32px 24 px;
+  }
 
-  '@media screen and (min-width: 768px)': {
-    width: 704,
-    height: 504,
-    borderRadius: 2.5,
-    pt: 4,
-    pr: 3,
-    pb: 4,
-    pl: 3,
-  },
-
-  '@media screen and (min-width: 1440px)': {
-    width: 592,
-    height: 504,
-  },
-};
-
+  @media screen and (min-width: 1440px) {
+    width: 592px;
+    height: 504px;
+  }
+`;
 export const ButtonSave = styled.button`
   width: 256px;
   height: 36px;
@@ -72,6 +94,11 @@ export const ButtonClose = styled.button`
   width: 24px;
   height: 24px;
   background-color: #fff;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.3);
+    cursor: pointer;
+  }
 `;
 export const BlockTop = styled.div`
   display: flex;
