@@ -10,8 +10,7 @@ export const Header = () => {
   return (
     <div className="container main-container">
       <Wrapper>
-              <Logo />
-              <UserLogo/>
+        <Logo />
         {isLogined ? <UserLogo /> : <UserAuth />}
       </Wrapper>
     </div>
