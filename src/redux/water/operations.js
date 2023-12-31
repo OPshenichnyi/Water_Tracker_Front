@@ -13,6 +13,7 @@ export const addWaterVolume = createAsyncThunk('water/addWaterVolume', async (da
     // });
     // return response.data;
     const response = await axios.post(`${apiBaseUrl}/water`, data);
+    thunkAPI.dispatch(fetchWaterDataToday());
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
