@@ -58,7 +58,6 @@ export const fetchWaterDataToday = createAsyncThunk('water/fetchWaterDataToday',
     });
     return response.data;
   } catch (error) {
-    console.error('Error fetching water data:', error);
-    throw error;
+    return thunkAPI.rejectWithValue(error.message)
   }
 });
