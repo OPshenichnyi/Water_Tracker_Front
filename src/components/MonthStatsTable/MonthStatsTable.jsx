@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { nanoid } from "nanoid";
-import sprite from "../../common/symbol-defs.svg";
+import { useState } from 'react';
+import { nanoid } from 'nanoid';
+import sprite from '../../common/symbol-defs.svg';
 import {
   DayUl,
   DayLi,
@@ -10,18 +10,18 @@ import {
   CurrentMonth,
   MonthSwipe,
   MonthName,
-} from "./MonthStatsTable.styled";
+} from './MonthStatsTable.styled';
 
 const Month = () => {
   const data = [
     {
-      date: "2023-3-2",
+      date: '2023-3-2',
       dailyNormFulfillment: 30,
       WaterRate: 2,
       servingOfWater: 1,
     },
     {
-      date: "2023-3-24",
+      date: '2023-3-24',
       dailyNormFulfillment: 90,
       WaterRate: 2,
       servingOfWater: 3,
@@ -37,7 +37,7 @@ const Month = () => {
 
     for (let day = 1; day <= days; day++) {
       const fullDate = `${year}-${month}-${day}`;
-      const event = data.find((event) => event.date === fullDate);
+      const event = data.find(event => event.date === fullDate);
 
       arrData.push({
         day,
@@ -67,10 +67,10 @@ const Month = () => {
         </CurrentMonth>
       </TodayDiv>
       <DayUl>
-        {daysInMonth.map((item) => (
+        {daysInMonth.map(item => (
           <DayLi key={nanoid()}>
             <DayNumber>{item.day}</DayNumber>
-            <WaterPercentage>{item.dailyNormFulfillment}</WaterPercentage>
+            <WaterPercentage>{item.dailyNormFulfillment}%</WaterPercentage>
           </DayLi>
         ))}
       </DayUl>
