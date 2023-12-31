@@ -64,11 +64,18 @@ import { getUserId } from '../water/operations';
       .addCase(fetchWaterDataToday.fulfilled, (state, action) => {
         state.loading = false;
 
-        const userData = getUserId(action.payload.waterRecords[0].owner);
-        const ownerValue = userData.owner;
-        state.data.owner = ownerValue;
+        // const userData = getUserId(action.payload.waterRecords[0].owner);
+        // const ownerValue = userData.owner;
+        // state.data.owner = ownerValue;
 
-        state.history = action.payload.waterRecords; 
+        // state.history = action.payload.waterRecords; 
+        if (action.payload.waterRecords && action.payload.waterRecords.length > 0) {
+          const userData = getUserId(action.payload.waterRecords[0].owner);
+          const ownerValue = userData.owner;
+          state.data.owner = ownerValue;
+      
+          state.history = action.payload.waterRecords; 
+        } 
       })
       .addCase(fetchWaterDataToday.rejected, (state, action) => {
         state.loading = false;
