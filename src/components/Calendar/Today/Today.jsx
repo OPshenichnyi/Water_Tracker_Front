@@ -21,7 +21,7 @@ import { fetchWaterDataToday } from '../../../redux/water/operations';
 import { FormatTime } from '../FormatTime/FormatTime';
 import { selectTakeWaterHistory } from '../../../redux/water/selector';
 import MainModal from 'components/MainModal/MainModal';
-import ModalAddWater from 'components/AddEditWater/NewModal';
+import ModalAddWater from 'components/AddWater/AddWater';
 
 const Today = () => {
   const [modalActive, setModalActive] = useState(false);

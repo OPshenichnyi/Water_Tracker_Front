@@ -13,7 +13,7 @@ import {
   ButtonSave,
   CountSaveBtnBottom,
   Wrapper,
-} from './NewAddWater.styled';
+} from './AddWater.styled';
 import {
   decrease,
   generateTimeOptions,
@@ -27,7 +27,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addWaterVolume } from '../../redux/water/operations';
 import { selectAddWaterVolume } from '../../redux/water/selector';
 
-function ModalAddWater({ closeModal }) {
+function AddWater({ closeModal }) {
   const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [selectedTime, setSelectedTime] = useState(0);
@@ -122,4 +122,4 @@ function ModalAddWater({ closeModal }) {
   );
 }
 
-export default ModalAddWater;
+export default AddWater;

@@ -24,7 +24,7 @@ import DesktopBottle2 from '../../images/DesktopHomeBottle@2x.png';
 import { useState } from 'react';
 import { modalScrollOff } from 'components/Utils/utils';
 import MainModal from 'components/MainModal/MainModal';
-import ModalAddWater from 'components/AddEditWater/NewModal';
+import ModalAddWater from 'components/AddWater/AddWater';
 
 export const DailyNorma = () => {
   const [modalActive, setModalActive] = useState(false);
