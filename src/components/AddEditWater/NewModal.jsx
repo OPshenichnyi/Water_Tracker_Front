@@ -62,7 +62,12 @@ function ModalAddWater({ open, closeModal }) {
     setSelectedTime(parseInt(e.target.value, 10));
   };
 
+
   const handleSave = () => {
+    if(count === 0) return closeModal()
+
+    
+
     const data = {
       waterVolume: count,
       date: new Date().toISOString(),
@@ -122,7 +127,7 @@ function ModalAddWater({ open, closeModal }) {
         />
         <CountSaveBtnBottom>
           <CounterBottom>{waterData.waterVolume}ml</CounterBottom>
-          <ButtonSave type="button" onClick={handleSave}>Save</ButtonSave>
+          <ButtonSave type="button"  onClick={handleSave}>Save</ButtonSave>
         </CountSaveBtnBottom>
       </Content>
     </Modal>,
