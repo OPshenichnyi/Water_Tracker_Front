@@ -6,14 +6,14 @@ const apiBaseUrl = 'https://db-water-tracker.onrender.com/api';
 
 export const addWaterVolume = createAsyncThunk('water/addWaterVolume', async (data, thunkAPI) => {
   try {
-    const response = await axios.post(`${apiBaseUrl}/water`, data, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data;
-    // const response = await axios.post(`${apiBaseUrl}/water`, data);
+    // const response = await axios.post(`${apiBaseUrl}/water`, data, {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // });
     // return response.data;
+    const response = await axios.post(`${apiBaseUrl}/water`, data);
+    return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
