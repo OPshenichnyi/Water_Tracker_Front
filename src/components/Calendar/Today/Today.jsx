@@ -37,7 +37,7 @@ useEffect(() => {
     try {
       await dispatch(fetchWaterDataToday());
     } catch (error) {
-      console.error('Ошибка при получении данных о воде в useEffect:', error);
+      console.error('Error getting water data in useEffect:', error);
     }
   };
 
