@@ -23,13 +23,14 @@ import ModalAddWater from 'components/AddEditWater/NewModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWaterDataToday } from "../../../redux/water/operations"
 import {FormatTime} from  "../FormatTime/FormatTime"
+import { selectTakeWaterHistory } from '../../../redux/water/selector';
 
 
 const Today = () => {
   const [open, setOpen] = useState(false);
   modalScrollOff(open);
   
-  const waterData = useSelector(state => state.water);
+  const waterData = useSelector(selectTakeWaterHistory);
   const dispatch = useDispatch();
 
 useEffect(() => {
@@ -52,7 +53,7 @@ useEffect(() => {
         <TodayTable>
           <tbody>
             
-          {waterData.history.map((waterRecord) => (
+          {waterData.map((waterRecord) => (
               <TableRow key={waterRecord._id}>
 
                 <TodayTableData>
