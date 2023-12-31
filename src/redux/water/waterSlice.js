@@ -57,6 +57,10 @@ import { getUserId } from '../water/operations';
         state.error = action.error.message;
       })
 
+      .addCase(fetchWaterDataToday.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(fetchWaterDataToday.fulfilled, (state, action) => {
         state.loading = false;
 
