@@ -13,86 +13,83 @@ import {
   TextTableData,
   TimeTableData,
   AddWaterButton,
-
-} from "./Today.styled";
-import React, { useEffect } from "react";
-
+} from './Today.styled';
+import React, { useEffect } from 'react';
 import { modalScrollOff } from 'components/Utils/utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchWaterDataToday } from '../../../redux/water/operations';
+import { FormatTime } from '../FormatTime/FormatTime';
+import { selectTakeWaterHistory } from '../../../redux/water/selector';
+import MainModal from 'components/MainModal/MainModal';
 import ModalAddWater from 'components/AddEditWater/NewModal';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchWaterDataToday } from "../../../redux/water/operations"
-import {FormatTime} from  "../FormatTime/FormatTime"
-import { selectTakeWaterHistory } from '../../../redux/water/selector';
-
-
 const Today = () => {
-  const [open, setOpen] = useState(false);
-  modalScrollOff(open);
-  
+  const [modalActive, setModalActive] = useState(false);
+  modalScrollOff(modalActive);
+
   const waterData = useSelector(selectTakeWaterHistory);
   const dispatch = useDispatch();
 
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      await dispatch(fetchWaterDataToday());
-    } catch (error) {
-      console.error('Error getting water data in useEffect:', error);
-    }
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await dispatch(fetchWaterDataToday());
+      } catch (error) {
+        console.error('Error getting water data in useEffect:', error);
+      }
+    };
 
-  fetchData();
-}, [dispatch]);
+    fetchData();
+  }, [dispatch]);
 
   return (
     <div>
-    <TodayContainer>
-      <TodayHeader>Today</TodayHeader>
-      <TableWrapper>
-        <TodayTable>
-          <tbody>
-            
-          {waterData.map((waterRecord) => (
-              <TableRow key={waterRecord._id}>
+      <TodayContainer>
+        <TodayHeader>Today</TodayHeader>
+        <TableWrapper>
+          <TodayTable>
+            <tbody>
+              {waterData.map(waterRecord => (
+                <TableRow key={waterRecord._id}>
+                  <TodayTableData>
+                    <ImageWrapper>
+                      <svg width={26} height={26}>
+                        <use href={`${sprite}#cup`}></use>
+                      </svg>
+                    </ImageWrapper>
+                  </TodayTableData>
 
-                <TodayTableData>
-                  <ImageWrapper>
-                    <svg width={26} height={26}>
-                      <use href={`${sprite}#cup`}></use>
-                    </svg>
-                  </ImageWrapper>
-                </TodayTableData>
+                  <TextTableData>{waterRecord.waterVolume} ml</TextTableData>
+                  <TimeTableData>{FormatTime(waterRecord.date)}</TimeTableData>
 
-                <TextTableData>{waterRecord.waterVolume} ml</TextTableData>
-                <TimeTableData>{FormatTime(waterRecord.date)}</TimeTableData>
-
-                <TodayTableData>
-                  <Button>
-                    <svg width={16} height={16}>
-                      <use href={`${sprite}#pencil-square`}></use>
-                    </svg>
-                  </Button>
-                </TodayTableData>
-                <TodayTableData>
-                  <TrashButton>
-                    <svg width={16} height={16}>
-                      <use href={`${sprite}#trash-can`}></use>
-                    </svg>
-                  </TrashButton>
-                </TodayTableData>
-              </TableRow>
-          ))}
+                  <TodayTableData>
+                    <Button>
+                      <svg width={16} height={16}>
+                        <use href={`${sprite}#pencil-square`}></use>
+                      </svg>
+                    </Button>
+                  </TodayTableData>
+                  <TodayTableData>
+                    <TrashButton>
+                      <svg width={16} height={16}>
+                        <use href={`${sprite}#trash-can`}></use>
+                      </svg>
+                    </TrashButton>
+                  </TodayTableData>
+                </TableRow>
+              ))}
             </tbody>
           </TodayTable>
-          <AddWaterButton onClick={() => setOpen(s => !s)}>
+          <AddWaterButton onClick={() => setModalActive(true)}>
             +Add water
           </AddWaterButton>
         </TableWrapper>
       </TodayContainer>
-      <ModalAddWater open={open} closeModal={() => setOpen(false)} />
-    </div>
 
+      <MainModal active={modalActive} setActive={setModalActive}>
+        <ModalAddWater closeModal={() => setModalActive(false)} />
+      </MainModal>
+    </div>
   );
 };
 
