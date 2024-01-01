@@ -135,7 +135,7 @@ export const WaterMeter = styled.div`
     content: '';
     position: absolute;
     top: 50%;
-    left: ${({ percentage }) => `calc(${percentage}% - 7px)`}; 
+    left: ${({ percentage }) => `calc(${percentage}%)`}; 
     transform: translate(-50%, -50%);
     width: 14px;
     height: 14px;

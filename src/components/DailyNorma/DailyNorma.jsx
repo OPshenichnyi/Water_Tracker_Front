@@ -37,7 +37,7 @@ export const DailyNorma = () => {
 
   useEffect(() => {
     if (percentage === 100 && !alreadyShownToast) {
-      toast.success('Congratulations. daily water requirement has been reached!');
+      toast.success('Congratulations. Daily water requirement has been reached!');
       setAlreadyShownToast(true);
     }
   }, [percentage, alreadyShownToast]);
