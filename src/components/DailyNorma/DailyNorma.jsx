@@ -23,11 +23,14 @@ import DesktopBottle2 from '../../images/DesktopHomeBottle@2x.png';
 import NewModal from 'components/AddEditWater/NewModal';
 import { useState } from 'react';
 import { modalScrollOff } from 'components/Utils/utils';
+import { useSelector } from 'react-redux';
+import { selectStageWater } from '../../redux/water/selector';
 
 export const DailyNorma = () => {
   const [open, setOpen] = useState(false);
   modalScrollOff(open);
 
+  const { percentage } = useSelector(selectStageWater);
   return (
     <Container>
       <NormaContainer>
@@ -58,7 +61,7 @@ export const DailyNorma = () => {
       <ProgressContainer>
         <WaterProgress>
           <p>Today</p>
-          <WaterMeter>
+          <WaterMeter percentage={percentage}>
             <div />
           </WaterMeter>
           <WaterInfo>

@@ -6,6 +6,7 @@ import { getUserId } from '../water/operations';
  const waterSlice = createSlice({ 
   name: 'water',
   initialState: {
+    percentage: 0,
     data: {
       waterVolume: 0,
       date: new Date().toISOString(),
@@ -75,6 +76,8 @@ import { getUserId } from '../water/operations';
           state.data.owner = ownerValue;
       
           state.history = action.payload.waterRecords; 
+
+          state.percentage= action.payload.percentage;
         } 
       })
       .addCase(fetchWaterDataToday.rejected, (state, action) => {
