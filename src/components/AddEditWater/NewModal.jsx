@@ -68,8 +68,7 @@ function ModalAddWater({ open, closeModal }) {
     if(count === 0) return toast.info("Amount of water- cannot be zero please enter a value!");
  
     const hours = Math.floor(selectedTime / 60);
-    const minutes = selectedTime % 60;
-   
+    const minutes = selectedTime % 60;   
     const currentDate = new Date();
     currentDate.setHours(hours, minutes, 0, 0);
    
