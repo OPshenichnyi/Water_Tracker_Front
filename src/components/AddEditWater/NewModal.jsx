@@ -29,6 +29,7 @@ import icons from '../../common/symbol-defs.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { addWaterVolume } from '../../redux/water/operations';
 import { selectAddWaterVolume } from '../../redux/water/selector'
+import { toast } from 'react-toastify';
 
 function ModalAddWater({ open, closeModal }) {
   const [count, setCount] = useState(0);
@@ -64,15 +65,19 @@ function ModalAddWater({ open, closeModal }) {
 
 
   const handleSave = () => {
-    if(count === 0) return closeModal()
-
-    
-
+    if(count === 0) return toast.info("Amount of water- cannot be zero please enter a value!");
+ 
+    const hours = Math.floor(selectedTime / 60);
+    const minutes = selectedTime % 60;
+   
+    const currentDate = new Date();
+    currentDate.setHours(hours, minutes, 0, 0);
+   
     const data = {
       waterVolume: count,
-      date: new Date().toISOString(),
+      date: currentDate.toISOString(),
     };
-
+    toast.success('Data saved 👍')
     dispatch(addWaterVolume(data));
     closeModal();
   };
