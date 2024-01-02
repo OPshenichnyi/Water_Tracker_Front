@@ -6,7 +6,7 @@ import {
   BoxGender,
   ContainerGender,
   ContainerBlockSeting,
-  TitleH5,
+  TitleH3,
   ContainerInfoUser,
   ContainerChangePass,
   LabelInput,
@@ -35,7 +35,7 @@ export default function FormInput() {
     <>
       <ContainerBlockSeting>
         <ContainerInfoUser>
-          <TitleH5>Your gender identity</TitleH5>
+          <TitleH3>Your gender identity</TitleH3>
           <ContainerGender>
             <BoxGender>
               <input

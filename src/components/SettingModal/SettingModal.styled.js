@@ -22,19 +22,17 @@ export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
-  h2 {
-    font-size: 26px;
-    font-weight: 500;
-    font-style: normal;
-    line-height: 1.24;
-    color: ${variables.blackPrimary};
-  }
+`;
 
+export const TitleSetting = styled.h3`
+  font-size: 26px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.24;
+  color: ${variables.blackPrimary};
   @media screen and (min-width: 768px) {
-    h3 {
-      font-size: 26px;
-      line-height: 1.23;
-    }
+    font-size: 26px;
+    line-height: 1.23;
   }
 `;
 
@@ -66,8 +64,10 @@ export const LinkImgUpload = styled.span`
   font-weight: 500;
 `;
 
-export const TitleH5 = styled.h5`
+export const TitleH3 = styled.h4`
   margin-bottom: 12px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
   color: ${variables.blackPrimary};
   font-size: 18px;
   font-weight: 500;

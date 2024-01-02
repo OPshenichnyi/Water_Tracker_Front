@@ -8,7 +8,8 @@ import {
   ContainerAvatar,
   InputImg,
   LinkImgUpload,
-  TitleH5,
+  TitleH3,
+  TitleSetting,
 } from "./SettingModal.styled";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import FormInput from "./FormInput";
@@ -39,12 +40,14 @@ const SettingModal = () => {
   return (
     <Container>
       <TitleContainer>
-        <h3>Setting</h3>
-        <svg width={24} height={24} stroke="#407BFF">
-          <use href={`${sprite}#icon-cross`} />
-        </svg>
+        <TitleSetting>Setting</TitleSetting>
+        <button>
+          <svg width={18} height={18} stroke="#407BFF">
+            <use href={`${sprite}#icon-cross`} />
+          </svg>
+        </button>
       </TitleContainer>
-      <TitleH5>Your photo</TitleH5>
+      <TitleH3>Your photo</TitleH3>
       <ContainerAvatar>
         <Avatar
           src={avatarURL}
