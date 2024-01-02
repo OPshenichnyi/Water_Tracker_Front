@@ -13,7 +13,7 @@ const initialState = {
     email: "",
     userName: null,
     avatarURL: null,
-    gender: "male",
+    gender: "man",
     waterRate: null,
   },
   token: null,

@@ -27,6 +27,7 @@ import { modalScrollOff } from 'components/Utils/utils';
 import { useSelector } from 'react-redux';
 import { selectStageWater } from '../../redux/water/selector';
 import { toast } from 'react-toastify';
+import { selectIsUser } from '../../redux/auth/selectorsAuth';
 
 export const DailyNorma = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -45,12 +46,13 @@ export const DailyNorma = () => {
     }
   }, [percentage, alreadyShownToast]);
 
+  const { waterRate } = useSelector(selectIsUser);
   return (
     <Container>
       <NormaContainer>
         <NormaTitle>My daily norma</NormaTitle>
         <DailyNormaWrapper>
-          <NormaP>2.0 L</NormaP>
+          <NormaP>{waterRate / 1000} L</NormaP>
           <NormaButton>Edit</NormaButton>
         </DailyNormaWrapper>
       </NormaContainer>
