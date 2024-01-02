@@ -43,7 +43,7 @@ const Today = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <>
       <TodayContainer>
         <TodayHeader>Today</TodayHeader>
         <TableWrapper>
@@ -89,7 +89,7 @@ const Today = () => {
       <MainModal active={modalActive} setActive={setModalActive}>
         <ModalAddWater closeModal={() => setModalActive(false)} />
       </MainModal>
-    </div>
+    </>
   );
 };
 
