@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Water_Tracker_Front/static/css/main.dee13121.css",
-    "main.js": "/Water_Tracker_Front/static/js/main.f2e6f5fb.js",
+    "main.js": "/Water_Tracker_Front/static/js/main.a3e97af4.js",
     "static/media/TabletBotBub2x.jpg": "/Water_Tracker_Front/static/media/TabletBotBub2x.6d0a89b68b5685324171.jpg",
     "static/media/main_tablet_bg@2x.jpg": "/Water_Tracker_Front/static/media/main_tablet_bg@2x.d1b5af79663abb6313ad.jpg",
     "static/media/main_desctop@2x.jpg": "/Water_Tracker_Front/static/media/main_desctop@2x.0e453c071a756bfd74d0.jpg",
@@ -32,10 +32,10 @@
     "index.html": "/Water_Tracker_Front/index.html",
     "static/media/listMarker.svg": "/Water_Tracker_Front/static/media/listMarker.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.dee13121.css.map": "/Water_Tracker_Front/static/css/main.dee13121.css.map",
-    "main.f2e6f5fb.js.map": "/Water_Tracker_Front/static/js/main.f2e6f5fb.js.map"
+    "main.a3e97af4.js.map": "/Water_Tracker_Front/static/js/main.a3e97af4.js.map"
   },
   "entrypoints": [
     "static/css/main.dee13121.css",
-    "static/js/main.f2e6f5fb.js"
+    "static/js/main.a3e97af4.js"
   ]
 }
