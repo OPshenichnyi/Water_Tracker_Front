@@ -12,6 +12,23 @@ export const Container = styled.div`
   position: relative;
   width: 100%;
   margin-top: 24px;
+
+  img {
+    margin: 0 auto;
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 1440px) {
+      margin-bottom: 24px;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 50%;
+    img {
+      height: 548px;
+      object-fit: cover;
+    }
+  }
 `;
 
 export const NormaContainer = styled.div`
@@ -119,8 +136,6 @@ export const WaterProgress = styled.div`
   }
 `;
 
-
-
 export const WaterMeter = styled.div`
   position: relative;
   height: 8px;
@@ -135,7 +150,7 @@ export const WaterMeter = styled.div`
     content: '';
     position: absolute;
     top: 50%;
-    left: ${({ percentage }) => `calc(${percentage}%)`}; 
+    left: ${({ percentage }) => `calc(${percentage}%)`};
     transform: translate(-50%, -50%);
     width: 14px;
     height: 14px;
@@ -157,7 +172,6 @@ export const WaterMeter = styled.div`
     z-index: 0;
   }
 `;
-
 
 export const WaterInfo = styled.div`
   display: flex;
@@ -222,7 +236,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding-top: 40px;
+  /* padding-top: 40px; */
   background-image: image-set(
     url(${MobileBubbles}) 1x,
     url(${MobileBubbles2}) 2x

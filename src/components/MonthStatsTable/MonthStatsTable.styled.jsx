@@ -23,6 +23,20 @@ export const DayLi = styled.li`
   position: relative;
 `;
 
+export const StatsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 506px;
+
+  @media screen and (min-width: 768px) {
+    height: 340px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    height: 284px;
+  }
+`;
+
 export const DayNumber = styled.div`
   display: flex;
   justify-content: center;
@@ -84,4 +98,16 @@ export const MonthSwipe = styled.button`
 export const MonthName = styled.span`
   font-size: 16px;
   line-height: 20px;
+`;
+
+export const MonthTitle = styled.h2`
+  color: ${variables.blackPrimary};
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+
+  @media screen and (min-width: 768px) {
+    font-size: 26px;
+    line-height: 1.23;
+  }
 `;
