@@ -6,13 +6,13 @@ import {
   BoxGender,
   ContainerGender,
   ContainerBlockSeting,
-  TitleH3,
   ContainerInfoUser,
   ContainerChangePass,
   LabelInput,
   InputStyle,
   ButtonSubmit,
 } from "./SettingModal.styled";
+import { TitleNameSet } from "./Component/ComponentSeting";
 
 export default function FormInput() {
   const { email, gender } = useSelector(selectIsUser);
@@ -35,7 +35,7 @@ export default function FormInput() {
     <>
       <ContainerBlockSeting>
         <ContainerInfoUser>
-          <TitleH3>Your gender identity</TitleH3>
+          <TitleNameSet title={"Your gender identity"}></TitleNameSet>
           <ContainerGender>
             <BoxGender>
               <input
@@ -60,7 +60,7 @@ export default function FormInput() {
           </ContainerGender>
 
           <form onSubmit={formik.handleSubmit}>
-            <LabelInput htmlFor="userName">Your name</LabelInput>
+            <TitleNameSet title={"Your name"}></TitleNameSet>
             <InputStyle
               id="userName"
               name="userName"
@@ -68,7 +68,7 @@ export default function FormInput() {
               onChange={formik.handleChange}
               value={formik.values.userName}
             />
-            <LabelInput htmlFor="email">E-mail</LabelInput>
+            <TitleNameSet title={"E-mail"}></TitleNameSet>
             <InputStyle
               id="email"
               name="email"
@@ -80,7 +80,7 @@ export default function FormInput() {
         </ContainerInfoUser>
         <ContainerChangePass>
           <form onSubmit={formik.handleSubmit}>
-            <h3>Password</h3>
+            <TitleNameSet title={"Password"}></TitleNameSet>
             <LabelInput htmlFor="outdatedPassword">
               Outdated password:
             </LabelInput>

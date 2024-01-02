@@ -9,7 +9,7 @@ export const Container = styled.div`
   @media screen and (min-width: 768px) {
     max-width: 704px;
     padding: 32px 24px;
-    background-color: #f2f2f2;
+    /* background-color: #f2f2f2; */
   }
 
   @media screen and (min-width: 1440px) {
@@ -22,17 +22,16 @@ export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
-`;
-
-export const TitleSetting = styled.h3`
-  font-size: 26px;
-  font-weight: 500;
-  font-style: normal;
-  line-height: 1.24;
-  color: ${variables.blackPrimary};
-  @media screen and (min-width: 768px) {
+  h2 {
     font-size: 26px;
-    line-height: 1.23;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1.24;
+    color: ${variables.blackPrimary};
+    @media screen and (min-width: 768px) {
+      font-size: 26px;
+      line-height: 1.23;
+    }
   }
 `;
 
@@ -64,7 +63,7 @@ export const LinkImgUpload = styled.span`
   font-weight: 500;
 `;
 
-export const TitleH3 = styled.h4`
+export const TitleH3 = styled.h3`
   margin-bottom: 12px;
   font-family: "Roboto", sans-serif;
   font-style: normal;
@@ -77,6 +76,10 @@ export const TitleH3 = styled.h4`
 // ================== STYLE FORM FILE FormInput ================
 export const ContainerGender = styled.div`
   display: flex;
+  margin-bottom: 24px;
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 52px;
+  }
 `;
 
 export const BoxGender = styled.label``;
@@ -105,6 +108,7 @@ export const LabelInput = styled.label`
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 8px;
 `;
 
 export const InputStyle = styled.input`
@@ -114,7 +118,7 @@ export const InputStyle = styled.input`
   border: 1px solid #d7e3ff;
   color: #9ebbff;
   border-radius: 6px;
-  margin: 8px 0px 16px 0px;
+  margin: 0px 0px 16px 0px;
   font-size: 16px;
 
   padding: 16px 8px;
@@ -162,3 +166,10 @@ export const ButtonSubmit = styled.button`
     height: 44px;
   }
 `;
+
+// color: var(--Primery-Color-Black, #2F2F2F);
+// font-family: Roboto;
+// font-size: 18px;
+// font-style: normal;
+// font-weight: 500;
+// line-height: 20px; /* 111.111% */

@@ -8,12 +8,10 @@ import {
   ContainerAvatar,
   InputImg,
   LinkImgUpload,
-  TitleH3,
-  TitleSetting,
 } from "./SettingModal.styled";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import FormInput from "./FormInput";
-import sprite from "../../common/symbol-defs.svg";
+import { TitleNameSet, BtnClose } from "./Component/ComponentSeting";
 
 const SettingModal = () => {
   const { avatarURL } = useSelector(selectIsUser);
@@ -40,14 +38,10 @@ const SettingModal = () => {
   return (
     <Container>
       <TitleContainer>
-        <TitleSetting>Setting</TitleSetting>
-        <button>
-          <svg width={18} height={18} stroke="#407BFF">
-            <use href={`${sprite}#icon-cross`} />
-          </svg>
-        </button>
+        <h2>Setting</h2>
+        <BtnClose></BtnClose>
       </TitleContainer>
-      <TitleH3>Your photo</TitleH3>
+      <TitleNameSet title={"Your photo"}></TitleNameSet>
       <ContainerAvatar>
         <Avatar
           src={avatarURL}
