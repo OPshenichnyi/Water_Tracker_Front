@@ -12,6 +12,7 @@ import {
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import FormInput from "./FormInput";
 import { TitleNameSet, BtnClose } from "./Component/ComponentSeting";
+import sprite from "../../common/symbol-defs.svg";
 
 const SettingModal = () => {
   const { avatarURL } = useSelector(selectIsUser);
@@ -50,7 +51,12 @@ const SettingModal = () => {
           height="80"
         ></Avatar>
         <InputImg type="file" ref={fileInputRef} onChange={handleFileChange} />
-        <LinkImgUpload onClick={handleLinkClick}>Upload a photo</LinkImgUpload>
+        <LinkImgUpload onClick={handleLinkClick}>
+          <svg width={16} height={16} stroke="#407BFF">
+            <use href={`${sprite}#upload`} />
+          </svg>
+          Upload a photo
+        </LinkImgUpload>
       </ContainerAvatar>
       <FormInput></FormInput>
     </Container>

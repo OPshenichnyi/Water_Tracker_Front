@@ -3,7 +3,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import {
-  BoxGender,
   ContainerGender,
   ContainerBlockSeting,
   ContainerInfoUser,
@@ -11,55 +10,97 @@ import {
   LabelInput,
   InputStyle,
   ButtonSubmit,
+  FirstTitle,
 } from "./SettingModal.styled";
 import { TitleNameSet } from "./Component/ComponentSeting";
 
 export default function FormInput() {
-  const { email, gender } = useSelector(selectIsUser);
+  const stateUser = useSelector(selectIsUser);
+  console.log(stateUser);
+
+  const handleSubmit = (values) => {
+    const dataToSend = {};
+    Object.keys(values).forEach((key) => {
+      if (values[key] !== stateUser[key]) {
+        dataToSend[key] = values[key];
+      }
+    });
+    console.log(dataToSend);
+  };
+  // const chekValueInput = (values) => {
+  //   const {
+  //     userName,
+  //     email,
+  //     gender,
+  //     outdatedPassword,
+  //     newPassword,
+  //     repetNewPassword,
+  //   } = values;
+  //   console.log(typeof gender);
+  //   const req = {};
+  //   if (outdatedPassword && newPassword === repetNewPassword) {
+  //     Object.assign(req, { outdatedPassword, newPassword, repetNewPassword });
+  //   }
+  //   if (userName) {
+  //     Object.assign(req, { userName });
+  //   }
+  //   if (email) {
+  //     Object.assign(req, { email });
+  //   }
+  //   if (gender) {
+  //     Object.assign(req, { gender });
+  //   }
+  //   if (Object.keys(req).length !== 0) {
+  //     console.log(req);
+  //   }
+  //   return;
+  // };
 
   const formik = useFormik({
     initialValues: {
-      userName: "",
-      email: email,
-      gender: gender,
-      outdatedPassword: "",
-      password: "",
-      newPassword: "",
-      repetNewPassword: "",
+      userName: stateUser.userName,
+      email: stateUser.email,
+      gender: stateUser.gender,
+      outdatedPassword: stateUser.outdatedPassword,
+      newPassword: stateUser.newPassword,
+      repetNewPassword: stateUser.repetNewPassword,
     },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+
+    onSubmit: (values, { setSubmitting }, actions) => {
+      handleSubmit(values);
+      setSubmitting(false);
+      // actions.resetForm(true);
     },
   });
   return (
     <>
       <ContainerBlockSeting>
         <ContainerInfoUser>
-          <TitleNameSet title={"Your gender identity"}></TitleNameSet>
-          <ContainerGender>
-            <BoxGender>
-              <input
-                type="radio"
-                name="gender"
-                value="female"
-                checked={formik.values.gender === "female"}
-                onChange={formik.handleChange}
-              />
-              <label>Girl</label>
-            </BoxGender>
-            <BoxGender>
-              <input
-                type="radio"
-                name="gender"
-                value="male"
-                checked={formik.values.gender === "male"}
-                onChange={formik.handleChange}
-              />
-              <label>Man</label>
-            </BoxGender>
-          </ContainerGender>
-
+          <FirstTitle>Your gender identity</FirstTitle>
           <form onSubmit={formik.handleSubmit}>
+            <ContainerGender>
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  checked={formik.values.gender}
+                  onChange={formik.handleChange}
+                />
+                <label>Girl</label>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked={formik.values.gender}
+                  onChange={formik.handleChange}
+                />
+                <label>Man</label>
+              </label>
+            </ContainerGender>
+
             <TitleNameSet title={"Your name"}></TitleNameSet>
             <InputStyle
               id="userName"
@@ -67,6 +108,7 @@ export default function FormInput() {
               type="text"
               onChange={formik.handleChange}
               value={formik.values.userName}
+              className="ttt"
             />
             <TitleNameSet title={"E-mail"}></TitleNameSet>
             <InputStyle
@@ -74,13 +116,13 @@ export default function FormInput() {
               name="email"
               type="email"
               onChange={formik.handleChange}
-              value={email}
+              value={formik.values.email}
             />
           </form>
         </ContainerInfoUser>
         <ContainerChangePass>
           <form onSubmit={formik.handleSubmit}>
-            <TitleNameSet title={"Password"}></TitleNameSet>
+            <FirstTitle>Password</FirstTitle>
             <LabelInput htmlFor="outdatedPassword">
               Outdated password:
             </LabelInput>

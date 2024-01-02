@@ -54,35 +54,39 @@ export const InputImg = styled.input`
 `;
 
 export const LinkImgUpload = styled.span`
-  color: #407bff;
+  color: ${variables.bluePrimary};
   cursor: pointer;
   margin-left: 8px;
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
-  font-weight: 500;
-`;
-
-export const TitleH3 = styled.h3`
-  margin-bottom: 12px;
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  color: ${variables.blackPrimary};
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.12;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  svg {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    fill: none;
+  }
 `;
 
 // ================== STYLE FORM FILE FormInput ================
 export const ContainerGender = styled.div`
   display: flex;
   margin-bottom: 24px;
+  width: 152px;
+  height: 20px;
+  label:first-child {
+    margin-right: 24px;
+  }
+  input:first-child {
+    margin-right: 8px;
+  }
   @media screen and (min-width: 1440px) {
     margin-bottom: 52px;
   }
 `;
-
-export const BoxGender = styled.label``;
 
 export const ContainerBlockSeting = styled.div`
   @media screen and (min-width: 1440px) {
@@ -98,9 +102,21 @@ export const ContainerInfoUser = styled.div`
 `;
 
 export const ContainerChangePass = styled.div`
+  input {
+    margin-bottom: 12px;
+  }
   @media screen and (min-width: 1440px) {
     width: 100%;
   }
+`;
+export const FirstTitle = styled.h3`
+  margin-bottom: 12px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  color: ${variables.blackPrimary};
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.12;
 `;
 
 export const LabelInput = styled.label`
@@ -114,15 +130,15 @@ export const LabelInput = styled.label`
 export const InputStyle = styled.input`
   width: 100%;
   height: 44px;
-
   border: 1px solid #d7e3ff;
   color: #9ebbff;
   border-radius: 6px;
   margin: 0px 0px 16px 0px;
   font-size: 16px;
-
   padding: 16px 8px;
-
+  &.ttt {
+    margin-bottom: 24px;
+  }
   &:active,
   &:focus,
   &:hover {
@@ -132,7 +148,6 @@ export const InputStyle = styled.input`
   @media screen and (min-width: 768px) {
     width: 336px;
     height: 44px;
-    /* background-image: url() */
   }
 
   @media screen and (min-width: 1440px) {
@@ -166,10 +181,3 @@ export const ButtonSubmit = styled.button`
     height: 44px;
   }
 `;
-
-// color: var(--Primery-Color-Black, #2F2F2F);
-// font-family: Roboto;
-// font-size: 18px;
-// font-style: normal;
-// font-weight: 500;
-// line-height: 20px; /* 111.111% */

@@ -11,10 +11,13 @@ const {
 const initialState = {
   user: {
     email: "",
-    userName: null,
-    avatarURL: null,
+    userName: "",
+    avatarURL: "",
     gender: "male",
-    waterRate: null,
+    waterRate: 0,
+    outdatedPassword: "",
+    newPassword: "",
+    repetNewPassword: "",
   },
   token: null,
   isLogined: false,
