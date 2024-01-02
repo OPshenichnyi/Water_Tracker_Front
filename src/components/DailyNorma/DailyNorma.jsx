@@ -21,13 +21,27 @@ import TabletBottle2 from '../../images/TabletHomeBottle@2x.png';
 import DesktopBottle from '../../images/DesktopHomeBottle.png';
 import DesktopBottle2 from '../../images/DesktopHomeBottle@2x.png';
 import NewModal from 'components/AddEditWater/NewModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { modalScrollOff } from 'components/Utils/utils';
+import { useSelector } from 'react-redux';
+import { selectStageWater } from '../../redux/water/selector';
+import { toast } from 'react-toastify';
 
 export const DailyNorma = () => {
   const [open, setOpen] = useState(false);
+  const [alreadyShownToast, setAlreadyShownToast] = useState(false);
+
   modalScrollOff(open);
 
+  const { percentage } = useSelector(selectStageWater);
+
+  useEffect(() => {
+    if (percentage === 100 && !alreadyShownToast) {
+      toast.success('Congratulations. Daily water requirement has been reached!');
+      setAlreadyShownToast(true);
+    }
+  }, [percentage, alreadyShownToast]);
+  
   return (
     <Container>
       <NormaContainer>
@@ -58,7 +72,7 @@ export const DailyNorma = () => {
       <ProgressContainer>
         <WaterProgress>
           <p>Today</p>
-          <WaterMeter>
+          <WaterMeter percentage={percentage}>
             <div />
           </WaterMeter>
           <WaterInfo>
