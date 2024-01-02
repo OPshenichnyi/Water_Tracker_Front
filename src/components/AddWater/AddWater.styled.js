@@ -1,32 +1,7 @@
 import styled from 'styled-components';
 
-export const Modal = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%; 
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-`;
-export const Overlay = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  opacity: 1;
-   transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  /* backdrop-filter: blur(2px); */
-`;
-export const Content = styled.div`
+
+export const Wrapper = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;

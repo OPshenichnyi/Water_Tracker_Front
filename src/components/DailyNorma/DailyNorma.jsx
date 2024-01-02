@@ -11,37 +11,40 @@ import {
   WaterInfo,
   WaterMeter,
   AddWaterButton,
-} from './DailyNorma.styled';
-import sprite from '../../common/symbol-defs.svg';
+} from "./DailyNorma.styled";
+import sprite from "../../common/symbol-defs.svg";
 
-import MobileBottle from '../../images/MobileBottle.png';
-import MobileBottle2 from '../../images/MobileBottle@2x.png';
-import TabletBottle from '../../images/TabletHomeBottle.png';
-import TabletBottle2 from '../../images/TabletHomeBottle@2x.png';
-import DesktopBottle from '../../images/DesktopHomeBottle.png';
-import DesktopBottle2 from '../../images/DesktopHomeBottle@2x.png';
-import NewModal from 'components/AddEditWater/NewModal';
-import { useEffect, useState } from 'react';
-import { modalScrollOff } from 'components/Utils/utils';
-import { useSelector } from 'react-redux';
-import { selectStageWater } from '../../redux/water/selector';
-import { toast } from 'react-toastify';
+import MobileBottle from "../../images/MobileBottle.png";
+import MobileBottle2 from "../../images/MobileBottle@2x.png";
+import TabletBottle from "../../images/TabletHomeBottle.png";
+import TabletBottle2 from "../../images/TabletHomeBottle@2x.png";
+import DesktopBottle from "../../images/DesktopHomeBottle.png";
+import DesktopBottle2 from "../../images/DesktopHomeBottle@2x.png";
+import MainModal from "components/MainModal/MainModal";
+import ModalAddWater from "components/AddWater/AddWater";
+import { useEffect, useState } from "react";
+import { modalScrollOff } from "components/Utils/utils";
+import { useSelector } from "react-redux";
+import { selectStageWater } from "../../redux/water/selector";
+import { toast } from "react-toastify";
 
 export const DailyNorma = () => {
-  const [open, setOpen] = useState(false);
+  const [modalActive, setModalActive] = useState(false);
   const [alreadyShownToast, setAlreadyShownToast] = useState(false);
 
-  modalScrollOff(open);
+  modalScrollOff(modalActive);
 
   const { percentage } = useSelector(selectStageWater);
 
   useEffect(() => {
     if (percentage === 100 && !alreadyShownToast) {
-      toast.success('Congratulations. Daily water requirement has been reached!');
+      toast.success(
+        "Congratulations. Daily water requirement has been reached!"
+      );
       setAlreadyShownToast(true);
     }
   }, [percentage, alreadyShownToast]);
-  
+
   return (
     <Container>
       <NormaContainer>
@@ -81,14 +84,16 @@ export const DailyNorma = () => {
             <span>100%</span>
           </WaterInfo>
         </WaterProgress>
-        <AddWaterButton onClick={() => setOpen(s => !s)}>
+        <AddWaterButton onClick={() => setModalActive(true)}>
           <svg width={24} height={24}>
             <use href={`${sprite}#plus-circle`} />
           </svg>
           Add Water
         </AddWaterButton>
       </ProgressContainer>
-      <NewModal open={open} closeModal={() => setOpen(false)} />
+      <MainModal active={modalActive} setActive={setModalActive}>
+        <ModalAddWater closeModal={() => setModalActive(false)} />
+      </MainModal>
     </Container>
   );
 };
