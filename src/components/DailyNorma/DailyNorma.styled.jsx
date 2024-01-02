@@ -119,6 +119,8 @@ export const WaterProgress = styled.div`
   }
 `;
 
+
+
 export const WaterMeter = styled.div`
   position: relative;
   height: 8px;
@@ -127,30 +129,35 @@ export const WaterMeter = styled.div`
   padding: 0 20px 0 11px;
   border-radius: 10px;
   margin: 0 auto;
+  overflow: hidden;
+
   &::after {
     content: '';
     position: absolute;
     top: 50%;
-    left: 30%;
+    left: ${({ percentage }) => `calc(${percentage}%)`}; 
     transform: translate(-50%, -50%);
     width: 14px;
     height: 14px;
     background-color: ${variables.whitePrimary};
     border: 1px solid ${variables.bluePrimary};
     border-radius: 100%;
+    z-index: 1;
   }
-  div {
+
+  &::before {
+    content: '';
     position: absolute;
-    border-radius: 10px;
-
-    top: 0;
+    top: 50%;
     left: 0;
-
-    width: 30%;
+    transform: translate(-50%, -50%);
+    width: ${({ percentage }) => `${percentage * 2}%`};
     height: 100%;
-    background-color: ${variables.secondaryLightBlue};
+    background: ${variables.bluePrimary};
+    z-index: 0;
   }
 `;
+
 
 export const WaterInfo = styled.div`
   display: flex;
@@ -215,6 +222,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
+  padding-top: 40px;
   background-image: image-set(
     url(${MobileBubbles}) 1x,
     url(${MobileBubbles2}) 2x

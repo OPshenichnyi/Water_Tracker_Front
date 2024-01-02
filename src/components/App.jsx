@@ -17,6 +17,9 @@ import { useEffect } from "react";
 import { refreshUser } from "../redux/auth/authOperationApi";
 import SettingModal from "./SettingModal/SettingModal";
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -69,6 +72,7 @@ const App = () => {
           <Route path="/seting" element={<SettingModal />} />
         </Route>
       </Routes>
+      <ToastContainer />
       <GlobalStyle />
     </>
   );

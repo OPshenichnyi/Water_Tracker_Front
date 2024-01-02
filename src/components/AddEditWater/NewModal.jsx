@@ -26,10 +26,18 @@ import {
 import React, { useEffect, useState } from 'react';
 import icons from '../../common/symbol-defs.svg';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { addWaterVolume } from '../../redux/water/operations';
+import { selectAddWaterVolume } from '../../redux/water/selector'
+import { toast } from 'react-toastify';
+
 function ModalAddWater({ open, closeModal }) {
   const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [selectedTime, setSelectedTime] = useState(0);
+
+  const dispatch = useDispatch();
+  const waterData = useSelector(selectAddWaterVolume );
 
   const handleDecrease = () => {
     decrease(count, setCount);
@@ -53,6 +61,24 @@ function ModalAddWater({ open, closeModal }) {
 
   const handleTimeChange = e => {
     setSelectedTime(parseInt(e.target.value, 10));
+  };
+
+
+  const handleSave = () => {
+    if(count === 0) return toast.info("Amount of water- cannot be zero please enter a value!");
+ 
+    const hours = Math.floor(selectedTime / 60);
+    const minutes = selectedTime % 60;   
+    const currentDate = new Date();
+    currentDate.setHours(hours, minutes, 0, 0);
+   
+    const data = {
+      waterVolume: count,
+      date: currentDate.toISOString(),
+    };
+    toast.success('Data saved 👍')
+    dispatch(addWaterVolume(data));
+    closeModal();
   };
 
   if (!open) return null;
@@ -104,8 +130,8 @@ function ModalAddWater({ open, closeModal }) {
           placeholder={count}
         />
         <CountSaveBtnBottom>
-          <CounterBottom>{count}ml</CounterBottom>
-          <ButtonSave type="button">Save</ButtonSave>
+          <CounterBottom>{waterData.waterVolume}ml</CounterBottom>
+          <ButtonSave type="button"  onClick={handleSave}>Save</ButtonSave>
         </CountSaveBtnBottom>
       </Content>
     </Modal>,
