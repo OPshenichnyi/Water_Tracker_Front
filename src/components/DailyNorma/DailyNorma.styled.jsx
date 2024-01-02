@@ -236,6 +236,29 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   gap: 40px;
   padding-top: 24px;
+
+  @media screen and (min-width: 768px) {
+    gap: 40px;
+    padding-top: 40px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    gap: 32px;
+    padding-top: 20px;
+  }
+`;
+
+export const LayoutMainContainer = styled.div`
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  
   background-image: image-set(
     url(${MobileBubbles}) 1x,
     url(${MobileBubbles2}) 2x
@@ -244,8 +267,6 @@ export const HomeContainer = styled.div`
   background-position: top;
 
   @media screen and (min-width: 768px) {
-    gap: 40px;
-    padding-top: 40px;
     background-image: image-set(
       url(${TabletBubbles}) 1x,
       url(${TabletBubbles2}) 2x
@@ -257,10 +278,6 @@ export const HomeContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    flex-direction: row;
-    gap: 32px;
-    padding-top: 20px;
-
     background-image: image-set(
       url(${DesktopBubbles}) 1x,
       url(${DesktopBubbles2}) 2x
