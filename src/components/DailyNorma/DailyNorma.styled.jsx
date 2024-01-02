@@ -11,7 +11,6 @@ import DesktopBubbles2 from '../../images/DesktopBubblesBg@2x.jpg';
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  margin-top: 24px;
 
   img {
     margin: 0 auto;
@@ -236,7 +235,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  /* padding-top: 40px; */
+  padding-top: 24px;
   background-image: image-set(
     url(${MobileBubbles}) 1x,
     url(${MobileBubbles2}) 2x
@@ -246,6 +245,7 @@ export const HomeContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     gap: 40px;
+    padding-top: 40px;
     background-image: image-set(
       url(${TabletBubbles}) 1x,
       url(${TabletBubbles2}) 2x
@@ -259,6 +259,7 @@ export const HomeContainer = styled.div`
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 32px;
+    padding-top: 20px;
 
     background-image: image-set(
       url(${DesktopBubbles}) 1x,
