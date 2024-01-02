@@ -135,6 +135,9 @@ export const WaterProgress = styled.div`
   }
 `;
 
+//left: ${({ percentage }) => `calc(${percentage}%)`};
+//width: ${({ percentage }) => `${percentage}%`};
+
 export const WaterMeter = styled.div`
   position: relative;
   height: 8px;
@@ -143,8 +146,6 @@ export const WaterMeter = styled.div`
   padding: 0 20px 0 11px;
   border-radius: 10px;
   margin: 0 auto;
-  overflow: hidden;
-
   &::after {
     content: '';
     position: absolute;
@@ -156,19 +157,17 @@ export const WaterMeter = styled.div`
     background-color: ${variables.whitePrimary};
     border: 1px solid ${variables.bluePrimary};
     border-radius: 100%;
-    z-index: 1;
   }
-
-  &::before {
-    content: '';
+  div {
     position: absolute;
-    top: 50%;
+    border-radius: 10px;
+
+    top: 0;
     left: 0;
-    transform: translate(-50%, -50%);
-    width: ${({ percentage }) => `${percentage * 2}%`};
+
+    width: ${({ percentage }) => `${percentage}%`};
     height: 100%;
-    background: ${variables.bluePrimary};
-    z-index: 0;
+    background: ${variables.secondaryLightBlue};
   }
 `;
 
@@ -258,7 +257,7 @@ export const LayoutMainContainer = styled.div`
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center center;
-  
+
   background-image: image-set(
     url(${MobileBubbles}) 1x,
     url(${MobileBubbles2}) 2x
@@ -283,7 +282,6 @@ export const LayoutMainContainer = styled.div`
       url(${DesktopBubbles2}) 2x
     );
 
-    justify-content: center;
     background-repeat: no-repeat;
     background-position: center;
     align-items: end;
