@@ -58,10 +58,8 @@ const Today = () => {
                       </svg>
                     </ImageWrapper>
                   </TodayTableData>
-
                   <TextTableData>{waterRecord.waterVolume} ml</TextTableData>
                   <TimeTableData>{FormatTime(waterRecord.date)}</TimeTableData>
-
                   <TodayTableData>
                     <Button>
                       <svg width={16} height={16}>
@@ -85,7 +83,6 @@ const Today = () => {
           </AddWaterButton>
         </TableWrapper>
       </TodayContainer>
-
       <MainModal active={modalActive} setActive={setModalActive}>
         <ModalAddWater closeModal={() => setModalActive(false)} />
       </MainModal>
