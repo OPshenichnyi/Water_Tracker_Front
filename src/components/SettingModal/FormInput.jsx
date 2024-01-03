@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   ContainerGender,
   ContainerBlockSeting,
@@ -15,7 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import { AddSetingUser } from "../../redux/auth/authOperationApi";
 import changePassword from "../Utils/validationSchema";
-// import { toast } from "react-toastify";
 
 // ===================================================================
 export default function FormInput() {
@@ -49,24 +48,24 @@ export default function FormInput() {
       dispatch(AddSetingUser(fieldsToUpdate));
     },
   });
-  useEffect(() => {
-    formik.setValues({
-      userName: initialValues.userName,
-      email: initialValues.email,
-      gender: initialValues.gender,
-      oldPassword: initialValues.oldPassword,
-      newPassword: initialValues.newPassword,
-      confirmNewPassword: initialValues.confirmNewPassword,
-    });
-  }, [
-    initialValues.userName,
-    initialValues.email,
-    initialValues.gender,
-    initialValues.oldPassword,
-    initialValues.newPassword,
-    initialValues.confirmNewPassword,
-    formik.setValues,
-  ]);
+  // useEffect(() => {
+  //   formik.setValues({
+  //     userName: initialValues.userName,
+  //     email: initialValues.email,
+  //     gender: initialValues.gender,
+  //     oldPassword: initialValues.oldPassword,
+  //     newPassword: initialValues.newPassword,
+  //     confirmNewPassword: initialValues.confirmNewPassword,
+  //   });
+  // }, [
+  //   initialValues.userName,
+  //   initialValues.email,
+  //   initialValues.gender,
+  //   initialValues.oldPassword,
+  //   initialValues.newPassword,
+  //   initialValues.confirmNewPassword,
+  //   formik.setValues,
+  // ]);
 
   return (
     <>
