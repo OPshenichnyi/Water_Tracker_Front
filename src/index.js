@@ -21,5 +21,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </Provider>
   </React.StrictMode>
 );
-//
 // basename="/Water_Tracker_Front"
+//  fix
