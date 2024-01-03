@@ -5,11 +5,13 @@ import {
   DayUl,
   DayLi,
   DayNumber,
+  StatsWrapper,
   WaterPercentage,
   TodayDiv,
   CurrentMonth,
   MonthSwipe,
   MonthName,
+  MonthTitle,
 } from './MonthStatsTable.styled';
 
 const Month = () => {
@@ -27,9 +29,9 @@ const Month = () => {
       servingOfWater: 3,
     },
   ];
-  const [month] = useState(3); //setMonth
-  const [year] = useState(2023); //setYear
-  const [dataM] = useState(data); //setData
+  const [month] = useState(3);
+  const [year] = useState(2023);
+  const [dataM] = useState(data);
 
   function getDaysInMonth(month, year, data) {
     const days = new Date(year, month, 0).getDate();
@@ -47,33 +49,35 @@ const Month = () => {
     return arrData;
   }
 
-  const daysInMonth = getDaysInMonth(month, year, dataM); //month, year
+  const daysInMonth = getDaysInMonth(month, year, dataM); 
   return (
     <>
-      <TodayDiv>
-        <h2>Month</h2>
-        <CurrentMonth>
-          <MonthSwipe>
-            <svg width="14" height="14">
-              <use href={`${sprite}#arrow-left`}></use>
-            </svg>
-          </MonthSwipe>
-          <MonthName>February</MonthName>
-          <MonthSwipe>
-            <svg width="14" height="14">
-              <use href={`${sprite}#arrow-right`}></use>
-            </svg>
-          </MonthSwipe>
-        </CurrentMonth>
-      </TodayDiv>
-      <DayUl>
-        {daysInMonth.map(item => (
-          <DayLi key={nanoid()}>
-            <DayNumber>{item.day}</DayNumber>
-            <WaterPercentage>{item.dailyNormFulfillment}%</WaterPercentage>
-          </DayLi>
-        ))}
-      </DayUl>
+      <StatsWrapper>
+        <TodayDiv>
+          <MonthTitle>Month</MonthTitle>
+          <CurrentMonth>
+            <MonthSwipe>
+              <svg width="14" height="14">
+                <use href={`${sprite}#arrow-left`}></use>
+              </svg>
+            </MonthSwipe>
+            <MonthName>February</MonthName>
+            <MonthSwipe>
+              <svg width="14" height="14">
+                <use href={`${sprite}#arrow-right`}></use>
+              </svg>
+            </MonthSwipe>
+          </CurrentMonth>
+        </TodayDiv>
+        <DayUl>
+          {daysInMonth.map(item => (
+            <DayLi key={nanoid()}>
+              <DayNumber>{item.day}</DayNumber>
+              <WaterPercentage>{item.dailyNormFulfillment}%</WaterPercentage>
+            </DayLi>
+          ))}
+        </DayUl>
+      </StatsWrapper>
     </>
   );
 };

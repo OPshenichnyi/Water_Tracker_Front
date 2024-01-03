@@ -11,7 +11,23 @@ import DesktopBubbles2 from '../../images/DesktopBubblesBg@2x.jpg';
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  margin-top: 24px;
+
+  img {
+    margin: 0 auto;
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 1440px) {
+      margin-bottom: 24px;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 50%;
+    img {
+      height: 548px;
+      object-fit: cover;
+    }
+  }
 `;
 
 export const NormaContainer = styled.div`
@@ -24,7 +40,6 @@ export const NormaContainer = styled.div`
   border: 1px solid ${variables.secondaryLightGray};
 
   @media only screen and (min-width: 768px) {
-    /* display: flex; */
     justify-content: center;
   }
 
@@ -70,6 +85,11 @@ export const NormaButton = styled.button`
   line-height: 1.25;
   color: ${variables.editColorButton};
   background-color: transparent;
+
+  &:hover {
+    color: ${variables.secondaryLightOrange};
+    transition: color 250ms ease-in-out;
+  }
 `;
 export const ProgressContainer = styled.div`
   display: flex;
@@ -119,8 +139,6 @@ export const WaterProgress = styled.div`
   }
 `;
 
-
-
 export const WaterMeter = styled.div`
   position: relative;
   height: 8px;
@@ -129,35 +147,30 @@ export const WaterMeter = styled.div`
   padding: 0 20px 0 11px;
   border-radius: 10px;
   margin: 0 auto;
-  overflow: hidden;
-
   &::after {
     content: '';
     position: absolute;
     top: 50%;
-    left: ${({ percentage }) => `calc(${percentage}%)`}; 
+    left: ${({ percentage }) => `calc(${percentage}%)`};
     transform: translate(-50%, -50%);
     width: 14px;
     height: 14px;
     background-color: ${variables.whitePrimary};
     border: 1px solid ${variables.bluePrimary};
     border-radius: 100%;
-    z-index: 1;
   }
-
-  &::before {
-    content: '';
+  div {
     position: absolute;
-    top: 50%;
+    border-radius: 10px;
+
+    top: 0;
     left: 0;
-    transform: translate(-50%, -50%);
-    width: ${({ percentage }) => `${percentage * 2}%`};
+
+    width: ${({ percentage }) => `${percentage}%`};
     height: 100%;
-    background: ${variables.bluePrimary};
-    z-index: 0;
+    background: ${variables.secondaryLightBlue};
   }
 `;
-
 
 export const WaterInfo = styled.div`
   display: flex;
@@ -196,7 +209,6 @@ export const WaterInfo = styled.div`
 export const AddWaterButton = styled.button`
   display: flex;
   flex-direction: row;
-  /* padding: 6px 76px; */
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -213,6 +225,12 @@ export const AddWaterButton = styled.button`
   color: ${variables.whitePrimary};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
 
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+
+    transition: box-shadow 250ms ease-in-out;
+  }
+
   @media screen and (min-width: 1440px) {
     width: 178px;
   }
@@ -222,7 +240,30 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding-top: 40px;
+  padding-top: 24px;
+
+  @media screen and (min-width: 768px) {
+    gap: 40px;
+    padding-top: 40px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    gap: 32px;
+    padding-top: 20px;
+  }
+`;
+
+export const LayoutMainContainer = styled.div`
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+
   background-image: image-set(
     url(${MobileBubbles}) 1x,
     url(${MobileBubbles2}) 2x
@@ -231,7 +272,6 @@ export const HomeContainer = styled.div`
   background-position: top;
 
   @media screen and (min-width: 768px) {
-    gap: 40px;
     background-image: image-set(
       url(${TabletBubbles}) 1x,
       url(${TabletBubbles2}) 2x
@@ -243,15 +283,11 @@ export const HomeContainer = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    flex-direction: row;
-    gap: 32px;
-
     background-image: image-set(
       url(${DesktopBubbles}) 1x,
       url(${DesktopBubbles2}) 2x
     );
 
-    justify-content: center;
     background-repeat: no-repeat;
     background-position: center;
     align-items: end;

@@ -8,16 +8,17 @@ export const CalendarWrap = styled.div`
   display: flex;
   padding: 24px 8px;
   flex-direction: column;
-  /* gap: 24px; */
+  gap: 24px;
   width: 280px;
-  margin: 0px auto;
+  margin: 0 auto;
 
   @media screen and (min-width: 768px) {
     width: 704px;
     padding: 32px 24px;
   }
   @media screen and (min-width: 1440px) {
-    width: 100%;
+    align-self: normal;
+    width: 50%;
     padding: 32px 24px;
   }
 `;

@@ -1,12 +1,30 @@
 import { createGlobalStyle } from 'styled-components';
 import variables from './Variables';
-import Roboto from '../fonts/Roboto-Regular.woff2';
 
 export const GlobalStyle = createGlobalStyle`
 @font-face {
-  font-family: 'Roboto', sans-serif;
-  src: url(${Roboto}) format('woff2');
-       
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/Roboto-Regular.woff2') format('woff2'),
+    url('../fonts/Roboto-Regular.woff') format('woff'),
+    url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/Roboto-Medium.woff2') format('woff2'),
+    url('../fonts/Roboto-Medium.woff') format('woff'),
+    url('../fonts/Roboto-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/Roboto-Bold.woff2') format('woff2'),
+    url('../fonts/Roboto-Bold.woff') format('woff'),
+    url('../fonts/Roboto-Bold.ttf') format('truetype');
 }
 
 *,
@@ -18,7 +36,9 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", 
+			"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+			"Helvetica Neue", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: ${variables.blackPrimary};
