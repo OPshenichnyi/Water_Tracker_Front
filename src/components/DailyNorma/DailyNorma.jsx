@@ -31,22 +31,34 @@ import { selectIsUser } from '../../redux/auth/selectorsAuth';
 
 export const DailyNorma = () => {
   const [modalActive, setModalActive] = useState(false);
-  const [alreadyShownToast, setAlreadyShownToast] = useState(false);
+  // const [alreadyShownToast, setAlreadyShownToast] = useState(false);
 
   modalScrollOff(modalActive);
 
   const { percentage } = useSelector(selectStageWater);
-
+  const { waterRate } = useSelector(selectIsUser);
+  
+  // useEffect(() => {
+  //   if (percentage === 100 && !alreadyShownToast) {
+  //     toast.success(
+  //       'Congratulations. Daily water requirement has been reached!'
+  //     );
+  //     setAlreadyShownToast(true);
+  //   }
+  // }, [percentage, alreadyShownToast]);
   useEffect(() => {
-    if (percentage === 100 && !alreadyShownToast) {
+    const isToastAlreadyShown = localStorage.getItem('alreadyShownToast') === 'true';
+  
+    if (percentage === 100 && !isToastAlreadyShown) {
       toast.success(
         'Congratulations. Daily water requirement has been reached!'
       );
-      setAlreadyShownToast(true);
+      localStorage.setItem('alreadyShownToast', 'true');
+    } else if (percentage < 100 && isToastAlreadyShown) {
+      localStorage.setItem('alreadyShownToast', 'false');
     }
-  }, [percentage, alreadyShownToast]);
+  }, [percentage]);
 
-  const { waterRate } = useSelector(selectIsUser);
   return (
     <Container>
       <NormaContainer>
