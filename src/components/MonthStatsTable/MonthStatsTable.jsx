@@ -29,9 +29,9 @@ const Month = () => {
       servingOfWater: 3,
     },
   ];
-  const [month] = useState(3); //setMonth
-  const [year] = useState(2023); //setYear
-  const [dataM] = useState(data); //setData
+  const [month] = useState(3);
+  const [year] = useState(2023);
+  const [dataM] = useState(data);
 
   function getDaysInMonth(month, year, data) {
     const days = new Date(year, month, 0).getDate();
@@ -49,7 +49,7 @@ const Month = () => {
     return arrData;
   }
 
-  const daysInMonth = getDaysInMonth(month, year, dataM); //month, year
+  const daysInMonth = getDaysInMonth(month, year, dataM); 
   return (
     <>
       <StatsWrapper>

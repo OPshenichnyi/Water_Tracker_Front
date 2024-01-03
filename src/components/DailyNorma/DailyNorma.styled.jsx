@@ -40,7 +40,6 @@ export const NormaContainer = styled.div`
   border: 1px solid ${variables.secondaryLightGray};
 
   @media only screen and (min-width: 768px) {
-    /* display: flex; */
     justify-content: center;
   }
 
@@ -135,9 +134,6 @@ export const WaterProgress = styled.div`
   }
 `;
 
-//left: ${({ percentage }) => `calc(${percentage}%)`};
-//width: ${({ percentage }) => `${percentage}%`};
-
 export const WaterMeter = styled.div`
   position: relative;
   height: 8px;
@@ -208,7 +204,6 @@ export const WaterInfo = styled.div`
 export const AddWaterButton = styled.button`
   display: flex;
   flex-direction: row;
-  /* padding: 6px 76px; */
   justify-content: center;
   align-items: center;
   gap: 10px;
