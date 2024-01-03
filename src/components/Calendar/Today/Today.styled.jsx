@@ -117,38 +117,14 @@ export const TimeTableData = styled.td`
 `;
 
 export const Button = styled.button`
-  position: relative;
   fill: none;
   stroke: ${variables.secondaryLightBlue};
   margin: 4px;
   cursor: pointer;
-
-  &::after {
-    position: absolute;
-    content: '';
-    display: block;
-    width: 100%;
-    height: 1px;
-    border-radius: 1px;
-    bottom: 0px;
-    background-color: transparent;
-    transition: background-color 250ms ease-in-out;
-  }
-
-  &:hover {
-    &::after {
-      background-color: ${variables.secondaryLightBlue};
-    }
-  }
 `;
 
 export const TrashButton = styled(Button)`
   stroke: ${variables.secondaryRed};
-  &:hover {
-    &::after {
-      background-color: ${variables.secondaryRed};
-    }
-  }
 `;
 export const AddWaterButton = styled.button`
   cursor: pointer;
@@ -158,10 +134,10 @@ export const AddWaterButton = styled.button`
   padding: 12px 8px;
   color: ${variables.bluePrimary};
   background-color: transparent;
-
+  
   &:hover {
-    color: ${variables.secondaryLightOrange};
+    color:#FF9D43 ;
     cursor: pointer;
-    transition: color 250ms ease-in-out;
   }
+  
 `;
