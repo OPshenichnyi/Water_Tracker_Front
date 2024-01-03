@@ -13,24 +13,24 @@ import {
   ButtonSave,
   CountSaveBtnBottom,
   Wrapper,
-} from './AddWater.styled';
+} from "./AddWater.styled";
 import {
   decrease,
   generateTimeOptions,
   handleUpdateCount,
   setInitialTime,
-} from '../Utils/utils';
-import React, { useEffect, useState } from 'react';
-import icons from '../../common/symbol-defs.svg';
+} from "../Utils/utils";
+import React, { useEffect, useState } from "react";
+import icons from "../../common/symbol-defs.svg";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { addWaterVolume } from '../../redux/water/operations';
-import { selectAddWaterVolume } from '../../redux/water/selector';
-import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from "react-redux";
+import { addWaterVolume } from "../../redux/water/operations";
+import { selectAddWaterVolume } from "../../redux/water/selector";
+// import toast from "react-toastify";
 
 function AddWater({ closeModal }) {
   const [count, setCount] = useState(0);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [selectedTime, setSelectedTime] = useState(0);
 
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ function AddWater({ closeModal }) {
     decrease(count, setCount);
   };
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
 
@@ -56,23 +56,26 @@ function AddWater({ closeModal }) {
     setInitialTime(setSelectedTime);
   }, []);
 
-  const handleTimeChange = e => {
+  const handleTimeChange = (e) => {
     setSelectedTime(parseInt(e.target.value, 10));
   };
 
   const handleSave = () => {
-    if(count === 0) return toast.info("Amount of water- cannot be zero please enter a value!");
- 
+    if (count === 0)
+      return toast.info(
+        "Amount of water- cannot be zero please enter a value!"
+      );
+
     const hours = Math.floor(selectedTime / 60);
-    const minutes = selectedTime % 60;   
+    const minutes = selectedTime % 60;
     const currentDate = new Date();
     currentDate.setHours(hours, minutes, 0, 0);
-   
+
     const data = {
       waterVolume: count,
       date: currentDate.toISOString(),
     };
-    toast.success('Data saved 👍')
+    toast.success("Data saved 👍");
     dispatch(addWaterVolume(data));
     closeModal();
   };
@@ -82,7 +85,7 @@ function AddWater({ closeModal }) {
       <BlockTop>
         <BlockTitle> Add water</BlockTitle>
         <ButtonClose onClick={closeModal}>
-          {' '}
+          {" "}
           <svg width={12} height={12} stroke="#407BFF">
             <use href={`${icons}#icon-cross`} />
           </svg>
