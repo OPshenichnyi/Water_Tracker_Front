@@ -3,18 +3,23 @@ import variables from "common/Variables";
 
 export const Container = styled.div`
   margin: auto;
-  width: 100%;
+  width: 280px;
+  height: 852px;
   padding: 32px 12px;
   border-radius: 10px;
+  background-color: #fff;
+
   @media screen and (min-width: 768px) {
-    max-width: 704px;
+    width: 704px;
+    height: 860px;
     padding: 32px 24px;
-    /* background-color: #f2f2f2; */
+    border-radius: 10px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1008px;
-    max-height: 592px;
+    width: 1008px;
+    height: 592px;
+    border-radius: 10px;
   }
 `;
 
@@ -120,6 +125,7 @@ export const FirstTitle = styled.h3`
 `;
 
 export const LabelInput = styled.label`
+  width: 392px;
   font-size: 18px;
   display: flex;
   flex-direction: column;
@@ -136,6 +142,9 @@ export const InputStyle = styled.input`
   margin: 0px 0px 16px 0px;
   font-size: 16px;
   padding: 16px 8px;
+  &.input-error {
+    border: 1px solid red;
+  }
   &.ttt {
     margin-bottom: 24px;
   }
@@ -157,14 +166,13 @@ export const InputStyle = styled.input`
 `;
 
 export const ButtonSubmit = styled.button`
-  height: 36px;
   color: #ffffff;
   background-color: #407bff;
   border-radius: 10px;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   box-shadow: 0 4px 8px rgba(64, 123, 255, 0.34);
-  width: 280px;
+  width: 256px;
   height: 36px;
   margin-left: auto;
 

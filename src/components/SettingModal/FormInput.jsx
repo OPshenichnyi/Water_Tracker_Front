@@ -1,7 +1,5 @@
 import { useFormik } from "formik";
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectIsUser } from "../../redux/auth/selectorsAuth";
+import React, { useEffect } from "react";
 import {
   ContainerGender,
   ContainerBlockSeting,
@@ -13,65 +11,63 @@ import {
   FirstTitle,
 } from "./SettingModal.styled";
 import { TitleNameSet } from "./Component/ComponentSeting";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsUser } from "../../redux/auth/selectorsAuth";
+import { AddSetingUser } from "../../redux/auth/authOperationApi";
+import changePassword from "../Utils/validationSchema";
+// import { toast } from "react-toastify";
 
+// ===================================================================
 export default function FormInput() {
-  const stateUser = useSelector(selectIsUser);
-  console.log(stateUser);
+  const dispatch = useDispatch();
+  const { userName, email: mail, gender } = useSelector(selectIsUser);
 
-  const handleSubmit = (values) => {
-    const dataToSend = {};
-    Object.keys(values).forEach((key) => {
-      if (values[key] !== stateUser[key]) {
-        dataToSend[key] = values[key];
-      }
-    });
-    console.log(dataToSend);
+  const initialValues = {
+    userName,
+    email: mail,
+    gender,
+    oldPassword: "",
+    newPassword: "",
+    confirmNewPassword: "",
   };
-  // const chekValueInput = (values) => {
-  //   const {
-  //     userName,
-  //     email,
-  //     gender,
-  //     outdatedPassword,
-  //     newPassword,
-  //     repetNewPassword,
-  //   } = values;
-  //   console.log(typeof gender);
-  //   const req = {};
-  //   if (outdatedPassword && newPassword === repetNewPassword) {
-  //     Object.assign(req, { outdatedPassword, newPassword, repetNewPassword });
-  //   }
-  //   if (userName) {
-  //     Object.assign(req, { userName });
-  //   }
-  //   if (email) {
-  //     Object.assign(req, { email });
-  //   }
-  //   if (gender) {
-  //     Object.assign(req, { gender });
-  //   }
-  //   if (Object.keys(req).length !== 0) {
-  //     console.log(req);
-  //   }
-  //   return;
-  // };
 
   const formik = useFormik({
-    initialValues: {
-      userName: stateUser.userName,
-      email: stateUser.email,
-      gender: stateUser.gender,
-      outdatedPassword: stateUser.outdatedPassword,
-      newPassword: stateUser.newPassword,
-      repetNewPassword: stateUser.repetNewPassword,
-    },
+    initialValues: initialValues,
+    validationSchema: changePassword,
 
-    onSubmit: (values, { setSubmitting }, actions) => {
-      handleSubmit(values);
-      setSubmitting(false);
-      // actions.resetForm(true);
+    onSubmit: (values) => {
+      const fieldsToUpdate = {};
+
+      for (const key in initialValues) {
+        if (initialValues[key] !== values[key]) {
+          fieldsToUpdate[key] = values[key];
+        }
+      }
+      const isEmpty = Object.keys(fieldsToUpdate).length === 0;
+      if (isEmpty) {
+      }
+      dispatch(AddSetingUser(fieldsToUpdate));
     },
   });
+  useEffect(() => {
+    formik.setValues({
+      userName: initialValues.userName,
+      email: initialValues.email,
+      gender: initialValues.gender,
+      oldPassword: initialValues.oldPassword,
+      newPassword: initialValues.newPassword,
+      confirmNewPassword: initialValues.confirmNewPassword,
+    });
+  }, [
+    initialValues.userName,
+    initialValues.email,
+    initialValues.gender,
+    initialValues.oldPassword,
+    initialValues.newPassword,
+    initialValues.confirmNewPassword,
+    formik.setValues,
+  ]);
+
   return (
     <>
       <ContainerBlockSeting>
@@ -83,8 +79,8 @@ export default function FormInput() {
                 <input
                   type="radio"
                   name="gender"
-                  value="female"
-                  checked={formik.values.gender}
+                  value="girl"
+                  checked={formik.values.gender === "girl"}
                   onChange={formik.handleChange}
                 />
                 <label>Girl</label>
@@ -93,8 +89,8 @@ export default function FormInput() {
                 <input
                   type="radio"
                   name="gender"
-                  value="male"
-                  checked={formik.values.gender}
+                  value="man"
+                  checked={formik.values.gender === "man"}
                   onChange={formik.handleChange}
                 />
                 <label>Man</label>
@@ -123,37 +119,55 @@ export default function FormInput() {
         <ContainerChangePass>
           <form onSubmit={formik.handleSubmit}>
             <FirstTitle>Password</FirstTitle>
-            <LabelInput htmlFor="outdatedPassword">
-              Outdated password:
-            </LabelInput>
+            <LabelInput htmlFor="oldPassword">Outdated password:</LabelInput>
             <InputStyle
-              id="outdatedPassword"
-              name="outdatedPassword"
-              type="text"
+              id="oldPassword"
+              name="oldPassword"
+              type="password"
               onChange={formik.handleChange}
-              value={formik.values.outdatedPassword}
+              value={formik.values.oldPassword}
+              onBlur={formik.handleBlur}
+              className={
+                formik.touched.confirmNewPassword &&
+                formik.errors.confirmNewPassword
+                  ? "input-error"
+                  : ""
+              }
             />
 
             <LabelInput htmlFor="newPassword">New Password:</LabelInput>
             <InputStyle
               id="newPassword"
               name="newPassword"
-              type="text"
+              type="password"
               onChange={formik.handleChange}
               value={formik.values.newPassword}
+              onBlur={formik.handleBlur}
+              className={
+                formik.touched.confirmNewPassword &&
+                formik.errors.confirmNewPassword
+                  ? "input-error"
+                  : ""
+              }
             />
 
-            <LabelInput htmlFor="repetNewPassword">
+            <LabelInput htmlFor="confirmNewPassword">
               Repeat new password:
             </LabelInput>
             <InputStyle
-              id="repetNewPassword"
-              name="repetNewPassword"
-              type="text"
+              id="confirmNewPassword"
+              name="confirmNewPassword"
+              type="password"
               onChange={formik.handleChange}
-              value={formik.values.repetNewPassword}
+              value={formik.values.confirmNewPassword}
+              onBlur={formik.handleBlur}
+              className={
+                formik.touched.confirmNewPassword &&
+                formik.errors.confirmNewPassword
+                  ? "input-error"
+                  : ""
+              }
             />
-
             <div>
               <ButtonSubmit type="submit">Save</ButtonSubmit>
             </div>

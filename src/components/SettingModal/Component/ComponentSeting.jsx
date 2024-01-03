@@ -10,10 +10,10 @@ export const TitleNameSet = ({ title }) => {
   );
 };
 
-export const BtnClose = () => {
+export const BtnClose = ({ closeModal }) => {
   return (
     <>
-      <ButtonClose>
+      <ButtonClose onClick={closeModal}>
         <svg width={12} height={12} stroke="#407BFF">
           <use href={`${sprite}#icon-cross`} />
         </svg>

@@ -14,10 +14,11 @@ import FormInput from "./FormInput";
 import { TitleNameSet, BtnClose } from "./Component/ComponentSeting";
 import sprite from "../../common/symbol-defs.svg";
 
-const SettingModal = () => {
+const SettingModal = ({ closeModal }) => {
+  const dispatch = useDispatch();
+
   const { avatarURL } = useSelector(selectIsUser);
   const fileInputRef = React.useRef();
-  const dispatch = useDispatch();
 
   // Function select file and write to State
   const handleFileChange = (event) => {
@@ -36,11 +37,13 @@ const SettingModal = () => {
   const handleLinkClick = () => {
     fileInputRef.current.click();
   };
+
   return (
     <Container>
       <TitleContainer>
         <h2>Setting</h2>
-        <BtnClose></BtnClose>
+
+        <BtnClose closeModal={closeModal}></BtnClose>
       </TitleContainer>
       <TitleNameSet title={"Your photo"}></TitleNameSet>
       <ContainerAvatar>
