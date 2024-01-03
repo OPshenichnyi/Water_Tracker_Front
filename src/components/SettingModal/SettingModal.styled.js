@@ -3,18 +3,23 @@ import variables from "common/Variables";
 
 export const Container = styled.div`
   margin: auto;
-  width: 100%;
+  width: 280px;
+  height: 852px;
   padding: 32px 12px;
   border-radius: 10px;
+  background-color: #fff;
+
   @media screen and (min-width: 768px) {
-    max-width: 704px;
+    width: 704px;
+    height: 860px;
     padding: 32px 24px;
-    background-color: #f2f2f2;
+    border-radius: 10px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1008px;
-    max-height: 592px;
+    width: 1008px;
+    height: 592px;
+    border-radius: 10px;
   }
 `;
 
@@ -24,14 +29,11 @@ export const TitleContainer = styled.div`
   margin-bottom: 24px;
   h2 {
     font-size: 26px;
-    font-weight: 500;
+    font-weight: bold;
     font-style: normal;
     line-height: 1.24;
     color: ${variables.blackPrimary};
-  }
-
-  @media screen and (min-width: 768px) {
-    h3 {
+    @media screen and (min-width: 768px) {
       font-size: 26px;
       line-height: 1.23;
     }
@@ -57,29 +59,39 @@ export const InputImg = styled.input`
 `;
 
 export const LinkImgUpload = styled.span`
-  color: #407bff;
+  color: ${variables.bluePrimary};
   cursor: pointer;
   margin-left: 8px;
   font-family: Roboto;
   font-size: 14px;
   font-style: normal;
-  font-weight: 500;
-`;
-
-export const TitleH5 = styled.h5`
-  margin-bottom: 12px;
-  color: ${variables.blackPrimary};
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.12;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  svg {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    fill: none;
+  }
 `;
 
 // ================== STYLE FORM FILE FormInput ================
 export const ContainerGender = styled.div`
   display: flex;
+  margin-bottom: 24px;
+  width: 152px;
+  height: 20px;
+  label:first-child {
+    margin-right: 24px;
+  }
+  input:first-child {
+    margin-right: 8px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 52px;
+  }
 `;
-
-export const BoxGender = styled.label``;
 
 export const ContainerBlockSeting = styled.div`
   @media screen and (min-width: 1440px) {
@@ -95,30 +107,47 @@ export const ContainerInfoUser = styled.div`
 `;
 
 export const ContainerChangePass = styled.div`
+  input {
+    margin-bottom: 12px;
+  }
   @media screen and (min-width: 1440px) {
     width: 100%;
   }
 `;
+export const FirstTitle = styled.h3`
+  margin-bottom: 12px;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  color: ${variables.blackPrimary};
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.12;
+`;
 
 export const LabelInput = styled.label`
+  width: 392px;
   font-size: 18px;
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 8px;
 `;
 
 export const InputStyle = styled.input`
   width: 100%;
   height: 44px;
-
   border: 1px solid #d7e3ff;
   color: #9ebbff;
   border-radius: 6px;
-  margin: 8px 0px 16px 0px;
+  margin: 0px 0px 16px 0px;
   font-size: 16px;
-
   padding: 16px 8px;
-
+  &.input-error {
+    border: 1px solid red;
+  }
+  &.ttt {
+    margin-bottom: 24px;
+  }
   &:active,
   &:focus,
   &:hover {
@@ -128,7 +157,6 @@ export const InputStyle = styled.input`
   @media screen and (min-width: 768px) {
     width: 336px;
     height: 44px;
-    /* background-image: url() */
   }
 
   @media screen and (min-width: 1440px) {
@@ -138,14 +166,13 @@ export const InputStyle = styled.input`
 `;
 
 export const ButtonSubmit = styled.button`
-  height: 36px;
   color: #ffffff;
   background-color: #407bff;
   border-radius: 10px;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   box-shadow: 0 4px 8px rgba(64, 123, 255, 0.34);
-  width: 280px;
+  width: 256px;
   height: 36px;
   margin-left: auto;
 

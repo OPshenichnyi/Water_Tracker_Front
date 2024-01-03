@@ -6,15 +6,16 @@ const {
   logOut,
   refreshUser,
   AddAvatar,
+  AddSetingUser,
 } = require("./authOperationApi");
 
 const initialState = {
   user: {
     email: "",
-    userName: null,
-    avatarURL: null,
+    userName: "",
+    avatarURL: "",
     gender: "man",
-    waterRate: null,
+    waterRate: 0,
   },
   token: null,
   isLogined: false,
@@ -62,6 +63,11 @@ const authSlice = createSlice({
     });
     builder.addCase(AddAvatar.fulfilled, (state, action) => {
       state.user.avatarURL = action.payload.avatarURL;
+    });
+    builder.addCase(AddSetingUser.fulfilled, (state, action) => {
+      state.user.userName = action.payload.userName;
+      state.user.email = action.payload.email;
+      state.user.gender = action.payload.gender;
     });
   },
 });

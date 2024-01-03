@@ -8,16 +8,17 @@ import {
   ContainerAvatar,
   InputImg,
   LinkImgUpload,
-  TitleH5,
 } from "./SettingModal.styled";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import FormInput from "./FormInput";
+import { TitleNameSet, BtnClose } from "./Component/ComponentSeting";
 import sprite from "../../common/symbol-defs.svg";
 
-const SettingModal = () => {
+const SettingModal = ({ closeModal }) => {
+  const dispatch = useDispatch();
+
   const { avatarURL } = useSelector(selectIsUser);
   const fileInputRef = React.useRef();
-  const dispatch = useDispatch();
 
   // Function select file and write to State
   const handleFileChange = (event) => {
@@ -36,15 +37,15 @@ const SettingModal = () => {
   const handleLinkClick = () => {
     fileInputRef.current.click();
   };
+
   return (
     <Container>
       <TitleContainer>
-        <h3>Setting</h3>
-        <svg width={24} height={24} stroke="#407BFF">
-          <use href={`${sprite}#icon-cross`} />
-        </svg>
+        <h2>Setting</h2>
+
+        <BtnClose closeModal={closeModal}></BtnClose>
       </TitleContainer>
-      <TitleH5>Your photo</TitleH5>
+      <TitleNameSet title={"Your photo"}></TitleNameSet>
       <ContainerAvatar>
         <Avatar
           src={avatarURL}
@@ -53,7 +54,12 @@ const SettingModal = () => {
           height="80"
         ></Avatar>
         <InputImg type="file" ref={fileInputRef} onChange={handleFileChange} />
-        <LinkImgUpload onClick={handleLinkClick}>Upload a photo</LinkImgUpload>
+        <LinkImgUpload onClick={handleLinkClick}>
+          <svg width={16} height={16} stroke="#407BFF">
+            <use href={`${sprite}#upload`} />
+          </svg>
+          Upload a photo
+        </LinkImgUpload>
       </ContainerAvatar>
       <FormInput></FormInput>
     </Container>

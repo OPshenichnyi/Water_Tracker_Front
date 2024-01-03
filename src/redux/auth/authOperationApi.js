@@ -85,3 +85,16 @@ export const AddAvatar = createAsyncThunk(
     }
   }
 );
+
+export const AddSetingUser = createAsyncThunk(
+  "auth/settings",
+  async (credentials, thunkAPI) => {
+    console.log(credentials);
+    try {
+      const response = await axios.patch("/users", credentials);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
