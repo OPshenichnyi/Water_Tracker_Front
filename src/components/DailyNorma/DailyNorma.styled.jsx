@@ -85,6 +85,11 @@ export const NormaButton = styled.button`
   line-height: 1.25;
   color: ${variables.editColorButton};
   background-color: transparent;
+
+  &:hover {
+    color: ${variables.secondaryLightOrange};
+    transition: color 250ms ease-in-out;
+  }
 `;
 export const ProgressContainer = styled.div`
   display: flex;
@@ -219,6 +224,12 @@ export const AddWaterButton = styled.button`
   background-color: ${variables.bluePrimary};
   color: ${variables.whitePrimary};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+
+    transition: box-shadow 250ms ease-in-out;
+  }
 
   @media screen and (min-width: 1440px) {
     width: 178px;
