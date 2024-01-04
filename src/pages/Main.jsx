@@ -1,6 +1,6 @@
 
 
-import BasicModalEdit from "components/EditWaterModal/EditWaterModal"
+
 import { Main } from "components/Main/Main"
 
 
@@ -10,7 +10,7 @@ return (
 <div>
     <Main/>
     
-        <BasicModalEdit />
+       
         
     </div>
 )
