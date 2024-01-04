@@ -4,6 +4,10 @@ import axios from 'axios';
 const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OGVhNDVhMmM4NGQ0MzYyMzE2ZDQxMCIsImlhdCI6MTcwMzkzMDQxMywiZXhwIjoxNzA0MDE2ODEzfQ.W-a3ClB7NJs8Azphx6KnJsRh94fsRQqC8XN5jWhEiL8"
 const apiBaseUrl = 'https://db-water-tracker.onrender.com/api';
 
+export const getUserId = (owner) => {
+  return { owner };
+};
+
 export const addWaterVolume = createAsyncThunk('water/addWaterVolume', async (data, thunkAPI) => {
   try {
     const response = await axios.post(`${apiBaseUrl}/water`, data);
@@ -39,10 +43,6 @@ export const deleteWaterVolume = createAsyncThunk('water/deleteWaterVolume', asy
 });
 
 
-export const getUserId = (owner) => {
-  return { owner };
-};
-
 export const fetchWaterDataToday = createAsyncThunk('water/fetchWaterDataToday', async (_, thunkAPI) => {
   try {
     const userId = getUserId();
@@ -56,3 +56,18 @@ export const fetchWaterDataToday = createAsyncThunk('water/fetchWaterDataToday',
     return thunkAPI.rejectWithValue(error.message)
   }
 });
+
+export const waterMonts = createAsyncThunk(
+  "auth/monts",
+
+  async (date, thunkAPI) => {
+    try {
+      const res = await axios.get(`${apiBaseUrl}/month/${date}`);
+      console.log("res.data", res.data.result);
+      return res.data.result;
+    } catch (error) {
+      console.log(error.message);
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+);
