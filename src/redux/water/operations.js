@@ -4,6 +4,10 @@ import axios from 'axios';
 const token= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OGVhNDVhMmM4NGQ0MzYyMzE2ZDQxMCIsImlhdCI6MTcwMzkzMDQxMywiZXhwIjoxNzA0MDE2ODEzfQ.W-a3ClB7NJs8Azphx6KnJsRh94fsRQqC8XN5jWhEiL8"
 const apiBaseUrl = 'https://db-water-tracker.onrender.com/api';
 
+export const getUserId = (owner) => {
+  return { owner };
+};
+
 export const addWaterVolume = createAsyncThunk('water/addWaterVolume', async (data, thunkAPI) => {
   try {
     const response = await axios.post(`${apiBaseUrl}/water`, data);
@@ -39,10 +43,6 @@ export const deleteWaterVolume = createAsyncThunk('water/deleteWaterVolume', asy
 });
 
 
-export const getUserId = (owner) => {
-  return { owner };
-};
-
 export const fetchWaterDataToday = createAsyncThunk('water/fetchWaterDataToday', async (_, thunkAPI) => {
   try {
     const userId = getUserId();
@@ -56,3 +56,30 @@ export const fetchWaterDataToday = createAsyncThunk('water/fetchWaterDataToday',
     return thunkAPI.rejectWithValue(error.message)
   }
 });
+const setJwtHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+export const waterMonts = createAsyncThunk(
+  "auth/monts",
+
+  async (date, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue("Unable to fetch user");
+    }
+    try {
+      // console.log("mhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhho")
+      setJwtHeader(persistedToken);
+      const res = await axios.get(`${apiBaseUrl}/month/${date}`);
+      // console.log("hhhhhhhhhhhhhhhhhhhh")
+      thunkAPI.dispatch(waterMonts(date));
+      return res.data.result;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+);
