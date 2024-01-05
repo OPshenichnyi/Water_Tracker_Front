@@ -37,7 +37,7 @@ import { FormatTime } from '../Calendar/FormatTime/FormatTime';
 
 
 
-export default function EditWater({ closeModal, id}) {
+export default function EditWater({ closeModal}) {
   const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [selectedTime, setSelectedTime] = useState(0);
