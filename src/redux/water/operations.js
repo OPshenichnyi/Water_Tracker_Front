@@ -63,11 +63,13 @@ export const waterMonts = createAsyncThunk(
   async (date, thunkAPI) => {
     
     try {
+     
       const res = await axios.get(`${apiBaseUrl}/month/${date}`);
+      console.log("hhhhhhhhhhhhhhhhhhhh")
       thunkAPI.dispatch(waterMonts(date));
       return res.data.result;
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
       return thunkAPI.rejectWithValue(error.message)
     }
   }
