@@ -99,8 +99,13 @@ const waterSlice = createSlice({
       })
       .addCase(waterMonts.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        if (action.error && action.error.message.includes('404')) {
+          state.mounthHistory = [];
+        } else {
+          state.error = action.error.message;
+        }
       });
+      
   },
 });
 

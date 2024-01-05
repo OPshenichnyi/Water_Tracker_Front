@@ -28,11 +28,21 @@ const Month = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    setData(mounthHistory);
+    console.log(mounthHistory)
+    setData(mounthHistory );
   }, [mounthHistory]);
 
   useEffect(() => {
-    dispatch(waterMonts(`${year}-${month}`));
+    const fetchData = async () => {
+      try {
+        const currentDate = moment().format('YYYY-MM-DD');
+        await dispatch(waterMonts(currentDate));
+
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };  
+    fetchData();
   }, [dispatch, month, year]);
 
   function getDaysInMonth(month, year, data) {

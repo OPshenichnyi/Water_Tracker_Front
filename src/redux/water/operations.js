@@ -89,6 +89,7 @@ export const waterMonts = createAsyncThunk(
     try {
       setJwtHeader(persistedToken);
       const res = await axios.get(`${apiBaseUrl}/month/${date}`);
+      console.log('Response data:', res.data);
       return res.data.result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
