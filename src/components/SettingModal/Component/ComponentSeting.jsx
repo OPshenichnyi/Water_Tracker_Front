@@ -60,7 +60,7 @@ export const InputPassword = ({ formik, id, name, placeholder, value }) => {
           height={16}
           onClick={togglePasswordVisibility}
         >
-          <use href={`${sprite}#eye`} />
+          <use href={`${sprite}#eye-open`} />
         </InputPasswordSvg>
       ) : (
         <InputPasswordSvg
@@ -68,7 +68,7 @@ export const InputPassword = ({ formik, id, name, placeholder, value }) => {
           height={16}
           onClick={togglePasswordVisibility}
         >
-          <use href={`${sprite}#close`} />
+          <use href={`${sprite}#eye`} />
         </InputPasswordSvg>
       )}
     </InputContainer>
