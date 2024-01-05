@@ -27,9 +27,11 @@ import { useSelector } from 'react-redux';
 import { selectStageWater } from '../../redux/water/selector';
 import { toast } from 'react-toastify';
 import { selectIsUser } from '../../redux/auth/selectorsAuth';
+import EditDailyNorma from 'components/EditDailyNorma/EditDailyNorma';
 
 export const DailyNorma = () => {
   const [modalActive, setModalActive] = useState(false);
+  const [modalDailyActive, setmodalDailyActive] = useState(false);
   // const [alreadyShownToast, setAlreadyShownToast] = useState(false);
 
   modalScrollOff(modalActive);
@@ -64,7 +66,7 @@ export const DailyNorma = () => {
         <NormaTitle>My daily norma</NormaTitle>
         <DailyNormaWrapper>
           <NormaP>{waterRate / 1000} L</NormaP>
-          <NormaButton>Edit</NormaButton>
+          <NormaButton onClick={() => setmodalDailyActive(true)}>Edit</NormaButton>
         </DailyNormaWrapper>
       </NormaContainer>
       <picture>
@@ -106,6 +108,9 @@ export const DailyNorma = () => {
       </ProgressContainer>
       <MainModal active={modalActive} setActive={setModalActive}>
         <ModalAddWater closeModal={() => setModalActive(false)} />
+      </MainModal>
+      <MainModal active={modalDailyActive} setActive={setmodalDailyActive}>
+        <EditDailyNorma closeModal={() => setmodalDailyActive(false)}  />
       </MainModal>
     </Container>
   );
