@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addWaterVolume, deleteWaterVolume, updateWaterVolume, fetchWaterDataToday } from './operations';
+import { addWaterVolume, deleteWaterVolume, updateWaterVolume, fetchWaterDataToday, waterMonts } from './operations';
 
 import { getUserId } from '../water/operations';
 
@@ -13,6 +13,7 @@ import { getUserId } from '../water/operations';
       owner: null, 
     },
     history: [], 
+    mounthHistory: [],
     loading: false,
     error: null,
   },
@@ -75,6 +76,21 @@ import { getUserId } from '../water/operations';
         } 
       })
       .addCase(fetchWaterDataToday.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+
+
+      .addCase(waterMonts.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(waterMonts.fulfilled, (state, action) => {
+        state.loading = false;      
+        state.mounthHistory = action.payload;
+
+      })
+      .addCase(waterMonts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
