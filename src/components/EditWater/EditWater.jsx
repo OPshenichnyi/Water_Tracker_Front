@@ -22,7 +22,7 @@ import {
   
   DataWater,
   DataTime,
-} from './.styled';
+} from './EditWater.styled';
 import {
   decrease,
   generateTimeOptions,
