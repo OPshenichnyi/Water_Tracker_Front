@@ -88,13 +88,7 @@ import { getUserId } from '../water/operations';
       .addCase(waterMonts.fulfilled, (state, action) => {
         state.loading = false;      
         state.mounthHistory = action.payload;
-        console.log("hhhhhhhhhhhhhhhhh", state.mounthHistory)           
-        // if (action.payload && action.payload.result && action.payload.result.length > 0) {
-        //      state.mounthHistory = action.payload.result;
-        //      console.log("hhhhhhhhhhhhhhhhh", state.mounthHistory)
-        //  } else {
-        //    state.mounthHistory = []; 
-        // }
+
       })
       .addCase(waterMonts.rejected, (state, action) => {
         state.loading = false;
