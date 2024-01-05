@@ -1,7 +1,15 @@
 import React from "react";
-import { TitleName, ButtonClose } from "../Component/ComponentSetingStyled";
+import {
+  TitleName,
+  ButtonClose,
+  InputContainer,
+  InputStyle,
+  InputPasswordSvg,
+} from "../Component/ComponentSetingStyled";
 import sprite from "../../../common/symbol-defs.svg";
+import { useState } from "react";
 
+// ================= Component Title ============================
 export const TitleNameSet = ({ title }) => {
   return (
     <>
@@ -10,6 +18,7 @@ export const TitleNameSet = ({ title }) => {
   );
 };
 
+// ================= Component Btn Close Modal (X) ===============
 export const BtnClose = ({ closeModal }) => {
   return (
     <>
@@ -19,5 +28,49 @@ export const BtnClose = ({ closeModal }) => {
         </svg>
       </ButtonClose>
     </>
+  );
+};
+
+// ================= Component Btn Close Modal (X) ===============
+export const InputPassword = ({ formik, id, name, placeholder, value }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    if (showPassword === false) {
+      setShowPassword(true);
+    }
+    if (showPassword === true) {
+      setShowPassword(false);
+    }
+  };
+  return (
+    <InputContainer>
+      <InputStyle
+        id={id}
+        name={name}
+        type={showPassword ? "text" : "password"}
+        onChange={formik.handleChange}
+        value={value}
+        onBlur={formik.handleBlur}
+        placeholder={placeholder}
+      />
+      {showPassword ? (
+        <InputPasswordSvg
+          width={16}
+          height={16}
+          onClick={togglePasswordVisibility}
+        >
+          <use href={`${sprite}#eye`} />
+        </InputPasswordSvg>
+      ) : (
+        <InputPasswordSvg
+          width={16}
+          height={16}
+          onClick={togglePasswordVisibility}
+        >
+          <use href={`${sprite}#close`} />
+        </InputPasswordSvg>
+      )}
+    </InputContainer>
   );
 };

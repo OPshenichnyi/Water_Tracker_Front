@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import sprite from '../../../common/symbol-defs.svg';
+import { useState } from "react";
+import sprite from "../../../common/symbol-defs.svg";
 import {
   TodayContainer,
   TodayHeader,
@@ -13,15 +13,15 @@ import {
   TextTableData,
   TimeTableData,
   AddWaterButton,
-} from './Today.styled';
-import React, { useEffect } from 'react';
-import { modalScrollOff } from 'components/Utils/utils';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchWaterDataToday } from '../../../redux/water/operations';
-import { FormatTime } from '../FormatTime/FormatTime';
-import { selectTakeWaterHistory } from '../../../redux/water/selector';
-import MainModal from 'components/MainModal/MainModal';
-import ModalAddWater from 'components/AddWater/AddWater';
+} from "./Today.styled";
+import React, { useEffect } from "react";
+import { modalScrollOff } from "components/Utils/utils";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchWaterDataToday } from "../../../redux/water/operations";
+import { FormatTime } from "../FormatTime/FormatTime";
+import { selectTakeWaterHistory } from "../../../redux/water/selector";
+import MainModal from "components/MainModal/MainModal";
+import ModalAddWater from "components/AddWater/AddWater";
 
 const Today = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -35,7 +35,7 @@ const Today = () => {
       try {
         await dispatch(fetchWaterDataToday());
       } catch (error) {
-        console.error('Error getting water data in useEffect:', error);
+        console.error("Error getting water data in useEffect:", error);
       }
     };
 
@@ -49,7 +49,7 @@ const Today = () => {
         <TableWrapper>
           <TodayTable>
             <tbody>
-              {waterData.map(waterRecord => (
+              {waterData.map((waterRecord) => (
                 <TableRow key={waterRecord._id}>
                   <TodayTableData>
                     <ImageWrapper>

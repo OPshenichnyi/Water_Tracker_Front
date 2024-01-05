@@ -85,11 +85,11 @@ export const AddAvatar = createAsyncThunk(
     }
   }
 );
+//  ==============Function add Info User =======================
 
 export const AddSetingUser = createAsyncThunk(
   "auth/settings",
   async (credentials, thunkAPI) => {
-    console.log(credentials);
     try {
       const response = await axios.patch("/users", credentials);
       return response.data;

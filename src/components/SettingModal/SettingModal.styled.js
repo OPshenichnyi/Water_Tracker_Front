@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import variables from "common/Variables";
 
+//  ======== Wrapper Modall window==================
 export const Container = styled.div`
   margin: auto;
   width: 280px;
@@ -8,21 +9,22 @@ export const Container = styled.div`
   padding: 32px 12px;
   border-radius: 10px;
   background-color: #fff;
+  margin-top: 40px;
+  margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 860px;
     padding: 32px 24px;
-    border-radius: 10px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 1008px;
     height: 592px;
-    border-radius: 10px;
+    margin-top: 104px;
   }
 `;
-
+//  ======== Container Name Modal and BTN Close=================
 export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -40,6 +42,7 @@ export const TitleContainer = styled.div`
   }
 `;
 
+//  ======== Container Avatar ==================
 export const ContainerAvatar = styled.div`
   width: 220px;
   display: flex;
@@ -47,6 +50,7 @@ export const ContainerAvatar = styled.div`
   margin-bottom: 24px;
 `;
 
+//  ========  Avatar Img ==================
 export const Avatar = styled.img`
   border-radius: 50%;
   width: 80px;
@@ -54,10 +58,12 @@ export const Avatar = styled.img`
   background: lightgray 50% / cover no-repeat;
 `;
 
+//  ========  Input Img ==================
 export const InputImg = styled.input`
   display: none;
 `;
 
+//  ========  Link for Img upload ==================
 export const LinkImgUpload = styled.span`
   color: ${variables.bluePrimary};
   cursor: pointer;
@@ -75,13 +81,15 @@ export const LinkImgUpload = styled.span`
     fill: none;
   }
 `;
-
-// ================== STYLE FORM FILE FormInput ================
+//  ======== Container Block gender ==================
 export const ContainerGender = styled.div`
   display: flex;
   margin-bottom: 24px;
   width: 152px;
   height: 20px;
+  input {
+    background-color: ${variables.bluePrimary};
+  }
   label:first-child {
     margin-right: 24px;
   }
@@ -92,28 +100,32 @@ export const ContainerGender = styled.div`
     margin-bottom: 52px;
   }
 `;
-
+//  ======== Container Block Setting ==================
 export const ContainerBlockSeting = styled.div`
   @media screen and (min-width: 1440px) {
     display: flex;
     gap: 24px;
   }
 `;
-
+//  ======== Container info User ==================
 export const ContainerInfoUser = styled.div`
+  margin-bottom: 24px;
   @media screen and (min-width: 1440px) {
+    float: left;
     width: 392px;
+    margin-bottom: 0;
   }
 `;
 
+//  ======== Container Change Paswword ==================
+
 export const ContainerChangePass = styled.div`
-  input {
-    margin-bottom: 12px;
-  }
   @media screen and (min-width: 1440px) {
+    float: left;
     width: 100%;
   }
 `;
+//  ========  Title Password ==================
 export const FirstTitle = styled.h3`
   margin-bottom: 12px;
   font-family: "Roboto", sans-serif;
@@ -123,7 +135,7 @@ export const FirstTitle = styled.h3`
   font-weight: bold;
   line-height: 1.12;
 `;
-
+//  ========  Style Label ==================
 export const LabelInput = styled.label`
   width: 392px;
   font-size: 18px;
@@ -133,13 +145,13 @@ export const LabelInput = styled.label`
   margin-bottom: 8px;
 `;
 
+//  ========  Style for input Name and Email ==================
 export const InputStyle = styled.input`
   width: 100%;
   height: 44px;
   border: 1px solid #d7e3ff;
   color: #9ebbff;
   border-radius: 6px;
-  margin: 0px 0px 16px 0px;
   font-size: 16px;
   padding: 16px 8px;
   &.input-error {
@@ -151,6 +163,7 @@ export const InputStyle = styled.input`
   &:active,
   &:focus,
   &:hover {
+    outline: none;
     color: #407bff;
   }
 
@@ -162,9 +175,13 @@ export const InputStyle = styled.input`
   @media screen and (min-width: 1440px) {
     width: 384px;
     height: 44px;
+    &.last {
+      margin-bottom: 0;
+    }
   }
 `;
 
+//  ========  BTN Submit ==================
 export const ButtonSubmit = styled.button`
   color: #ffffff;
   background-color: #407bff;
@@ -175,6 +192,7 @@ export const ButtonSubmit = styled.button`
   width: 256px;
   height: 36px;
   margin-left: auto;
+  margin-top: 24px;
 
   @media screen and (min-width: 768px) {
     display: flex;
