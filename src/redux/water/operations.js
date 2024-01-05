@@ -1,3 +1,4 @@
+
 import {  createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -71,14 +72,14 @@ export const waterMonts = createAsyncThunk(
       return thunkAPI.rejectWithValue("Unable to fetch user");
     }
     try {
-      // console.log("mhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhho")
+   
       setJwtHeader(persistedToken);
       const res = await axios.get(`${apiBaseUrl}/month/${date}`);
-      // console.log("hhhhhhhhhhhhhhhhhhhh")
+      console.log("hhhhhhhhhhhhhhhhhhhh")
       thunkAPI.dispatch(waterMonts(date));
       return res.data.result;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return thunkAPI.rejectWithValue(error.message)
     }
   }
