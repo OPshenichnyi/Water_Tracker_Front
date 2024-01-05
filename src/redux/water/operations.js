@@ -61,6 +61,7 @@ export const waterMonts = createAsyncThunk(
   "auth/monts",
 
   async (date, thunkAPI) => {
+    
     try {
       const res = await axios.get(`${apiBaseUrl}/month/${date}`);
       thunkAPI.dispatch(waterMonts(date));
