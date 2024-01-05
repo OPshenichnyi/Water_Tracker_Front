@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { nanoid } from 'nanoid';
-import sprite from '../../common/symbol-defs.svg';
-import moment from 'moment';
+import { useEffect, useState } from "react";
+import { nanoid } from "nanoid";
+import sprite from "../../common/symbol-defs.svg";
+import moment from "moment";
 
 import {
   DayUl,
@@ -14,45 +14,35 @@ import {
   MonthSwipe,
   MonthName,
   MonthTitle,
-} from './MonthStatsTable.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import {  waterMonts } from '../../redux/water/operations';
-import { selectMounthWater } from '../../redux/water/selector';
-
+} from "./MonthStatsTable.styled";
+import { useDispatch, useSelector } from "react-redux";
+import { waterMonts } from "../../redux/water/operations";
+import { selectMounthWater } from "../../redux/water/selector";
 
 const Month = () => {
   const dispatch = useDispatch();
-  const mounthHistory = useSelector(selectMounthWater);  
+  const mounthHistory = useSelector(selectMounthWater);
 
   const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [year, setYear] = useState(new Date().getFullYear());
   const [data, setData] = useState([]);
-  
+
   useEffect(() => {
-      setData(mounthHistory);
+    setData(mounthHistory);
   }, [mounthHistory]);
 
-
-  useEffect(() =>  {
-    const fetchData = async () => {
-      try {
-        const currentDate = moment().format('YYYY-MM-DD');
-        await dispatch(waterMonts(currentDate));
-
-      } catch (error) {
-        console.error("Error fetching data", error);
-      }
-    };  
-    fetchData();
-  }, [dispatch]);
-
+  useEffect(() => {
+    dispatch(waterMonts(`${year}-${month}`));
+  }, [dispatch, month, year]);
 
   function getDaysInMonth(month, year, data) {
     const days = new Date(year, month, 0).getDate();
     const arrData = [];
 
     for (let day = 1; day <= days; day++) {
-      const fullDate = moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').format('YYYY-MM-DD');
+      const fullDate = moment(`${year}-${month}-${day}`, "YYYY-MM-DD").format(
+        "YYYY-MM-DD"
+      );
       const event = data.find((event) => event.date === fullDate);
 
       arrData.push({
@@ -82,40 +72,47 @@ const Month = () => {
 
   const getFormattedMonthName = () => {
     return `${new Date(year, month - 1)
-      .toLocaleString('en-US', { month: 'long' })
+      .toLocaleString("en-US", { month: "long" })
       .charAt(0)
       .toUpperCase()}${new Date(year, month - 1)
-      .toLocaleString('en-US', { month: 'long' })
+      .toLocaleString("en-US", { month: "long" })
       .slice(1)}, ${year}`;
   };
+
+  const dataToday = getFormattedMonthName();
   return (
     <>
       <StatsWrapper>
         <TodayDiv>
           <MonthTitle>Month</MonthTitle>
-          <CurrentMonth>        
-            <MonthSwipe onClick={handlePrevMonthClick}>   
-                <svg width="14" height="14">
-                  <use href={`${sprite}#arrow-left`}></use>
-                </svg>
+          <CurrentMonth>
+            <MonthSwipe onClick={handlePrevMonthClick}>
+              <svg width="14" height="14">
+                <use href={`${sprite}#arrow-left`}></use>
+              </svg>
             </MonthSwipe>
-            <MonthName>{getFormattedMonthName()}</MonthName>            
-            <MonthSwipe onClick={handleNextMonthClick}
-              disabled={year === new Date().getFullYear() && month === new Date().getMonth() + 1}>
-                <svg width="14" height="14">
-                  <use href={`${sprite}#arrow-right`}></use>
-                </svg>
+            <MonthName>{dataToday}</MonthName>
+            <MonthSwipe
+              onClick={handleNextMonthClick}
+              disabled={
+                year === new Date().getFullYear() &&
+                month === new Date().getMonth() + 1
+              }
+            >
+              <svg width="14" height="14">
+                <use href={`${sprite}#arrow-right`}></use>
+              </svg>
             </MonthSwipe>
           </CurrentMonth>
         </TodayDiv>
-      <DayUl>
-        {daysInMonth.map((item) => (
-          <DayLi key={nanoid()}>
-            <DayNumber>{item.day}</DayNumber>
-            <WaterPercentage>{item.dailyNormFulfillment}%</WaterPercentage>
-          </DayLi>
-        ))}
-      </DayUl>
+        <DayUl>
+          {daysInMonth.map((item) => (
+            <DayLi key={nanoid()}>
+              <DayNumber>{item.day}</DayNumber>
+              <WaterPercentage>{item.dailyNormFulfillment}%</WaterPercentage>
+            </DayLi>
+          ))}
+        </DayUl>
       </StatsWrapper>
     </>
   );
