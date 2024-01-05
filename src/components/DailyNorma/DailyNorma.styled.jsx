@@ -40,7 +40,6 @@ export const NormaContainer = styled.div`
   border: 1px solid ${variables.secondaryLightGray};
 
   @media only screen and (min-width: 768px) {
-    /* display: flex; */
     justify-content: center;
   }
 
@@ -86,6 +85,11 @@ export const NormaButton = styled.button`
   line-height: 1.25;
   color: ${variables.editColorButton};
   background-color: transparent;
+
+  &:hover {
+    color: ${variables.secondaryLightOrange};
+    transition: color 250ms ease-in-out;
+  }
 `;
 export const ProgressContainer = styled.div`
   display: flex;
@@ -134,9 +138,6 @@ export const WaterProgress = styled.div`
     width: 391px;
   }
 `;
-
-//left: ${({ percentage }) => `calc(${percentage}%)`};
-//width: ${({ percentage }) => `${percentage}%`};
 
 export const WaterMeter = styled.div`
   position: relative;
@@ -208,7 +209,6 @@ export const WaterInfo = styled.div`
 export const AddWaterButton = styled.button`
   display: flex;
   flex-direction: row;
-  /* padding: 6px 76px; */
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -224,6 +224,12 @@ export const AddWaterButton = styled.button`
   background-color: ${variables.bluePrimary};
   color: ${variables.whitePrimary};
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+
+    transition: box-shadow 250ms ease-in-out;
+  }
 
   @media screen and (min-width: 1440px) {
     width: 178px;

@@ -1,16 +1,14 @@
 import React, { useState } from "react";
+import { modalScrollOff } from "components/Utils/utils";
 import UserSettingsModal from "../SettingModal/SettingModal";
 import UserLogoutModal from "../UserLogoutModal/UserLogoutModal";
 import { Wrapper, Button, Modal, Svg, Item } from "./UserLogoModal.styled";
 import sprite from "../../common/symbol-defs.svg";
-
+import MainModal from "../MainModal/MainModal";
 const UserLogoModal = ({ position }) => {
-  const [isUserInfoModalOpen, setUserInfoModalOpen] = useState(false);
   const [isUserLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
-
-  const handleSettingClick = () => {
-    setUserInfoModalOpen(true);
-  };
+  const [modalActive, setModalActive] = useState(false);
+  modalScrollOff(modalActive);
 
   const handleLogoutClick = () => {
     setUserLogoutModalOpen(true);
@@ -23,7 +21,7 @@ const UserLogoModal = ({ position }) => {
           <Svg width={16} height={16}>
             <use href={`${sprite}#cog-tooth`} />
           </Svg>
-          <Button onClick={handleSettingClick}>Setting</Button>
+          <Button onClick={() => setModalActive(true)}>Setting</Button>
         </Item>
         <Item>
           <Svg width={16} height={16}>
@@ -31,9 +29,6 @@ const UserLogoModal = ({ position }) => {
           </Svg>
           <Button onClick={handleLogoutClick}>Log out</Button>
         </Item>
-        {isUserInfoModalOpen && (
-          <UserSettingsModal onClose={() => setUserInfoModalOpen(false)} />
-        )}
         {isUserLogoutModalOpen && (
           <UserLogoutModal
             open={isUserLogoutModalOpen}
@@ -41,6 +36,11 @@ const UserLogoModal = ({ position }) => {
           />
         )}
       </Wrapper>
+      <MainModal active={modalActive} setActive={setModalActive}>
+        <UserSettingsModal
+          closeModal={() => setModalActive(false)}
+        ></UserSettingsModal>
+      </MainModal>
     </Modal>
   );
 };

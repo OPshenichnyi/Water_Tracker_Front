@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
+        <BrowserRouter basename="/Water_Tracker_Front">
           <GlobalStyle />
           <App />
         </BrowserRouter>
@@ -22,3 +22,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </React.StrictMode>
 );
 // basename="/Water_Tracker_Front"
+//  fix

@@ -1,5 +1,5 @@
 import { Header } from "components/Header/Header";
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Suspense } from "react";
 
 const Layout = () => {
@@ -9,7 +9,6 @@ const Layout = () => {
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-      <NavLink to="/seting">SettingModal</NavLink>
     </div>
   );
 };
