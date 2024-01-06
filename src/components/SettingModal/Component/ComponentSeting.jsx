@@ -34,7 +34,8 @@ export const BtnClose = ({ closeModal }) => {
 // ================= Component Btn Close Modal (X) ===============
 export const InputPassword = ({ formik, id, name, placeholder, value }) => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const [error, setError] = useState(false);
+  console.log(error);
   const togglePasswordVisibility = () => {
     if (showPassword === false) {
       setShowPassword(true);
@@ -42,6 +43,21 @@ export const InputPassword = ({ formik, id, name, placeholder, value }) => {
     if (showPassword === true) {
       setShowPassword(false);
     }
+  };
+
+  const onBlur = (event) => {
+    formik.handleBlur(event);
+    const value = event.target.value;
+
+    if (value.length === 0) {
+      setError(false);
+      return;
+    }
+
+    if (event.target.value.length > 8 || event.target.value.length < 64) {
+      setError(false);
+    }
+    setError(true);
   };
   return (
     <InputContainer>
@@ -51,9 +67,10 @@ export const InputPassword = ({ formik, id, name, placeholder, value }) => {
         type={showPassword ? "text" : "password"}
         onChange={formik.handleChange}
         value={value}
-        onBlur={formik.handleBlur}
+        onBlur={onBlur}
         placeholder={placeholder}
         revealed={showPassword.toString() || ""}
+        style={{ borderColor: error ? "red" : "normal" }}
       />
       {showPassword ? (
         <InputPasswordSvg
