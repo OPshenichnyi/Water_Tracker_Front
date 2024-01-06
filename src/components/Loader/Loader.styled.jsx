@@ -1,7 +1,6 @@
-import { ThreeDots } from 'react-loader-spinner';
 import styled from 'styled-components';
 
-export const StyledLoader = styled(ThreeDots)`
+export const StyledLoader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

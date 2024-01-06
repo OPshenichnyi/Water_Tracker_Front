@@ -1,33 +1,51 @@
 import styled from 'styled-components';
-export const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 280,
-  height: 648,
-  bgcolor: '#FFFFFF',
-  borderRadius: 2.5,
-  pt: 3,
-  pr: 1.5,
-  pb: 3,
-  pl: 1.5,
+import variables from 'common/Variables';
 
-  '@media screen and (min-width: 768px)': {
-    width: 704,
-    height: 580,
-    borderRadius: 2.5,
-    pt: 4,
-    pr: 3,
-    pb: 4,
-    pl: 3,
-  },
+export const Wrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 648px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  
+  padding: 24px 12px;
 
-  '@media screen and (min-width: 1440px)': {
-    width: 592,
-    height: 580,
-  },
-};
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 580px;
+    border-radius: 10px;
+    padding: 32px 24px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 592px;
+    height: 580px;
+  }
+`;
+
+export const DataWater = styled.li`
+margin-left: 12px;
+color: ${variables.bluePrimary};
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.33; 
+
+`
+
+export const DataTime = styled.li`
+margin-left: 16px;
+color: var(--primery-color-black, #2f2f2f);
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 2; 
+
+`
 
 export const ButtonSave = styled.button`
   width: 256px;
@@ -70,6 +88,11 @@ export const ButtonClose = styled.button`
   width: 24px;
   height: 24px;
   background-color: #fff;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.3);
+    cursor: pointer;
+  }
 `;
 export const BlockTop = styled.div`
   display: flex;
@@ -92,15 +115,7 @@ border-radius: 10px;
 background:  #ECF2FF;
 margin-bottom: 24px;
 `
-export const DataWater = styled.li`
-margin-left: 12px;
 
-`
-
-export const DataTime = styled.li`
-margin-left: 16px;
-
-`
 
 
 export const BtnCounter = styled.p`

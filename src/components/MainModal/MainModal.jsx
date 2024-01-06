@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { Content, Modal } from './MainModal.style';
+import { Content, Modal } from './MainModal.styled';
 
 const MainModal = ({ active, setActive, children }) => {
   return ReactDOM.createPortal(

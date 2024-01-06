@@ -11,16 +11,12 @@ export const Wrapper = styled.div`
   height: 540px;
   background-color: #ffffff;
   border-radius: 10px;
-  padding-top: 24px;
-  padding-right: 12px;
-  padding-bottom: 24px;
-  padding-left: 12px;
-
+  padding: 24px 12px;
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 504px;
     borderradius: 10px;
-    padding: 32px 24 px;
+    padding: 32px 24px;
   }
 
   @media screen and (min-width: 1440px) {
