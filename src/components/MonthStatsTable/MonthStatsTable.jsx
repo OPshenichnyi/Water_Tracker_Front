@@ -18,6 +18,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { waterMonts } from '../../redux/water/operations';
 import { selectMounthWater } from '../../redux/water/selector';
+import DaysGeneralStats from 'components/DaysGeneralStats/DaysGeneralStats';
 
 const Month = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,13 @@ const Month = () => {
   const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [year, setYear] = useState(new Date().getFullYear());
   const [data, setData] = useState([]);
+
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setModalOpen(!isModalOpen);
+    console.log('first');
+  };
 
   useEffect(() => {
     setData(mounthHistory);
@@ -107,11 +115,14 @@ const Month = () => {
         </TodayDiv>
         <DayUl>
           {daysInMonth.map(item => (
-            <DayLi key={nanoid()}>
+            <DayLi key={nanoid()} onClick={handleButtonClick}>
               <DayNumber>{item.day}</DayNumber>
               <WaterPercentage>{item.dailyNormFulfillment}%</WaterPercentage>
             </DayLi>
           ))}
+          {isModalOpen && (
+            <DaysGeneralStats onClose={() => setModalOpen(false)} />
+          )}
         </DayUl>
       </StatsWrapper>
     </>
