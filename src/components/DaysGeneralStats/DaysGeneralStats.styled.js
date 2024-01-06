@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import color from '../../common/Variables';
+import styled from "styled-components";
+import color from "../../common/Variables";
 
 export const DailyModal = styled.div`
   box-sizing: border-box;
@@ -16,6 +16,7 @@ export const DailyModal = styled.div`
   left: 50%;
   border-radius: 10px;
   box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.3);
+  z-index: 1;
 `;
 
 export const CloseBtn = styled.button`

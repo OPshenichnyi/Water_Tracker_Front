@@ -35,7 +35,7 @@ export const BtnClose = ({ closeModal }) => {
 export const InputPassword = ({ formik, id, name, placeholder, value }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(false);
-  console.log(error);
+
   const togglePasswordVisibility = () => {
     if (showPassword === false) {
       setShowPassword(true);
