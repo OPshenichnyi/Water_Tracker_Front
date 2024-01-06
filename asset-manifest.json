@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/Water_Tracker_Front/static/css/main.cc8e51a9.css",
-    "main.js": "/Water_Tracker_Front/static/js/main.bb21273f.js",
-    "static/js/177.42766a4b.chunk.js": "/Water_Tracker_Front/static/js/177.42766a4b.chunk.js",
-    "static/js/738.1e8d677f.chunk.js": "/Water_Tracker_Front/static/js/738.1e8d677f.chunk.js",
+    "main.js": "/Water_Tracker_Front/static/js/main.f5cb90a2.js",
+    "static/js/441.fe0126f4.chunk.js": "/Water_Tracker_Front/static/js/441.fe0126f4.chunk.js",
+    "static/js/738.9f5718b2.chunk.js": "/Water_Tracker_Front/static/js/738.9f5718b2.chunk.js",
     "static/js/940.ac2cfc1b.chunk.js": "/Water_Tracker_Front/static/js/940.ac2cfc1b.chunk.js",
     "static/js/496.9f904576.chunk.js": "/Water_Tracker_Front/static/js/496.9f904576.chunk.js",
     "static/js/520.98b9f5c8.chunk.js": "/Water_Tracker_Front/static/js/520.98b9f5c8.chunk.js",
@@ -37,9 +37,9 @@
     "index.html": "/Water_Tracker_Front/index.html",
     "static/media/listMarker.svg": "/Water_Tracker_Front/static/media/listMarker.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.cc8e51a9.css.map": "/Water_Tracker_Front/static/css/main.cc8e51a9.css.map",
-    "main.bb21273f.js.map": "/Water_Tracker_Front/static/js/main.bb21273f.js.map",
-    "177.42766a4b.chunk.js.map": "/Water_Tracker_Front/static/js/177.42766a4b.chunk.js.map",
-    "738.1e8d677f.chunk.js.map": "/Water_Tracker_Front/static/js/738.1e8d677f.chunk.js.map",
+    "main.f5cb90a2.js.map": "/Water_Tracker_Front/static/js/main.f5cb90a2.js.map",
+    "441.fe0126f4.chunk.js.map": "/Water_Tracker_Front/static/js/441.fe0126f4.chunk.js.map",
+    "738.9f5718b2.chunk.js.map": "/Water_Tracker_Front/static/js/738.9f5718b2.chunk.js.map",
     "940.ac2cfc1b.chunk.js.map": "/Water_Tracker_Front/static/js/940.ac2cfc1b.chunk.js.map",
     "496.9f904576.chunk.js.map": "/Water_Tracker_Front/static/js/496.9f904576.chunk.js.map",
     "520.98b9f5c8.chunk.js.map": "/Water_Tracker_Front/static/js/520.98b9f5c8.chunk.js.map",
@@ -47,6 +47,6 @@
   },
   "entrypoints": [
     "static/css/main.cc8e51a9.css",
-    "static/js/main.bb21273f.js"
+    "static/js/main.f5cb90a2.js"
   ]
 }
