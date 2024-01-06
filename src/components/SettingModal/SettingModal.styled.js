@@ -89,6 +89,15 @@ export const ContainerGender = styled.div`
   height: 20px;
   input {
     background-color: ${variables.bluePrimary};
+    display: none;
+  }
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  svg {
+    margin-right: 8px;
   }
   label:first-child {
     margin-right: 24px;

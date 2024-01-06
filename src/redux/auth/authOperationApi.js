@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 //  ==============Settings AXIOS =======================
-axios.defaults.baseURL = "https://db-water-tracker.onrender.com/";
+axios.defaults.baseURL = "https://db-water-tracker.onrender.com/api/";
 
 //  =========== Function add JWT token in headers ============
 const setJwtHeader = (token) => {

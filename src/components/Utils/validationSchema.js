@@ -5,6 +5,7 @@ const changePassword = Yup.object().shape({
   oldPassword: Yup.string()
     .min(8, "Password must be min 8 characters")
     .max(64, "Password must be max 64 characters"),
+
   newPassword: Yup.string()
     .min(8, "Password must be min 8 characters")
     .max(64, "Password must be max 64 characters")

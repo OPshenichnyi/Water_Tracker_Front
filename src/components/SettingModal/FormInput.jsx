@@ -36,7 +36,6 @@ export default function FormInput() {
     validationSchema: changePassword,
 
     onSubmit: (values) => {
-      console.log(values);
       const fieldsToUpdate = {};
 
       for (const key in initialValues) {
@@ -47,7 +46,8 @@ export default function FormInput() {
       const isEmpty = Object.keys(fieldsToUpdate).length === 0;
       if (isEmpty) {
       }
-      // dispatch(AddSetingUser(fieldsToUpdate));
+      console.log(values);
+      dispatch(AddSetingUser(fieldsToUpdate));
     },
   });
 
@@ -58,25 +58,47 @@ export default function FormInput() {
           <FirstTitle>Your gender identity</FirstTitle>
           <form onSubmit={formik.handleSubmit}>
             <ContainerGender>
-              <label>
+              <label htmlFor="girl">
+                {formik.values.gender === "girl" ? (
+                  <svg width={16} height={16}>
+                    <use href={`${sprite}#radio-btn-active`} />
+                  </svg>
+                ) : (
+                  <svg width={16} height={16}>
+                    <use href={`${sprite}#radio-btn`} />
+                  </svg>
+                )}
+
                 <input
+                  id="girl"
                   type="radio"
                   name="gender"
                   value="girl"
                   checked={formik.values.gender === "girl"}
                   onChange={formik.handleChange}
                 />
-                <label>Girl</label>
+                <span>Girl</span>
               </label>
-              <label>
+
+              <label htmlFor="man">
+                {formik.values.gender === "girl" ? (
+                  <svg width={16} height={16}>
+                    <use href={`${sprite}#radio-btn`} />
+                  </svg>
+                ) : (
+                  <svg width={16} height={16}>
+                    <use href={`${sprite}#radio-btn-active`} />
+                  </svg>
+                )}
                 <input
+                  id="man"
                   type="radio"
                   name="gender"
                   value="man"
                   checked={formik.values.gender === "man"}
                   onChange={formik.handleChange}
                 />
-                <label>Man</label>
+                <span>Man</span>
               </label>
             </ContainerGender>
 
@@ -111,7 +133,6 @@ export default function FormInput() {
               name={"oldPassword"}
               placeholder={"Password"}
               value={formik.values.oldPassword}
-              backgroundColor="blue"
             />
 
             <LabelInput htmlFor="newPassword">New Password:</LabelInput>

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import variables from "common/Variables";
 
 // ================= Component Btn Close Modal (X) ===============
@@ -19,7 +19,7 @@ export const ButtonClose = styled.button`
   align-items: center;
   width: 24px;
   height: 24px;
-  background-color: #fff;
+  background-color: ${variables.whitePrimary};
   transition: transform 0.3s ease;
   &:hover {
     transform: scale(1.3);
@@ -50,16 +50,21 @@ export const InputPasswordSvg = styled.svg`
 export const InputStyle = styled.input`
   width: 100%;
   height: 44px;
-  border: 1px solid #d7e3ff;
-  color: #9ebbff;
+  border: 1px solid ${variables.secondaryGray};
+  color: ${variables.secondaryLightBlue};
   border-radius: 6px;
   font-size: 16px;
   padding: 16px 8px;
+  ${(props) =>
+    props.revealed &&
+    css`
+      color: ${variables.bluePrimary};
+    `}
   &:active,
   &:focus,
   &:hover {
     outline: none;
-    color: #407bff;
+    color: ${variables.bluePrimary};
   }
 
   @media screen and (min-width: 768px) {

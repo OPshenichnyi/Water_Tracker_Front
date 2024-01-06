@@ -8,6 +8,7 @@ import {
 } from "../Component/ComponentSetingStyled";
 import sprite from "../../../common/symbol-defs.svg";
 import { useState } from "react";
+import { ClassNames } from "@emotion/react";
 
 // ================= Component Title ============================
 export const TitleNameSet = ({ title }) => {
@@ -53,6 +54,7 @@ export const InputPassword = ({ formik, id, name, placeholder, value }) => {
         value={value}
         onBlur={formik.handleBlur}
         placeholder={placeholder}
+        revealed={showPassword.toString() || ""}
       />
       {showPassword ? (
         <InputPasswordSvg
