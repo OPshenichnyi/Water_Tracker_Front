@@ -163,6 +163,26 @@
     <path d="M2 11V12.5C2 12.8978 2.15804 13.2794 2.43934 13.5607C2.72064 13.842 3.10218 14 3.5 14H12.5C12.8978 14 13.2794 13.842 13.5607 13.5607C13.842 13.2794 14 12.8978 14 12.5V11M5 5L8 2M8 2L11 5M8 2V11" stroke="#407BFF" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </symbol>
+<symbol id="eye-open" viewBox="0 0 16 16">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+<path d="M1.35726 8.21467C1.31125 8.07639 1.31125 7.92694 1.35726 7.78867C2.28193 5.00667 4.90659 3 7.99993 3C11.0919 3 13.7153 5.00467 14.6419 7.78533C14.6886 7.92333 14.6886 8.07267 14.6419 8.21133C13.7179 10.9933 11.0933 13 7.99993 13C4.90793 13 2.28393 10.9953 1.35726 8.21467Z" stroke="#407BFF" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10 8C10 8.53043 9.78929 9.03914 9.41421 9.41421C9.03914 9.78929 8.53043 10 8 10C7.46957 10 6.96086 9.78929 6.58579 9.41421C6.21071 9.03914 6 8.53043 6 8C6 7.46957 6.21071 6.96086 6.58579 6.58579C6.96086 6.21071 7.46957 6 8 6C8.53043 6 9.03914 6.21071 9.41421 6.58579C9.78929 6.96086 10 7.46957 10 8Z" stroke="#407BFF" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</symbol> 
+
+<symbol id="radio-btn-active" viewBox="0 0 14 14">
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+<circle cx="7" cy="7" r="6.5" fill="white" stroke="#407BFF"/>
+<circle cx="7" cy="7" r="3" fill="#407BFF"/>
+</svg>
+</symbol> 
+
+<symbol id="radio-btn" viewBox="0 0 14 14">
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+<circle cx="7" cy="7" r="6.5" fill="white" stroke="#407BFF"/>
+</svg>
+</symbol> 
+
 </defs>
 </svg>
 
