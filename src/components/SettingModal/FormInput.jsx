@@ -10,11 +10,12 @@ import {
   ButtonSubmit,
   FirstTitle,
 } from "./SettingModal.styled";
-import { TitleNameSet } from "./Component/ComponentSeting";
+import { InputPassword, TitleNameSet } from "./Component/ComponentSeting";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import { AddSetingUser } from "../../redux/auth/authOperationApi";
 import changePassword from "../Utils/validationSchema";
+import sprite from "../../common/symbol-defs.svg";
 
 // ===================================================================
 export default function FormInput() {
@@ -45,27 +46,10 @@ export default function FormInput() {
       const isEmpty = Object.keys(fieldsToUpdate).length === 0;
       if (isEmpty) {
       }
+      console.log(values);
       dispatch(AddSetingUser(fieldsToUpdate));
     },
   });
-  // useEffect(() => {
-  //   formik.setValues({
-  //     userName: initialValues.userName,
-  //     email: initialValues.email,
-  //     gender: initialValues.gender,
-  //     oldPassword: initialValues.oldPassword,
-  //     newPassword: initialValues.newPassword,
-  //     confirmNewPassword: initialValues.confirmNewPassword,
-  //   });
-  // }, [
-  //   initialValues.userName,
-  //   initialValues.email,
-  //   initialValues.gender,
-  //   initialValues.oldPassword,
-  //   initialValues.newPassword,
-  //   initialValues.confirmNewPassword,
-  //   formik.setValues,
-  // ]);
 
   return (
     <>
@@ -74,25 +58,47 @@ export default function FormInput() {
           <FirstTitle>Your gender identity</FirstTitle>
           <form onSubmit={formik.handleSubmit}>
             <ContainerGender>
-              <label>
+              <label htmlFor="girl">
+                {formik.values.gender === "girl" ? (
+                  <svg width={16} height={16}>
+                    <use href={`${sprite}#radio-btn-active`} />
+                  </svg>
+                ) : (
+                  <svg width={16} height={16}>
+                    <use href={`${sprite}#radio-btn`} />
+                  </svg>
+                )}
+
                 <input
+                  id="girl"
                   type="radio"
                   name="gender"
                   value="girl"
                   checked={formik.values.gender === "girl"}
                   onChange={formik.handleChange}
                 />
-                <label>Girl</label>
+                <span>Girl</span>
               </label>
-              <label>
+
+              <label htmlFor="man">
+                {formik.values.gender === "girl" ? (
+                  <svg width={16} height={16}>
+                    <use href={`${sprite}#radio-btn`} />
+                  </svg>
+                ) : (
+                  <svg width={16} height={16}>
+                    <use href={`${sprite}#radio-btn-active`} />
+                  </svg>
+                )}
                 <input
+                  id="man"
                   type="radio"
                   name="gender"
                   value="man"
                   checked={formik.values.gender === "man"}
                   onChange={formik.handleChange}
                 />
-                <label>Man</label>
+                <span>Man</span>
               </label>
             </ContainerGender>
 
@@ -112,6 +118,7 @@ export default function FormInput() {
               type="email"
               onChange={formik.handleChange}
               value={formik.values.email}
+              className="last"
             />
           </form>
         </ContainerInfoUser>
@@ -119,53 +126,34 @@ export default function FormInput() {
           <form onSubmit={formik.handleSubmit}>
             <FirstTitle>Password</FirstTitle>
             <LabelInput htmlFor="oldPassword">Outdated password:</LabelInput>
-            <InputStyle
-              id="oldPassword"
-              name="oldPassword"
-              type="password"
-              onChange={formik.handleChange}
+            {/* Input old password */}
+            <InputPassword
+              formik={formik}
+              id={"oldPassword"}
+              name={"oldPassword"}
+              placeholder={"Password"}
               value={formik.values.oldPassword}
-              onBlur={formik.handleBlur}
-              className={
-                formik.touched.confirmNewPassword &&
-                formik.errors.confirmNewPassword
-                  ? "input-error"
-                  : ""
-              }
             />
 
             <LabelInput htmlFor="newPassword">New Password:</LabelInput>
-            <InputStyle
-              id="newPassword"
-              name="newPassword"
-              type="password"
-              onChange={formik.handleChange}
+            {/* Input new pasword */}
+            <InputPassword
+              formik={formik}
+              id={"newPassword"}
+              name={"newPassword"}
+              placeholder={"Password"}
               value={formik.values.newPassword}
-              onBlur={formik.handleBlur}
-              className={
-                formik.touched.confirmNewPassword &&
-                formik.errors.confirmNewPassword
-                  ? "input-error"
-                  : ""
-              }
             />
 
             <LabelInput htmlFor="confirmNewPassword">
               Repeat new password:
             </LabelInput>
-            <InputStyle
-              id="confirmNewPassword"
-              name="confirmNewPassword"
-              type="password"
-              onChange={formik.handleChange}
+            <InputPassword
+              formik={formik}
+              id={"confirmNewPassword"}
+              name={"confirmNewPassword"}
+              placeholder={"Password"}
               value={formik.values.confirmNewPassword}
-              onBlur={formik.handleBlur}
-              className={
-                formik.touched.confirmNewPassword &&
-                formik.errors.confirmNewPassword
-                  ? "input-error"
-                  : ""
-              }
             />
             <div>
               <ButtonSubmit type="submit">Save</ButtonSubmit>

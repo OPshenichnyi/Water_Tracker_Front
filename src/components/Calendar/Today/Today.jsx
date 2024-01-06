@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import sprite from '../../../common/symbol-defs.svg';
+import { useState } from "react";
+import sprite from "../../../common/symbol-defs.svg";
 import {
   TodayContainer,
   TodayHeader,
@@ -13,16 +13,16 @@ import {
   TextTableData,
   TimeTableData,
   AddWaterButton,
-} from './Today.styled';
-import React, { useEffect } from 'react';
-import { modalScrollOff } from 'components/Utils/utils';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchWaterDataToday } from '../../../redux/water/operations';
-import { FormatTime } from '../FormatTime/FormatTime';
-import { selectTakeWaterHistory } from '../../../redux/water/selector';
-import MainModal from 'components/MainModal/MainModal';
-import ModalAddWater from 'components/AddWater/AddWater';
-import EditWater from 'components/EditWater/EditWater';
+} from "./Today.styled";
+import React, { useEffect } from "react";
+import { modalScrollOff } from "components/Utils/utils";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchWaterDataToday } from "../../../redux/water/operations";
+import { FormatTime } from "../FormatTime/FormatTime";
+import { selectTakeWaterHistory } from "../../../redux/water/selector";
+import MainModal from "components/MainModal/MainModal";
+import ModalAddWater from "components/AddWater/AddWater";
+import EditWater from "components/EditWater/EditWater";
 
 const Today = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -37,15 +37,12 @@ const Today = () => {
       try {
         await dispatch(fetchWaterDataToday());
       } catch (error) {
-        console.error('Error getting water data in useEffect:', error);
+        console.error("Error getting water data in useEffect:", error);
       }
     };
 
     fetchData();
   }, [dispatch]);
-
-
-
 
   return (
     <>
@@ -54,7 +51,7 @@ const Today = () => {
         <TableWrapper>
           <TodayTable>
             <tbody>
-              {waterData.map(waterRecord => (
+              {waterData.map((waterRecord) => (
                 <TableRow key={waterRecord._id}>
                   <TodayTableData>
                     <ImageWrapper>
@@ -68,7 +65,6 @@ const Today = () => {
                   <TimeTableData>{FormatTime(waterRecord.date)}</TimeTableData>
 
                   <TodayTableData>
-                    
                     <Button onClick={() => setModalEditActive(true)}>
                       <svg width={16} height={16}>
                         <use href={`${sprite}#pencil-square`}></use>
@@ -96,7 +92,7 @@ const Today = () => {
         <ModalAddWater closeModal={() => setModalActive(false)} />
       </MainModal>
       <MainModal active={modalEditActive} setActive={setModalEditActive}>
-        <EditWater closeModal={() => setModalEditActive(false)}  />
+        <EditWater closeModal={() => setModalEditActive(false)} />
       </MainModal>
     </>
   );

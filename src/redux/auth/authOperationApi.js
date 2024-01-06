@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 //  ==============Settings AXIOS =======================
-axios.defaults.baseURL = "https://db-water-tracker.onrender.com/";
+axios.defaults.baseURL = "https://db-water-tracker.onrender.com/api/";
 
 //  =========== Function add JWT token in headers ============
 const setJwtHeader = (token) => {
@@ -85,11 +85,11 @@ export const AddAvatar = createAsyncThunk(
     }
   }
 );
+//  ==============Function add Info User =======================
 
 export const AddSetingUser = createAsyncThunk(
   "auth/settings",
   async (credentials, thunkAPI) => {
-    console.log(credentials);
     try {
       const response = await axios.patch("/users", credentials);
       return response.data;
