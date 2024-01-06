@@ -28,7 +28,7 @@ import { selectStageWater } from '../../redux/water/selector';
 import { toast } from 'react-toastify';
 import { selectIsUser } from '../../redux/auth/selectorsAuth';
 
-export const DailyNorma = () => {
+const DailyNorma = () => {
   const [modalActive, setModalActive] = useState(false);
   // const [alreadyShownToast, setAlreadyShownToast] = useState(false);
 
@@ -36,7 +36,7 @@ export const DailyNorma = () => {
 
   const { percentage } = useSelector(selectStageWater);
   const { waterRate } = useSelector(selectIsUser);
-  
+
   // useEffect(() => {
   //   if (percentage === 100 && !alreadyShownToast) {
   //     toast.success(
@@ -46,8 +46,9 @@ export const DailyNorma = () => {
   //   }
   // }, [percentage, alreadyShownToast]);
   useEffect(() => {
-    const isToastAlreadyShown = localStorage.getItem('alreadyShownToast') === 'true';
-  
+    const isToastAlreadyShown =
+      localStorage.getItem('alreadyShownToast') === 'true';
+
     if (percentage === 100 && !isToastAlreadyShown) {
       toast.success(
         'Congratulations. Daily water requirement has been reached!'
@@ -110,3 +111,4 @@ export const DailyNorma = () => {
     </Container>
   );
 };
+export default DailyNorma;

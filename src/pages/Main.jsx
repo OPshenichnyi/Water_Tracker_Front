@@ -1,20 +1,13 @@
-
-
-import BasicModalEdit from "components/EditWaterModal/EditWaterModal"
-import { Main } from "components/Main/Main"
-
+import BasicModalEdit from 'components/EditWaterModal/EditWaterModal';
+import Main from '../components/Main/Main';
 
 const MainPage = () => {
+  return (
+    <div>
+      <Main />
 
-return (
-<div>
-    <Main/>
-    
-        <BasicModalEdit />
-        
+      <BasicModalEdit />
     </div>
-)
-
-
-} 
-export default MainPage
+  );
+};
+export default MainPage;
