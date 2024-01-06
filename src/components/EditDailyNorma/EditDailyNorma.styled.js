@@ -142,15 +142,18 @@ export const BlockAmountText = styled.div`
   }
 `;
 
-export const AmountWater = styled.span`
-  width: 57px;
-  height: 24px;
+export const AmountWater = styled.p`
   color: var(--Primery-Color-Blue, #407bff);
 
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: 1.33;
+`;
+
+export const WrapAmount = styled.span`
+  width: 57px;
+  height: 24px;
 `;
 
 export const InputStyle = styled.input`
@@ -163,6 +166,8 @@ export const InputStyle = styled.input`
   align-items: flex-start;
   border-radius: 6px;
   border: 1px solid #d7e3ff;
+ 
+  outline: none;
   color: #407bff;
   font-size: 16px;
   font-weight: 400;
@@ -175,6 +180,15 @@ export const InputStyle = styled.input`
   @media screen and (min-width: 1440px) {
     width: 544px;
   }
+`;
+
+export const InputGender = styled.input`
+  display: none;
+`;
+export const LabelGender = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 8px;
 `;
 
 export const ButtonSave = styled.button`

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import icons from '../../common/symbol-defs.svg';
 import {
   AmountWater,
@@ -15,13 +15,69 @@ import {
   DescriptionSpan,
   Formula,
   FormulaSpan,
+  InputGender,
   InputStyle,
+  LabelGender,
   SecondTitle,
   TextP,
+  WrapAmount,
   Wrapper,
 } from './EditDailyNorma.styled';
+import sprite from '../../common/symbol-defs.svg';
+import { toast } from 'react-toastify';
 
 function EditDailyNorma({ closeModal }) {
+  const [gender, setGender] = useState('girl');
+  const [inputValueK, setInputValueK] = useState('');
+  const [inputValueT, setInputValueT] = useState('');
+  const [calculatedResult, setCalculatedResult] = useState(null);
+  // const [isValidInput, setIsValidInput] = useState(true);
+  const handleChange = event => {
+    setGender(event.target.value);
+  };
+
+  const handleInputChangeKilo = event => {
+    if (/^\d*$/.test(event.target.value)) {
+      setInputValueK(event.target.value);
+      // setIsValidInput(true);
+    } else {
+      // setIsValidInput(false);
+      toast.error('Будь ласка, введіть лише цифри');
+    }
+  };
+  const handleInputChangeTime = event => {
+   
+    if (/^\d*$/.test(event.target.value)) {
+      setInputValueT(event.target.value);
+      // setIsValidInput(true);
+    } else {
+      // setIsValidInput(false);
+      toast.error('Будь ласка, введіть лише цифри');
+    }
+  };
+
+  useEffect(() => {
+    const waterCalc = () => {
+      if (inputValueK && inputValueT && gender) {
+        let result;
+        if (gender === 'girl') {
+          result = inputValueK * 0.03 + inputValueT * 0.4;
+        } else {
+          result = inputValueK * 0.04 + inputValueT * 0.6;
+        }
+        result = result.toFixed(1);
+       
+        setCalculatedResult(result);
+      } else {
+        setCalculatedResult(null);
+        
+      }
+    };
+    waterCalc();
+  }, [inputValueK, inputValueT, gender]);
+  if(!isNaN){
+    toast.error("erroror")
+  }
   return (
     <Wrapper>
       <BlockTop>
@@ -53,38 +109,62 @@ function EditDailyNorma({ closeModal }) {
       </Description>
 
       <SecondTitle>Calculate your rate:</SecondTitle>
+
       <ContainerGender>
-        <label>
-          <input
+        <LabelGender htmlFor="girl">
+          {gender === 'girl' ? (
+            <svg width={14} height={14}>
+              <use href={`${sprite}#radio-btn-active`} />
+            </svg>
+          ) : (
+            <svg width={14} height={14}>
+              <use href={`${sprite}#radio-btn`} />
+            </svg>
+          )}
+
+          <InputGender
+            id="girl"
             type="radio"
             name="gender"
             value="girl"
-            //   checked={formik.values.gender === "girl"}
-            //   onChange={formik.handleChange}
+            checked={gender === 'girl'}
+            onChange={handleChange}
           />
-          <label>For girl</label>
-        </label>
-        <label>
-          <input
+          <span>For girl</span>
+        </LabelGender>
+
+        <LabelGender htmlFor="man">
+          {gender === 'girl' ? (
+            <svg width={14} height={14}>
+              <use href={`${sprite}#radio-btn`} />
+            </svg>
+          ) : (
+            <svg width={14} height={14}>
+              <use href={`${sprite}#radio-btn-active`} />
+            </svg>
+          )}
+          <InputGender
+            id="man"
             type="radio"
             name="gender"
             value="man"
-            //   checked={formik.values.gender === "man"}
-            //   onChange={formik.handleChange}
+            checked={gender === 'man'}
+            onChange={handleChange}
           />
-          <label>For man</label>
-        </label>
+          <span>For man</span>
+        </LabelGender>
       </ContainerGender>
 
       <TextP>Your weight in kilograms:</TextP>
 
       <InputStyle
         type="text"
-        // value={inputValue}
-        // onChange={handleInputChange}
-        // onBlur={handleInputBlur}
+        value={inputValueK}
+        onChange={handleInputChangeKilo}
         placeholder="0"
+        // isvalid={isValidInput}
       />
+
       <TextP>
         The time of active participation in sports or other activities with a
         high physical. load:
@@ -92,24 +172,27 @@ function EditDailyNorma({ closeModal }) {
 
       <InputStyle
         type="text"
-        // value={inputValue}
-        // onChange={handleInputChange}
-        // onBlur={handleInputBlur}
+        value={inputValueT}
+        onChange={handleInputChangeTime}
         placeholder="0"
+        // isvalid={isValidInput}
       />
       <BlockAmount>
         <BlockAmountText>
           The required amount of water in liters per day:
         </BlockAmountText>
-        <AmountWater>1.8 L</AmountWater>
+        <WrapAmount>
+          {calculatedResult && <AmountWater>{calculatedResult} L</AmountWater>}
+        </WrapAmount>
       </BlockAmount>
       <SecondTitle>Write down how much water you will drink:</SecondTitle>
       <InputStyle
         type="text"
         // value={inputValue}
-        // onChange={handleInputChange}
+        // onChange=''
         // onBlur={handleInputBlur}
         placeholder="0"
+        // isvalid={isValidInput}
       />
       <ButtonSaveWrap>
         <ButtonSave type="button">Save</ButtonSave>
