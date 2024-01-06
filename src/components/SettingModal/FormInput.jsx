@@ -46,7 +46,6 @@ export default function FormInput() {
       const isEmpty = Object.keys(fieldsToUpdate).length === 0;
       if (isEmpty) {
       }
-      console.log(values);
       dispatch(AddSetingUser(fieldsToUpdate));
     },
   });

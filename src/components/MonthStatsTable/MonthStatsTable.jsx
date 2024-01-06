@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { nanoid } from 'nanoid';
-import sprite from '../../common/symbol-defs.svg';
-import moment from 'moment';
+import { useEffect, useState } from "react";
+import { nanoid } from "nanoid";
+import sprite from "../../common/symbol-defs.svg";
+import moment from "moment";
 
 import {
   DayUl,
@@ -14,11 +14,11 @@ import {
   MonthSwipe,
   MonthName,
   MonthTitle,
-} from './MonthStatsTable.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { waterMonts } from '../../redux/water/operations';
-import { selectMounthWater } from '../../redux/water/selector';
-import DaysGeneralStats from 'components/DaysGeneralStats/DaysGeneralStats';
+} from "./MonthStatsTable.styled";
+import { useDispatch, useSelector } from "react-redux";
+import { waterMonts } from "../../redux/water/operations";
+import { selectMounthWater } from "../../redux/water/selector";
+import DaysGeneralStats from "components/DaysGeneralStats/DaysGeneralStats";
 
 const Month = () => {
   const dispatch = useDispatch();
@@ -28,11 +28,16 @@ const Month = () => {
   const [year, setYear] = useState(new Date().getFullYear());
   const [data, setData] = useState([]);
 
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState("");
 
-  const handleButtonClick = () => {
-    setModalOpen(!isModalOpen);
-    console.log('first');
+  const handleButtonClick = (event) => {
+    const name = event.target.parentNode.tagName;
+    const data = event.target.parentNode.firstChild.textContent;
+    if (name === "LI") {
+      setModalOpen(data);
+      return;
+    }
+    setModalOpen("");
   };
 
   useEffect(() => {
@@ -48,14 +53,17 @@ const Month = () => {
     const arrData = [];
 
     for (let day = 1; day <= days; day++) {
-      const fullDate = moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').format(
-        'YYYY-MM-DD'
+      const fullDate = moment(`${year}-${month}-${day}`, "YYYY-MM-DD").format(
+        "YYYY-MM-DD"
       );
-      const event = data.find(event => event.date === fullDate);
+      const event = data.find((event) => event.date === fullDate);
 
       arrData.push({
         day,
         dailyNormFulfillment: event ? event.dailyNormFulfillment : 0,
+        id: nanoid(),
+        servingOfWater: event ? event.servingOfWater : 0,
+        WaterRate: event ? event.WaterRate : 2,
       });
     }
     return arrData;
@@ -80,10 +88,10 @@ const Month = () => {
 
   const getFormattedMonthName = () => {
     return `${new Date(year, month - 1)
-      .toLocaleString('en-US', { month: 'long' })
+      .toLocaleString("en-US", { month: "long" })
       .charAt(0)
       .toUpperCase()}${new Date(year, month - 1)
-      .toLocaleString('en-US', { month: 'long' })
+      .toLocaleString("en-US", { month: "long" })
       .slice(1)}, ${year}`;
   };
 
@@ -113,16 +121,23 @@ const Month = () => {
             </MonthSwipe>
           </CurrentMonth>
         </TodayDiv>
-        <DayUl>
-          {daysInMonth.map(item => (
-            <DayLi key={nanoid()} onClick={handleButtonClick}>
+        <DayUl onClick={handleButtonClick}>
+          {daysInMonth.map((item) => (
+            <DayLi key={item.id}>
               <DayNumber>{item.day}</DayNumber>
               <WaterPercentage>{item.dailyNormFulfillment}%</WaterPercentage>
+              {isModalOpen === item.day.toString() && (
+                <DaysGeneralStats
+                  onClose={() => setModalOpen("")}
+                  day={item.day}
+                  dailyNorm={item.dailyNormFulfillment}
+                  mounth={dataToday}
+                  servingOfWater={item.servingOfWater}
+                  WaterRate={item.WaterRate}
+                />
+              )}
             </DayLi>
           ))}
-          {isModalOpen && (
-            <DaysGeneralStats onClose={() => setModalOpen(false)} />
-          )}
         </DayUl>
       </StatsWrapper>
     </>
@@ -130,3 +145,4 @@ const Month = () => {
 };
 
 export default Month;
+//  onClose={() => setModalOpen(false)}
