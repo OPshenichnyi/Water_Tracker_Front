@@ -15,6 +15,6 @@ export const RestrictedRouteHomePage = ({
   redirectTo = "/",
 }) => {
   const isLogined = useSelector(selectIsLogined);
-
+  console.log('g')
   return isLogined ? <Navigate to={redirectTo} /> : Component;
 };

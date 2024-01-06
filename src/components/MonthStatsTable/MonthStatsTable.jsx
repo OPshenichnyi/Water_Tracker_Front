@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { nanoid } from "nanoid";
-import sprite from "../../common/symbol-defs.svg";
-import moment from "moment";
+import { useEffect, useState } from 'react';
+import { nanoid } from 'nanoid';
+import sprite from '../../common/symbol-defs.svg';
+import moment from 'moment';
 
 import {
   DayUl,
@@ -14,10 +14,10 @@ import {
   MonthSwipe,
   MonthName,
   MonthTitle,
-} from "./MonthStatsTable.styled";
-import { useDispatch, useSelector } from "react-redux";
-import { waterMonts } from "../../redux/water/operations";
-import { selectMounthWater } from "../../redux/water/selector";
+} from './MonthStatsTable.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { waterMonts } from '../../redux/water/operations';
+import { selectMounthWater } from '../../redux/water/selector';
 
 const Month = () => {
   const dispatch = useDispatch();
@@ -40,10 +40,10 @@ const Month = () => {
     const arrData = [];
 
     for (let day = 1; day <= days; day++) {
-      const fullDate = moment(`${year}-${month}-${day}`, "YYYY-MM-DD").format(
-        "YYYY-MM-DD"
+      const fullDate = moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').format(
+        'YYYY-MM-DD'
       );
-      const event = data.find((event) => event.date === fullDate);
+      const event = data.find(event => event.date === fullDate);
 
       arrData.push({
         day,
@@ -72,10 +72,10 @@ const Month = () => {
 
   const getFormattedMonthName = () => {
     return `${new Date(year, month - 1)
-      .toLocaleString("en-US", { month: "long" })
+      .toLocaleString('en-US', { month: 'long' })
       .charAt(0)
       .toUpperCase()}${new Date(year, month - 1)
-      .toLocaleString("en-US", { month: "long" })
+      .toLocaleString('en-US', { month: 'long' })
       .slice(1)}, ${year}`;
   };
 
@@ -106,7 +106,7 @@ const Month = () => {
           </CurrentMonth>
         </TodayDiv>
         <DayUl>
-          {daysInMonth.map((item) => (
+          {daysInMonth.map(item => (
             <DayLi key={nanoid()}>
               <DayNumber>{item.day}</DayNumber>
               <WaterPercentage>{item.dailyNormFulfillment}%</WaterPercentage>

@@ -31,19 +31,20 @@ export const Container = styled.div`
       padding-bottom: 50px;
     }
 
-     @media screen and (min-width: 1440px) {
-    background-image: url(${backDesc});
+    @media screen and (min-width: 1440px) {
+      background-image: url(${backDesc});
 
-    @media screen and (min-resolution: 192dpi) {
-      background-image: url(${backDesc2x});
-      padding-bottom: 50px;
+      @media screen and (min-resolution: 192dpi) {
+        background-image: url(${backDesc2x});
+        padding-bottom: 50px;
+      }
     }
-  }
 
-  @media screen and (min-width: 1440px) {
-    display: flex;
-    flex-basis: calc((100% - 81px) / 2);
-    padding-bottom: 185px;
+    @media screen and (min-width: 1440px) {
+      display: flex;
+      flex-basis: calc((100% - 81px) / 2);
+      padding-bottom: 185px;
+    }
   }
 `;
 
@@ -117,16 +118,17 @@ export const BenefitsItem = styled.li`
   }
 
   @media screen and (min-width: 768px) {
-     &:not(:last-child) {
-    margin-bottom: 0px;
-    flex-basis: calc((100% - 32px) / 3);
-  }
+    &:not(:last-child) {
+      margin-bottom: 0px;
+      flex-basis: calc((100% - 32px) / 3);
+    }
 
-   @media screen and (min-width: 1440px) {
-     &:not(:last-child) {
-   margin-bottom: 16px;
+    @media screen and (min-width: 1440px) {
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
   }
-
 `;
 
 export const TryBtn = styled(NavLink)`

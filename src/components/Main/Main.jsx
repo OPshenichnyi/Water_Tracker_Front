@@ -12,7 +12,7 @@ import {
   TryBtn,
 } from './Main.styled';
 
-export const Main = () => {
+const Main = () => {
   return (
     <Container>
       <FirstBlock>
@@ -62,3 +62,5 @@ export const Main = () => {
     </Container>
   );
 };
+
+export default Main;

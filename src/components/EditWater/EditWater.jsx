@@ -1,3 +1,7 @@
+import { toast } from 'react-toastify';
+import React, { useState, useEffect } from 'react';
+import icons from '../../common/symbol-defs.svg';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   ButtonClose,
   ButtonCount,
@@ -12,23 +16,28 @@ import {
   CounterBottom,
   ButtonSave,
   CountSaveBtnBottom,
+  BlockWaterTime,
+  
   Wrapper,
-} from './AddWater.styled';
+  
+  DataWater,
+  DataTime,
+} from './EditWater.styled';
 import {
   decrease,
   generateTimeOptions,
   handleUpdateCount,
   setInitialTime,
-} from '../Utils/utils';
-import React, { useEffect, useState } from 'react';
-import icons from '../../common/symbol-defs.svg';
-
-import { useDispatch, useSelector } from 'react-redux';
+} from 'components/Utils/utils';
 import { addWaterVolume } from '../../redux/water/operations';
 import { selectAddWaterVolume } from '../../redux/water/selector';
-import { toast } from 'react-toastify';
+import { FormatTime } from '../Calendar/FormatTime/FormatTime';
 
-function AddWater({ closeModal }) {
+
+
+
+
+export default function EditWater({ closeModal}) {
   const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [selectedTime, setSelectedTime] = useState(0);
@@ -36,9 +45,16 @@ function AddWater({ closeModal }) {
   const dispatch = useDispatch();
   const waterData = useSelector(selectAddWaterVolume);
 
+
+
+
+
   const handleDecrease = () => {
     decrease(count, setCount);
   };
+
+
+
 
   const handleInputChange = event => {
     setInputValue(event.target.value);
@@ -65,7 +81,6 @@ function AddWater({ closeModal }) {
       return toast.info(
         'Amount of water- cannot be zero please enter a value!'
       );
-
     const hours = Math.floor(selectedTime / 60);
     const minutes = selectedTime % 60;
     const currentDate = new Date();
@@ -80,10 +95,12 @@ function AddWater({ closeModal }) {
     closeModal();
   };
 
+
+
   return (
     <Wrapper>
       <BlockTop>
-        <BlockTitle> Add water</BlockTitle>
+        <BlockTitle>Edit the entered amount of water</BlockTitle>
         <ButtonClose onClick={closeModal}>
           {' '}
           <svg width={12} height={12} stroke="#407BFF">
@@ -91,8 +108,15 @@ function AddWater({ closeModal }) {
           </svg>
         </ButtonClose>
       </BlockTop>
-
-      <ValueP>Choose a value:</ValueP>
+      <BlockWaterTime>
+        <svg width={36} height={36} fill="#407BFF">
+          <use href={`${icons}#icon-glass`} />
+        </svg>
+        <DataWater>{waterData.waterVolume} ml</DataWater>
+        <DataTime>{FormatTime(waterData.date)}</DataTime>
+      
+      </BlockWaterTime>
+      <ValueP>Correct entered data:</ValueP>
       <AmountP>Amount of water:</AmountP>
 
       <BlockCount>
@@ -121,7 +145,7 @@ function AddWater({ closeModal }) {
         value={inputValue}
         onChange={handleInputChange}
         onBlur={handleInputBlur}
-        placeholder={count}
+        placeholder="50"
       />
       <CountSaveBtnBottom>
         <CounterBottom>{waterData.waterVolume}ml</CounterBottom>
@@ -132,5 +156,3 @@ function AddWater({ closeModal }) {
     </Wrapper>
   );
 }
-
-export default AddWater;

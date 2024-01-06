@@ -22,9 +22,11 @@ import { FormatTime } from "../FormatTime/FormatTime";
 import { selectTakeWaterHistory } from "../../../redux/water/selector";
 import MainModal from "components/MainModal/MainModal";
 import ModalAddWater from "components/AddWater/AddWater";
+import EditWater from "components/EditWater/EditWater";
 
 const Today = () => {
   const [modalActive, setModalActive] = useState(false);
+  const [modalEditActive, setModalEditActive] = useState(false);
   modalScrollOff(modalActive);
 
   const waterData = useSelector(selectTakeWaterHistory);
@@ -63,7 +65,7 @@ const Today = () => {
                   <TimeTableData>{FormatTime(waterRecord.date)}</TimeTableData>
 
                   <TodayTableData>
-                    <Button>
+                    <Button onClick={() => setModalEditActive(true)}>
                       <svg width={16} height={16}>
                         <use href={`${sprite}#pencil-square`}></use>
                       </svg>
@@ -88,6 +90,9 @@ const Today = () => {
 
       <MainModal active={modalActive} setActive={setModalActive}>
         <ModalAddWater closeModal={() => setModalActive(false)} />
+      </MainModal>
+      <MainModal active={modalEditActive} setActive={setModalEditActive}>
+        <EditWater closeModal={() => setModalEditActive(false)} />
       </MainModal>
     </>
   );

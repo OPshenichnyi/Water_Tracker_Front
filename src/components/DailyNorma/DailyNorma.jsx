@@ -27,16 +27,18 @@ import { useSelector } from 'react-redux';
 import { selectStageWater } from '../../redux/water/selector';
 import { toast } from 'react-toastify';
 import { selectIsUser } from '../../redux/auth/selectorsAuth';
+import EditDailyNorma from 'components/EditDailyNorma/EditDailyNorma';
 
-export const DailyNorma = () => {
+const DailyNorma = () => {
   const [modalActive, setModalActive] = useState(false);
+  const [modalDailyActive, setmodalDailyActive] = useState(false);
   // const [alreadyShownToast, setAlreadyShownToast] = useState(false);
 
   modalScrollOff(modalActive);
 
   const { percentage } = useSelector(selectStageWater);
   const { waterRate } = useSelector(selectIsUser);
-  
+
   // useEffect(() => {
   //   if (percentage === 100 && !alreadyShownToast) {
   //     toast.success(
@@ -46,8 +48,9 @@ export const DailyNorma = () => {
   //   }
   // }, [percentage, alreadyShownToast]);
   useEffect(() => {
-    const isToastAlreadyShown = localStorage.getItem('alreadyShownToast') === 'true';
-  
+    const isToastAlreadyShown =
+      localStorage.getItem('alreadyShownToast') === 'true';
+
     if (percentage === 100 && !isToastAlreadyShown) {
       toast.success(
         'Congratulations. Daily water requirement has been reached!'
@@ -64,7 +67,7 @@ export const DailyNorma = () => {
         <NormaTitle>My daily norma</NormaTitle>
         <DailyNormaWrapper>
           <NormaP>{waterRate / 1000} L</NormaP>
-          <NormaButton>Edit</NormaButton>
+          <NormaButton onClick={() => setmodalDailyActive(true)}>Edit</NormaButton>
         </DailyNormaWrapper>
       </NormaContainer>
       <picture>
@@ -107,6 +110,10 @@ export const DailyNorma = () => {
       <MainModal active={modalActive} setActive={setModalActive}>
         <ModalAddWater closeModal={() => setModalActive(false)} />
       </MainModal>
+      <MainModal active={modalDailyActive} setActive={setmodalDailyActive}>
+        <EditDailyNorma closeModal={() => setmodalDailyActive(false)}  />
+      </MainModal>
     </Container>
   );
 };
+export default DailyNorma;
