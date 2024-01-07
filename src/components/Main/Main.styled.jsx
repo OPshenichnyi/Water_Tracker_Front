@@ -5,8 +5,9 @@ import backgroundImg2x from '../../images/main-mob@2x.jpg';
 import tabletImg from '../../images/main_tablet_bg.jpg';
 import tabletImg2x from '../../images/main_tablet_bg@2x.jpg';
 import listImg from '../../images/listMarker.svg';
-import backDesc from '../../images/main_desctop.jpg';
-import backDesc2x from '../../images/main_desctop@2x.jpg';
+
+import bubble from '../../images/BackelementDesk.png';
+import bubble2x from '../../images/BackelementDesk@2x.png';
 
 import { NavLink } from 'react-router-dom';
 
@@ -32,10 +33,10 @@ export const Container = styled.div`
     }
 
     @media screen and (min-width: 1440px) {
-      background-image: url(${backDesc});
+      background-image: url(${bubble});
 
       @media screen and (min-resolution: 192dpi) {
-        background-image: url(${backDesc2x});
+        background-image: url(${bubble2x});
         padding-bottom: 50px;
       }
     }
