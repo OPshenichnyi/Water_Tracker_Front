@@ -14,7 +14,7 @@ import {
 
 const Main = () => {
   return (
-    <Container>
+    <Container className="container main-container">
       <FirstBlock>
         <MainTittle>Water consumption tracker</MainTittle>
         <RecordTittle>Record daily water intake and track</RecordTittle>

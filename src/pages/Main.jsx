@@ -1,16 +1,17 @@
 // import BasicModalEdit from 'components/EditWaterModal/EditWaterModal';
 import Main from '../components/Main/Main';
-import DaysGeneralStats from 'components/DaysGeneralStats/DaysGeneralStats';
+import { MainContainer } from './MainPage.styled';
+// import DaysGeneralStats from 'components/DaysGeneralStats/DaysGeneralStats';
 // import EditWater from 'components/EditWater/EditWater';
 
 const MainPage = () => {
   return (
-    <div>
+    <MainContainer>
       <Main />
       {/* <BasicModalEdit />
       <EditWater /> */}
-      <DaysGeneralStats />
-    </div>
+      {/* <DaysGeneralStats /> */}
+    </MainContainer>
   );
 };
 export default MainPage;
