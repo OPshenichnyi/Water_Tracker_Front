@@ -1,14 +1,28 @@
 import styled from "styled-components";
 import color from "../../common/Variables";
 
-export const Wrapper = styled.div`
+export const User = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const Button = styled.button`
-  color: ${color.bluePrimary};
+
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
   margin-left: 8px;
+`;
+
+export const ButtonMenu = styled.button`
+  color: ${color.bluePrimary};
+  margin-left: 4px;
+  text-align: center;
+  background: #ffff;
+`;
+
+export const ButtonAvt = styled.button`
+  color: ${color.bluePrimary};
   text-align: center;
   background: #ffff;
 `;
@@ -22,7 +36,6 @@ export const Avatar = styled.div`
   height: 28px;
   overflow: hidden;
   background: #fff;
-  padding: 5px;
   border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -33,7 +46,18 @@ export const Avatar = styled.div`
 export const Img = styled.img`
   display: block;
   width: 100%;
+  height: 100%;
   border-radius: 50%;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
+  object-fit: cover;
 `;
+
+export const Name = styled.p`
+text-align: right;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.25; 
+`;
+

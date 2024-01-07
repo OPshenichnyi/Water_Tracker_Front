@@ -1,47 +1,98 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { modalScrollOff } from "components/Utils/utils";
 import UserSettingsModal from "../SettingModal/SettingModal";
 import UserLogoutModal from "../UserLogoutModal/UserLogoutModal";
-import { Wrapper, Button, Modal, Svg, Item } from "./UserLogoModal.styled";
+import {
+  Wrapper,
+  Button,
+  Modal,
+  Svg,
+  Item,
+  Overlay,
+} from "./UserLogoModal.styled";
 import sprite from "../../common/symbol-defs.svg";
 import MainModal from "../MainModal/MainModal";
-const UserLogoModal = ({ position }) => {
+
+const UserLogoModal = ({ position, onClose, open }) => {
   const [isUserLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
+  const modalRef = useRef(null);
+  const modalOverlay = useRef(null);
   modalScrollOff(modalActive);
 
   const handleLogoutClick = () => {
     setUserLogoutModalOpen(true);
   };
 
+  const handleModalClick = (event) => {
+    // Если клик произошел внутри Modal, не закрывать UserLogoModal
+    event.stopPropagation();
+  };
+
+  useEffect(() => {
+    const handleDocumentClick = (event) => {
+      // Если клик произошел вне модального окна, закрыть UserLogoModal
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target) &&
+        event.target.getAttribute("data-modal-overlay") === "true"
+      ) {
+        handleClose();
+      }
+    };
+    const handleClose = () => {
+      setUserLogoutModalOpen(false);
+      onClose();
+    };
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        handleClose();
+      }
+    };
+    console.log("hhh");
+    if (open) {
+      document.addEventListener("keydown", handleKeyDown);
+      document.addEventListener("mousedown", handleDocumentClick);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleDocumentClick);
+    };
+  }, [open, onClose]);
+
   return (
-    <Modal position={position}>
-      <Wrapper>
-        <Item>
-          <Svg width={16} height={16}>
-            <use href={`${sprite}#cog-tooth`} />
-          </Svg>
-          <Button onClick={() => setModalActive(true)}>Setting</Button>
-        </Item>
-        <Item>
-          <Svg width={16} height={16}>
-            <use href={`${sprite}#arrow`} />
-          </Svg>
-          <Button onClick={handleLogoutClick}>Log out</Button>
-        </Item>
-        {isUserLogoutModalOpen && (
-          <UserLogoutModal
-            open={isUserLogoutModalOpen}
-            onClose={() => setUserLogoutModalOpen(false)}
-          />
-        )}
-      </Wrapper>
-      <MainModal active={modalActive} setActive={setModalActive}>
-        <UserSettingsModal
-          closeModal={() => setModalActive(false)}
-        ></UserSettingsModal>
-      </MainModal>
-    </Modal>
+    <Overlay data-modal-overlay="true" ref={modalOverlay}>
+      <Modal position={position} onClick={handleModalClick} ref={modalRef}>
+        <Wrapper>
+          <Item>
+            <Svg width={16} height={16}>
+              <use href={`${sprite}#cog-tooth`} />
+            </Svg>
+
+            <Button onClick={() => setModalActive(true)}>Setting</Button>
+          </Item>
+          <Item>
+            <Svg width={16} height={16}>
+              <use href={`${sprite}#arrow`} />
+            </Svg>
+            <Button onClick={handleLogoutClick}>Log out</Button>
+          </Item>
+
+          {isUserLogoutModalOpen && (
+            <UserLogoutModal
+              open={isUserLogoutModalOpen}
+              onClose={() => setUserLogoutModalOpen(false)}
+            />
+          )}
+        </Wrapper>
+        <MainModal active={modalActive} setActive={setModalActive}>
+          <UserSettingsModal
+            closeModal={() => setModalActive(false)}
+          ></UserSettingsModal>
+        </MainModal>
+      </Modal>
+    </Overlay>
   );
 };
 

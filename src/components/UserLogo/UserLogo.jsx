@@ -2,16 +2,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import UserLogoModal from '../UserLogoModal/UserLogoModal';
 import sprite from '../../common/symbol-defs.svg';
-import { Wrapper, Button, Svg,Avatar,Img } from './UserLogo.styled';
+import { Wrapper, ButtonMenu, Svg,Avatar,Img,User,ButtonAvt,Name } from './UserLogo.styled';
+import { useSelector} from "react-redux";
+import { selectIsUser} from "../../redux/auth/selectorsAuth";
 
 
 
-const UserLogo = ({ userName, userAvatar }) => {
+const UserLogo = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [userLogoPosition, setUserLogoPosition] = useState({ top: 0, left: 0 }); 
 
   const headerRef = useRef(null);
- 
+  const user = useSelector(selectIsUser );
 
  useEffect(() => {
   const updatePosition = () => {
@@ -38,14 +40,14 @@ const UserLogo = ({ userName, userAvatar }) => {
   };
 
   const renderAvatar = () => {
-    if (userAvatar) {
+    if (user.avatarURL) {
 
 
-      return <Avatar><Img src={userAvatar} alt={userName} /></Avatar>;
+      return <Avatar><Img src={user.avatarURL} alt={user.userName} /></Avatar>;
        
 
-    } else if (userName) {
-      const initials = userName.slice(0, 1).toUpperCase();
+    } else if (user.userName) {
+      const initials = user.userName.slice(0, 1).toUpperCase();
       return <Avatar>{initials}</Avatar>;
     } else {
       return <Avatar>V</Avatar>;
@@ -53,21 +55,24 @@ const UserLogo = ({ userName, userAvatar }) => {
   };
 
   return (
-
+    <User>
+       {user.userName && <Name>{user.userName}</Name>}
     <Wrapper ref={headerRef}>
-      <Button>
-        {userName && <span className="user-name">{userName}</span>}
+     
+      <ButtonAvt>
               {renderAvatar()}
-          </Button>
+          </ButtonAvt>
 
 
-      <Button onClick={handleButtonClick}>
+      <ButtonMenu onClick={handleButtonClick}>
         <Svg width={16} height={16}>
           <use href={`${sprite}#icon-chevron-double-up`} />
         </Svg>
-      </Button>
-      {isModalOpen && <UserLogoModal onClose={() => setModalOpen(false)} position={userLogoPosition} />}
-    </Wrapper>
+      </ButtonMenu>
+      {isModalOpen && <UserLogoModal  open={isModalOpen} onClose={() => setModalOpen(false)} position={userLogoPosition} />}
+      </Wrapper>
+    
+    </User>
   );
 };
 
