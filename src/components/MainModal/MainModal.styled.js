@@ -20,7 +20,5 @@ export const Modal = styled.div`
   }
 `;
 export const Content = styled.div`
-  overflow-y: auto;
-  width: 100vw;
-  height: 100vh;
+ 
 `;

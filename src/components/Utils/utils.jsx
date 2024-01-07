@@ -40,8 +40,8 @@ export const setInitialTime = setSelectedTime => {
   setSelectedTime(currentTime - (currentTime % 5));
 };
 
-export const modalScrollOff = modalActive => {
-  if (modalActive) {
+export const modalScrollOff = active => {
+  if (active) {
     document.body.style.overflow = 'hidden';
   } else {
     document.body.style.overflow = 'auto';
