@@ -29,7 +29,7 @@ import {
   handleUpdateCount,
   setInitialTime,
 } from 'components/Utils/utils';
-import { addWaterVolume } from '../../redux/water/operations';
+import {  updateWaterVolume } from '../../redux/water/operations';
 import { selectAddWaterVolume } from '../../redux/water/selector';
 import { FormatTime } from '../Calendar/FormatTime/FormatTime';
 
@@ -37,24 +37,27 @@ import { FormatTime } from '../Calendar/FormatTime/FormatTime';
 
 
 
-export default function EditWater({ closeModal}) {
-  const [count, setCount] = useState(0);
+export default function EditWater({ closeModal, waterRecord}) {
+  const [count, setCount] = useState(waterRecord ? waterRecord.waterVolume : 0);
   const [inputValue, setInputValue] = useState('');
   const [selectedTime, setSelectedTime] = useState(0);
 
   const dispatch = useDispatch();
   const waterData = useSelector(selectAddWaterVolume);
 
+  useEffect(() => {
+    setInitialTime(setSelectedTime);
+  }, []);
 
-
-
+  useEffect(() => {
+    if (waterRecord) {
+      setCount(waterRecord.waterVolume);
+    }
+  }, [waterRecord]);
 
   const handleDecrease = () => {
     decrease(count, setCount);
   };
-
-
-
 
   const handleInputChange = event => {
     setInputValue(event.target.value);
@@ -68,10 +71,6 @@ export default function EditWater({ closeModal}) {
     handleUpdateCountWrapper();
   };
 
-  useEffect(() => {
-    setInitialTime(setSelectedTime);
-  }, []);
-
   const handleTimeChange = e => {
     setSelectedTime(parseInt(e.target.value, 10));
   };
@@ -83,6 +82,7 @@ export default function EditWater({ closeModal}) {
       );
     const hours = Math.floor(selectedTime / 60);
     const minutes = selectedTime % 60;
+    
     const currentDate = new Date();
     currentDate.setHours(hours, minutes, 0, 0);
 
@@ -90,8 +90,10 @@ export default function EditWater({ closeModal}) {
       waterVolume: count,
       date: currentDate.toISOString(),
     };
-    toast.success('Data saved 👍');
-    dispatch(addWaterVolume(data));
+
+    const waterId = waterRecord._id;
+    dispatch(updateWaterVolume({ waterId, data }));
+    toast.success('Data changed successfully 👍');
     closeModal();
   };
 

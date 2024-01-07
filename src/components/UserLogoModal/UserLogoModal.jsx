@@ -33,6 +33,7 @@ const UserLogoModal = ({ position,onClose,open,headerRef  }) => {
   };
 
 
+
 useEffect(() => {
     const handleScroll = () => {
      
@@ -61,10 +62,12 @@ const handleClose = () => {
   onClose();
   };
 
+
   const handleModalClick = (event) => {
   
     event.stopPropagation();
   };
+
 
 const handleDocumentClick = (event) => {
 
@@ -77,7 +80,22 @@ const handleDocumentClick = (event) => {
       handleClose();
     }
   };
+
   useEffect(() => {
+    const handleDocumentClick = (event) => {
+      // Если клик произошел вне модального окна, закрыть UserLogoModal
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target) &&
+        event.target.getAttribute("data-modal-overlay") === "true"
+      ) {
+        handleClose();
+      }
+    };
+    const handleClose = () => {
+      setUserLogoutModalOpen(false);
+      onClose();
+    };
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         handleClose();
@@ -97,7 +115,7 @@ if (open) {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleDocumentClick);
     };
-  }, [open, handleClose, handleDocumentClick]);
+  }, [open, onClose]);
 
 
    return (
