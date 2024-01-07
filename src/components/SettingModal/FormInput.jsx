@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import {
   ContainerGender,
   ContainerBlockSeting,
@@ -15,12 +15,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import { AddSetingUser } from "../../redux/auth/authOperationApi";
 import sprite from "../../common/symbol-defs.svg";
+import variables from "common/Variables";
 
 // ===================================================================
 export default function FormInput() {
   const dispatch = useDispatch();
   const { userName, email: mail, gender } = useSelector(selectIsUser);
-
+  const [error, setError] = useState("");
   const initialValues = {
     userName,
     email: mail,
@@ -47,6 +48,28 @@ export default function FormInput() {
       dispatch(AddSetingUser(fieldsToUpdate));
     },
   });
+
+  const handleBlure = (evt) => {
+    formik.handleChange(evt);
+    const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    const validName = /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ'’]{1,32}$/;
+    const value = evt.target.value.toString();
+    const id = evt.target.id;
+    const valiSchema = "userName" === id ? validName : validEmail;
+
+    if (valiSchema.test(value)) {
+      setError("");
+      return;
+    }
+    setError(id);
+    if (value.length === 0) {
+      setError("");
+    }
+  };
+
+  const errorBorderStyleK = {
+    border: `1px solid ${variables.secondaryRed} `,
+  };
 
   return (
     <>
@@ -94,7 +117,7 @@ export default function FormInput() {
                   value="man"
                   checked={formik.values.gender === "man"}
                   onChange={formik.handleChange}
-                  onBlur={onBlur}
+                  onBlur={formik.handleBlur}
                 />
                 <span>Man</span>
               </label>
@@ -108,6 +131,8 @@ export default function FormInput() {
               onChange={formik.handleChange}
               value={formik.values.userName}
               className="ttt"
+              onBlur={handleBlure}
+              style={error === "userName" ? errorBorderStyleK : null}
             />
             <TitleNameSet title={"E-mail"}></TitleNameSet>
             <InputStyle
@@ -117,6 +142,8 @@ export default function FormInput() {
               onChange={formik.handleChange}
               value={formik.values.email}
               className="last"
+              onBlur={handleBlure}
+              style={error === "email" ? errorBorderStyleK : null}
             />
           </form>
         </ContainerInfoUser>
