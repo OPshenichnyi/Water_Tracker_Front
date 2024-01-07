@@ -32,16 +32,8 @@ const Today = () => {
   const waterData = useSelector(selectTakeWaterHistory);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await dispatch(fetchWaterDataToday());
-      } catch (error) {
-        console.error("Error getting water data in useEffect:", error);
-      }
-    };
-
-    fetchData();
+  useEffect(() => {    
+     dispatch(fetchWaterDataToday());
   }, [dispatch]);
 
   return (
@@ -92,12 +84,10 @@ const Today = () => {
         <ModalAddWater closeModal={() => setModalActive(false)} />
       </MainModal>
       <MainModal active={modalEditActive} setActive={setModalEditActive}>
-        <EditWater closeModal={() => setModalEditActive(false)} />
+        <EditWater closeModal={() => setModalEditActive(false)}  />
       </MainModal>
     </>
   );
 };
 
 export default Today;
-
-// added space for check
