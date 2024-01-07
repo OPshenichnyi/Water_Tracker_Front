@@ -31,29 +31,35 @@ function EditDailyNorma({ closeModal }) {
   const [inputValueK, setInputValueK] = useState('');
   const [inputValueT, setInputValueT] = useState('');
   const [calculatedResult, setCalculatedResult] = useState(null);
-  // const [isValidInput, setIsValidInput] = useState(true);
+  const [isValidInputK, setIsValidInputK] = useState(true);
+  const [isValidInputT, setIsValidInputT] = useState(true);
   const handleChange = event => {
     setGender(event.target.value);
   };
 
-  const handleInputChangeKilo = event => {
+  const handleInputChange = (event, setInputValue, setIsValidInput) => {
     if (/^\d*$/.test(event.target.value)) {
-      setInputValueK(event.target.value);
-      // setIsValidInput(true);
+      setInputValue(event.target.value);
+      setIsValidInput(true);
     } else {
-      // setIsValidInput(false);
-      toast.error('Будь ласка, введіть лише цифри');
+      setIsValidInput(false);
+      toast.error('please enter the numbers');
     }
   };
+
+  const handleInputChangeKilo = event => {
+    handleInputChange(event, setInputValueK, setIsValidInputK);
+  };
+
   const handleInputChangeTime = event => {
-   
-    if (/^\d*$/.test(event.target.value)) {
-      setInputValueT(event.target.value);
-      // setIsValidInput(true);
-    } else {
-      // setIsValidInput(false);
-      toast.error('Будь ласка, введіть лише цифри');
-    }
+    handleInputChange(event, setInputValueT, setIsValidInputT);
+  };
+
+  const errorBorderStyleK = {
+    border: '1px solid #EF5050',
+  };
+  const errorBorderStyleT = {
+    border: '1px solid #EF5050',
   };
 
   useEffect(() => {
@@ -66,18 +72,15 @@ function EditDailyNorma({ closeModal }) {
           result = inputValueK * 0.04 + inputValueT * 0.6;
         }
         result = result.toFixed(1);
-       
+
         setCalculatedResult(result);
       } else {
         setCalculatedResult(null);
-        
       }
     };
     waterCalc();
   }, [inputValueK, inputValueT, gender]);
-  if(!isNaN){
-    toast.error("erroror")
-  }
+
   return (
     <Wrapper>
       <BlockTop>
@@ -101,6 +104,7 @@ function EditDailyNorma({ closeModal }) {
           </Formula>
         </li>
       </BlockFormula>
+
       <Description>
         <DescriptionSpan>* </DescriptionSpan>V is the volume of the water norm
         in liters per day, M is your body weight, T is the time of active
@@ -162,7 +166,7 @@ function EditDailyNorma({ closeModal }) {
         value={inputValueK}
         onChange={handleInputChangeKilo}
         placeholder="0"
-        // isvalid={isValidInput}
+        style={isValidInputK ? {} : errorBorderStyleK}
       />
 
       <TextP>
@@ -175,7 +179,7 @@ function EditDailyNorma({ closeModal }) {
         value={inputValueT}
         onChange={handleInputChangeTime}
         placeholder="0"
-        // isvalid={isValidInput}
+        style={isValidInputT ? {} : errorBorderStyleT}
       />
       <BlockAmount>
         <BlockAmountText>
