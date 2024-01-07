@@ -1,20 +1,24 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+axios.defaults.baseURL = "https://db-water-tracker.onrender.com/api/";
 const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OGVhNDVhMmM4NGQ0MzYyMzE2ZDQxMCIsImlhdCI6MTcwMzkzMDQxMywiZXhwIjoxNzA0MDE2ODEzfQ.W-a3ClB7NJs8Azphx6KnJsRh94fsRQqC8XN5jWhEiL8";
-const apiBaseUrl = "https://db-water-tracker.onrender.com/api";
+// const apiBaseUrl = "https://db-water-tracker.onrender.com/api";
 
 export const getUserId = (owner) => {
   return { owner };
 };
 
+let currentDay = null
+
 export const addWaterVolume = createAsyncThunk(
   "water/addWaterVolume",
   async (data, thunkAPI) => {
     try {
-      const response = await axios.post(`${apiBaseUrl}/water`, data);
+      const response = await axios.post(`/water`, data);
       thunkAPI.dispatch(fetchWaterDataToday());
+      thunkAPI.dispatch(waterMonts(currentDay));
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -27,7 +31,7 @@ export const updateWaterVolume = createAsyncThunk(
   async ({ waterId, data }, thunkAPI) => {
     try {
       const response = await axios.patch(
-        `${apiBaseUrl}/water/${waterId}/water-volume`,
+        `/water/${waterId}/water-volume`,
         data,
         {
           headers: {
@@ -48,7 +52,7 @@ export const deleteWaterVolume = createAsyncThunk(
   "water/deleteWaterVolume",
   async (waterId, thunkAPI) => {
     try {
-      const response = await axios.delete(`${apiBaseUrl}/water/${waterId}`);
+      const response = await axios.delete(`/water/${waterId}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -61,7 +65,7 @@ export const fetchWaterDataToday = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const userId = getUserId();
-      const response = await axios.get(`${apiBaseUrl}/today`, {
+      const response = await axios.get(`/today`, {
         params: {
           userId,
         },
@@ -80,6 +84,7 @@ export const waterMonts = createAsyncThunk(
   "auth/monts",
 
   async (date, thunkAPI) => {
+    currentDay = date;
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
@@ -88,7 +93,7 @@ export const waterMonts = createAsyncThunk(
     }
     try {
       setJwtHeader(persistedToken);
-      const res = await axios.get(`${apiBaseUrl}/month/${date}`);
+      const res = await axios.get(`/month/${date}`);
       return res.data.result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
