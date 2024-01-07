@@ -22,7 +22,7 @@ import DesktopBottle2 from '../../images/DesktopHomeBottle@2x.png';
 import MainModal from 'components/MainModal/MainModal';
 import ModalAddWater from 'components/AddWater/AddWater';
 import { useEffect, useState } from 'react';
-import { modalScrollOff } from 'components/Utils/utils';
+
 import { useSelector } from 'react-redux';
 import { selectStageWater } from '../../redux/water/selector';
 import { toast } from 'react-toastify';
@@ -34,7 +34,7 @@ const DailyNorma = () => {
   const [modalDailyActive, setmodalDailyActive] = useState(false);
   // const [alreadyShownToast, setAlreadyShownToast] = useState(false);
 
-  modalScrollOff(modalActive);
+  
 
   const { percentage } = useSelector(selectStageWater);
   const { waterRate } = useSelector(selectIsUser);
@@ -60,6 +60,8 @@ const DailyNorma = () => {
       localStorage.setItem('alreadyShownToast', 'false');
     }
   }, [percentage]);
+
+ 
 
   return (
     <Container>
@@ -107,11 +109,12 @@ const DailyNorma = () => {
           Add Water
         </AddWaterButton>
       </ProgressContainer>
-      <MainModal active={modalActive} setActive={setModalActive}>
-        <ModalAddWater closeModal={() => setModalActive(false)} />
-      </MainModal>
+      
       <MainModal active={modalDailyActive} setActive={setmodalDailyActive}>
         <EditDailyNorma closeModal={() => setmodalDailyActive(false)}  />
+      </MainModal>
+      <MainModal active={modalActive} setActive={setModalActive}>
+        <ModalAddWater closeModal={() => setModalActive(false)} />
       </MainModal>
     </Container>
   );

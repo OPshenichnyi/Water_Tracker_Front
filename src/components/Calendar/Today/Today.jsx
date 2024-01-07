@@ -15,7 +15,7 @@ import {
   AddWaterButton,
 } from "./Today.styled";
 import React, { useEffect } from "react";
-import { modalScrollOff } from "components/Utils/utils";
+
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWaterDataToday } from "../../../redux/water/operations";
 import { FormatTime } from "../FormatTime/FormatTime";
@@ -27,8 +27,8 @@ import EditWater from "components/EditWater/EditWater";
 const Today = () => {
   const [modalActive, setModalActive] = useState(false);
   const [modalEditActive, setModalEditActive] = useState(false);
-  modalScrollOff(modalActive);
-
+ 
+ 
   const waterData = useSelector(selectTakeWaterHistory);
   const dispatch = useDispatch();
 
