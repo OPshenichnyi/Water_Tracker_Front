@@ -1,21 +1,34 @@
 
+
 import React, { useState,useEffect,useRef} from "react";
+
+
 import { modalScrollOff } from "components/Utils/utils";
 import UserSettingsModal from "../SettingModal/SettingModal";
 import UserLogoutModal from "../UserLogoutModal/UserLogoutModal";
-import { Wrapper, Button, Modal, Svg, Item,Overlay } from "./UserLogoModal.styled";
+import {
+  Wrapper,
+  Button,
+  Modal,
+  Svg,
+  Item,
+  Overlay,
+} from "./UserLogoModal.styled";
 import sprite from "../../common/symbol-defs.svg";
 import MainModal from "../MainModal/MainModal";
 
 
+
 const UserLogoModal = ({ position,onClose,open,headerRef  }) => {
+
+
   const [isUserLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const modalRef = useRef(null);
   const modalOverlay = useRef(null);
   modalScrollOff(modalActive);
 
-    const handleLogoutClick = () => {
+  const handleLogoutClick = () => {
     setUserLogoutModalOpen(true);
   };
 
@@ -45,19 +58,21 @@ useEffect(() => {
   }, [open, headerRef]);
 const handleClose = () => {
     
-    onClose();
+  onClose();
   };
 
   const handleModalClick = (event) => {
   
     event.stopPropagation();
   };
+
 const handleDocumentClick = (event) => {
+
 
     if (
       modalRef.current &&
       !modalRef.current.contains(event.target) &&
-       event.target.getAttribute("data-modal-overlay") === "true"
+      event.target.getAttribute("data-modal-overlay") === "true"
     ) {
       handleClose();
     }
@@ -68,6 +83,7 @@ const handleDocumentClick = (event) => {
         handleClose();
       }
     };
+
 
  
 
@@ -81,10 +97,7 @@ if (open) {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleDocumentClick);
     };
-  }, [open, handleClose]);
-
-
-
+  }, [open, handleClose, handleDocumentClick]);
 
 
    return (
@@ -117,6 +130,7 @@ if (open) {
        <MainModal active={modalActive} setActive={setModalActive}>
             <UserSettingsModal closeModal={() => setModalActive(false)}></UserSettingsModal>
           </MainModal>
+
     </Overlay>
   );
 };
