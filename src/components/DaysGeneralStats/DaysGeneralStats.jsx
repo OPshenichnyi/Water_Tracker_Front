@@ -9,7 +9,8 @@ export default function DaysGeneralStats({
   servingOfWater,
   WaterRate,
 }) {
-  const monthName = mounth.split(",")[0].trim();
+  const nameMount = mounth || "";
+  const monthName = nameMount.split(",")[0].trim();
 
   return (
     <div>
