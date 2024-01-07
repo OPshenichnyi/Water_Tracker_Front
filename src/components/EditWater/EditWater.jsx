@@ -93,7 +93,7 @@ export default function EditWater({ closeModal, waterRecord}) {
 
     const waterId = waterRecord._id;
     dispatch(updateWaterVolume({ waterId, data }));
-    toast.success('Data saved 👍');
+    toast.success('Data changed successfully 👍');
     closeModal();
   };
 
