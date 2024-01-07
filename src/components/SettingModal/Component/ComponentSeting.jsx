@@ -8,6 +8,8 @@ import {
 } from "../Component/ComponentSetingStyled";
 import sprite from "../../../common/symbol-defs.svg";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import variables from "common/Variables";
 
 // ================= Component Title ============================
 export const TitleNameSet = ({ title }) => {
@@ -31,7 +33,7 @@ export const BtnClose = ({ closeModal }) => {
   );
 };
 
-// ================= Component Btn Close Modal (X) ===============
+// ================= Component Input Password  ===============
 export const InputPassword = ({ formik, id, name, placeholder, value }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(false);
@@ -47,18 +49,24 @@ export const InputPassword = ({ formik, id, name, placeholder, value }) => {
 
   const onBlur = (event) => {
     formik.handleBlur(event);
-    const value = event.target.value;
+    const validPass = /^[a-zA-Z0-9!@#$%^&*]{8,64}$/.test(event.target.value);
 
-    if (value.length === 0) {
+    if (!validPass) {
+      setError(true);
+      if (!event.target.value) {
+        setError(false);
+        return;
+      }
+      toast.error("Password must be min 8 max 64 symbols");
+    } else {
       setError(false);
-      return;
     }
-
-    if (event.target.value.length > 8 || event.target.value.length < 64) {
-      setError(false);
-    }
-    setError(true);
   };
+
+  const errorBorderStyleK = {
+    border: `1px solid ${variables.secondaryRed} `,
+  };
+
   return (
     <InputContainer>
       <InputStyle
@@ -70,7 +78,7 @@ export const InputPassword = ({ formik, id, name, placeholder, value }) => {
         onBlur={onBlur}
         placeholder={placeholder}
         revealed={showPassword.toString() || ""}
-        style={{ borderColor: error ? "red" : "normal" }}
+        style={error ? errorBorderStyleK : null}
       />
       {showPassword ? (
         <InputPasswordSvg

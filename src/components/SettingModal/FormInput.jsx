@@ -14,7 +14,6 @@ import { InputPassword, TitleNameSet } from "./Component/ComponentSeting";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import { AddSetingUser } from "../../redux/auth/authOperationApi";
-import changePassword from "../Utils/validationSchema";
 import sprite from "../../common/symbol-defs.svg";
 
 // ===================================================================
@@ -33,7 +32,6 @@ export default function FormInput() {
 
   const formik = useFormik({
     initialValues: initialValues,
-    validationSchema: changePassword,
 
     onSubmit: (values) => {
       const fieldsToUpdate = {};
@@ -96,6 +94,7 @@ export default function FormInput() {
                   value="man"
                   checked={formik.values.gender === "man"}
                   onChange={formik.handleChange}
+                  onBlur={onBlur}
                 />
                 <span>Man</span>
               </label>
