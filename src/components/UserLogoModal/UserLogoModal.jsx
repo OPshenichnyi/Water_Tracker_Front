@@ -49,7 +49,6 @@ const UserLogoModal = ({ position, onClose, open }) => {
         handleClose();
       }
     };
-    console.log("hhh");
     if (open) {
       document.addEventListener("keydown", handleKeyDown);
       document.addEventListener("mousedown", handleDocumentClick);

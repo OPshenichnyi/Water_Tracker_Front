@@ -22,10 +22,12 @@ export default function FormInput() {
   const dispatch = useDispatch();
   const { userName, email: mail, gender } = useSelector(selectIsUser);
   const [error, setError] = useState("");
+  const [genders, setGenders] = useState(gender);
+
   const initialValues = {
     userName,
     email: mail,
-    gender,
+    gender: genders,
     oldPassword: "",
     newPassword: "",
     confirmNewPassword: "",
@@ -48,9 +50,8 @@ export default function FormInput() {
       dispatch(AddSetingUser(fieldsToUpdate));
     },
   });
-
+  console.log(formik.values);
   const handleBlure = (evt) => {
-    formik.handleChange(evt);
     const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const validName = /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ'’]{1,32}$/;
     const value = evt.target.value.toString();
@@ -95,7 +96,7 @@ export default function FormInput() {
                   name="gender"
                   value="girl"
                   checked={formik.values.gender === "girl"}
-                  onChange={formik.handleChange}
+                  onChange={setGenders}
                 />
                 <span>Girl</span>
               </label>
@@ -117,7 +118,6 @@ export default function FormInput() {
                   value="man"
                   checked={formik.values.gender === "man"}
                   onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
                 />
                 <span>Man</span>
               </label>
@@ -151,7 +151,6 @@ export default function FormInput() {
           <form onSubmit={formik.handleSubmit}>
             <FirstTitle>Password</FirstTitle>
             <LabelInput htmlFor="oldPassword">Outdated password:</LabelInput>
-            {/* Input old password */}
             <InputPassword
               formik={formik}
               id={"oldPassword"}
@@ -161,7 +160,6 @@ export default function FormInput() {
             />
 
             <LabelInput htmlFor="newPassword">New Password:</LabelInput>
-            {/* Input new pasword */}
             <InputPassword
               formik={formik}
               id={"newPassword"}

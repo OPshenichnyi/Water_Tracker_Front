@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AddAvatar } from "../../redux/auth/authOperationApi";
+import { AddAvatar, refreshUser } from "../../redux/auth/authOperationApi";
 import {
   Container,
   TitleContainer,
@@ -16,8 +16,12 @@ import sprite from "../../common/symbol-defs.svg";
 
 const SettingModal = ({ closeModal }) => {
   const dispatch = useDispatch();
-
   const { avatarURL } = useSelector(selectIsUser);
+
+  useEffect(() => {
+    dispatch(refreshUser);
+  }, [dispatch]);
+
   const fileInputRef = React.useRef();
 
   // Function select file and write to State
