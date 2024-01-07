@@ -2,13 +2,15 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 axios.defaults.baseURL = "https://db-water-tracker.onrender.com/api/";
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OGVhNDVhMmM4NGQ0MzYyMzE2ZDQxMCIsImlhdCI6MTcwMzkzMDQxMywiZXhwIjoxNzA0MDE2ODEzfQ.W-a3ClB7NJs8Azphx6KnJsRh94fsRQqC8XN5jWhEiL8";
-// const apiBaseUrl = "https://db-water-tracker.onrender.com/api";
 
 export const getUserId = (owner) => {
   return { owner };
 };
+
+const setJwtHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
 
 let currentDay = null
 
@@ -30,18 +32,9 @@ export const updateWaterVolume = createAsyncThunk(
   "water/updateWaterVolume",
   async ({ waterId, data }, thunkAPI) => {
     try {
-      const response = await axios.patch(
-        `/water/${waterId}/water-volume`,
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.patch(`/water/${waterId}/water-volume`, data);
+      thunkAPI.dispatch(fetchWaterDataToday());
       return response.data;
-      // const response = await axios.patch(`${apiBaseUrl}/water/${waterId}/water-volume`, data);
-      // return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -53,6 +46,7 @@ export const deleteWaterVolume = createAsyncThunk(
   async (waterId, thunkAPI) => {
     try {
       const response = await axios.delete(`/water/${waterId}`);
+      thunkAPI.dispatch(fetchWaterDataToday());
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -70,15 +64,13 @@ export const fetchWaterDataToday = createAsyncThunk(
           userId,
         },
       });
+      
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-const setJwtHeader = (token) => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
 
 export const waterMonts = createAsyncThunk(
   "auth/monts",
