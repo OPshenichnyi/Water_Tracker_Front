@@ -1,6 +1,17 @@
 import styled from 'styled-components';
 import color from '../../common/Variables';
 
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+
+`;
+
 export const Wrapper = styled.ul`
   display:flex;
   flex-direction:column;
@@ -18,6 +29,7 @@ font-size: 16px;
 `;
 
 export const Modal = styled.div`
+$position: ${({ position }) => position};
   position: absolute;
   margin-top:13px;
   top: ${props => props.position.top}px;
