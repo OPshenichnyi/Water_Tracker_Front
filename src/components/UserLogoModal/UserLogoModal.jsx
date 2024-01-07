@@ -1,5 +1,5 @@
 
-import React, { useState,useEffect,useRef} from "react";
+import React, { useState,useEffect,useRef,useCallback } from "react";
 import { modalScrollOff } from "components/Utils/utils";
 import UserSettingsModal from "../SettingModal/SettingModal";
 import UserLogoutModal from "../UserLogoutModal/UserLogoutModal";
@@ -43,25 +43,28 @@ useEffect(() => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [open, headerRef]);
-const handleClose = () => {
-    
+
+
+
+  const handleClose = useCallback(() => {
     onClose();
-  };
+  }, [onClose]);
 
   const handleModalClick = (event) => {
   
     event.stopPropagation();
   };
-const handleDocumentClick = (event) => {
-
+  const handleDocumentClick = useCallback((event) => {
     if (
       modalRef.current &&
       !modalRef.current.contains(event.target) &&
-       event.target.getAttribute("data-modal-overlay") === "true"
+      event.target.getAttribute("data-modal-overlay") === "true"
     ) {
       handleClose();
     }
-  };
+  }, [handleClose]);
+
+  
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -81,7 +84,7 @@ if (open) {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleDocumentClick);
     };
-  }, [open, handleClose]);
+  }, [open, handleClose,handleDocumentClick]);
 
 
 
