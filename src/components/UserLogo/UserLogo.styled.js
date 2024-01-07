@@ -4,14 +4,15 @@ import color from "../../common/Variables";
 export const User = styled.div`
   display: flex;
   align-items: center;
+ 
 `;
-
-
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   margin-left: 8px;
+ 
+
 `;
 
 export const ButtonMenu = styled.button`
@@ -60,4 +61,3 @@ font-style: normal;
 font-weight: 400;
 line-height: 1.25; 
 `;
-
