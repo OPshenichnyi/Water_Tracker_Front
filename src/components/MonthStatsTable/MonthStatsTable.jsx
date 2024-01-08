@@ -145,4 +145,3 @@ const Month = () => {
 };
 
 export default Month;
-//  onClose={() => setModalOpen(false)}
