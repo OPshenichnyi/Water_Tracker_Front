@@ -12,12 +12,14 @@ import {
 import icons from '../../common/symbol-defs.svg';
 import { useDispatch } from 'react-redux';
 import { deleteWaterVolume } from '../../redux/water/operations';
+import { toast } from 'react-toastify';
 
 function DeleteEntry({ closeModal, id }) {
   const dispatch = useDispatch();
 
   const deleteEntry = () => {
     dispatch(deleteWaterVolume(id));
+    toast.success('Deleted successfully');
     closeModal();
   };
 
