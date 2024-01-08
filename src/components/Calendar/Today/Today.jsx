@@ -1,5 +1,5 @@
-import { useState } from "react";
-import sprite from "../../../common/symbol-defs.svg";
+import { useState } from 'react';
+import sprite from '../../../common/symbol-defs.svg';
 import {
   TodayContainer,
   TodayHeader,
@@ -13,31 +13,44 @@ import {
   TextTableData,
   TimeTableData,
   AddWaterButton,
-} from "./Today.styled";
-import React, { useEffect } from "react";
-
-import { useDispatch, useSelector } from "react-redux";
-import { fetchWaterDataToday } from "../../../redux/water/operations";
-import { FormatTime } from "../FormatTime/FormatTime";
-import { selectTakeWaterHistory } from "../../../redux/water/selector";
-import MainModal from "components/MainModal/MainModal";
-import ModalAddWater from "components/AddWater/AddWater";
-import EditWater from "components/EditWater/EditWater";
+} from './Today.styled';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchWaterDataToday } from '../../../redux/water/operations';
+import { FormatTime } from '../FormatTime/FormatTime';
+import { selectTakeWaterHistory } from '../../../redux/water/selector';
+import MainModal from 'components/MainModal/MainModal';
+import ModalAddWater from 'components/AddWater/AddWater';
+import EditWater from 'components/EditWater/EditWater';
+import DeleteEntry from 'components/DeleteEntry/DeleteEntry';
 
 const Today = () => {
   const [modalActive, setModalActive] = useState(false);
   const [modalEditActive, setModalEditActive] = useState(false);
+
+  const [modalDelete, setModalDelete] = useState(false);
+  const [idDelete, setIdDelete] = useState();
+
+
  
   const [selectedWaterRecord, setSelectedWaterRecord] = useState(null);
  
+
   const waterData = useSelector(selectTakeWaterHistory);
   const dispatch = useDispatch();
 
   useEffect(() => {
+
     if (!waterData.length) {
       dispatch(fetchWaterDataToday());
     }
   }, [dispatch, waterData]);
+
+
+  const openDel = id => {
+    setIdDelete(id);
+    setModalDelete(true);
+  };
 
   return (
     <>
@@ -46,7 +59,7 @@ const Today = () => {
         <TableWrapper>
           <TodayTable>
             <tbody>
-              {waterData.map((waterRecord) => (
+              {waterData.map(waterRecord => (
                 <TableRow key={waterRecord._id}>
                   <TodayTableData>
                     <ImageWrapper>
@@ -71,7 +84,7 @@ const Today = () => {
                     </Button>
                   </TodayTableData>
                   <TodayTableData>
-                    <TrashButton>
+                    <TrashButton onClick={() => openDel(waterRecord._id)}>
                       <svg width={16} height={16}>
                         <use href={`${sprite}#trash-can`}></use>
                       </svg>
@@ -86,12 +99,16 @@ const Today = () => {
           </AddWaterButton>
         </TableWrapper>
       </TodayContainer>
-
+      <MainModal active={modalDelete} setActive={setModalDelete}>
+        <DeleteEntry closeModal={() => setModalDelete(false)} id={idDelete} />
+      </MainModal>
       <MainModal active={modalActive} setActive={setModalActive}>
         <ModalAddWater closeModal={() => setModalActive(false)} />
       </MainModal>
       <MainModal active={modalEditActive} setActive={setModalEditActive}>
+
         <EditWater closeModal={() => setModalEditActive(false)} waterRecord={selectedWaterRecord} />
+
       </MainModal>
     </>
   );

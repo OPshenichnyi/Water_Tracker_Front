@@ -80,6 +80,8 @@ export default function EditWater({ closeModal, waterRecord}) {
       return toast.info(
         'Amount of water- cannot be zero please enter a value!'
       );
+    if(count > 5000) return toast.info('The entered data should not exceed 5000 ml');
+
     const hours = Math.floor(selectedTime / 60);
     const minutes = selectedTime % 60;
     
@@ -147,7 +149,7 @@ export default function EditWater({ closeModal, waterRecord}) {
         value={inputValue}
         onChange={handleInputChange}
         onBlur={handleInputBlur}
-        placeholder="50"
+        placeholder={count}
       />
       <CountSaveBtnBottom>
         <CounterBottom>{waterData.waterVolume}ml</CounterBottom>
