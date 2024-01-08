@@ -28,8 +28,10 @@ import { selectStageWater } from '../../redux/water/selector';
 import { toast } from 'react-toastify';
 import { selectIsUser } from '../../redux/auth/selectorsAuth';
 import EditDailyNorma from 'components/EditDailyNorma/EditDailyNorma';
+import Loader from '../Loader/Loader';
 
 const DailyNorma = () => {
+  
   const [modalActive, setModalActive] = useState(false);
   const [modalDailyActive, setmodalDailyActive] = useState(false);
 
@@ -50,15 +52,21 @@ const DailyNorma = () => {
     }
   }, [percentage]);
 
- 
-
   return (
     <Container>
       <NormaContainer>
         <NormaTitle>My daily norma</NormaTitle>
         <DailyNormaWrapper>
-          <NormaP>{waterRate / 1000} L</NormaP>
-          <NormaButton onClick={() => setmodalDailyActive(true)}>Edit</NormaButton>
+          {isNaN(waterRate) ? (
+            <Loader />
+          ) : (
+            <>
+              <NormaP>{isNaN(waterRate) ? <Loader /> : waterRate / 1000 } L</NormaP>
+              <NormaButton onClick={() => setmodalDailyActive(true)}>
+                Edit
+              </NormaButton>
+            </>
+          )}
         </DailyNormaWrapper>
       </NormaContainer>
       <picture>

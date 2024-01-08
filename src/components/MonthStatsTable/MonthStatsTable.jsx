@@ -135,6 +135,7 @@ const Month = () => {
                   servingOfWater={item.servingOfWater}
                   WaterRate={item.WaterRate}
                 />
+                
               )}
             </DayLi>
           ))}

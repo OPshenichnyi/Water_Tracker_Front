@@ -33,10 +33,6 @@ import {  updateWaterVolume } from '../../redux/water/operations';
 import { selectAddWaterVolume } from '../../redux/water/selector';
 import { FormatTime } from '../Calendar/FormatTime/FormatTime';
 
-
-
-
-
 export default function EditWater({ closeModal, waterRecord}) {
   const [count, setCount] = useState(waterRecord ? waterRecord.waterVolume : 0);
   const [inputValue, setInputValue] = useState('');

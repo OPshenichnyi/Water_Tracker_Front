@@ -100,9 +100,9 @@ function EditDailyNorma({ closeModal }) {
       toast.error('Please enter valid numbers');
     }
   };
-
   const saveWater = () => {  
     if(inputValue === '') return toast.info('Fill in the column how much water you will drink');
+    if(inputValue === '0') return toast.info('Value must not be 0 L');
     if(inputValue >15) return toast.info('The maximum daily intake cannot exceed 15 L');
       dispatch(saveWaterRate(Number(inputValue)*1000));
       toast.success('Daily water intake changed 👍');
@@ -222,7 +222,7 @@ function EditDailyNorma({ closeModal }) {
       <SecondTitle>Write down how much water you will drink:</SecondTitle>
       <InputStyle
         type="text"
-        value={inputValue}
+        value={inputValue }
         onChange= {handleInputChangeValue}
         placeholder="Maximum permissible displacement 15 liters"
         max="15"
