@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import icons from '../../common/symbol-defs.svg';
+import React, { useEffect, useState } from "react";
+import icons from "../../common/symbol-defs.svg";
 import {
   AmountWater,
   BlockAmount,
@@ -22,27 +22,25 @@ import {
   TextP,
   WrapAmount,
   Wrapper,
-} from './EditDailyNorma.styled';
-import sprite from '../../common/symbol-defs.svg';
-import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
-import {  saveWaterRate } from '../../redux/auth/authOperationApi';
+} from "./EditDailyNorma.styled";
+import sprite from "../../common/symbol-defs.svg";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { saveWaterRate } from "../../redux/auth/authOperationApi";
 
 function EditDailyNorma({ closeModal }) {
-
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
   const [isValidInput, setIsValidInput] = useState(false);
 
-
-  const [gender, setGender] = useState('girl');
-  const [inputValueK, setInputValueK] = useState('');
-  const [inputValueT, setInputValueT] = useState('');
+  const [gender, setGender] = useState("girl");
+  const [inputValueK, setInputValueK] = useState("");
+  const [inputValueT, setInputValueT] = useState("");
   const [calculatedResult, setCalculatedResult] = useState(null);
   const [isValidInputK, setIsValidInputK] = useState(true);
   const [isValidInputT, setIsValidInputT] = useState(true);
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setGender(event.target.value);
   };
 
@@ -52,30 +50,30 @@ function EditDailyNorma({ closeModal }) {
       setIsValidInput(true);
     } else {
       setIsValidInput(false);
-      toast.error('please enter the numbers');
+      toast.error("please enter the numbers");
     }
   };
 
-  const handleInputChangeKilo = event => {
+  const handleInputChangeKilo = (event) => {
     handleInputChange(event, setInputValueK, setIsValidInputK);
   };
 
-  const handleInputChangeTime = event => {
+  const handleInputChangeTime = (event) => {
     handleInputChange(event, setInputValueT, setIsValidInputT);
   };
 
   const errorBorderStyleK = {
-    border: '1px solid #EF5050',
+    border: "1px solid #EF5050",
   };
   const errorBorderStyleT = {
-    border: '1px solid #EF5050',
+    border: "1px solid #EF5050",
   };
 
   useEffect(() => {
     const waterCalc = () => {
       if (inputValueK && inputValueT && gender) {
         let result;
-        if (gender === 'girl') {
+        if (gender === "girl") {
           result = inputValueK * 0.03 + inputValueT * 0.4;
         } else {
           result = inputValueK * 0.04 + inputValueT * 0.6;
@@ -90,26 +88,27 @@ function EditDailyNorma({ closeModal }) {
     waterCalc();
   }, [inputValueK, inputValueT, gender]);
 
-  const handleInputChangeValue = event => {
+  const handleInputChangeValue = (event) => {
     const inputValue = event.target.value;
     if (/^\d*\.?\d{0,3}$/.test(inputValue) || inputValue === "") {
       setInputValue(inputValue);
       setIsValidInput(true);
     } else {
       setIsValidInput(false);
-      toast.error('Please enter valid numbers');
+      toast.error("Please enter valid numbers");
     }
   };
 
-  const saveWater = () => {  
-    if(inputValue === '') return toast.info('Fill in the column how much water you will drink');
-    if(inputValue >15) return toast.info('The maximum daily intake cannot exceed 15 L');
-      dispatch(saveWaterRate(Number(inputValue)*1000));
-      toast.success('Daily water intake changed 👍');
-      setInputValue("");
-      closeModal();
+  const saveWater = () => {
+    if (inputValue === "")
+      return toast.info("Fill in the column how much water you will drink");
+    if (inputValue > 15)
+      return toast.info("The maximum daily intake cannot exceed 15 L");
+    dispatch(saveWaterRate(Number(inputValue) * 1000));
+    toast.success("Daily water intake changed 👍");
+    setInputValue("");
+    closeModal();
   };
-
 
   return (
     <Wrapper>
@@ -125,7 +124,7 @@ function EditDailyNorma({ closeModal }) {
       <BlockFormula>
         <li>
           <Formula>
-            For girl:<FormulaSpan>V=(M*0,03) + (T*0,4)</FormulaSpan>{' '}
+            For girl:<FormulaSpan>V=(M*0,03) + (T*0,4)</FormulaSpan>{" "}
           </Formula>
         </li>
         <li>
@@ -146,7 +145,7 @@ function EditDailyNorma({ closeModal }) {
 
       <ContainerGender>
         <LabelGender htmlFor="girl">
-          {gender === 'girl' ? (
+          {gender === "girl" ? (
             <svg width={14} height={14}>
               <use href={`${sprite}#radio-btn-active`} />
             </svg>
@@ -161,14 +160,14 @@ function EditDailyNorma({ closeModal }) {
             type="radio"
             name="gender"
             value="girl"
-            checked={gender === 'girl'}
+            checked={gender === "girl"}
             onChange={handleChange}
           />
           <span>For girl</span>
         </LabelGender>
 
         <LabelGender htmlFor="man">
-          {gender === 'girl' ? (
+          {gender === "girl" ? (
             <svg width={14} height={14}>
               <use href={`${sprite}#radio-btn`} />
             </svg>
@@ -182,7 +181,7 @@ function EditDailyNorma({ closeModal }) {
             type="radio"
             name="gender"
             value="man"
-            checked={gender === 'man'}
+            checked={gender === "man"}
             onChange={handleChange}
           />
           <span>For man</span>
@@ -223,13 +222,15 @@ function EditDailyNorma({ closeModal }) {
       <InputStyle
         type="text"
         value={inputValue}
-        onChange= {handleInputChangeValue}
+        onChange={handleInputChangeValue}
         placeholder="Maximum permissible displacement 15 liters"
         max="15"
         pattern="^[0-9]*\.?[0-9]*$"
       />
       <ButtonSaveWrap>
-        <ButtonSave type="button" onClick={saveWater}>Save</ButtonSave>
+        <ButtonSave type="button" onClick={saveWater}>
+          Save
+        </ButtonSave>
       </ButtonSaveWrap>
     </Wrapper>
   );

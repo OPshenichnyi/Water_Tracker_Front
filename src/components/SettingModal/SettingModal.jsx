@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AddAvatar, refreshUser } from "../../redux/auth/authOperationApi";
+import { AddAvatar } from "../../redux/auth/authOperationApi";
 import {
   Container,
   TitleContainer,
@@ -9,21 +9,28 @@ import {
   InputImg,
   LinkImgUpload,
 } from "./SettingModal.styled";
-import { selectIsUser } from "../../redux/auth/selectorsAuth";
+import { selectIsUser, selectIsStatus } from "../../redux/auth/selectorsAuth";
 import FormInput from "./FormInput";
 import { TitleNameSet, BtnClose } from "./Component/ComponentSeting";
 import sprite from "../../common/symbol-defs.svg";
-
+import { resetAddStatus } from "../../redux/auth/sliceAuth";
+import { toast } from "react-toastify";
 const SettingModal = ({ closeModal }) => {
   const dispatch = useDispatch();
   const { avatarURL } = useSelector(selectIsUser);
+  const addStatus = useSelector(selectIsStatus);
 
   useEffect(() => {
-    dispatch(refreshUser);
-  }, [dispatch]);
+    if (addStatus === "success") {
+      closeModal();
+      toast.success("Information add your account");
+      dispatch(resetAddStatus());
+    } else if (addStatus === "error") {
+      dispatch(resetAddStatus());
+    }
+  }, [addStatus, dispatch, closeModal]);
 
   const fileInputRef = React.useRef();
-
   // Function select file and write to State
   const handleFileChange = (event) => {
     const file = event.target.files[0];

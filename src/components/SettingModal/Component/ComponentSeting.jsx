@@ -5,6 +5,9 @@ import {
   InputContainer,
   InputStyle,
   InputPasswordSvg,
+  ContainerGender,
+  LabelGender,
+  InputGenders,
 } from "../Component/ComponentSetingStyled";
 import sprite from "../../../common/symbol-defs.svg";
 import { useState } from "react";
@@ -98,5 +101,63 @@ export const InputPassword = ({ formik, id, name, placeholder, value }) => {
         </InputPasswordSvg>
       )}
     </InputContainer>
+  );
+};
+
+// ================= Component gender radio btn  ===============
+
+export const RadioBtnGender = ({ formik }) => {
+  const [gender, setGender] = useState(formik.values.gender || "man");
+
+  const handleChange = (evt) => {
+    setGender(evt.target.value);
+    formik.setFieldValue("gender", evt.target.value);
+  };
+
+  return (
+    <ContainerGender>
+      <LabelGender htmlFor="girl">
+        {gender === "girl" ? (
+          <svg width={14} height={14}>
+            <use href={`${sprite}#radio-btn-active`} />
+          </svg>
+        ) : (
+          <svg width={14} height={14}>
+            <use href={`${sprite}#radio-btn`} />
+          </svg>
+        )}
+
+        <InputGenders
+          id="girl"
+          type="radio"
+          name="gender"
+          value="girl"
+          checked={gender === "girl"}
+          onChange={handleChange}
+        />
+        <span>Woman</span>
+      </LabelGender>
+
+      <LabelGender htmlFor="man">
+        {gender === "girl" ? (
+          <svg width={14} height={14}>
+            <use href={`${sprite}#radio-btn`} />
+          </svg>
+        ) : (
+          <svg width={14} height={14}>
+            <use href={`${sprite}#radio-btn-active`} />
+          </svg>
+        )}
+        <InputGenders
+          id="man"
+          type="radio"
+          name="gender"
+          value="man"
+          checked={gender === "man"}
+          onChange={handleChange}
+        />
+        <span>Man</span>
+      </LabelGender>
+    </ContainerGender>
   );
 };

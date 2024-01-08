@@ -81,34 +81,7 @@ export const LinkImgUpload = styled.span`
     fill: none;
   }
 `;
-//  ======== Container Block gender ==================
-export const ContainerGender = styled.div`
-  display: flex;
-  margin-bottom: 24px;
-  width: 152px;
-  height: 20px;
-  input {
-    background-color: ${variables.bluePrimary};
-    display: none;
-  }
-  label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  svg {
-    margin-right: 8px;
-  }
-  label:first-child {
-    margin-right: 24px;
-  }
-  input:first-child {
-    margin-right: 8px;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 52px;
-  }
-`;
+
 //  ======== Container Block Setting ==================
 export const ContainerBlockSeting = styled.div`
   @media screen and (min-width: 1440px) {

@@ -1,7 +1,6 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import {
-  ContainerGender,
   ContainerBlockSeting,
   ContainerInfoUser,
   ContainerChangePass,
@@ -10,24 +9,27 @@ import {
   ButtonSubmit,
   FirstTitle,
 } from "./SettingModal.styled";
-import { InputPassword, TitleNameSet } from "./Component/ComponentSeting";
+import {
+  InputPassword,
+  RadioBtnGender,
+  TitleNameSet,
+} from "./Component/ComponentSeting";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import { AddSetingUser } from "../../redux/auth/authOperationApi";
-import sprite from "../../common/symbol-defs.svg";
 import variables from "common/Variables";
 
 // ===================================================================
 export default function FormInput() {
   const dispatch = useDispatch();
   const { userName, email: mail, gender } = useSelector(selectIsUser);
+
   const [error, setError] = useState("");
-  const [genders, setGenders] = useState(gender);
 
   const initialValues = {
     userName,
     email: mail,
-    gender: genders,
+    gender,
     oldPassword: "",
     newPassword: "",
     confirmNewPassword: "",
@@ -50,7 +52,7 @@ export default function FormInput() {
       dispatch(AddSetingUser(fieldsToUpdate));
     },
   });
-  console.log(formik.values);
+
   const handleBlure = (evt) => {
     const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const validName = /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ'’]{1,32}$/;
@@ -78,51 +80,7 @@ export default function FormInput() {
         <ContainerInfoUser>
           <FirstTitle>Your gender identity</FirstTitle>
           <form onSubmit={formik.handleSubmit}>
-            <ContainerGender>
-              <label htmlFor="girl">
-                {formik.values.gender === "girl" ? (
-                  <svg width={16} height={16}>
-                    <use href={`${sprite}#radio-btn-active`} />
-                  </svg>
-                ) : (
-                  <svg width={16} height={16}>
-                    <use href={`${sprite}#radio-btn`} />
-                  </svg>
-                )}
-
-                <input
-                  id="girl"
-                  type="radio"
-                  name="gender"
-                  value="girl"
-                  checked={formik.values.gender === "girl"}
-                  onChange={setGenders}
-                />
-                <span>Girl</span>
-              </label>
-
-              <label htmlFor="man">
-                {formik.values.gender === "girl" ? (
-                  <svg width={16} height={16}>
-                    <use href={`${sprite}#radio-btn`} />
-                  </svg>
-                ) : (
-                  <svg width={16} height={16}>
-                    <use href={`${sprite}#radio-btn-active`} />
-                  </svg>
-                )}
-                <input
-                  id="man"
-                  type="radio"
-                  name="gender"
-                  value="man"
-                  checked={formik.values.gender === "man"}
-                  onChange={formik.handleChange}
-                />
-                <span>Man</span>
-              </label>
-            </ContainerGender>
-
+            <RadioBtnGender formik={formik}></RadioBtnGender>
             <TitleNameSet title={"Your name"}></TitleNameSet>
             <InputStyle
               id="userName"
