@@ -38,9 +38,8 @@ const Today = () => {
 
   const waterData = useSelector(selectTakeWaterHistory);
   const dispatch = useDispatch();
-
+  console.log(waterData)
   useEffect(() => {
-
     if (!waterData.length) {
       dispatch(fetchWaterDataToday());
     }
@@ -51,7 +50,7 @@ const Today = () => {
     setIdDelete(id);
     setModalDelete(true);
   };
-
+ 
   return (
     <>
       <TodayContainer>
@@ -73,10 +72,9 @@ const Today = () => {
                   <TimeTableData>{FormatTime(waterRecord.date)}</TimeTableData>
 
                   <TodayTableData>
-                    {/* <Button onClick={() => setModalEditActive(true)}> */}
                     <Button onClick={() => {
                       setModalEditActive(true);
-                      setSelectedWaterRecord(waterRecord); // Установите выбранную запись в состояние
+                      setSelectedWaterRecord(waterRecord); 
                     }}>
                       <svg width={16} height={16}>
                         <use href={`${sprite}#pencil-square`}></use>
