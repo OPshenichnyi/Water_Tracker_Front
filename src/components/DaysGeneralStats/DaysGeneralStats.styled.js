@@ -1,12 +1,10 @@
-import styled from 'styled-components';
-import color from '../../common/Variables';
+import styled from "styled-components";
+import color from "../../common/Variables";
 
 export const DailyModal = styled.div`
   position: absolute;
   top: 100%;
-  left: -43%;
   transform: translateY(-130%);
-
   display: inline-flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -23,9 +21,8 @@ export const DailyModal = styled.div`
   z-index: 2;
 
   @media screen and (min-width: 768px) {
-    left: 50%;
-    transform: translate(0%, -131%);
     width: 292px;
+    left: ${(props) => props.left}px;
   }
   @media screen and (min-width: 1440px) {
     transform: translateY(0);
