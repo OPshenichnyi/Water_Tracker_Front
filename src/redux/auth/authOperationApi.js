@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { fetchWaterDataToday } from "../water/operations";
-import { toast } from "react-toastify";
 
 //  ==============Settings AXIOS =======================
 axios.defaults.baseURL = "https://db-water-tracker.onrender.com/api/";
@@ -97,7 +96,6 @@ export const AddSetingUser = createAsyncThunk(
       const response = await axios.patch("/users", credentials);
       return response.data;
     } catch (error) {
-      errorValue(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -115,14 +113,7 @@ export const saveWaterRate = createAsyncThunk(
 
       return response.data;
     } catch (error) {
-      errorValue(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
-const errorValue = (error) => {
-  const code = error.code;
-  const messages = error.message;
-  toast.error(`${code} ${messages}`);
-};

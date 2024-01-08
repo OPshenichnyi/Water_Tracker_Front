@@ -76,7 +76,7 @@ const authSlice = createSlice({
     });
     builder.addCase(AddAvatar.fulfilled, (state, action) => {
       state.user.avatarURL = action.payload.avatarURL;
-      state.addStatus = "success";
+      state.addStatus = "uploaded";
       state.isPending = false;
     });
 
