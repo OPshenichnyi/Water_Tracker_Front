@@ -34,6 +34,7 @@ export const updateWaterVolume = createAsyncThunk(
     try {
       const response = await axios.patch(`/water/${waterId}/water-volume`, data);
       thunkAPI.dispatch(fetchWaterDataToday());
+      thunkAPI.dispatch(waterMonts(currentDay));
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { fetchWaterDataToday } from "../water/operations";
+
 //  ==============Settings AXIOS =======================
 axios.defaults.baseURL = "https://db-water-tracker.onrender.com/api/";
 
