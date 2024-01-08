@@ -3,6 +3,7 @@ import { logOut } from "../../redux/auth/authOperationApi";
 import Modal from "@mui/material/Modal";
 import icons from "../../common/symbol-defs.svg";
 
+
 import {
   ButtonCancel,
   ButtonLogout,
@@ -15,10 +16,13 @@ import {
 } from "./UserLogoutModal.styled";
 
 const UserLogoutModal = ({ open, onClose }) => {
+  
   const dispatch = useDispatch();
 
   const handleClose = () => {
+
     onClose();
+    
   };
 
   const handleLogout = () => {

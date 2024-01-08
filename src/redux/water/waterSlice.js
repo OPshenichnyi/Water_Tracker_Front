@@ -59,6 +59,7 @@ const waterSlice = createSlice({
       .addCase(deleteWaterVolume.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
+        
       })
       .addCase(deleteWaterVolume.rejected, (state, action) => {
         state.loading = false;

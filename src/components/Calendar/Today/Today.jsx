@@ -27,15 +27,25 @@ import DeleteEntry from 'components/DeleteEntry/DeleteEntry';
 const Today = () => {
   const [modalActive, setModalActive] = useState(false);
   const [modalEditActive, setModalEditActive] = useState(false);
+
   const [modalDelete, setModalDelete] = useState(false);
   const [idDelete, setIdDelete] = useState();
+
+
+ 
+  const [selectedWaterRecord, setSelectedWaterRecord] = useState(null);
+ 
 
   const waterData = useSelector(selectTakeWaterHistory);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchWaterDataToday());
-  }, [dispatch]);
+
+    if (!waterData.length) {
+      dispatch(fetchWaterDataToday());
+    }
+  }, [dispatch, waterData]);
+
 
   const openDel = id => {
     setIdDelete(id);
@@ -63,7 +73,11 @@ const Today = () => {
                   <TimeTableData>{FormatTime(waterRecord.date)}</TimeTableData>
 
                   <TodayTableData>
-                    <Button onClick={() => setModalEditActive(true)}>
+                    {/* <Button onClick={() => setModalEditActive(true)}> */}
+                    <Button onClick={() => {
+                      setModalEditActive(true);
+                      setSelectedWaterRecord(waterRecord); // Установите выбранную запись в состояние
+                    }}>
                       <svg width={16} height={16}>
                         <use href={`${sprite}#pencil-square`}></use>
                       </svg>
@@ -92,7 +106,9 @@ const Today = () => {
         <ModalAddWater closeModal={() => setModalActive(false)} />
       </MainModal>
       <MainModal active={modalEditActive} setActive={setModalEditActive}>
-        <EditWater closeModal={() => setModalEditActive(false)} />
+
+        <EditWater closeModal={() => setModalEditActive(false)} waterRecord={selectedWaterRecord} />
+
       </MainModal>
     </>
   );
