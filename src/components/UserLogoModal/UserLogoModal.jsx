@@ -1,6 +1,4 @@
-
-
-import React, { useState,useEffect,useRef,useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 import { modalScrollOff } from "components/Utils/utils";
 import UserSettingsModal from "../SettingModal/SettingModal";
@@ -16,11 +14,7 @@ import {
 import sprite from "../../common/symbol-defs.svg";
 import MainModal from "../MainModal/MainModal";
 
-
-
-const UserLogoModal = ({ position,onClose,open,headerRef  }) => {
-
-
+const UserLogoModal = ({ position, onClose, open, headerRef }) => {
   const [isUserLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const modalRef = useRef(null);
@@ -31,11 +25,8 @@ const UserLogoModal = ({ position,onClose,open,headerRef  }) => {
     setUserLogoutModalOpen(true);
   };
 
-
-
-useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
-     
       if (modalRef.current && open) {
         const headerRect = headerRef.current.getBoundingClientRect();
         const newTop = headerRect.bottom;
@@ -47,46 +38,37 @@ useEffect(() => {
     };
 
     if (open) {
-   
       window.addEventListener("scroll", handleScroll);
     }
 
     return () => {
-     
       window.removeEventListener("scroll", handleScroll);
     };
   }, [open, headerRef]);
-
-
-
 
   const handleClose = useCallback(() => {
     onClose();
   }, [onClose]);
 
-
   const handleModalClick = (event) => {
-  
     event.stopPropagation();
   };
 
-  const handleDocumentClick = useCallback((event) => {
-
-    if (
-      modalRef.current &&
-      !modalRef.current.contains(event.target) &&
-      event.target.getAttribute("data-modal-overlay") === "true"
-    ) {
-      handleClose();
-    }
-
-  }, [handleClose]);
-
-  
+  const handleDocumentClick = useCallback(
+    (event) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target) &&
+        event.target.getAttribute("data-modal-overlay") === "true"
+      ) {
+        handleClose();
+      }
+    },
+    [handleClose]
+  );
 
   useEffect(() => {
     const handleDocumentClick = (event) => {
-     
       if (
         modalRef.current &&
         !modalRef.current.contains(event.target) &&
@@ -104,12 +86,7 @@ useEffect(() => {
         handleClose();
       }
     };
-
-
- 
-
-
-if (open) {
+    if (open) {
       document.addEventListener("keydown", handleKeyDown);
       document.addEventListener("mousedown", handleDocumentClick);
     }
@@ -118,13 +95,15 @@ if (open) {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleDocumentClick);
     };
+  }, [open, onClose, handleClose, handleDocumentClick]);
 
-  }, [open,onClose, handleClose,handleDocumentClick]);
-
-
-   return (
-    <Overlay ref={modalOverlay} data-modal-overlay="true" onClick={handleDocumentClick}>
-      {!isUserLogoutModalOpen && (  
+  return (
+    <Overlay
+      ref={modalOverlay}
+      data-modal-overlay="true"
+      onClick={handleDocumentClick}
+    >
+      {!isUserLogoutModalOpen && (
         <Modal position={position} onClick={handleModalClick} ref={modalRef}>
           <Wrapper>
             <Item>
@@ -140,7 +119,6 @@ if (open) {
               <Button onClick={handleLogoutClick}>Log out</Button>
             </Item>
           </Wrapper>
-          
         </Modal>
       )}
       {isUserLogoutModalOpen && (
@@ -148,11 +126,12 @@ if (open) {
           open={isUserLogoutModalOpen}
           onClose={() => setUserLogoutModalOpen(false)}
         />
-       )}
-       <MainModal active={modalActive} setActive={setModalActive}>
-            <UserSettingsModal closeModal={() => setModalActive(false)}></UserSettingsModal>
-          </MainModal>
-
+      )}
+      <MainModal active={modalActive} setActive={setModalActive}>
+        <UserSettingsModal
+          closeModal={() => setModalActive(false)}
+        ></UserSettingsModal>
+      </MainModal>
     </Overlay>
   );
 };

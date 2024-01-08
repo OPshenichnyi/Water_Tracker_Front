@@ -8,7 +8,6 @@ const {
   AddAvatar,
   AddSetingUser,
   saveWaterRate,
-
 } = require("./authOperationApi");
 
 const initialState = {
@@ -23,12 +22,18 @@ const initialState = {
   isLogined: false,
   isRefresh: false,
   isRegister: false,
-  error: null,
+  addStatus: null,
+  isPending: false,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    resetAddStatus(state) {
+      state.addStatus = null;
+    },
+  },
   //0 Створюємо редусер
   extraReducers: (builder) => {
     builder.addCase(registration.fulfilled, (state, action) => {
@@ -52,9 +57,10 @@ const authSlice = createSlice({
       state.isLogined = false;
       state.isRegister = false;
       state.token = null;
+      state.isPending = false;
     });
     builder.addCase(refreshUser.pending, (state, action) => {
-      state.isRefresh = true;
+      state.isPending = true;
     });
     builder.addCase(refreshUser.fulfilled, (state, action) => {
       state.user = action.payload;
@@ -64,27 +70,51 @@ const authSlice = createSlice({
     builder.addCase(refreshUser.rejected, (state, action) => {
       state.isRefresh = false;
     });
+    // ====================Add Avatar ===================
+    builder.addCase(AddAvatar.pending, (state, action) => {
+      state.isPending = true;
+    });
     builder.addCase(AddAvatar.fulfilled, (state, action) => {
       state.user.avatarURL = action.payload.avatarURL;
+      state.addStatus = "success";
+      state.isPending = false;
+    });
+
+    builder.addCase(AddAvatar.rejected, (state, action) => {
+      state.addStatus = "error";
+      state.isPending = false;
+    });
+    // ====================Add Settings ===================
+    builder.addCase(AddSetingUser.pending, (state, action) => {
+      state.isPending = true;
     });
     builder.addCase(AddSetingUser.fulfilled, (state, action) => {
       state.user.userName = action.payload.userName;
       state.user.email = action.payload.email;
       state.user.gender = action.payload.gender;
+      state.addStatus = "success";
+      state.isPending = false;
     });
-      builder.addCase(saveWaterRate.pending, (state) => {
-        state.isRefresh = true;
-        state.error = null;
-      });
-      builder.addCase(saveWaterRate.fulfilled, (state, action) => {
-        state.isRefresh = false;
-        state.user.waterRate = action.payload;
-      });
-      builder.addCase(saveWaterRate.rejected, (state, action) => {
-        state.isRefresh = false;
-        state.error = action.error.message;
-      })
+
+    builder.addCase(AddSetingUser.rejected, (state, action) => {
+      state.addStatus = "error";
+      state.isPending = false;
+    });
+    // ====================Add Settings ===================
+    builder.addCase(saveWaterRate.pending, (state) => {
+      state.isRefresh = true;
+      state.error = null;
+    });
+    builder.addCase(saveWaterRate.fulfilled, (state, action) => {
+      state.isRefresh = false;
+      state.user.waterRate = action.payload;
+    });
+    builder.addCase(saveWaterRate.rejected, (state, action) => {
+      state.isRefresh = false;
+      state.error = action.error.message;
+    });
   },
 });
 
+export const { resetAddStatus } = authSlice.actions;
 export const authorizationReducer = authSlice.reducer;

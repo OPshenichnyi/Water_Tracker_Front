@@ -77,3 +77,34 @@ export const InputStyle = styled.input`
     height: 44px;
   }
 `;
+
+export const ContainerGender = styled.div`
+  display: flex;
+  margin-bottom: 16px;
+  width: 176px;
+  height: 20px;
+  label:first-child {
+    margin-right: 24px;
+  }
+  input:first-child {
+    margin-right: 8px;
+  }
+  margin-bottom: 52px;
+`;
+
+export const InputGenders = styled.input`
+  height: 25px;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+`;
+export const LabelGender = styled.label`
+  height: 24px;
+  display: flex;
+  align-items: center;
+  span {
+    margin-left: 8px;
+  }
+  padding: 5px;
+`;

@@ -10,7 +10,7 @@ import {
   REHYDRATE,
 } from "redux-persist";
 import persistStore from "redux-persist/es/persistStore";
-import { authorizationReducer } from "./redux/auth/sliceAuth";
+import { authorizationReducer, resetAddStatus } from "./redux/auth/sliceAuth";
 import waterSlice from "./redux/water/waterSlice";
 
 const authPersistConfig = {
@@ -23,6 +23,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authorizationReducer),
     water: waterSlice,
+    resetAddStatus: resetAddStatus,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

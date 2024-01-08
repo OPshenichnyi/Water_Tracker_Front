@@ -1,7 +1,6 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import {
-  ContainerGender,
   ContainerBlockSeting,
   ContainerInfoUser,
   ContainerChangePass,
@@ -10,17 +9,22 @@ import {
   ButtonSubmit,
   FirstTitle,
 } from "./SettingModal.styled";
-import { InputPassword, TitleNameSet } from "./Component/ComponentSeting";
+import {
+  InputPassword,
+  RadioBtnGender,
+  TitleNameSet,
+} from "./Component/ComponentSeting";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import { AddSetingUser } from "../../redux/auth/authOperationApi";
-import changePassword from "../Utils/validationSchema";
-import sprite from "../../common/symbol-defs.svg";
+import variables from "common/Variables";
 
 // ===================================================================
 export default function FormInput() {
   const dispatch = useDispatch();
   const { userName, email: mail, gender } = useSelector(selectIsUser);
+
+  const [error, setError] = useState("");
 
   const initialValues = {
     userName,
@@ -33,7 +37,6 @@ export default function FormInput() {
 
   const formik = useFormik({
     initialValues: initialValues,
-    validationSchema: changePassword,
 
     onSubmit: (values) => {
       const fieldsToUpdate = {};
@@ -50,57 +53,34 @@ export default function FormInput() {
     },
   });
 
+  const handleBlure = (evt) => {
+    const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    const validName = /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ'’]{1,32}$/;
+    const value = evt.target.value.toString();
+    const id = evt.target.id;
+    const valiSchema = "userName" === id ? validName : validEmail;
+
+    if (valiSchema.test(value)) {
+      setError("");
+      return;
+    }
+    setError(id);
+    if (value.length === 0) {
+      setError("");
+    }
+  };
+
+  const errorBorderStyleK = {
+    border: `1px solid ${variables.secondaryRed} `,
+  };
+
   return (
     <>
       <ContainerBlockSeting>
         <ContainerInfoUser>
           <FirstTitle>Your gender identity</FirstTitle>
           <form onSubmit={formik.handleSubmit}>
-            <ContainerGender>
-              <label htmlFor="girl">
-                {formik.values.gender === "girl" ? (
-                  <svg width={16} height={16}>
-                    <use href={`${sprite}#radio-btn-active`} />
-                  </svg>
-                ) : (
-                  <svg width={16} height={16}>
-                    <use href={`${sprite}#radio-btn`} />
-                  </svg>
-                )}
-
-                <input
-                  id="girl"
-                  type="radio"
-                  name="gender"
-                  value="girl"
-                  checked={formik.values.gender === "girl"}
-                  onChange={formik.handleChange}
-                />
-                <span>Girl</span>
-              </label>
-
-              <label htmlFor="man">
-                {formik.values.gender === "girl" ? (
-                  <svg width={16} height={16}>
-                    <use href={`${sprite}#radio-btn`} />
-                  </svg>
-                ) : (
-                  <svg width={16} height={16}>
-                    <use href={`${sprite}#radio-btn-active`} />
-                  </svg>
-                )}
-                <input
-                  id="man"
-                  type="radio"
-                  name="gender"
-                  value="man"
-                  checked={formik.values.gender === "man"}
-                  onChange={formik.handleChange}
-                />
-                <span>Man</span>
-              </label>
-            </ContainerGender>
-
+            <RadioBtnGender formik={formik}></RadioBtnGender>
             <TitleNameSet title={"Your name"}></TitleNameSet>
             <InputStyle
               id="userName"
@@ -109,6 +89,8 @@ export default function FormInput() {
               onChange={formik.handleChange}
               value={formik.values.userName}
               className="ttt"
+              onBlur={handleBlure}
+              style={error === "userName" ? errorBorderStyleK : null}
             />
             <TitleNameSet title={"E-mail"}></TitleNameSet>
             <InputStyle
@@ -118,6 +100,8 @@ export default function FormInput() {
               onChange={formik.handleChange}
               value={formik.values.email}
               className="last"
+              onBlur={handleBlure}
+              style={error === "email" ? errorBorderStyleK : null}
             />
           </form>
         </ContainerInfoUser>
@@ -125,7 +109,6 @@ export default function FormInput() {
           <form onSubmit={formik.handleSubmit}>
             <FirstTitle>Password</FirstTitle>
             <LabelInput htmlFor="oldPassword">Outdated password:</LabelInput>
-            {/* Input old password */}
             <InputPassword
               formik={formik}
               id={"oldPassword"}
@@ -135,7 +118,6 @@ export default function FormInput() {
             />
 
             <LabelInput htmlFor="newPassword">New Password:</LabelInput>
-            {/* Input new pasword */}
             <InputPassword
               formik={formik}
               id={"newPassword"}
