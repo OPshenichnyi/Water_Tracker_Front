@@ -8,7 +8,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-
+z-index:1001;
 
 `;
 
@@ -16,6 +16,7 @@ export const Wrapper = styled.ul`
   display:flex;
   flex-direction:column;
   align-items: center;
+  
 
 `;
 
@@ -29,19 +30,17 @@ font-size: 16px;
 `;
 
 export const Modal = styled.div`
-$position: ${({ position }) => position};
   position: absolute;
-  margin-top:13px;
-  top: ${props => props.position.top}px;
-  left: ${props => props.position.left}px;
+  margin-top: 13px;
+   top: ${({ position }) => position.top}px;
+  left: ${({ position }) => position.left}px;
   transform: translate(-50%);
   width: 118px;
   height: 88px;
- padding: 16px;
- background: #FFFF;
- border-radius: 10px;
-box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.20);
-
+  padding: 16px;
+  background: #FFFF;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.20);
 `;
 
 export const Svg = styled.svg`
@@ -58,4 +57,3 @@ export const Item = styled.li`
   }
 
 `;
-

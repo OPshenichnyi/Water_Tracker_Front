@@ -13,6 +13,7 @@ export const Modal = styled.div`
   transform: scale(0);
   display: flex;
   overflow: auto;
+   z-index:1005;
   &.active {
     transform: scale(1);
     align-items: center;

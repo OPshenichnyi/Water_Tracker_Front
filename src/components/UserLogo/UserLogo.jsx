@@ -69,7 +69,7 @@ const UserLogo = () => {
           <use href={`${sprite}#icon-chevron-double-up`} />
         </Svg>
       </ButtonMenu>
-      {isModalOpen && <UserLogoModal  open={isModalOpen} onClose={() => setModalOpen(false)} position={userLogoPosition} />}
+      {isModalOpen && <UserLogoModal  open={true} onClose={() => setModalOpen(false)} position={userLogoPosition} headerRef={headerRef} />}
       </Wrapper>
     
     </User>
