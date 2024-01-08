@@ -76,7 +76,9 @@ font-size: 16px;
 font-style: normal;
 font-weight: 500;
 line-height: 1.25; 
-
+&:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  }
 
   @media screen and (min-width: 768px) {
     width: 160px;
@@ -101,7 +103,9 @@ color: #FFF;
 text-align: center;
 font-size: 16px;
 line-height: 1.25; 
-
+&:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+  }
 @media screen and (min-width: 768px) {
     width: 160px;
 
@@ -141,6 +145,11 @@ export const ButtonClose = styled.button`
   width: 24px;
   height: 24px;
   background-color: #fff;
+ &:hover {
+    transform: scale(1.3);
+    cursor: pointer;
+  }
+  
 `;
 
 export const TitleContainer = styled.div`
