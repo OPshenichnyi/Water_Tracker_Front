@@ -38,7 +38,6 @@ export const NormaContainer = styled.div`
   background-color: ${variables.whitePrimary};
   box-shadow: 0px 4px 8px 0px rgba(158, 187, 255, 0.12);
   border: 1px solid ${variables.secondaryLightGray};
-
   @media only screen and (min-width: 768px) {
     justify-content: center;
   }

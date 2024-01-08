@@ -55,7 +55,7 @@ const UserLogo = () => {
   };
 
   return (
-    <User>
+    <User >
        {user.userName && <Name>{user.userName}</Name>}
     <Wrapper ref={headerRef}>
      
@@ -64,7 +64,7 @@ const UserLogo = () => {
           </ButtonAvt>
 
 
-      <ButtonMenu onClick={handleButtonClick}>
+      <ButtonMenu onClick={handleButtonClick} >
         <Svg width={16} height={16}>
           <use href={`${sprite}#icon-chevron-double-up`} />
         </Svg>

@@ -26,14 +26,19 @@ export const Button = styled.button`
 text-align:center;
 background: #FFFF;
 font-size: 16px;
+ &:focus,
+  &:hover {
+    outline: none;
+    color:${color.secondaryLightOrange};
+  }
 
 `;
 
 export const Modal = styled.div`
   position: absolute;
-  margin-top: 13px;
+
    top: ${({ position }) => position.top}px;
-  left: ${({ position }) => position.left}px;
+  left: ${({ position }) => position.left-10}px;
   transform: translate(-50%);
   width: 118px;
   height: 88px;
@@ -45,7 +50,14 @@ export const Modal = styled.div`
 
 export const Svg = styled.svg`
   margin-right:8px;
-  
+  stroke:${color.bluePrimary};
+
+   &:focus,
+  &:hover {
+    outline: none;
+    stroke:${color.secondaryLightOrange};
+  }
+
 
 `;
 

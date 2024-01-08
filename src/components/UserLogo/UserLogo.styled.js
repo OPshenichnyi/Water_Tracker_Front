@@ -33,6 +33,7 @@ export const Svg = styled.svg`
 `;
 
 export const Avatar = styled.div`
+display:flex;
   width: 28px;
   height: 28px;
   overflow: hidden;
@@ -42,6 +43,9 @@ export const Avatar = styled.div`
   -webkit-border-radius: 50%;
   border: ${color.bluePrimary} 1px solid;
   text-align: center;
+  
+align-items: center;
+justify-content: center;
 `;
 
 export const Img = styled.img`
@@ -60,4 +64,13 @@ font-size: 16px;
 font-style: normal;
 font-weight: 400;
 line-height: 1.25; 
+
+
+ @media screen and (min-width: 768px) {
+font-size: 18px;
+line-height: 1.33; 
+
+  }
+
+
 `;
