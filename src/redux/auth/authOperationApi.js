@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { fetchWaterDataToday } from "../water/operations";
 //  ==============Settings AXIOS =======================
 axios.defaults.baseURL = "https://db-water-tracker.onrender.com/api/";
 
@@ -97,4 +98,21 @@ export const AddSetingUser = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
+);
+
+export const saveWaterRate = createAsyncThunk(
+  'auth/saveWater',
+  async (calculatedResult, thunkAPI) => {
+  try {
+    const response = await axios.patch('/users/water-rate', {
+      waterRate: calculatedResult, 
+    });
+    thunkAPI.dispatch(refreshUser());
+    thunkAPI.dispatch(fetchWaterDataToday());
+
+    return response.data
+  } catch (error) {
+     return thunkAPI.rejectWithValue(error.message);
+  }
+}
 );
