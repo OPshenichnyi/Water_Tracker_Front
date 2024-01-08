@@ -103,7 +103,7 @@ function EditDailyNorma({ closeModal }) {
 
   const saveWater = () => {  
     if(inputValue === '') return toast.info('Fill in the column how much water you will drink');
-    if(inputValue >15) return toast.info('The maximum daily intake cannot exceed 15 l');
+    if(inputValue >15) return toast.info('The maximum daily intake cannot exceed 15 L');
     console.log(inputValue)
       dispatch(saveWaterRate(Number(inputValue)*1000));
       toast.success('Daily water intake changed 👍');
