@@ -3,19 +3,26 @@ import variables from "common/Variables";
 
 //  ======== Wrapper Modall window==================
 export const Container = styled.div`
+  position: relative;
   margin: auto;
   width: 280px;
-  height: 852px;
   padding: 32px 12px;
   border-radius: 10px;
   background-color: #fff;
   margin-top: 40px;
   margin-bottom: 40px;
-
+  margin-top: 150px;
+  .loader {
+    position: absolute;
+    left: 35%;
+  }
   @media screen and (min-width: 768px) {
+    margin-top: 200px;
     width: 704px;
-    height: 860px;
     padding: 32px 24px;
+    .loader {
+      left: 45%;
+    }
   }
 
   @media screen and (min-width: 1440px) {

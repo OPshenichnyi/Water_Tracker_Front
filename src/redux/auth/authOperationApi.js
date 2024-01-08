@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+
 import { currentDay, fetchWaterDataToday, waterMonts } from "../water/operations";
 import { toast } from "react-toastify";
 
@@ -97,7 +98,6 @@ export const AddSetingUser = createAsyncThunk(
       const response = await axios.patch("/users", credentials);
       return response.data;
     } catch (error) {
-      errorValue(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -115,14 +115,7 @@ export const saveWaterRate = createAsyncThunk(
       thunkAPI.dispatch(waterMonts(currentDay));
       return response.data;
     } catch (error) {
-      errorValue(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
-const errorValue = (error) => {
-  const code = error.code;
-  const messages = error.message;
-  toast.error(`${code} ${messages}`);
-};

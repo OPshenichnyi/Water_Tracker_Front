@@ -9,3 +9,5 @@ export const selectRefresh = (state) => state.auth.isRefresh;
 export const selectAvatarUrl = (state) => state.auth.user.avatarURL;
 
 export const selectIsStatus = (state) => state.auth.addStatus;
+
+export const selectIsPending = (state) => state.auth.isPending;
