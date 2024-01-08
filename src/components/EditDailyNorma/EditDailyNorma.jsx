@@ -25,20 +25,29 @@ import {
 } from './EditDailyNorma.styled';
 import sprite from '../../common/symbol-defs.svg';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import {  saveWaterRate } from '../../redux/auth/authOperationApi';
 
 function EditDailyNorma({ closeModal }) {
+
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState("");
+  const [isValidInput, setIsValidInput] = useState(false);
+
+
   const [gender, setGender] = useState('girl');
   const [inputValueK, setInputValueK] = useState('');
   const [inputValueT, setInputValueT] = useState('');
   const [calculatedResult, setCalculatedResult] = useState(null);
   const [isValidInputK, setIsValidInputK] = useState(true);
   const [isValidInputT, setIsValidInputT] = useState(true);
+
   const handleChange = event => {
     setGender(event.target.value);
   };
 
   const handleInputChange = (event, setInputValue, setIsValidInput) => {
-    if (/^\d*$/.test(event.target.value)) {
+    if (/^\d*$/.test(event.target.value) || isValidInput === false) {
       setInputValue(event.target.value);
       setIsValidInput(true);
     } else {
@@ -80,6 +89,27 @@ function EditDailyNorma({ closeModal }) {
     };
     waterCalc();
   }, [inputValueK, inputValueT, gender]);
+
+  const handleInputChangeValue = event => {
+    const inputValue = event.target.value;
+    if (/^\d*\.?\d{0,3}$/.test(inputValue) || inputValue === "") {
+      setInputValue(inputValue);
+      setIsValidInput(true);
+    } else {
+      setIsValidInput(false);
+      toast.error('Please enter valid numbers');
+    }
+  };
+
+  const saveWater = () => {  
+    if(inputValue === '') return toast.info('Fill in the column how much water you will drink');
+
+      dispatch(saveWaterRate(Number(inputValue)*1000));
+      toast.success('Daily water intake changed 👍');
+      setInputValue("");
+      closeModal();
+  };
+
 
   return (
     <Wrapper>
@@ -192,14 +222,14 @@ function EditDailyNorma({ closeModal }) {
       <SecondTitle>Write down how much water you will drink:</SecondTitle>
       <InputStyle
         type="text"
-        // value={inputValue}
-        // onChange=''
-        // onBlur={handleInputBlur}
-        placeholder="0"
-        // isvalid={isValidInput}
+        value={inputValue}
+        onChange= {handleInputChangeValue}
+        placeholder="Maximum permissible displacement 15 liters"
+        max="15"
+        pattern="^[0-9]*\.?[0-9]*$"
       />
       <ButtonSaveWrap>
-        <ButtonSave type="button">Save</ButtonSave>
+        <ButtonSave type="button" onClick={saveWater}>Save</ButtonSave>
       </ButtonSaveWrap>
     </Wrapper>
   );

@@ -7,6 +7,8 @@ const {
   refreshUser,
   AddAvatar,
   AddSetingUser,
+  saveWaterRate,
+
 } = require("./authOperationApi");
 
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
   isLogined: false,
   isRefresh: false,
   isRegister: false,
+  error: null,
 };
 
 const authSlice = createSlice({
@@ -69,6 +72,18 @@ const authSlice = createSlice({
       state.user.email = action.payload.email;
       state.user.gender = action.payload.gender;
     });
+      builder.addCase(saveWaterRate.pending, (state) => {
+        state.isRefresh = true;
+        state.error = null;
+      });
+      builder.addCase(saveWaterRate.fulfilled, (state, action) => {
+        state.isRefresh = false;
+        state.user.waterRate = action.payload;
+      });
+      builder.addCase(saveWaterRate.rejected, (state, action) => {
+        state.isRefresh = false;
+        state.error = action.error.message;
+      })
   },
 });
 

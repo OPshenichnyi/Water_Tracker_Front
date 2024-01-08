@@ -32,21 +32,10 @@ import EditDailyNorma from 'components/EditDailyNorma/EditDailyNorma';
 const DailyNorma = () => {
   const [modalActive, setModalActive] = useState(false);
   const [modalDailyActive, setmodalDailyActive] = useState(false);
-  // const [alreadyShownToast, setAlreadyShownToast] = useState(false);
-
-  
 
   const { percentage } = useSelector(selectStageWater);
   const { waterRate } = useSelector(selectIsUser);
 
-  // useEffect(() => {
-  //   if (percentage === 100 && !alreadyShownToast) {
-  //     toast.success(
-  //       'Congratulations. Daily water requirement has been reached!'
-  //     );
-  //     setAlreadyShownToast(true);
-  //   }
-  // }, [percentage, alreadyShownToast]);
   useEffect(() => {
     const isToastAlreadyShown =
       localStorage.getItem('alreadyShownToast') === 'true';

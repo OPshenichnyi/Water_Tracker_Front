@@ -11,7 +11,6 @@ export default function DaysGeneralStats({
 }) {
   const nameMount = mounth || "";
   const monthName = nameMount.split(",")[0].trim();
-
   return (
     <div>
       <DailyModal>
