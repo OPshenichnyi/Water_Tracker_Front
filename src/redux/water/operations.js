@@ -12,7 +12,7 @@ const setJwtHeader = (token) => {
 };
 
 
-let currentDay = null
+export let currentDay = null
 
 export const addWaterVolume = createAsyncThunk(
   "water/addWaterVolume",
@@ -46,9 +46,10 @@ export const deleteWaterVolume = createAsyncThunk(
   "water/deleteWaterVolume",
   async (waterId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/water/${waterId}`);
+      await axios.delete(`/water/${waterId}`);
+      const response = await axios.get("/today");
 
-      thunkAPI.dispatch(fetchWaterDataToday());
+      thunkAPI.dispatch(waterMonts(currentDay))
 
       return response.data;
     } catch (error) {

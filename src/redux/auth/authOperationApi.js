@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { fetchWaterDataToday } from "../water/operations";
+import { currentDay, fetchWaterDataToday, waterMonts } from "../water/operations";
 import { toast } from "react-toastify";
 
 //  ==============Settings AXIOS =======================
@@ -112,7 +112,7 @@ export const saveWaterRate = createAsyncThunk(
       });
       thunkAPI.dispatch(refreshUser());
       thunkAPI.dispatch(fetchWaterDataToday());
-
+      thunkAPI.dispatch(waterMonts(currentDay));
       return response.data;
     } catch (error) {
       errorValue(error);
