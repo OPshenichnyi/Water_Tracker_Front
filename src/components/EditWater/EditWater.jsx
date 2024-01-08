@@ -147,7 +147,7 @@ export default function EditWater({ closeModal, waterRecord}) {
         value={inputValue}
         onChange={handleInputChange}
         onBlur={handleInputBlur}
-        placeholder="50"
+        placeholder={count}
       />
       <CountSaveBtnBottom>
         <CounterBottom>{waterData.waterVolume}ml</CounterBottom>
