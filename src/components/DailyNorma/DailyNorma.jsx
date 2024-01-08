@@ -29,6 +29,8 @@ import { toast } from 'react-toastify';
 import { selectIsUser } from '../../redux/auth/selectorsAuth';
 import EditDailyNorma from 'components/EditDailyNorma/EditDailyNorma';
 
+import Loader from '../Loader/Loader';
+
 const DailyNorma = () => {
   const [modalActive, setModalActive] = useState(false);
   const [modalDailyActive, setmodalDailyActive] = useState(false);
@@ -57,8 +59,16 @@ const DailyNorma = () => {
       <NormaContainer>
         <NormaTitle>My daily norma</NormaTitle>
         <DailyNormaWrapper>
-          <NormaP>{waterRate / 1000} L</NormaP>
-          <NormaButton onClick={() => setmodalDailyActive(true)}>Edit</NormaButton>
+        {isNaN(waterRate) ? (
+            <Loader />
+          ) : (
+            <>
+              <NormaP>{ waterRate / 1000 } L</NormaP>
+              <NormaButton onClick={() => setmodalDailyActive(true)}>
+                Edit
+              </NormaButton>
+            </>
+          )}
         </DailyNormaWrapper>
       </NormaContainer>
       <picture>
