@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Water_Tracker_Front/static/css/main.cc8e51a9.css",
-    "main.js": "/Water_Tracker_Front/static/js/main.ac34d5b2.js",
+    "main.js": "/Water_Tracker_Front/static/js/main.410608dd.js",
     "static/js/471.7a2e7ae4.chunk.js": "/Water_Tracker_Front/static/js/471.7a2e7ae4.chunk.js",
     "static/js/421.c88107e3.chunk.js": "/Water_Tracker_Front/static/js/421.c88107e3.chunk.js",
     "static/js/940.ac2cfc1b.chunk.js": "/Water_Tracker_Front/static/js/940.ac2cfc1b.chunk.js",
@@ -31,6 +31,9 @@
     "static/media/BackelementDesk@2x.png": "/Water_Tracker_Front/static/media/BackelementDesk@2x.c7334e62591998721850.png",
     "static/media/main-mob.jpg": "/Water_Tracker_Front/static/media/main-mob.6b87cf343e38fa735c80.jpg",
     "static/media/MobileBottle@2x.png": "/Water_Tracker_Front/static/media/MobileBottle@2x.c696ce1d8650a849a063.png",
+    "static/media/Roboto-Bold.woff2": "/Water_Tracker_Front/static/media/Roboto-Bold.23c8ce07bd38f6723622.woff2",
+    "static/media/Roboto-Medium.woff2": "/Water_Tracker_Front/static/media/Roboto-Medium.76cb645b72a0083e239f.woff2",
+    "static/media/Roboto.woff2": "/Water_Tracker_Front/static/media/Roboto.806e04d8241d87f99a68.woff2",
     "static/media/TabletHomeBottle.png": "/Water_Tracker_Front/static/media/TabletHomeBottle.ecf25e00b68bab106bc4.png",
     "static/media/MobileBubblesBg.jpg": "/Water_Tracker_Front/static/media/MobileBubblesBg.42695414882ec555d6a3.jpg",
     "static/media/PhoneBubbles.jpg": "/Water_Tracker_Front/static/media/PhoneBubbles.7487b46db9624141ce3a.jpg",
@@ -39,7 +42,7 @@
     "index.html": "/Water_Tracker_Front/index.html",
     "static/media/listMarker.svg": "/Water_Tracker_Front/static/media/listMarker.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.cc8e51a9.css.map": "/Water_Tracker_Front/static/css/main.cc8e51a9.css.map",
-    "main.ac34d5b2.js.map": "/Water_Tracker_Front/static/js/main.ac34d5b2.js.map",
+    "main.410608dd.js.map": "/Water_Tracker_Front/static/js/main.410608dd.js.map",
     "471.7a2e7ae4.chunk.js.map": "/Water_Tracker_Front/static/js/471.7a2e7ae4.chunk.js.map",
     "421.c88107e3.chunk.js.map": "/Water_Tracker_Front/static/js/421.c88107e3.chunk.js.map",
     "940.ac2cfc1b.chunk.js.map": "/Water_Tracker_Front/static/js/940.ac2cfc1b.chunk.js.map",
@@ -50,6 +53,6 @@
   },
   "entrypoints": [
     "static/css/main.cc8e51a9.css",
-    "static/js/main.ac34d5b2.js"
+    "static/js/main.410608dd.js"
   ]
 }
