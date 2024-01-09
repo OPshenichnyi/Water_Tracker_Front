@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsUser } from "../../redux/auth/selectorsAuth";
 import { AddSetingUser } from "../../redux/auth/authOperationApi";
 import variables from "common/Variables";
+import { toast } from "react-toastify";
 
 // ===================================================================
 export default function FormInput() {
@@ -38,7 +39,7 @@ export default function FormInput() {
   const formik = useFormik({
     initialValues: initialValues,
 
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       const fieldsToUpdate = {};
 
       for (const key in initialValues) {
@@ -49,17 +50,27 @@ export default function FormInput() {
       const isEmpty = Object.keys(fieldsToUpdate).length === 0;
       if (isEmpty) {
       }
-      // dispatch(AddSetingUser(fieldsToUpdate));
       const { oldPassword, newPassword, confirmNewPassword } = fieldsToUpdate;
       if (oldPassword || newPassword || confirmNewPassword) {
         if (oldPassword === newPassword) {
-          console.log("Пароль має відрізнятись від старого");
+          toast.error(
+            "Your new password must be different from your previous password"
+          );
+          return;
         }
         if (newPassword !== confirmNewPassword) {
-          console.log("Пароль мають співпадати");
+          toast.error(
+            "Please confirm that the new password has been correctly re-entered"
+          );
+          return;
+        }
+        const deleteConfirmPass = `confirmNewPassword`;
+        if (deleteConfirmPass in fieldsToUpdate) {
+          delete fieldsToUpdate[deleteConfirmPass];
         }
       }
-      console.log(fieldsToUpdate.oldPassword);
+      dispatch(AddSetingUser(fieldsToUpdate));
+      resetForm();
     },
   });
 
@@ -75,6 +86,7 @@ export default function FormInput() {
       return;
     }
     setError(id);
+
     if (value.length === 0) {
       setError("");
     }

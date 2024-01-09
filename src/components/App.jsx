@@ -1,28 +1,27 @@
-import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
-import { GlobalStyle } from '../common/GlobalStyles';
+import { Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 // import HomePage from '../pages/HomePage';
 // import SignUpPage from '../pages/SignUpPage';
-import Layout from './SharedLayout/Layout';
+import Layout from "./SharedLayout/Layout";
 // import NotFoundPage from 'pages/NotFoundPage';
 // import SigninPage from '../pages/SigninPage';
 import {
   RestrictedRouteHomePage,
   RestrictedRouteLogin,
-} from './RestrictedRoute';
-import { PrivateRouter } from './PrivateRoute';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { refreshUser } from '../redux/auth/authOperationApi';
+} from "./RestrictedRoute";
+import { PrivateRouter } from "./PrivateRoute";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { refreshUser } from "../redux/auth/authOperationApi";
 
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const MainPage = lazy(() => import('../pages/Main'));
-const HomePage = lazy(() => import('../pages/HomePage'));
-const SignUpPage = lazy(() => import('../pages/SignUpPage'));
-const SigninPage = lazy(() => import('../pages/SigninPage'));
-const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
+const MainPage = lazy(() => import("../pages/Main"));
+const HomePage = lazy(() => import("../pages/HomePage"));
+const SignUpPage = lazy(() => import("../pages/SignUpPage"));
+const SigninPage = lazy(() => import("../pages/SigninPage"));
+const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -75,7 +74,6 @@ const App = () => {
         </Route>
       </Routes>
       <ToastContainer />
-      <GlobalStyle />
     </>
   );
 };
