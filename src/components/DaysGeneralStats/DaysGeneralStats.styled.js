@@ -1,17 +1,16 @@
-import styled from "styled-components";
-import color from "../../common/Variables";
+import styled from 'styled-components';
+import color from '../../common/Variables';
 
 export const DailyModal = styled.div`
   position: absolute;
-  top: 100%;
-  transform: translateY(-130%);
+  left: -9px;
   display: inline-flex;
   flex-direction: column;
   box-sizing: border-box;
   align-items: flex-start;
   gap: 16px;
-
-  width: 292px;
+  top: ${props => props.top}px;
+  width: 280px;
   height: 188px;
   padding: 24px 16px;
 
@@ -22,7 +21,10 @@ export const DailyModal = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 292px;
-    left: ${(props) => props.left}px;
+    top: 100%;
+    transform: translateY(-130%);
+    left: ${props => props.left}px;
+    width: 292px;
   }
   @media screen and (min-width: 1440px) {
     transform: translateY(0);

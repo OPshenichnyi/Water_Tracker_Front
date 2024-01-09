@@ -16,9 +16,14 @@ export default function DaysGeneralStats({
   const position = leftDay.includes(day);
   const x = position ? 20 : -280;
 
+  function topCalculate(day) {
+    const row = Math.floor(day/5)
+    return -200 + (row * 68);
+  }
+
   return (
     <div>
-      <DailyModal left={x}>
+      <DailyModal left={x} top={topCalculate(day)}>
         {" "}
         <Date>
           {day}, {monthName}
