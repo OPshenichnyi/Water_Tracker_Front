@@ -70,7 +70,6 @@ export default function FormInput() {
         }
       }
       dispatch(AddSetingUser(fieldsToUpdate));
-      resetForm();
     },
   });
 
