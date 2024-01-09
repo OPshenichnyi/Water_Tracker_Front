@@ -73,6 +73,7 @@ button {
   padding: 0;
   border: 0;
   outline: 0;
+  font-family: inherit;
 }
 html {
   scroll-behavior: smooth;
