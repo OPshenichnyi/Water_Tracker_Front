@@ -9,23 +9,33 @@ import {
   InputImg,
   LinkImgUpload,
 } from "./SettingModal.styled";
-import { selectIsUser, selectIsStatus } from "../../redux/auth/selectorsAuth";
+import {
+  selectIsUser,
+  selectIsStatus,
+  selectIsPending,
+} from "../../redux/auth/selectorsAuth";
 import FormInput from "./FormInput";
 import { TitleNameSet, BtnClose } from "./Component/ComponentSeting";
 import sprite from "../../common/symbol-defs.svg";
 import { resetAddStatus } from "../../redux/auth/sliceAuth";
 import { toast } from "react-toastify";
+import Loader from "../Loader/Loader";
 const SettingModal = ({ closeModal }) => {
   const dispatch = useDispatch();
   const { avatarURL } = useSelector(selectIsUser);
   const addStatus = useSelector(selectIsStatus);
+  const pending = useSelector(selectIsPending);
 
   useEffect(() => {
     if (addStatus === "success") {
       closeModal();
-      toast.success("Information add your account");
+      toast.success("😎 Data successfully added 😎");
+      dispatch(resetAddStatus());
+    } else if (addStatus === "uploaded") {
+      toast.success("😎 Avatar uploaded😎");
       dispatch(resetAddStatus());
     } else if (addStatus === "error") {
+      toast.error("🤬 UPS ERROR 🤬");
       dispatch(resetAddStatus());
     }
   }, [addStatus, dispatch, closeModal]);
@@ -53,9 +63,14 @@ const SettingModal = ({ closeModal }) => {
     <Container>
       <TitleContainer>
         <h2>Setting</h2>
-
+        {pending && (
+          <div className="loader">
+            <Loader />
+          </div>
+        )}
         <BtnClose closeModal={closeModal}></BtnClose>
       </TitleContainer>
+
       <TitleNameSet title={"Your photo"}></TitleNameSet>
       <ContainerAvatar>
         <Avatar
