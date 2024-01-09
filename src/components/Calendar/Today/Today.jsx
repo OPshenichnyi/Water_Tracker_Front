@@ -38,7 +38,6 @@ const Today = () => {
 
   const waterData = useSelector(selectTakeWaterHistory);
   const dispatch = useDispatch();
-  console.log(waterData)
   useEffect(() => {
     if (!waterData.length) {
       dispatch(fetchWaterDataToday());
