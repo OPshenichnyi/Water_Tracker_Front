@@ -17,9 +17,7 @@ import {
   ButtonSave,
   CountSaveBtnBottom,
   BlockWaterTime,
-  
   Wrapper,
-  
   DataWater,
   DataTime,
 } from './EditWater.styled';
@@ -29,15 +27,11 @@ import {
   handleUpdateCount,
   setInitialTime,
 } from 'components/Utils/utils';
-import {  updateWaterVolume } from '../../redux/water/operations';
+import { updateWaterVolume } from '../../redux/water/operations';
 import { selectAddWaterVolume } from '../../redux/water/selector';
 import { FormatTime } from '../Calendar/FormatTime/FormatTime';
 
-
-
-
-
-export default function EditWater({ closeModal, waterRecord}) {
+export default function EditWater({ closeModal, waterRecord }) {
   const [count, setCount] = useState(waterRecord ? waterRecord.waterVolume : 0);
   const [inputValue, setInputValue] = useState('');
   const [selectedTime, setSelectedTime] = useState(0);
@@ -80,11 +74,12 @@ export default function EditWater({ closeModal, waterRecord}) {
       return toast.info(
         'Amount of water- cannot be zero please enter a value!'
       );
-    if(count > 5000) return toast.info('The entered data should not exceed 5000 ml');
+    if (count > 5000)
+      return toast.info('The entered data should not exceed 5000 ml');
 
     const hours = Math.floor(selectedTime / 60);
     const minutes = selectedTime % 60;
-    
+
     const currentDate = new Date();
     currentDate.setHours(hours, minutes, 0, 0);
 
@@ -98,8 +93,6 @@ export default function EditWater({ closeModal, waterRecord}) {
     toast.success('Data changed successfully 👍');
     closeModal();
   };
-
-
 
   return (
     <Wrapper>
@@ -118,7 +111,6 @@ export default function EditWater({ closeModal, waterRecord}) {
         </svg>
         <DataWater>{waterData.waterVolume} ml</DataWater>
         <DataTime>{FormatTime(waterData.date)}</DataTime>
-      
       </BlockWaterTime>
       <ValueP>Correct entered data:</ValueP>
       <AmountP>Amount of water:</AmountP>

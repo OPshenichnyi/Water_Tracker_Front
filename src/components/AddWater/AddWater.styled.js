@@ -130,15 +130,15 @@ export const SelectTime = styled.select`
   align-items: flex-start;
   border-radius: 6px;
   outline: 1px solid ${variables.secondaryGray};
-  border:  none;
+  border: none;
   margin-bottom: 24px;
   color: ${variables.secondaryLightBlue};
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
-  &:active, &:focus {
+  &:active,
+  &:focus {
     color: ${variables.bluePrimary};
-    
   }
 
   @media screen and (min-width: 768px) {
@@ -160,14 +160,14 @@ export const InputStyle = styled.input`
   align-items: flex-start;
   border-radius: 6px;
   outline: 1px solid ${variables.secondaryGray};
-  border:  none;
+  border: none;
   color: ${variables.secondaryLightBlue};
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
-  &:active, &:focus {
+  &:active,
+  &:focus {
     color: ${variables.bluePrimary};
-    
   }
 
   @media screen and (min-width: 768px) {
