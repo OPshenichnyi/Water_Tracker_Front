@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy } from "react";
-// import { GlobalStyle } from '../common/GlobalStyles';
 // import HomePage from '../pages/HomePage';
 // import SignUpPage from '../pages/SignUpPage';
 import Layout from "./SharedLayout/Layout";
@@ -29,6 +28,7 @@ const App = () => {
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
+
   return (
     <>
       <Routes>
@@ -75,7 +75,6 @@ const App = () => {
         </Route>
       </Routes>
       <ToastContainer />
-      {/* <GlobalStyle /> */}
     </>
   );
 };
