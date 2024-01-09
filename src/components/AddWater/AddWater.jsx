@@ -22,7 +22,7 @@ import {
 } from '../Utils/utils';
 import React, { useEffect, useState } from 'react';
 import icons from '../../common/symbol-defs.svg';
-
+import Loader from 'components/Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { addWaterVolume } from '../../redux/water/operations';
 import { selectAddWaterVolume } from '../../redux/water/selector';
@@ -32,7 +32,7 @@ function AddWater({ closeModal }) {
   const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [selectedTime, setSelectedTime] = useState(0);
-
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const waterData = useSelector(selectAddWaterVolume);
 
@@ -60,25 +60,35 @@ function AddWater({ closeModal }) {
     setSelectedTime(parseInt(e.target.value, 10));
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (count === 0)
       return toast.info(
         'Amount of water- cannot be zero please enter a value!'
       );
-    if(count > 5000) return toast.info('The entered data should not exceed 5000 ml');
+    if (count > 5000)
+      return toast.info('The entered data should not exceed 5000 ml');
+
+    setLoading(true); // Встановити значення loading в true перед диспетчеризацією дії
 
     const hours = Math.floor(selectedTime / 60);
     const minutes = selectedTime % 60;
     const currentDate = new Date();
+
     currentDate.setHours(hours, minutes, 0, 0);
 
     const data = {
       waterVolume: count,
       date: currentDate.toISOString(),
     };
+
     toast.success('Data saved 👍');
-    dispatch(addWaterVolume(data));
-    closeModal();
+
+    try {
+      await dispatch(addWaterVolume(data));
+      closeModal();
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -129,6 +139,7 @@ function AddWater({ closeModal }) {
         <ButtonSave type="button" onClick={handleSave}>
           Save
         </ButtonSave>
+        {loading && <Loader />}
       </CountSaveBtnBottom>
     </Wrapper>
   );
