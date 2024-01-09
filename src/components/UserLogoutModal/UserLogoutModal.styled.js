@@ -46,7 +46,7 @@ background: #FFF;
 
 export const ButtonWrapper = styled.div`
 display:flex;
-flex-direction: column;
+flex-direction: column-reverse;
 justify-content: center;
 align-items: center;
 gap:24px;

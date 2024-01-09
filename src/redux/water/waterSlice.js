@@ -22,8 +22,13 @@ const waterSlice = createSlice({
     mounthHistory: [],
     loading: false,
     error: null,
+    statusOperation: null,
   },
-  reducers: {},
+  reducers: {
+    resetStatusOperation(state) {
+      state.addStatus = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addWaterVolume.pending, (state) => {
@@ -33,6 +38,7 @@ const waterSlice = createSlice({
       .addCase(addWaterVolume.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
+        state.statusOperation = "succses-add";
       })
       .addCase(addWaterVolume.rejected, (state, action) => {
         state.loading = false;
@@ -46,6 +52,7 @@ const waterSlice = createSlice({
       .addCase(updateWaterVolume.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
+        state.statusOperation = "succses-edit";
       })
       .addCase(updateWaterVolume.rejected, (state, action) => {
         state.loading = false;
@@ -58,9 +65,10 @@ const waterSlice = createSlice({
       })
       .addCase(deleteWaterVolume.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload;  
+        state.data = action.payload;
         state.history = action.payload.waterRecords || [];
-        state.percentage = action.payload.percentage || 0;    
+        state.percentage = action.payload.percentage || 0;
+        state.statusOperation = "succses-delete";
       })
       .addCase(deleteWaterVolume.rejected, (state, action) => {
         state.loading = false;
@@ -105,5 +113,5 @@ const waterSlice = createSlice({
       });
   },
 });
-
+export const { resetStatusOperation } = waterSlice.actions;
 export default waterSlice.reducer;

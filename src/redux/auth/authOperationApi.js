@@ -1,8 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { currentDay, fetchWaterDataToday, waterMonts } from "../water/operations";
-import { toast } from "react-toastify";
+import {
+  currentDay,
+  fetchWaterDataToday,
+  waterMonts,
+} from "../water/operations";
 
 //  ==============Settings AXIOS =======================
 axios.defaults.baseURL = "https://db-water-tracker.onrender.com/api/";
@@ -119,3 +122,4 @@ export const saveWaterRate = createAsyncThunk(
     }
   }
 );
+// ===============================================================
