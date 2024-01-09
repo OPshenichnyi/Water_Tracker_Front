@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import variables from 'common/Variables';
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -8,14 +9,13 @@ export const Wrapper = styled.div`
   transform: translate(-50%, -50%);
   width: 280px;
   height: 816px;
-  background-color: #ffffff;
+  background-color: ${variables.whitePrimary};
   border-radius: 10px;
   padding: 24px 12px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 676px;
-    border-radius: 10px;
     padding: 32px 24px;
   }
 
@@ -33,7 +33,7 @@ export const BlockTop = styled.div`
 `;
 
 export const BlockTitle = styled.h3`
-  color: #2f2f2f;
+  color: ${variables.blackPrimary};
   font-size: 26px;
   line-height: 1.23;
 `;
@@ -51,7 +51,7 @@ export const BlockFormula = styled.ul`
 `;
 
 export const Formula = styled.p`
-  color: var(--Primery-Color-Black, #2f2f2f);
+  color: ${variables.blackPrimary};
 
   font-size: 16px;
   font-style: normal;
@@ -59,7 +59,7 @@ export const Formula = styled.p`
   line-height: 1.25;
 `;
 export const FormulaSpan = styled.span`
-  color: var(--Primery-Color-Blue, #407bff);
+  color: ${variables.bluePrimary};
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -69,9 +69,9 @@ export const FormulaSpan = styled.span`
 
 export const Description = styled.p`
   border-radius: 10px;
-  outline: 1px solid #d7e3ff;
+  outline: 1px solid ${variables.secondaryGray};
   padding: 10px;
-  color: #8f8f8f;
+  color: ${variables.editColorButton};
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -82,7 +82,7 @@ export const Description = styled.p`
 `;
 
 export const DescriptionSpan = styled.span`
-  color: var(--Primery-Color-Blue, #407bff);
+  color: ${variables.bluePrimary};
 
   font-size: 12px;
   font-style: normal;
@@ -91,7 +91,7 @@ export const DescriptionSpan = styled.span`
 `;
 
 export const SecondTitle = styled.p`
-  color: #2f2f2f;
+  color: ${variables.blackPrimary};
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
@@ -112,7 +112,7 @@ export const ContainerGender = styled.div`
 `;
 
 export const TextP = styled.p`
-  color: var(--Primery-Color-Black, #2f2f2f);
+  color: ${variables.blackPrimary};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -130,7 +130,7 @@ export const BlockAmount = styled.div`
   }
 `;
 export const BlockAmountText = styled.div`
-  color: var(--Primery-Color-Black, #2f2f2f);
+  color: ${variables.blackPrimary};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -143,7 +143,7 @@ export const BlockAmountText = styled.div`
 `;
 
 export const AmountWater = styled.p`
-  color: var(--Primery-Color-Blue, #407bff);
+  color: ${variables.bluePrimary};
 
   font-size: 18px;
   font-style: normal;
@@ -165,10 +165,10 @@ export const InputStyle = styled.input`
   flex-direction: column;
   align-items: flex-start;
   border-radius: 6px;
-  border: 1px solid #d7e3ff;
+  border: 1px solid ${variables.secondaryGray};
  
   outline: none;
-  color: #407bff;
+  color: ${variables.bluePrimary};
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
@@ -185,6 +185,10 @@ export const InputStyle = styled.input`
 export const InputGender = styled.input`
   display: none;
 `;
+
+export const SpanGender = styled.span`
+width: 60px;
+`
 export const LabelGender = styled.label`
   display: flex;
   align-items: center;
@@ -196,8 +200,8 @@ export const ButtonSave = styled.button`
   height: 36px;
   padding: 8px 30px;
   border-radius: 10px;
-  background: #407bff;
-  color: #fff;
+  background: ${variables.bluePrimary};
+  color: ${variables.whitePrimary};
   text-align: center;
   font-size: 16px;
   font-weight: 500;
@@ -226,7 +230,7 @@ export const ButtonClose = styled.button`
   align-items: center;
   width: 24px;
   height: 24px;
-  background-color: #fff;
+  background-color: ${variables.whitePrimary};
   transition: transform 0.3s ease;
   &:hover {
     transform: scale(1.3);
