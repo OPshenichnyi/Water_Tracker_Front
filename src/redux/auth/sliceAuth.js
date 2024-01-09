@@ -36,15 +36,43 @@ const authSlice = createSlice({
   },
   //0 Створюємо редусер
   extraReducers: (builder) => {
+    // =====================Registration=============================
+    builder.addCase(registration.pending, (state, action) => {
+      state.isPending = true;
+      state.addStatus = "";
+    });
     builder.addCase(registration.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.isRegister = true;
+      state.isPending = false;
+      state.addStatus = "";
+    });
+    builder.addCase(registration.rejected, (state, action) => {
+      state.isPending = false;
+      state.addStatus = "erro-registr";
+    });
+    // =====================Login====================================
+    builder.addCase(logIn.pending, (state, action) => {
+      state.isPending = true;
+      state.addStatus = "";
     });
     builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLogined = true;
       state.isRegister = true;
+      state.isPending = false;
+      state.addStatus = "";
+    });
+    builder.addCase(logIn.rejected, (state, action) => {
+      state.isPending = false;
+      state.isLogined = false;
+      state.addStatus = "error-login";
+    });
+    // =====================Login====================================
+    builder.addCase(logOut.pending, (state, action) => {
+      state.isPending = true;
+      state.addStatus = "";
     });
     builder.addCase(logOut.fulfilled, (state, action) => {
       state.user = {
@@ -58,19 +86,29 @@ const authSlice = createSlice({
       state.isRegister = false;
       state.token = null;
       state.isPending = false;
+      state.addStatus = "";
     });
+    builder.addCase(logOut.rejected, (state, action) => {
+      state.isPending = false;
+      state.addStatus = "error-logout";
+    });
+    // =====================Refresh====================================
+
     builder.addCase(refreshUser.pending, (state, action) => {
       state.isPending = true;
     });
     builder.addCase(refreshUser.fulfilled, (state, action) => {
       state.user = action.payload;
       state.isLogined = true;
+      state.isRegister = true;
       state.isRefresh = false;
       state.isPending = false;
     });
     builder.addCase(refreshUser.rejected, (state, action) => {
       state.isRefresh = false;
       state.isPending = false;
+      state.isLogined = false;
+      state.addStatus = "error-refresh";
     });
     // ====================Add Avatar ===================
     builder.addCase(AddAvatar.pending, (state, action) => {
@@ -105,15 +143,15 @@ const authSlice = createSlice({
     // ====================Add Settings ===================
     builder.addCase(saveWaterRate.pending, (state) => {
       state.isRefresh = true;
-      state.error = null;
     });
     builder.addCase(saveWaterRate.fulfilled, (state, action) => {
-      state.isRefresh = false;
+      state.addStatus = "success";
       state.user.waterRate = action.payload;
+      state.isPending = false;
     });
     builder.addCase(saveWaterRate.rejected, (state, action) => {
-      state.isRefresh = false;
-      state.error = action.error.message;
+      state.isPending = false;
+      state.addStatus = "success";
     });
   },
 });
