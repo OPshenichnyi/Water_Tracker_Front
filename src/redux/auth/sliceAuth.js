@@ -66,9 +66,11 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.isLogined = true;
       state.isRefresh = false;
+      state.isPending = false;
     });
     builder.addCase(refreshUser.rejected, (state, action) => {
       state.isRefresh = false;
+      state.isPending = false;
     });
     // ====================Add Avatar ===================
     builder.addCase(AddAvatar.pending, (state, action) => {

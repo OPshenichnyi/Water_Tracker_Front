@@ -49,7 +49,17 @@ export default function FormInput() {
       const isEmpty = Object.keys(fieldsToUpdate).length === 0;
       if (isEmpty) {
       }
-      dispatch(AddSetingUser(fieldsToUpdate));
+      // dispatch(AddSetingUser(fieldsToUpdate));
+      const { oldPassword, newPassword, confirmNewPassword } = fieldsToUpdate;
+      if (oldPassword || newPassword || confirmNewPassword) {
+        if (oldPassword === newPassword) {
+          console.log("Пароль має відрізнятись від старого");
+        }
+        if (newPassword !== confirmNewPassword) {
+          console.log("Пароль мають співпадати");
+        }
+      }
+      console.log(fieldsToUpdate.oldPassword);
     },
   });
 
