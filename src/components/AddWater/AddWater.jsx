@@ -41,7 +41,14 @@ function AddWater({ closeModal }) {
   };
 
   const handleInputChange = event => {
-    setInputValue(event.target.value);
+    const inputValue = event.target.value;
+
+    // Проверка, чтобы первая цифра не была нулем
+    if (/^[1-9]\d*$/.test(inputValue) || inputValue === "") {
+      setInputValue(inputValue);
+    } else {
+      toast.error("Please enter a valid number");
+    }
   };
 
   const handleUpdateCountWrapper = () => {
