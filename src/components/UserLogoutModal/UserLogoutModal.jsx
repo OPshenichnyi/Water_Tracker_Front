@@ -45,14 +45,15 @@ const UserLogoutModal = ({ open, onClose }) => {
           </TitleContainer>
           <DescriptionStyle>Do you really want to leave?</DescriptionStyle>
           <ButtonWrapper>
-            <ButtonLogout
+          
+            <ButtonCancel onClick={onClose}>Cancel</ButtonCancel>
+             <ButtonLogout
               onClick={() => {
                 handleLogout();
               }}
             >
               Logout
             </ButtonLogout>
-            <ButtonCancel onClick={onClose}>Cancel</ButtonCancel>
           </ButtonWrapper>
         </ModalBox>
       </Modal>
