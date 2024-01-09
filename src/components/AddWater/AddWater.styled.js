@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import variables from 'common/Variables';
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -9,13 +9,12 @@ export const Wrapper = styled.div`
   transform: translate(-50%, -50%);
   width: 280px;
   height: 540px;
-  background-color: #ffffff;
+  background-color: ${variables.whitePrimary};
   border-radius: 10px;
   padding: 24px 12px;
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 504px;
-    borderradius: 10px;
     padding: 32px 24px;
   }
 
@@ -29,8 +28,8 @@ export const ButtonSave = styled.button`
   height: 36px;
   padding: 8px 30px;
   border-radius: 10px;
-  background: #407bff;
-  color: #fff;
+  background: ${variables.bluePrimary};
+  color: ${variables.whitePrimary};
   text-align: center;
   font-size: 16px;
   font-weight: 500;
@@ -54,8 +53,8 @@ export const ButtonCount = styled.button`
   width: 44px;
   height: 44px;
   border-radius: 30px;
-  border: 1px solid #9ebbff;
-  background: #fff;
+  border: 1px solid ${variables.secondaryLightBlue};
+  background: ${variables.whitePrimary};
   box-shadow: 0px 2px 4px 0px rgba(64, 123, 255, 0.2);
 `;
 export const ButtonClose = styled.button`
@@ -64,7 +63,7 @@ export const ButtonClose = styled.button`
   align-items: center;
   width: 24px;
   height: 24px;
-  background-color: #fff;
+  background-color: ${variables.whitePrimary};
   transition: transform 0.3s ease;
   &:hover {
     transform: scale(1.3);
@@ -78,7 +77,7 @@ export const BlockTop = styled.div`
   margin-bottom: 24px;
 `;
 export const BlockTitle = styled.h3`
-  color: #2f2f2f;
+  color: ${variables.blackPrimary};
   font-size: 26px;
   line-height: 1.23;
 `;
@@ -91,8 +90,8 @@ export const BtnCounter = styled.p`
   height: 36px;
   padding: 6px 10px;
   border-radius: 40px;
-  background: #d7e3ff;
-  color: #407bff;
+  background: ${variables.secondaryGray};
+  color: ${variables.bluePrimary};
   text-align: center;
   font-size: 18px;
   font-weight: 700;
@@ -105,14 +104,14 @@ export const BlockCount = styled.div`
   margin-bottom: 24px;
 `;
 export const ValueP = styled.p`
-  color: #2f2f2f;
+  color: ${variables.blackPrimary};
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
   margin-bottom: 16px;
 `;
 export const AmountP = styled.p`
-  color: #2f2f2f;
+  color: ${variables.blackPrimary};
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
@@ -130,12 +129,17 @@ export const SelectTime = styled.select`
   flex-direction: column;
   align-items: flex-start;
   border-radius: 6px;
-  border: 1px solid #d7e3ff;
+  outline: 1px solid ${variables.secondaryGray};
+  border:  none;
   margin-bottom: 24px;
-  color: #407bff;
+  color: ${variables.secondaryLightBlue};
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
+  &:active, &:focus {
+    color: ${variables.bluePrimary};
+    
+  }
 
   @media screen and (min-width: 768px) {
     width: 656px;
@@ -155,11 +159,16 @@ export const InputStyle = styled.input`
   flex-direction: column;
   align-items: flex-start;
   border-radius: 6px;
-  border: 1px solid #d7e3ff;
-  color: #407bff;
+  outline: 1px solid ${variables.secondaryGray};
+  border:  none;
+  color: ${variables.secondaryLightBlue};
   font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
+  &:active, &:focus {
+    color: ${variables.bluePrimary};
+    
+  }
 
   @media screen and (min-width: 768px) {
     width: 656px;
@@ -173,7 +182,7 @@ export const InputStyle = styled.input`
 export const CounterBottom = styled.p`
   width: 72px;
   height: 24px;
-  color: #407bff;
+  color: ${variables.bluePrimary};
   text-align: center;
   font-size: 18px;
   font-weight: 700;
