@@ -6,22 +6,26 @@ export const DayUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 16px 26px;
+  position: relative;
 
   @media screen and (min-width: 768px) {
     gap: 20px 34px;
+    position: unset;
   }
-
+  
   @media screen and (min-width: 1440px) {
     column-gap: 22px;
   }
-`;
+  `;
 
 export const DayLi = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-`;
+  @media screen and (min-width: 768px) {
+    position: relative;
+  }
+  `;
 
 export const StatsWrapper = styled.div`
   display: flex;
