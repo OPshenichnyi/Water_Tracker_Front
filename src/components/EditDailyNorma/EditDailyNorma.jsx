@@ -19,6 +19,7 @@ import {
   InputStyle,
   LabelGender,
   SecondTitle,
+  SpanGender,
   TextP,
   WrapAmount,
   Wrapper,
@@ -162,7 +163,7 @@ function EditDailyNorma({ closeModal }) {
             checked={gender === "girl"}
             onChange={handleChange}
           />
-          <span>For girl</span>
+          <SpanGender>For girl</SpanGender>
         </LabelGender>
 
         <LabelGender htmlFor="man">
@@ -183,7 +184,7 @@ function EditDailyNorma({ closeModal }) {
             checked={gender === "man"}
             onChange={handleChange}
           />
-          <span>For man</span>
+          <SpanGender>For man</SpanGender>
         </LabelGender>
       </ContainerGender>
 

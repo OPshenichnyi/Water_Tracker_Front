@@ -125,7 +125,7 @@ function AddWater({ closeModal }) {
         placeholder={count}
       />
       <CountSaveBtnBottom>
-        <CounterBottom>{waterData.waterVolume}ml</CounterBottom>
+        <CounterBottom>{count || waterData.waterVolume}ml</CounterBottom>
         <ButtonSave type="button" onClick={handleSave}>
           Save
         </ButtonSave>
