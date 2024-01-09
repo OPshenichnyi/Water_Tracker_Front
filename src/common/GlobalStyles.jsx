@@ -46,6 +46,7 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
+  
 }
 h1,
 h2,
@@ -80,15 +81,20 @@ html {
   scroll-behavior: smooth;
 }
 
-[class="container"], [class$="main-container"] {
-		width: 320px;
+@media screen and (max-width: 767px) {
+  [class="container"], [class$="main-container"] {
+		max-width: 320px;
 		padding: 0 20px;
 		margin: 0 auto;
 	}
+	}
+
+
 	@media screen and (min-width: 768px) {
 		[class="container"], [class$="main-container"] {
 			width: 768px;
 			padding: 0 32px;
+      margin: 0 auto;
 		}
 	}
 	@media screen and (min-width: 1440px) {
