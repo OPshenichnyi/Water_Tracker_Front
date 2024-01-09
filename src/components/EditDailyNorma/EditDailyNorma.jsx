@@ -32,7 +32,7 @@ import { saveWaterRate } from "../../redux/auth/authOperationApi";
 function EditDailyNorma({ closeModal }) {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
-  
+  const [isValidInput, setIsValidInput] = useState(true);
 
   const [gender, setGender] = useState("girl");
   const [inputValueK, setInputValueK] = useState("");
@@ -64,12 +64,10 @@ function EditDailyNorma({ closeModal }) {
     handleInputChange(event, setInputValueT, setIsValidInputT);
   };
 
-  const errorBorderStyleK = {
+  const errorBorderStyle = {
     border: "1px solid #EF5050",
   };
-  const errorBorderStyleT = {
-    border: "1px solid #EF5050",
-  };
+
 
   useEffect(() => {
     const waterCalc = () => {
@@ -94,9 +92,9 @@ function EditDailyNorma({ closeModal }) {
     const inputValue = event.target.value;
     if (/^[1-9]\d*(?:[.,]\d{0,1})?$/.test(inputValue) || inputValue === "") {
       setInputValue(inputValue);
-      
+      setIsValidInput(true)
     } else {
-      
+      setIsValidInput(false)
       toast.error("Please enter valid numbers");
     }
   };
@@ -196,7 +194,7 @@ function EditDailyNorma({ closeModal }) {
         value={inputValueK}
         onChange={handleInputChangeKilo}
         placeholder="0"
-        style={isValidInputK ? {} : errorBorderStyleK}
+        style={isValidInputK ? {} : errorBorderStyle}
       />
 
       <TextP>
@@ -209,7 +207,7 @@ function EditDailyNorma({ closeModal }) {
         value={inputValueT}
         onChange={handleInputChangeTime}
         placeholder="0"
-        style={isValidInputT ? {} : errorBorderStyleT}
+        style={isValidInputT ? {} : errorBorderStyle}
       />
       <BlockAmount>
         <BlockAmountText>
@@ -227,6 +225,7 @@ function EditDailyNorma({ closeModal }) {
         placeholder="Maximum permissible displacement 15 liters"
         max="15"
         pattern="^[1-9][0-9]*\.?[0-9]*$"
+        style={isValidInput ? {} : errorBorderStyle}
       />
       <ButtonSaveWrap>
         <ButtonSave type="button" onClick={saveWater}>
