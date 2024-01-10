@@ -22,26 +22,32 @@ import {
 } from '../Utils/utils';
 import React, { useEffect, useState } from 'react';
 import icons from '../../common/symbol-defs.svg';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addWaterVolume } from '../../redux/water/operations';
-import { selectAddWaterVolume } from '../../redux/water/selector';
 import { toast } from 'react-toastify';
 
 function AddWater({ closeModal }) {
   const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [selectedTime, setSelectedTime] = useState(0);
+  const [isValidInput, setIsValidInput] = useState(true);
+  const [inputDisabled, setInputDisabled] = useState(false);
 
   const dispatch = useDispatch();
-  const waterData = useSelector(selectAddWaterVolume);
 
   const handleDecrease = () => {
     decrease(count, setCount);
   };
 
   const handleInputChange = event => {
-    setInputValue(event.target.value);
+    const inputNumber = event.target.value;
+    if (/^\d*$/.test(inputNumber) || !setInputDisabled) {
+      setInputValue(inputNumber);
+      setIsValidInput(true);
+    } else {
+      setIsValidInput(false);
+      toast.error('please enter the numbers');
+    }
   };
 
   const handleUpdateCountWrapper = () => {
@@ -50,6 +56,7 @@ function AddWater({ closeModal }) {
 
   const handleInputBlur = () => {
     handleUpdateCountWrapper();
+    setIsValidInput(true);
   };
 
   useEffect(() => {
@@ -65,7 +72,8 @@ function AddWater({ closeModal }) {
       return toast.info(
         'Amount of water- cannot be zero please enter a value!'
       );
-    if(count > 5000) return toast.info('The entered data should not exceed 5000 ml');
+    if (count > 5000)
+      return toast.info('The entered data should not exceed 5000 ml');
 
     const hours = Math.floor(selectedTime / 60);
     const minutes = selectedTime % 60;
@@ -78,9 +86,12 @@ function AddWater({ closeModal }) {
     };
     toast.success('Data saved 👍');
     dispatch(addWaterVolume(data));
+    setCount(0);
     closeModal();
   };
-
+  const errorBorderStyle = {
+    border: '1px solid #EF5050',
+  };
   return (
     <Wrapper>
       <BlockTop>
@@ -123,9 +134,11 @@ function AddWater({ closeModal }) {
         onChange={handleInputChange}
         onBlur={handleInputBlur}
         placeholder={count}
+        style={isValidInput ? {} : errorBorderStyle}
+        disabled={inputDisabled}
       />
       <CountSaveBtnBottom>
-        <CounterBottom>{count || waterData.waterVolume}ml</CounterBottom>
+        <CounterBottom>{count}ml</CounterBottom>
         <ButtonSave type="button" onClick={handleSave}>
           Save
         </ButtonSave>
