@@ -9,7 +9,7 @@ import mainDesct from '../../images/main_desctop.jpg';
 import bubble from '../../images/BackelementDesk.png';
 import bubble2x from '../../images/BackelementDesk@2x.png';
 import { NavLink } from 'react-router-dom';
-
+import mainDesct2x from '../../images/main_desctop@2x.jpg';
 export const Wrappper = styled.div`
   @media screen and (min-width: 1440px) {
     width: 100%;
@@ -19,32 +19,29 @@ export const Wrappper = styled.div`
     &::before {
       content: '';
       position: absolute;
-      
-      
+      z-index: 1;
       width: 100%;
-      height: 60%;
+      height: 70%;
+      background-size: cover;
       background-image: url(${bubble});
-
       @media screen and (min-resolution: 192dpi) {
         background-image: url(${bubble2x});
-        padding-bottom: 50px;
       }
-
-      background-size: cover;
-      z-index: 1;
-      
     }
 
     &::after {
       content: '';
       position: absolute;
-      background-size: contain;
-      background-image: url(${mainDesct});
+      background-size: cover;
       width: 100%;
       height: 50%;
       bottom: 0%;
       background-repeat: no-repeat;
       background-position: bottom;
+      background-image: url(${mainDesct});
+      @media screen and (min-resolution: 192dpi) {
+        background-image: url(${mainDesct2x});
+      }
     }
   }
 `;
@@ -52,9 +49,8 @@ export const Wrappper = styled.div`
 export const Container = styled.div`
   background-image: url(${backgroundImg});
   background-size: cover;
-  background-position: bottom;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  
 
   @media screen and (min-resolution: 192dpi) {
     background-image: url(${backgroundImg2x});
@@ -63,7 +59,7 @@ export const Container = styled.div`
   @media screen and (min-width: 768px) {
     background-image: url(${tabletImg});
     height: 100vw;
-    background-attachment: unset;
+    
 
     @media screen and (min-resolution: 192dpi) {
       background-image: url(${tabletImg2x});
@@ -105,7 +101,7 @@ export const ContainerWrap = styled.div`
 
 export const FirstBlock = styled.div`
   box-sizing: border-box;
-  max-width: 320px;
+  max-width: 280px;
   margin-left: auto;
   margin-right: auto;
   color: ${color.blackPrimary};
@@ -146,8 +142,6 @@ export const RecordTittle = styled.h2`
     font-size: 26px;
     line-height: 1.23;
     width: 404px;
-  }
-  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -207,21 +201,19 @@ export const TryBtn = styled(NavLink)`
   font-weight: bold;
   padding: 8px 30px;
   border-radius: 10px;
-  max-width: 320px;
+  max-width: 280px;
   display: block;
   text-align: center;
   justify-content: center;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
   background-color: ${color.bluePrimary};
   transition: box-shadow 0.3s ease;
-
+  cursor: pointer;
   &:hover {
     box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
-    cursor: pointer;
   }
 
   &.active {
-    cursor: pointer;
     box-shadow: none;
   }
 
