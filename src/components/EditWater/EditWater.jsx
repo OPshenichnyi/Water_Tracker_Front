@@ -57,6 +57,7 @@ export default function EditWater({ closeModal, waterRecord }) {
   };
 
   const handleInputChange = event => {
+
     const inputNumber = event.target.value;
     if (/^\d*$/.test(inputNumber) || !setInputDisabled) {
       setInputValue(inputNumber);
@@ -64,6 +65,8 @@ export default function EditWater({ closeModal, waterRecord }) {
     } else {
       setIsValidInput(false);
       toast.error('please enter the numbers');
+
+       
     }
   };
   const handleUpdateCountWrapper = () => {

@@ -40,6 +40,7 @@ function AddWater({ closeModal }) {
   };
 
   const handleInputChange = event => {
+
     const inputNumber = event.target.value;
     if (/^\d*$/.test(inputNumber) || !setInputDisabled) {
       setInputValue(inputNumber);
@@ -47,6 +48,7 @@ function AddWater({ closeModal }) {
     } else {
       setIsValidInput(false);
       toast.error('please enter the numbers');
+
     }
   };
 
