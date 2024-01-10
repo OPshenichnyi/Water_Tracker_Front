@@ -111,7 +111,7 @@ export const saveWaterRate = createAsyncThunk(
   async (calculatedResult, thunkAPI) => {
     try {
       const response = await axios.patch("/users/water-rate", {
-        waterRate: calculatedResult,
+        waterRate: Number(calculatedResult),
       });
       thunkAPI.dispatch(refreshUser());
       thunkAPI.dispatch(fetchWaterDataToday());
