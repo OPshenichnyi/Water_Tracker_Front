@@ -257,7 +257,7 @@ export const LayoutMainContainer = styled.div`
   justify-content: space-between;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+ 
   height: 100%;
   background-size: 100%;
   background-repeat: no-repeat;
