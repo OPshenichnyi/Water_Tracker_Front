@@ -19,8 +19,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const MainPage = lazy(() => import("../pages/Main"));
 const HomePage = lazy(() => import("../pages/HomePage"));
-const SignUpPage = lazy(() => import("../pages/SignUpPage"));
-const SigninPage = lazy(() => import("../pages/SigninPage"));
+const SignUpPage = lazy(() => import("../components/SingIn/SignUp"));
+const SigninPage = lazy(() => import("../components/SingIn/SingIn"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 
 const App = () => {
@@ -75,7 +75,6 @@ const App = () => {
         </Route>
       </Routes>
       <ToastContainer autoClose={1500} />
-
     </>
   );
 };
