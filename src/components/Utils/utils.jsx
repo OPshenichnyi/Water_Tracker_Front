@@ -27,9 +27,7 @@ export const handleUpdateCount = (inputValue, setCount, setInputValue) => {
   if (!isNaN(newValue)) {
     setCount(newValue);
     setInputValue('');
-  } else {
-    alert('Будь ласка, введіть число.');
-  }
+  } 
 };
 
 export const setInitialTime = setSelectedTime => {
