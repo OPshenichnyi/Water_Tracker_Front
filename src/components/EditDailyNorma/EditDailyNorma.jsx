@@ -36,14 +36,16 @@ function EditDailyNorma({ closeModal }) {
 
   const [gender, setGender] = useState("girl");
   const [inputValueK, setInputValueK] = useState("");
-  const [inputValueT, setInputValueT] = useState("");
-  const [calculatedResult, setCalculatedResult] = useState(null);
+  const [inputValueT, setInputValueT] = useState(0);
+  const [calculatedResult, setCalculatedResult] = useState("");
   const [isValidInputK, setIsValidInputK] = useState(true);
   const [isValidInputT, setIsValidInputT] = useState(true);
 
   const handleChange = (event) => {
     setGender(event.target.value);
   };
+
+  
 
   const handleInputChange = (event, setInputValue, setIsValidInputT) => {
     const inputValue = event.target.value;
@@ -56,12 +58,21 @@ function EditDailyNorma({ closeModal }) {
     }
   };
 
+ 
+
+
   const handleInputChangeKilo = (event) => {
     handleInputChange(event, setInputValueK, setIsValidInputK);
   };
 
   const handleInputChangeTime = (event) => {
     handleInputChange(event, setInputValueT, setIsValidInputT);
+  };
+
+  const handleInputBlur = () => {
+    setIsValidInputT(true);
+    setIsValidInputK(true);
+    setIsValidInput(true);
   };
 
   const errorBorderStyle = {
@@ -71,7 +82,7 @@ function EditDailyNorma({ closeModal }) {
 
   useEffect(() => {
     const waterCalc = () => {
-      if (inputValueK && inputValueT && gender) {
+      if (inputValueK  && gender) {
         let result;
         if (gender === "girl") {
           result = inputValueK * 0.03 + inputValueT * 0.4;
@@ -82,7 +93,7 @@ function EditDailyNorma({ closeModal }) {
 
         setCalculatedResult(result);
       } else {
-        setCalculatedResult(null);
+        setCalculatedResult(0);
       }
     };
     waterCalc();
@@ -196,6 +207,7 @@ function EditDailyNorma({ closeModal }) {
         onChange={handleInputChangeKilo}
         placeholder="0"
         style={isValidInputK ? {} : errorBorderStyle}
+        onBlur={handleInputBlur}
       />
 
       <TextP>
@@ -209,6 +221,7 @@ function EditDailyNorma({ closeModal }) {
         onChange={handleInputChangeTime}
         placeholder="0"
         style={isValidInputT ? {} : errorBorderStyle}
+        onBlur={handleInputBlur}
       />
       <BlockAmount>
         <BlockAmountText>
@@ -227,6 +240,7 @@ function EditDailyNorma({ closeModal }) {
         max="15"
         pattern="^[1-9][0-9]*\.?[0-9]*$"
         style={isValidInput ? {} : errorBorderStyle}
+        onBlur={handleInputBlur}
       />
       <ButtonSaveWrap>
         <ButtonSave type="button" onClick={saveWater}>

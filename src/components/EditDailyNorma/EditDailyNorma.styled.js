@@ -154,6 +154,11 @@ export const AmountWater = styled.p`
 export const WrapAmount = styled.span`
   width: 57px;
   height: 24px;
+  color: ${variables.bluePrimary};
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.33;
 `;
 
 export const InputStyle = styled.input`
@@ -193,6 +198,10 @@ export const LabelGender = styled.label`
   display: flex;
   align-items: center;
   gap: 8px;
+  
+    cursor: pointer;
+  
+  
 `;
 
 export const ButtonSave = styled.button`
