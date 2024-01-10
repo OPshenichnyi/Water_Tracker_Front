@@ -6,6 +6,7 @@ import {
   fetchWaterDataToday,
   waterMonts,
 } from "../water/operations";
+import { toast } from "react-toastify";
 
 //  ==============Settings AXIOS =======================
 axios.defaults.baseURL = "https://db-water-tracker.onrender.com/api/";
@@ -25,8 +26,14 @@ export const registration = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post("/users/register", credentials);
+      toast.success("😎 Succses 😎");
       return response.data;
     } catch (error) {
+      console.log(error.response.status);
+      if (error.response.status === 409) {
+        toast.error("🤬 This email is already registered 🤬");
+      }
+      toast.error("🤬 UPS ERROR 🤬");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -38,8 +45,10 @@ export const logIn = createAsyncThunk(
     try {
       const response = await axios.post("/users/login", credentials);
       setJwtHeader(response.data.token);
+      toast.success("😎 Succses 😎");
       return response.data;
     } catch (error) {
+      toast.error("🤬 UPS ERROR 🤬");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
