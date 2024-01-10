@@ -58,9 +58,15 @@ export const ButtonSave = styled.button`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.25;
+  transition: box-shadow 0.3s ease;
+  box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+  cursor: pointer;
   &:hover {
-    box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
-    cursor: pointer;
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    
+  }
+  &.active {
+    box-shadow: none;
   }
 
   @media screen and (min-width: 768px) {
