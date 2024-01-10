@@ -67,9 +67,7 @@ const App = () => {
           {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
           <Route
             path="/HomePage"
-            element={
-              <PrivateRouter redirectTo="/signin" component={<HomePage />} />
-            }
+            element={<PrivateRouter redirectTo="/" component={<HomePage />} />}
           />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
