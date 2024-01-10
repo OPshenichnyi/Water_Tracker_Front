@@ -32,15 +32,15 @@ import { selectAddWaterVolume } from '../../redux/water/selector';
 import { FormatTime } from '../Calendar/FormatTime/FormatTime';
 
 export default function EditWater({ closeModal, waterRecord }) {
-  const [count, setCount] = useState(waterRecord ? waterRecord.waterVolume : 0);
+  const [count, setCount] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [selectedTime, setSelectedTime] = useState(0);
   const [isValidInput, setIsValidInput] = useState(true);
   const [inputDisabled, setInputDisabled] = useState(false);
+const [previousRecord, setPreviousRecord] = useState ();
+
   const dispatch = useDispatch();
   const waterData = useSelector(selectAddWaterVolume);
-
-  console.log(waterRecord);
 
   useEffect(() => {
     setInitialTime(setSelectedTime);
@@ -49,6 +49,8 @@ export default function EditWater({ closeModal, waterRecord }) {
   useEffect(() => {
     if (waterRecord) {
       setCount(waterRecord.waterVolume);
+      setPreviousRecord(waterRecord.waterVolume);
+    
     }
   }, [waterRecord]);
 
@@ -65,8 +67,7 @@ export default function EditWater({ closeModal, waterRecord }) {
     } else {
       setIsValidInput(false);
       toast.error('please enter the numbers');
-
-       
+    
     }
   };
   const handleUpdateCountWrapper = () => {
@@ -126,7 +127,7 @@ export default function EditWater({ closeModal, waterRecord }) {
         <svg width={36} height={36} fill="#407BFF">
           <use href={`${icons}#icon-glass`} />
         </svg>
-        <DataWater>{count} ml</DataWater>
+        <DataWater>{previousRecord} ml</DataWater>
         <DataTime>{FormatTime(waterData.date)}</DataTime>
       </BlockWaterTime>
       <ValueP>Correct entered data:</ValueP>
