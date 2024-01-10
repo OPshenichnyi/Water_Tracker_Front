@@ -135,9 +135,19 @@ export const SignUpButton = styled.button`
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   box-shadow: 0 4px 8px rgba(64, 123, 255, 0.34);
+
   width: 280px;
   height: 36px;
+  transition: box-shadow 0.3s ease;
+  &:hover {
+    box-shadow: 0px 4px 14px 0px rgba(64, 123, 255, 0.54);
+    cursor: pointer;
+  }
 
+  &.active {
+    cursor: pointer;
+    box-shadow: none;
+  }
   @media screen and (min-width: 768px) {
     width: 336px;
     height: 44px;
@@ -156,6 +166,9 @@ export const SignUpButton2 = styled.a`
   background-color: none;
   color: #407bff;
   margin-top: 16px;
+  &:hover {
+    color: #ff9d43;
+  }
 `;
 
 export const SignUpFormContainer = styled.div``;

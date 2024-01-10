@@ -74,8 +74,11 @@ const SettingModal = ({ closeModal }) => {
       <TitleNameSet title={"Your photo"}></TitleNameSet>
       <ContainerAvatar>
         <Avatar
-          src={avatarURL}
-          alt="Img_Avatar"
+          src={
+            avatarURL ||
+            "https://res.cloudinary.com/djkfbggvo/image/upload/v1704755595/kllswpdjrddgxxb3ixpx.png"
+          }
+          alt=""
           width="80"
           height="80"
         ></Avatar>

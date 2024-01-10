@@ -1,7 +1,7 @@
-import { toast } from 'react-toastify';
-import React, { useState, useEffect } from 'react';
-import icons from '../../common/symbol-defs.svg';
-import { useDispatch, useSelector } from 'react-redux';
+import { toast } from "react-toastify";
+import React, { useState, useEffect } from "react";
+import icons from "../../common/symbol-defs.svg";
+import { useDispatch, useSelector } from "react-redux";
 import {
   ButtonClose,
   ButtonCount,
@@ -20,27 +20,25 @@ import {
   Wrapper,
   DataWater,
   DataTime,
-} from './EditWater.styled';
+} from "./EditWater.styled";
 import {
   decrease,
   generateTimeOptions,
   handleUpdateCount,
   setInitialTime,
-} from 'components/Utils/utils';
-import { updateWaterVolume } from '../../redux/water/operations';
-import { selectAddWaterVolume } from '../../redux/water/selector';
-import { FormatTime } from '../Calendar/FormatTime/FormatTime';
+} from "components/Utils/utils";
+import { updateWaterVolume } from "../../redux/water/operations";
+import { selectAddWaterVolume } from "../../redux/water/selector";
+import { FormatTime } from "../Calendar/FormatTime/FormatTime";
 
 export default function EditWater({ closeModal, waterRecord }) {
   const [count, setCount] = useState(waterRecord ? waterRecord.waterVolume : 0);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [selectedTime, setSelectedTime] = useState(0);
   const [isValidInput, setIsValidInput] = useState(true);
   const [inputDisabled, setInputDisabled] = useState(false);
   const dispatch = useDispatch();
   const waterData = useSelector(selectAddWaterVolume);
-
-  console.log(waterRecord);
 
   useEffect(() => {
     setInitialTime(setSelectedTime);
@@ -56,17 +54,14 @@ export default function EditWater({ closeModal, waterRecord }) {
     decrease(count, setCount);
   };
 
-  const handleInputChange = event => {
-
+  const handleInputChange = (event) => {
     const inputNumber = event.target.value;
     if (/^\d*$/.test(inputNumber) || !setInputDisabled) {
       setInputValue(inputNumber);
       setIsValidInput(true);
     } else {
       setIsValidInput(false);
-      toast.error('please enter the numbers');
-
-       
+      toast.error("please enter the numbers");
     }
   };
   const handleUpdateCountWrapper = () => {
@@ -78,17 +73,17 @@ export default function EditWater({ closeModal, waterRecord }) {
     setIsValidInput(true);
   };
 
-  const handleTimeChange = e => {
+  const handleTimeChange = (e) => {
     setSelectedTime(parseInt(e.target.value, 10));
   };
 
   const handleSave = () => {
     if (count === 0)
       return toast.info(
-        'Amount of water- cannot be zero please enter a value!'
+        "Amount of water- cannot be zero please enter a value!"
       );
     if (count > 5000)
-      return toast.info('The entered data should not exceed 5000 ml');
+      return toast.info("The entered data should not exceed 5000 ml");
 
     const hours = Math.floor(selectedTime / 60);
     const minutes = selectedTime % 60;
@@ -103,12 +98,12 @@ export default function EditWater({ closeModal, waterRecord }) {
 
     const waterId = waterRecord._id;
     dispatch(updateWaterVolume({ waterId, data }));
-    toast.success('Data changed successfully 👍');
+    toast.success("Data changed successfully 👍");
     closeModal();
   };
 
   const errorBorderStyle = {
-    border: '1px solid #EF5050',
+    border: "1px solid #EF5050",
   };
 
   return (
@@ -116,7 +111,7 @@ export default function EditWater({ closeModal, waterRecord }) {
       <BlockTop>
         <BlockTitle>Edit the entered amount of water</BlockTitle>
         <ButtonClose onClick={closeModal}>
-          {' '}
+          {" "}
           <svg width={12} height={12} stroke="#407BFF">
             <use href={`${icons}#icon-cross`} />
           </svg>
