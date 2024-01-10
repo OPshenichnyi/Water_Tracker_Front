@@ -164,7 +164,7 @@ const [previousRecord, setPreviousRecord] = useState ();
         disabled={inputDisabled}
       />
       <CountSaveBtnBottom>
-        <CounterBottom>{count || waterData.waterVolume}ml</CounterBottom>
+        <CounterBottom>{count}ml</CounterBottom>
         <ButtonSave type="button" onClick={handleSave}>
           Save
         </ButtonSave>
