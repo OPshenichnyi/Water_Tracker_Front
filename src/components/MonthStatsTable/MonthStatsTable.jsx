@@ -34,11 +34,24 @@ const Month = () => {
     const name = event.target.parentNode.tagName;
     const data = event.target.parentNode.firstChild.textContent;
     if (name === "LI") {
-      setModalOpen(data);
+      setModalOpen((prevData) => (prevData === data ? "" : data));
       return;
     }
     setModalOpen("");
   };
+
+  useEffect(() => {
+    const handleDocumentClick = (event) => {
+      if (!event.target.closest(".Day")) {
+        setModalOpen("");
+      }
+    };
+    document.addEventListener("mousedown", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleDocumentClick);
+    };
+  }, []);
 
   useEffect(() => {
     setData(mounthHistory);
@@ -96,6 +109,7 @@ const Month = () => {
   };
 
   const dataToday = getFormattedMonthName();
+
   return (
     <>
       <StatsWrapper>
@@ -121,19 +135,19 @@ const Month = () => {
             </MonthSwipe>
           </CurrentMonth>
         </TodayDiv>
-        <DayUl onClick={handleButtonClick}>
+        <DayUl>
           {daysInMonth.map((item) => (
             <DayLi key={item.id}>
-              <DayNumber>{item.day}</DayNumber>
+              <DayNumber onClick={handleButtonClick} className="Day">{item.day}</DayNumber>
               <WaterPercentage>{item.dailyNormFulfillment}%</WaterPercentage>
               {isModalOpen === item.day.toString() && (
-                <DaysGeneralStats
+                <DaysGeneralStats 
                   onClose={() => setModalOpen("")}
                   day={item.day}
                   dailyNorm={item.dailyNormFulfillment}
                   mounth={dataToday}
                   servingOfWater={item.servingOfWater}
-                  WaterRate={item.WaterRate}
+                  WaterRate={item.WaterRate}                  
                 />
               )}
             </DayLi>

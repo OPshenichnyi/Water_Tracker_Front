@@ -23,7 +23,7 @@ export default function DaysGeneralStats({
 
   return (
     <div>
-      <DailyModal left={x} top={topCalculate(day)}>
+      <DailyModal className="Day" left={x} top={topCalculate(day)}>
         {" "}
         <Date>
           {day}, {monthName}
