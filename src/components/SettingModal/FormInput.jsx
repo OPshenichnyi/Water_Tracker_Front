@@ -76,10 +76,15 @@ export default function FormInput() {
   const handleBlure = (evt) => {
     const validEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     const validName = /^[a-zA-Zа-яА-ЯіІїЇєЄґҐ'’]{1,32}$/;
-    const value = evt.target.value.toString();
+    const value = evt.target.value.trim();
     const id = evt.target.id;
     const valiSchema = "userName" === id ? validName : validEmail;
 
+    if (value.includes('  ')) {
+      setError(id);
+      return;
+    }
+    
     if (valiSchema.test(value)) {
       setError("");
       return;
@@ -95,6 +100,34 @@ export default function FormInput() {
     border: `1px solid ${variables.secondaryRed} `,
   };
 
+  const handleBlur = (e) => {
+    const field = e.target.name;
+    let trimmedValue = e.target.value.trim();
+  
+    if (trimmedValue.startsWith(' ')) {
+      trimmedValue = trimmedValue.replace(/^\s+/, '');
+    }
+  
+    formik.setFieldValue(field, trimmedValue);
+    formik.handleBlur(e);
+  };
+  
+  const handleInputChange = (fieldName, e) => {
+    if (e.target.name === fieldName && e.target.value.startsWith(' ')) {
+      return;
+    }
+  
+    formik.handleChange(e);
+  };
+
+  const handleKeyDown = (e, fieldName) => {
+    const {  value } = e.target;
+  if (e.key === ' ' && (value.length === 0 || value.startsWith(' '))) {
+    e.preventDefault();
+  }
+
+  };
+
   return (
     <>
       <ContainerBlockSeting>
@@ -107,10 +140,10 @@ export default function FormInput() {
               id="userName"
               name="userName"
               type="text"
-              onChange={formik.handleChange}
+              onChange={(e) => handleInputChange('userName', e)}
+              onBlur={handleBlur}
               value={formik.values.userName}
               className="ttt"
-              onBlur={handleBlure}
               style={error === "userName" ? errorBorderStyleK : null}
             />
             <TitleNameSet title={"E-mail"}></TitleNameSet>
@@ -118,11 +151,12 @@ export default function FormInput() {
               id="email"
               name="email"
               type="email"
-              onChange={formik.handleChange}
+              onChange={(e) => handleInputChange('email', e)}
               value={formik.values.email}
               className="last"
               onBlur={handleBlure}
               style={error === "email" ? errorBorderStyleK : null}
+              onKeyDown={handleKeyDown} 
             />
           </form>
         </ContainerInfoUser>

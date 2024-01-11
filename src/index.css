@@ -13,3 +13,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.toast-container {
+  top: 0 px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  max-width: 600px; 
+}

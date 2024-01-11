@@ -139,7 +139,7 @@ const authSlice = createSlice({
       state.isRefresh = true;
     });
     builder.addCase(saveWaterRate.fulfilled, (state, action) => {
-      state.addStatus = "success";
+      // state.addStatus = "success";
       state.user.waterRate = action.payload;
       state.isPending = false;
     });
