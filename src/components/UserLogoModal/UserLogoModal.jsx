@@ -66,7 +66,7 @@ const UserLogoModal = ({ position, onClose, open, headerRef }) => {
       ) {
         handleClose();
       }
-     
+      
     },
     [handleClose]
   );
