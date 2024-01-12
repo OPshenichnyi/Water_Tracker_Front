@@ -22,7 +22,9 @@ const UserLogoModal = ({ position, onClose, open, headerRef }) => {
   modalScrollOff(modalActive);
 
   const handleLogoutClick = () => {
+    
     setUserLogoutModalOpen(true);
+    
   };
 
   useEffect(() => {
@@ -52,6 +54,7 @@ const UserLogoModal = ({ position, onClose, open, headerRef }) => {
 
   const handleModalClick = (event) => {
     event.stopPropagation();
+   
   };
 
   const handleDocumentClick = useCallback(
@@ -63,6 +66,7 @@ const UserLogoModal = ({ position, onClose, open, headerRef }) => {
       ) {
         handleClose();
       }
+     
     },
     [handleClose]
   );

@@ -1,3 +1,4 @@
+
 import variables from 'common/Variables';
 import styled from 'styled-components';
 
@@ -50,10 +51,21 @@ export const DayNumber = styled.div`
 
   border-radius: 50%;
   background-color: ${variables.whitePrimary};
-  outline: ${variables.secondaryLightOrange} solid 1px;
   font-size: 14px;
   line-height: 1.28;
 
+
+  ${({ dailynormfulfillment }) => {
+    let borderColor = variables.secondaryLightOrange;
+
+    if (dailynormfulfillment >= 99) {
+      borderColor = variables.secondaryGreen; 
+    }
+
+    return `
+      outline: ${borderColor} solid 1px;
+    `;
+  }}
   @media screen and (min-width: 768px) {
     gap: 20px 34px;
     width: 34px;

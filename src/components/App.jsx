@@ -72,7 +72,7 @@ const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-      <ToastContainer autoClose={1000} />
+      <ToastContainer autoClose={1000} className="toast-container"/>
     </>
   );
 };

@@ -1,3 +1,4 @@
+
 const variables = {
   whitePrimary: '#FFFFFF', //   ${variables.whitePrimary};
   blackPrimary: '#2F2F2F', //   ${variables.blackPrimary};
@@ -8,6 +9,7 @@ const variables = {
   secondaryLightOrange: '#FF9D43',// ${variables.secondaryLightOrange};
   secondaryGray: '#D7E3FF',       // ${variables.secondaryGray};
   editColorButton: '#8BAEFF',     // ${variables.editColorButton};
+  secondaryGreen: '#9af064',
 };
 
 export default variables;

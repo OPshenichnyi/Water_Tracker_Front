@@ -138,7 +138,7 @@ const Month = () => {
         <DayUl>
           {daysInMonth.map((item) => (
             <DayLi key={item.id}>
-              <DayNumber onClick={handleButtonClick} className="Day">{item.day}</DayNumber>
+              <DayNumber onClick={handleButtonClick} className="Day" dailynormfulfillment={item.dailyNormFulfillment}>{item.day}</DayNumber>
               <WaterPercentage>{item.dailyNormFulfillment}%</WaterPercentage>
               {isModalOpen === item.day.toString() && (
                 <DaysGeneralStats 
