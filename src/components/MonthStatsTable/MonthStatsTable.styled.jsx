@@ -59,7 +59,7 @@ export const DayNumber = styled.div`
     let borderColor = variables.secondaryLightOrange;
 
     if (dailynormfulfillment >= 99) {
-      borderColor = variables.secondaryGray; 
+      borderColor = variables.secondaryGreen; 
     }
 
     return `
