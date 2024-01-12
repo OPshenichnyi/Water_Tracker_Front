@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy } from "react";
+import { lazy, useState } from "react";
 // import HomePage from '../pages/HomePage';
 // import SignUpPage from '../pages/SignUpPage';
 import Layout from "./SharedLayout/Layout";
@@ -16,6 +16,7 @@ import { refreshUser } from "../redux/auth/authOperationApi";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loader from "./Loader/Loader";
 
 const MainPage = lazy(() => import("../pages/Main"));
 const HomePage = lazy(() => import("../pages/HomePage"));
@@ -24,11 +25,25 @@ const SigninPage = lazy(() => import("../components/SingIn/SingIn"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 
 const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
 
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    try {
+      setLoading(true);
+      dispatch(refreshUser());
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 300); 
+    }
+}, [dispatch]);
+
+if (loading) {
+  return <Loader />;
+}
   return (
     <>
       <Routes>
