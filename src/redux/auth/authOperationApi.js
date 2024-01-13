@@ -26,7 +26,6 @@ export const registration = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post("/users/register", credentials);
-      toast.success("😎 Succses 😎");
       return response.data;
     } catch (error) {
       console.log(error.response.status);
@@ -45,7 +44,6 @@ export const logIn = createAsyncThunk(
     try {
       const response = await axios.post("/users/login", credentials);
       setJwtHeader(response.data.token);
-      toast.success("😎 Succses 😎");
       return response.data;
     } catch (error) {
       toast.error("🤬 UPS ERROR 🤬");

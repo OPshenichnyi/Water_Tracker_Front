@@ -1,12 +1,22 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { selectIsLogined, selectIsRegister } from "../redux/auth/selectorsAuth";
+import {
+  selectIsLogined,
+  selectIsPending,
+  selectIsRegister,
+} from "../redux/auth/selectorsAuth";
+import Loader from "./Loader/Loader";
 
 export const RestrictedRouteLogin = ({
   component: Component,
   redirectTo = "/",
 }) => {
   const isRegister = useSelector(selectIsRegister);
+  const isLoading = useSelector(selectIsPending);
+  if (isLoading) {
+    console.log("loading login");
+    return <Loader />;
+  }
   return isRegister ? <Navigate to={redirectTo} /> : Component;
 };
 
@@ -15,6 +25,10 @@ export const RestrictedRouteHomePage = ({
   redirectTo = "/",
 }) => {
   const isLogined = useSelector(selectIsLogined);
-  
+  const isLoading = useSelector(selectIsPending);
+  if (isLoading) {
+    console.log("loading home");
+    return <Loader />;
+  }
   return isLogined ? <Navigate to={redirectTo} /> : Component;
 };
