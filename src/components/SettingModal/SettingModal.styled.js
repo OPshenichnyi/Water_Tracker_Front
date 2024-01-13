@@ -3,21 +3,19 @@ import variables from "common/Variables";
 
 //  ======== Wrapper Modall window==================
 export const Container = styled.div`
-  position: relative;
-  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 280px;
   padding: 32px 12px;
   border-radius: 10px;
   background-color: #fff;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-top: 150px;
   .loader {
     position: absolute;
     left: 35%;
   }
   @media screen and (min-width: 768px) {
-    margin-top: 200px;
     width: 704px;
     padding: 32px 24px;
     .loader {
@@ -28,7 +26,6 @@ export const Container = styled.div`
   @media screen and (min-width: 1440px) {
     width: 1008px;
     height: 592px;
-    margin-top: 104px;
   }
 `;
 //  ======== Container Name Modal and BTN Close=================

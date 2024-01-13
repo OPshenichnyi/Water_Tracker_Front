@@ -5,8 +5,8 @@ import {
   ReasonList,
   WhyTittle,
   Wrappper,
-} from './Main.styled';
-import icons from '../../common/symbol-defs.svg';
+} from "./Main.styled";
+import icons from "../../common/symbol-defs.svg";
 import {
   BenefitsItem,
   BenefitsList,
@@ -16,9 +16,16 @@ import {
   RecordTittle,
   SecondBlock,
   TryBtn,
-} from './Main.styled';
+} from "./Main.styled";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { saveWaterRate } from "../../redux/auth/authOperationApi";
 
 const Main = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(saveWaterRate());
+  }, [dispatch]);
   return (
     <Wrappper>
       <Container>
