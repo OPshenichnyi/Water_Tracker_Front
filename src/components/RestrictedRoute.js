@@ -14,7 +14,6 @@ export const RestrictedRouteLogin = ({
   const isRegister = useSelector(selectIsRegister);
   const isLoading = useSelector(selectIsPending);
   if (isLoading) {
-    console.log("loading login");
     return <Loader />;
   }
   return isRegister ? <Navigate to={redirectTo} /> : Component;
@@ -22,12 +21,11 @@ export const RestrictedRouteLogin = ({
 
 export const RestrictedRouteHomePage = ({
   component: Component,
-  redirectTo = "/",
+  redirectTo = "/HomePage",
 }) => {
   const isLogined = useSelector(selectIsLogined);
   const isLoading = useSelector(selectIsPending);
   if (isLoading) {
-    console.log("loading home");
     return <Loader />;
   }
   return isLogined ? <Navigate to={redirectTo} /> : Component;
