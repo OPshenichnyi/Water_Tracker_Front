@@ -29,6 +29,8 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    width: 768px;
+    margin: 0 auto;
     padding: 16px 32px;
     padding-top: 40px;
     background-image: image-set(
@@ -38,7 +40,8 @@ export const Container = styled.div`
 
     background-repeat: no-repeat;
     background-position: center;
-    align-items: start;
+    align-items: start;  
+    
   }
 
   @media screen and (min-width: 1440px) {
@@ -77,6 +80,7 @@ export const SignUpContainer = styled.div`
   position: relative;
 
   @media screen and (min-width: 768px) {
+    
   }
 
   @media screen and (min-width: 1440px) {
@@ -171,7 +175,9 @@ export const SignUpButton2 = styled.a`
   }
 `;
 
-export const SignUpFormContainer = styled.div``;
+export const SignUpFormContainer = styled.div`
+
+`;
 
 export const SignUpButtonContainer = styled.div`
   display: flex;
