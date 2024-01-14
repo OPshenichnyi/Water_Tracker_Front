@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   transform: translate(-50%, -50%);
   width: 280px;
   height: 100%;
-  overflow-y: auto; // изменение здесь
+  overflow-y: auto;
   background-color: ${variables.whitePrimary};
   border-radius: 10px;
   padding: 24px 12px;
