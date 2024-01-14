@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { logOut } from "../../redux/auth/authOperationApi";
-import Modal from "@mui/material/Modal";
+// import Modal from "@mui/material/Modal";
 import icons from "../../common/symbol-defs.svg";
 
 
@@ -15,13 +15,13 @@ import {
   ButtonWrapper,
 } from "./UserLogoutModal.styled";
 
-const UserLogoutModal = ({ open, onClose }) => {
+const UserLogoutModal = ({ closeModal }) => {
   
   const dispatch = useDispatch();
 
   const handleClose = () => {
 
-    onClose();
+    closeModal();
     
   };
 
@@ -30,13 +30,13 @@ const UserLogoutModal = ({ open, onClose }) => {
   };
 
   return (
-    <div>
-      <Modal open={open} onClose={handleClose}>
+    <div onClose={handleClose}>
+
         <ModalBox>
           <TitleContainer>
             <TitleStyle>Log out</TitleStyle>
 
-            <ButtonClose onClick={onClose}>
+            <ButtonClose onClick={closeModal}>
               {" "}
               <svg width={12} height={12} stroke="#407BFF">
                 <use href={`${icons}#icon-cross`} />
@@ -46,7 +46,7 @@ const UserLogoutModal = ({ open, onClose }) => {
           <DescriptionStyle>Do you really want to leave?</DescriptionStyle>
           <ButtonWrapper>
           
-            <ButtonCancel onClick={onClose}>Cancel</ButtonCancel>
+            <ButtonCancel onClick={closeModal}>Cancel</ButtonCancel>
              <ButtonLogout
               onClick={() => {
                 handleLogout();
@@ -56,7 +56,7 @@ const UserLogoutModal = ({ open, onClose }) => {
             </ButtonLogout>
           </ButtonWrapper>
         </ModalBox>
-      </Modal>
+ 
     </div>
   );
 };

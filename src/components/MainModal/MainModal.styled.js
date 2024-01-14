@@ -9,7 +9,7 @@ export const Modal = styled.div`
   height: 100vh;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.7);
+ background-color: ${(props) => props.backgroundColor || 'rgba(0, 0, 0, 0.7)'};
   transform: scale(0);
   display: flex;
   overflow: auto;
@@ -17,9 +17,11 @@ export const Modal = styled.div`
   &.active {
     transform: scale(1);
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
+    
   }
 `;
 export const Content = styled.div`
  
 `;
+

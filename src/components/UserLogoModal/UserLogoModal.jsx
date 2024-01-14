@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { modalScrollOff } from "components/Utils/utils";
 import UserSettingsModal from "../SettingModal/SettingModal";
@@ -9,22 +9,29 @@ import {
   Modal,
   Svg,
   Item,
-  Overlay,
+  
 } from "./UserLogoModal.styled";
 import sprite from "../../common/symbol-defs.svg";
 import MainModal from "../MainModal/MainModal";
 
-const UserLogoModal = ({ position, onClose, open, headerRef }) => {
+
+const UserLogoModal = ({ position, closeModal, open, headerRef }) => {
   const [isUserLogoutModalOpen, setUserLogoutModalOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const modalRef = useRef(null);
-  const modalOverlay = useRef(null);
+  
   modalScrollOff(modalActive);
 
   const handleLogoutClick = () => {
     
     setUserLogoutModalOpen(true);
+    closeModal()
+  };
+
+   const handleSettingClick = () => {
     
+    setModalActive(true);
+    closeModal()
   };
 
   useEffect(() => {
@@ -48,73 +55,26 @@ const UserLogoModal = ({ position, onClose, open, headerRef }) => {
     };
   }, [open, headerRef]);
 
-  const handleClose = useCallback(() => {
-    onClose();
-  }, [onClose]);
+ 
 
   const handleModalClick = (event) => {
     event.stopPropagation();
    
   };
 
-  const handleDocumentClick = useCallback(
-    (event) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target) &&
-        event.target.getAttribute("data-modal-overlay") === "true"
-      ) {
-        handleClose();
-      }
-      
-    },
-    [handleClose]
-  );
-
-  useEffect(() => {
-    const handleDocumentClick = (event) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target) &&
-        event.target.getAttribute("data-modal-overlay") === "true"
-      ) {
-        handleClose();
-      }
-    };
-    const handleClose = () => {
-      setUserLogoutModalOpen(false);
-      onClose();
-    };
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        handleClose();
-      }
-    };
-    if (open) {
-      document.addEventListener("keydown", handleKeyDown);
-      document.addEventListener("mousedown", handleDocumentClick);
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("mousedown", handleDocumentClick);
-    };
-  }, [open, onClose, handleClose, handleDocumentClick]);
+  
 
   return (
-    <Overlay
-      ref={modalOverlay}
-      data-modal-overlay="true"
-      onClick={handleDocumentClick}
-    >
-      {!isUserLogoutModalOpen && (
+
+    <div>
+      
         <Modal position={position} onClick={handleModalClick} ref={modalRef}>
           <Wrapper>
             <Item>
               <Svg width={16} height={16}>
                 <use href={`${sprite}#cog-tooth`} />
               </Svg>
-              <Button onClick={() => setModalActive(true)}>Setting</Button>
+              <Button onClick={handleSettingClick}>Setting</Button>
             </Item>
             <Item>
               <Svg width={16} height={16}>
@@ -124,20 +84,29 @@ const UserLogoModal = ({ position, onClose, open, headerRef }) => {
             </Item>
           </Wrapper>
         </Modal>
-      )}
-      {isUserLogoutModalOpen && (
-        <UserLogoutModal
-          open={isUserLogoutModalOpen}
-          onClose={() => setUserLogoutModalOpen(false)}
-        />
-      )}
-      <MainModal active={modalActive} setActive={setModalActive}>
+      
+
+       <MainModal active={modalActive} setActive={setModalActive}>
         <UserSettingsModal
           closeModal={() => setModalActive(false)}
         ></UserSettingsModal>
       </MainModal>
-    </Overlay>
+    
+      <MainModal active={isUserLogoutModalOpen} setActive={setUserLogoutModalOpen}>
+        <UserLogoutModal
+         
+          closeModal={() => setUserLogoutModalOpen(false)}
+        ></UserLogoutModal>
+      </MainModal>
+
+    </div>
+ 
   );
 };
 
 export default UserLogoModal;
+
+
+
+
+

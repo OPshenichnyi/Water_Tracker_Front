@@ -2,15 +2,6 @@ import styled from 'styled-components';
 import color from '../../common/Variables';
 
 
-export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-z-index:1001;
-
-`;
 
 export const Wrapper = styled.ul`
   display:flex;
