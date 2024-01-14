@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Content, Modal } from './MainModal.styled';
 import { modalScrollOff } from 'components/Utils/utils';
 
-const MainModal = ({ active, setActive, children }) => {
+const MainModal = ({ active, setActive, children, backgroundColor  }) => {
   useEffect(() => {
     const closeModal = e => {
       if (e.key === 'Escape') {
@@ -29,8 +29,8 @@ const MainModal = ({ active, setActive, children }) => {
   
 
   return ReactDOM.createPortal(
-    <Modal className={ active ? 'active' : ''} onClick={() => setActive(false)}>
-      <Content onClick={e => e.stopPropagation()}>{children}</Content>
+    <Modal className={ active ? 'active' : ''} backgroundColor={backgroundColor} onClick={() => setActive(false)}>
+      <Content  onClick={e => e.stopPropagation()}>{children}</Content>
     </Modal>,
 
     document.getElementById('modal')

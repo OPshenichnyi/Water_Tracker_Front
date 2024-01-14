@@ -5,7 +5,7 @@ import sprite from '../../common/symbol-defs.svg';
 import { Wrapper, ButtonMenu, Svg,Avatar,Img,User,ButtonAvt,Name } from './UserLogo.styled';
 import { useSelector} from "react-redux";
 import { selectIsUser} from "../../redux/auth/selectorsAuth";
-
+import MainModal from "../MainModal/MainModal";
 
 
 const UserLogo = () => {
@@ -36,7 +36,7 @@ const UserLogo = () => {
 
 
   const handleButtonClick = () => {
-    setModalOpen(!isModalOpen);
+    setModalOpen(true);
   };
 
   const renderAvatar = () => {
@@ -69,9 +69,16 @@ const UserLogo = () => {
           <use href={`${sprite}#icon-chevron-double-up`} />
         </Svg>
       </ButtonMenu>
-      {isModalOpen && <UserLogoModal  open={true} onClose={() => setModalOpen(false)} position={userLogoPosition} headerRef={headerRef} />}
+       
       </Wrapper>
-    
+      <MainModal active={isModalOpen} setActive={setModalOpen} backgroundColor={isModalOpen}>
+        <UserLogoModal
+          open={isModalOpen}
+          closeModal={() => setModalOpen(false)}
+          position={userLogoPosition}
+          headerRef={headerRef}
+        ></UserLogoModal>
+      </MainModal>
     </User>
   );
 };
