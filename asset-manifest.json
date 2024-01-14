@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Water_Tracker_Front/static/css/main.1f69274c.css",
-    "main.js": "/Water_Tracker_Front/static/js/main.4e4b042b.js",
+    "main.js": "/Water_Tracker_Front/static/js/main.9a71a19d.js",
     "static/js/368.a4e7c01d.chunk.js": "/Water_Tracker_Front/static/js/368.a4e7c01d.chunk.js",
     "static/js/421.0a215036.chunk.js": "/Water_Tracker_Front/static/js/421.0a215036.chunk.js",
     "static/js/679.30ffcfef.chunk.js": "/Water_Tracker_Front/static/js/679.30ffcfef.chunk.js",
@@ -43,7 +43,7 @@
     "index.html": "/Water_Tracker_Front/index.html",
     "static/media/listMarker.svg": "/Water_Tracker_Front/static/media/listMarker.fddb539b56ea3011c50a91ee6d888f28.svg",
     "main.1f69274c.css.map": "/Water_Tracker_Front/static/css/main.1f69274c.css.map",
-    "main.4e4b042b.js.map": "/Water_Tracker_Front/static/js/main.4e4b042b.js.map",
+    "main.9a71a19d.js.map": "/Water_Tracker_Front/static/js/main.9a71a19d.js.map",
     "368.a4e7c01d.chunk.js.map": "/Water_Tracker_Front/static/js/368.a4e7c01d.chunk.js.map",
     "421.0a215036.chunk.js.map": "/Water_Tracker_Front/static/js/421.0a215036.chunk.js.map",
     "679.30ffcfef.chunk.js.map": "/Water_Tracker_Front/static/js/679.30ffcfef.chunk.js.map",
@@ -54,6 +54,6 @@
   },
   "entrypoints": [
     "static/css/main.1f69274c.css",
-    "static/js/main.4e4b042b.js"
+    "static/js/main.9a71a19d.js"
   ]
 }
