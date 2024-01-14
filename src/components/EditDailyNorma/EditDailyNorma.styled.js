@@ -8,7 +8,11 @@ export const Wrapper = styled.div`
   z-index: 2;
   transform: translate(-50%, -50%);
   width: 280px;
-  height: 100%;
+  height: 100%; 
+  @media screen and (min-height: 816px) {
+  height: 816px; 
+}
+
   overflow-y: auto;
   background-color: ${variables.whitePrimary};
   border-radius: 10px;

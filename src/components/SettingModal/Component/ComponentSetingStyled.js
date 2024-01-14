@@ -80,7 +80,7 @@ export const InputStyle = styled.input`
 
 export const ContainerGender = styled.div`
   display: flex;
-  margin-bottom: 16px;
+  margin-bottom: 24px; // 16px
   width: 176px;
   height: 20px;
   label:first-child {
@@ -89,7 +89,7 @@ export const ContainerGender = styled.div`
   input:first-child {
     margin-right: 8px;
   }
-  margin-bottom: 52px;
+  /* margin-bottom: 52px; */
 `;
 
 export const InputGenders = styled.input`

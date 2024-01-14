@@ -9,6 +9,9 @@ export const Container = styled.div`
   transform: translate(-50%, -50%);
   width: 280px;
   height: 100%;
+  @media screen and (min-height: 868px) {
+  height: 868px; 
+}
   overflow-y: auto; 
   padding: 32px 12px;
   border-radius: 10px;
