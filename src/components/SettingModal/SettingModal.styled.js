@@ -8,6 +8,8 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 280px;
+  height: 100%;
+  overflow-y: auto; // изменение здесь
   padding: 32px 12px;
   border-radius: 10px;
   background-color: #fff;
