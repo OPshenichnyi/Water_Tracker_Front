@@ -9,7 +9,7 @@ export const Container = styled.div`
   transform: translate(-50%, -50%);
   width: 280px;
 
-  @media screen and (max-width: 767px) {
+
     height: 100%; 
     overflow-y: auto;
     @media screen and (min-height: 895px) {
@@ -17,8 +17,8 @@ export const Container = styled.div`
     }
     &::-webkit-scrollbar {
       display: none;
-   }
-  }
+    }
+ 
 
 
   padding: 32px 12px;
@@ -30,6 +30,11 @@ export const Container = styled.div`
   }
   @media screen and (min-width: 768px) {
     width: 704px;
+
+    @media screen and (min-height: 902px) {
+      height: 902px; 
+    }
+
     padding: 32px 24px;
     .loader {
       left: 45%;

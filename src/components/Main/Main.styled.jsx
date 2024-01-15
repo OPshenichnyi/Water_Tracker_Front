@@ -10,6 +10,7 @@ import bubble from '../../images/BackelementDesk.png';
 import bubble2x from '../../images/BackelementDesk@2x.png';
 import { NavLink } from 'react-router-dom';
 import mainDesct2x from '../../images/main_desctop@2x.jpg';
+
 export const Wrappper = styled.div`
   @media screen and (min-width: 1440px) {
     width: 100%;
