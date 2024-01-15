@@ -9,11 +9,10 @@ import { PrivateRouter } from "./PrivateRoute";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { refreshUser } from "../redux/auth/authOperationApi";
-
+import MainPage from "../pages/Main";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const MainPage = lazy(() => import("../pages/Main"));
 const HomePage = lazy(() => import("../pages/HomePage"));
 const SignUpPage = lazy(() => import("../components/SingIn/SignUp"));
 const SigninPage = lazy(() => import("../components/SingIn/SingIn"));
