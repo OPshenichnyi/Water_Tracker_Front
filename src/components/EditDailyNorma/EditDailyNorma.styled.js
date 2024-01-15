@@ -10,9 +10,11 @@ export const Wrapper = styled.div`
   width: 280px;
   height: 100%; 
   overflow-y: auto;
+
   @media screen and (min-height: 836px) {
   height: 836px; 
 }
+
 &::-webkit-scrollbar {
     display: none;
   }
@@ -23,13 +25,19 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 704px;
-    height: 676px;
+    /* height: 676px; */
+    @media screen and (min-height: 676px) {
+  height: 676px; 
+}
     padding: 32px 24px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 592px;
-    height: 712px;
+    /* height: 712px; */
+    @media screen and (min-height: 712px) {
+  height: 712px; 
+}
   }
 `;
 

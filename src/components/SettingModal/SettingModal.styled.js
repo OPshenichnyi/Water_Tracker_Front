@@ -28,6 +28,7 @@ export const Container = styled.div`
     position: absolute;
     left: 35%;
   }
+
   @media screen and (min-width: 768px) {
     width: 704px;
 
@@ -43,9 +44,13 @@ export const Container = styled.div`
 
   @media screen and (min-width: 1440px) {
     width: 1008px;
-    height: 592px;
+    /* height: 592px; */    
+    @media screen and (min-height: 605px) {
+      height: 605px; 
+    }
   }
 `;
+
 //  ======== Container Name Modal and BTN Close=================
 export const TitleContainer = styled.div`
   display: flex;
