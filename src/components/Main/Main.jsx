@@ -17,15 +17,13 @@ import {
   SecondBlock,
   TryBtn,
 } from "./Main.styled";
-import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { saveWaterRate } from "../../redux/auth/authOperationApi";
+import { sleep } from "../../redux/auth/authOperationApi";
 
 const Main = () => {
-  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(saveWaterRate());
-  }, [dispatch]);
+    sleep();
+  }, []);
   return (
     <Wrappper>
       <Container>
