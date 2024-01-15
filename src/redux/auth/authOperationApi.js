@@ -129,4 +129,8 @@ export const saveWaterRate = createAsyncThunk(
     }
   }
 );
+
+export const sleep = async () => {
+  await axios.get("/users/sleep");
+};
 // ===============================================================
