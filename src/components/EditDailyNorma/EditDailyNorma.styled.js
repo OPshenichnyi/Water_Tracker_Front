@@ -2,13 +2,21 @@ import styled from 'styled-components';
 import variables from 'common/Variables';
 
 export const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   z-index: 2;
   transform: translate(-50%, -50%);
   width: 280px;
-  height: 816px;
+  height: 100%; 
+  overflow-y: auto;
+  @media screen and (min-height: 836px) {
+  height: 836px; 
+}
+&::-webkit-scrollbar {
+    display: none;
+  }
+
   background-color: ${variables.whitePrimary};
   border-radius: 10px;
   padding: 24px 12px;

@@ -8,6 +8,19 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 280px;
+
+  @media screen and (max-width: 767px) {
+    height: 100%; 
+    overflow-y: auto;
+    @media screen and (min-height: 895px) {
+      height: 895px; 
+    }
+    &::-webkit-scrollbar {
+      display: none;
+   }
+  }
+
+
   padding: 32px 12px;
   border-radius: 10px;
   background-color: #fff;
