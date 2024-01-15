@@ -8,6 +8,19 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 280px;
+
+
+    height: 100%; 
+    overflow-y: auto;
+    @media screen and (min-height: 895px) {
+      height: 895px; 
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+ 
+
+
   padding: 32px 12px;
   border-radius: 10px;
   background-color: #fff;
@@ -15,8 +28,14 @@ export const Container = styled.div`
     position: absolute;
     left: 35%;
   }
+
   @media screen and (min-width: 768px) {
     width: 704px;
+
+    @media screen and (min-height: 902px) {
+      height: 902px; 
+    }
+
     padding: 32px 24px;
     .loader {
       left: 45%;
@@ -25,9 +44,13 @@ export const Container = styled.div`
 
   @media screen and (min-width: 1440px) {
     width: 1008px;
-    height: 592px;
+    /* height: 592px; */    
+    @media screen and (min-height: 606px) {
+      height: 606px; 
+    }
   }
 `;
+
 //  ======== Container Name Modal and BTN Close=================
 export const TitleContainer = styled.div`
   display: flex;

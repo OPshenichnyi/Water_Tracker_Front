@@ -2,26 +2,42 @@ import styled from 'styled-components';
 import variables from 'common/Variables';
 
 export const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   z-index: 2;
   transform: translate(-50%, -50%);
   width: 280px;
-  height: 816px;
+  height: 100%; 
+  overflow-y: auto;
+
+  @media screen and (min-height: 836px) {
+  height: 836px; 
+}
+
+&::-webkit-scrollbar {
+    display: none;
+  }
+
   background-color: ${variables.whitePrimary};
   border-radius: 10px;
   padding: 24px 12px;
 
   @media screen and (min-width: 768px) {
     width: 704px;
-    height: 676px;
+    /* height: 676px; */
+    @media screen and (min-height: 676px) {
+  height: 676px; 
+}
     padding: 32px 24px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 592px;
-    height: 712px;
+    /* height: 712px; */
+    @media screen and (min-height: 712px) {
+  height: 712px; 
+}
   }
 `;
 
